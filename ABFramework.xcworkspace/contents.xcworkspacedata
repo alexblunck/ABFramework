@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:ABFramework"
+      name = "ABFramework">
+      <FileRef
+         location = "group:README.md">
+      </FileRef>
+      <FileRef
+         location = "group:ABFramework.h">
+      </FileRef>
+      <Group
+         location = "group:Categories"
+         name = "Categories">
+         <FileRef
+            location = "group:NSData+ABFramework.h">
+         </FileRef>
+         <FileRef
+            location = "group:NSData+ABFramework.m">
+         </FileRef>
+         <FileRef
+            location = "group:NSDate+ABFramework.h">
+         </FileRef>
+         <FileRef
+            location = "group:NSDate+ABFramework.m">
+         </FileRef>
+         <FileRef
+            location = "group:NSDateComponents+ABFramework.h">
+         </FileRef>
+         <FileRef
+            location = "group:NSDateComponents+ABFramework.m">
+         </FileRef>
+         <FileRef
+            location = "group:NSDictionary+ABFramework.h">
+         </FileRef>
+         <FileRef
+            location = "group:NSDictionary+ABFramework.m">
+         </FileRef>
+         <FileRef
+            location = "group:NSMutableDictionary+ABFramework.h">
+         </FileRef>
+         <FileRef
+            location = "group:NSMutableDictionary+ABFramework.m">
+         </FileRef>
+         <FileRef
+            location = "group:NSObject+ABFramework.h">
+         </FileRef>
+         <FileRef
+            location = "group:NSObject+ABFramework.m">
+         </FileRef>
+         <FileRef
+            location = "group:NSString+ABFramework.h">
+         </FileRef>
+         <FileRef
+            location = "group:NSString+ABFramework.m">
+         </FileRef>
+         <FileRef
+            location = "group:UIImage+ABFramework.h">
+         </FileRef>
+         <FileRef
+            location = "group:UIImage+ABFramework.m">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Components"
+         name = "Components">
+         <Group
+            location = "group:ABAlertView"
+            name = "ABAlertView">
+            <FileRef
+               location = "group:ABAlertView.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABAlertView.m">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:ABDatePickerView"
+            name = "ABDatePickerView">
+            <FileRef
+               location = "group:ABDatePickerView.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABDatePickerView.m">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:ABImagePickerController"
+            name = "ABImagePickerController">
+            <FileRef
+               location = "group:ABImagePickerViewController.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABImagePickerViewController.m">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:ABSaveSystem"
+            name = "ABSaveSystem">
+            <FileRef
+               location = "group:ABSaveSystem.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABSaveSystem.m">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:ABSelectView"
+            name = "ABSelectView">
+            <FileRef
+               location = "group:ABSelectView.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABSelectView.m">
+            </FileRef>
+            <FileRef
+               location = "group:ABSelectViewItem.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABSelectViewItem.m">
+            </FileRef>
+            <FileRef
+               location = "group:ABSelectViewTheme.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABSelectViewTheme.m">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:ABSwitch"
+            name = "ABSwitch">
+            <FileRef
+               location = "group:ABSwitch.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABSwitch.m">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:ABTabBarController"
+            name = "ABTabBarController">
+            <FileRef
+               location = "group:ABTabBar.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABTabBar.m">
+            </FileRef>
+            <FileRef
+               location = "group:ABTabBarController.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABTabBarController.m">
+            </FileRef>
+            <FileRef
+               location = "group:ABTabBarItem.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABTabBarItem.m">
+            </FileRef>
+            <FileRef
+               location = "group:ABTabButton.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABTabButton.m">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:Model"
+         name = "Model">
+         <FileRef
+            location = "group:ABDateDescriptor.h">
+         </FileRef>
+         <FileRef
+            location = "group:ABDateDescriptor.m">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Sub Classes"
+         name = "Sub Classes">
+         <FileRef
+            location = "group:ABNavigationController.h">
+         </FileRef>
+         <FileRef
+            location = "group:ABNavigationController.m">
+         </FileRef>
+         <FileRef
+            location = "group:ABViewController.h">
+         </FileRef>
+         <FileRef
+            location = "group:ABViewController.m">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Utilities"
+         name = "Utilities">
+         <FileRef
+            location = "group:ABCommon.h">
+         </FileRef>
+         <FileRef
+            location = "group:ABCommon.m">
+         </FileRef>
+         <FileRef
+            location = "group:ABFrame.h">
+         </FileRef>
+         <FileRef
+            location = "group:ABFrame.m">
+         </FileRef>
+         <FileRef
+            location = "group:ABMacros.h">
+         </FileRef>
+         <FileRef
+            location = "group:ABReachability.h">
+         </FileRef>
+         <FileRef
+            location = "group:ABReachability.m">
+         </FileRef>
+      </Group>
+   </Group>
+   <FileRef
+      location = "group:ABFramework-Examples/ABFramework-Examples.xcodeproj">
+   </FileRef>
+</Workspace>

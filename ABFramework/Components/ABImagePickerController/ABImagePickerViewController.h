@@ -1,0 +1,15 @@
+//
+//  ABImagePickerViewController.h
+//  ABFramework
+//
+//  Created by Alexander Blunck on 10/30/12.
+//  Copyright (c) 2012 Ablfx. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface ABImagePickerViewController : UIImagePickerController
+
++(id) photoLibraryPickerWithCompletionBlock:( void (^) (UIImage *selectedImage) )block;
+
+@end
