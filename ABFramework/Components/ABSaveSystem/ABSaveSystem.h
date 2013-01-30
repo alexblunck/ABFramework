@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define APPNAME @"ComingUp"
+#define APPNAME @"APPNAME_GOES_HERE"
 #define OS @"IOS" /* @"IOS" for iPhone/iPad/iPod & @"MAC" for mac */
 #define ENCRYPTION_ENABLED NO
 #define AESKEY @"aVt7G67Dgjit2"

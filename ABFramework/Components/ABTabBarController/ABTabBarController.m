@@ -9,54 +9,15 @@
 #import "ABTabBarController.h"
 
 @interface ABTabBarController () <ABTabBarDelegate> {
-    id activeViewController;
-    UIView *activeView;
-    UIView *newView;
+    UIView *_activeView;
+    UIView *_newView;
 }
 
 @end
 
 @implementation ABTabBarController
 
--(id) activeViewController {
-    return activeViewController;
-}
-
--(void) forceSwitchToTabIndex:(int)tabIndex {
-    [self.tabBar forceSwitchToTabIndex:tabIndex];
-}
-
--(void) switchToViewController:(id)viewController {
-    
-    //Inform Application of Tab switch
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ABTabBarController.TabSwitched" object:nil];
-    
-    //Switch activeViewController 
-    activeViewController = nil;
-    activeViewController = viewController;
-    
-    //Remove current active view
-    [activeView removeFromSuperview];
-    activeView = nil;
-    
-    //Show new view
-    activeView = [(ABViewController*)viewController view];
-    
-    //Restrict frame of activeView to space above tabBar View
-    activeView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-self.tabBarHeight);
-    
-    [self.view addSubview:activeView];
-}
-
-#pragma mark - ABTabBarDelegate
--(void) tabBarTabSelected:(id)viewController {
-    ABViewController *vc = viewController;
-    //ABTabBarItem *tabBarItem = vc.abTabBarItem;
-    
-    [self switchToViewController:vc];
-}
-
-#pragma mark - LifeCycle
+#pragma mark - Initializer
 -(id) initWithViewControllers:(NSArray*)viewControllers {
     self = [super init];
     if (self) {
@@ -67,7 +28,11 @@
     } return self;
 }
 
-- (void)viewDidLoad {
+
+
+#pragma mark - LifeCycle
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     //Retrieve Screen Dimensions
@@ -117,12 +82,52 @@
     [self.view addSubview:self.tabBar];
 }
 
-- (void)viewDidUnload {
-    [super viewDidUnload];
+
+
+#pragma mark - Helper
+-(void) forceSwitchToTabIndex:(int)tabIndex
+{
+    [self.tabBar forceSwitchToTabIndex:tabIndex];
 }
 
+-(void) switchToViewController:(id)viewController
+{
+    
+    //Inform Application of Tab switch
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ABTabBarController.TabSwitched" object:nil];
+    
+    //Switch activeViewController
+    self.activeViewController = nil;
+    self.activeViewController = viewController;
+    
+    //Remove current active view
+    [_activeView removeFromSuperview];
+    _activeView = nil;
+    
+    //Show new view
+    _activeView = [(ABViewController*)viewController view];
+    
+    //Restrict frame of activeView to space above tabBar View
+    _activeView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-self.tabBarHeight);
+    
+    [self.view addSubview:_activeView];
+}
+
+
+
+#pragma mark - ABTabBarDelegate
+-(void) tabBarTabSelected:(id)viewController {
+    ABViewController *vc = viewController;
+    //ABTabBarItem *tabBarItem = vc.abTabBarItem;
+    
+    [self switchToViewController:vc];
+}
+
+
+
 #pragma mark - Accessors
--(void) setViewControllers:(NSArray *)viewControllers {
+-(void) setViewControllers:(NSArray *)viewControllers
+{
     _viewControllers = viewControllers;
     
     //Loop through added ViewController
@@ -153,21 +158,29 @@
     
 }
 
+
+
 #pragma mark - Orientation
 //iOS 6 (Ask the activeViewController)
--(BOOL) shouldAutorotate {
-    return [activeViewController shouldAutorotate];
+-(BOOL) shouldAutorotate
+{
+    return [self.activeViewController shouldAutorotate];
 }
+
 - (NSUInteger)supportedInterfaceOrientations
 {
-    return [activeViewController supportedInterfaceOrientations];
+    return [self.activeViewController supportedInterfaceOrientations];
 }
--(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    [activeViewController willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+
+-(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [self.activeViewController willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
 }
+
 //iOS 5 (Ask the activeViewController)
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return [activeViewController shouldAutorotateToInterfaceOrientation:interfaceOrientation];
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return [self.activeViewController shouldAutorotateToInterfaceOrientation:interfaceOrientation];
 }
 
 @end

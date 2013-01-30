@@ -7,12 +7,11 @@
 //
 
 #import "ABCommon.h"
-
 #import "ABReachability.h"
 
 @implementation ABCommon
 
-#pragma mark - NETWORK
+#pragma mark - Network
 +(BOOL) isOnWifiNetwork
 {
     ABReachability *reachability = [ABReachability reachabilityForInternetConnection];
@@ -35,7 +34,7 @@
 
 
 
-#pragma mark - TOGGLE
+#pragma mark - Toggle
 +(BOOL) toggleBoolean:(BOOL)boolean
 {
     return (boolean) ? NO : YES;
@@ -43,7 +42,7 @@
 
 
 
-#pragma mark - KEY/VALUE
+#pragma mark - Key/Value
 +(id) safeObjectForKey:(id)key from:(id)object imidate:(Class)class
 {
     id returnObject = nil;

@@ -9,23 +9,53 @@
 #import "ABTabBar.h"
 
 @interface ABTabBar () {
-    NSMutableArray *tabButtonArray;
+    NSMutableArray *_tabButtonArray;
 }
 @end
 
 @implementation ABTabBar
 
--(void) forceSwitchToTabIndex:(int)tabIndex {
-    //Highlight Correct Tab
-    ABTabButton *tabButton = [tabButtonArray objectAtIndex:tabIndex];
-    [self highlight:tabButton];
-    
-    //Simulate touchUpInside
-    [self tabTouchUpInside:tabButton];
+#pragma mark - Initializer
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        
+    }
+    return self;
 }
 
--(void) layoutTabs {
+
+
+#pragma mark - LifeCycle
+-(void) willMoveToSuperview:(UIView *)newSuperview
+{
+    [super willMoveToSuperview:newSuperview];
     
+    //Allocation
+    _tabButtonArray = [NSMutableArray new];
+    
+    //Set Background Image
+    if (self.backgroundImage) {
+        UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:self.backgroundImage];
+        backgroundImageView.frame = CGRectMake(0, 0, self.backgroundImage.size.width, self.backgroundImage.size.height);
+        [self addSubview:backgroundImageView];
+    }
+    //If none has been specified use a UIToolBar View
+    else {
+        UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, newSuperview.bounds.size.width, self.height)];
+        [self addSubview:toolBar];
+    }
+    
+    //Layout Tabs
+    [self layoutTabs];
+}
+
+
+
+#pragma mark - Layout
+-(void) layoutTabs
+{
     //Retrieve Screen Dimensions
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     int screenWidth = screenSize.width;
@@ -70,35 +100,29 @@
         [tabButton addTarget:self action:@selector(tabTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
         
         //Add to tabButtonArray
-        [tabButtonArray addObject:tabButton];
-        [self addSubview:tabButtonArray.lastObject];
+        [_tabButtonArray addObject:tabButton];
+        [self addSubview:_tabButtonArray.lastObject];
         
         //Compute Origin for next Tab Button
         currentOrigin = tabButton.frame.origin.x + tabBarItem.image.size.width + self.tabSpacing;
     }
     
     //Set Initial selected Tab
-    ABTabButton *selectedButton = [tabButtonArray objectAtIndex:self.selectedIndex];
+    ABTabButton *selectedButton = [_tabButtonArray objectAtIndex:self.selectedIndex];
     [self highlight:selectedButton];
     
 }
 
--(void) highlight:(id)sender {
-    ABTabButton *tabButton = sender;
-    tabButton.tabImageView.highlighted = YES;
-}
 
--(void) unHighlight:(id)sender {
-    ABTabButton *tabButton = sender;
-    tabButton.tabImageView.highlighted = NO;
-}
 
--(void) tabTouchUpInside:(id)sender {
+#pragma mark - Buttons
+-(void) tabTouchUpInside:(id)sender
+{
     ABTabButton *tabButton = sender;
     ABViewController *viewController = [self.viewControllers objectAtIndex:tabButton.viewControllerIndex];
     
     //Unhightlight all other tabs / highlight selected one
-    for (ABTabButton *button in tabButtonArray) {
+    for (ABTabButton *button in _tabButtonArray) {
         if (button != tabButton) {
             [self unHighlight:button];
         }
@@ -107,37 +131,29 @@
     [self.delegate tabBarTabSelected:viewController];
 }
 
-- (id)initWithFrame:(CGRect)frame
+
+
+#pragma mark - Helper
+-(void) forceSwitchToTabIndex:(int)tabIndex
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        
-        
-        
-    }
-    return self;
+    //Highlight Correct Tab
+    ABTabButton *tabButton = [_tabButtonArray objectAtIndex:tabIndex];
+    [self highlight:tabButton];
+    
+    //Simulate touchUpInside
+    [self tabTouchUpInside:tabButton];
 }
 
--(void) willMoveToSuperview:(UIView *)newSuperview {
-    [super willMoveToSuperview:newSuperview];
-    
-    //Allocation
-    tabButtonArray = [NSMutableArray new];
-    
-    //Set Background Image
-    if (self.backgroundImage) {
-        UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:self.backgroundImage];
-        backgroundImageView.frame = CGRectMake(0, 0, self.backgroundImage.size.width, self.backgroundImage.size.height);
-        [self addSubview:backgroundImageView];
-    }
-    //If none has been specified use a UIToolBar View
-    else {
-        UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, newSuperview.bounds.size.width, self.height)];
-        [self addSubview:toolBar];
-    }
-    
-    //Layout Tabs
-    [self layoutTabs];
+-(void) highlight:(id)sender
+{
+    ABTabButton *tabButton = sender;
+    tabButton.tabImageView.highlighted = YES;
+}
+
+-(void) unHighlight:(id)sender
+{
+    ABTabButton *tabButton = sender;
+    tabButton.tabImageView.highlighted = NO;
 }
 
 @end

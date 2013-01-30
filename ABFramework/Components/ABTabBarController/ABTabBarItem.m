@@ -10,7 +10,24 @@
 
 @implementation ABTabBarItem
 
--(id) initWithImage:(UIImage*)image selectedImage:(UIImage*)selectedImage {
+#pragma mark - Utility
++(id) itemWithImageName:(NSString*)imageName selectedImageName:(NSString*)selectedImageName
+{
+    UIImage *image = [UIImage imageNamed:imageName];
+    UIImage *selectedImage = [UIImage imageNamed:selectedImageName];
+    return [self itemWithImage:image selectedImage:selectedImage];
+}
+
++(id) itemWithImage:(UIImage*)image selectedImage:(UIImage*)selectedImage
+{
+    return [[self alloc] initWithImage:image selectedImage:selectedImage];
+}
+
+
+
+#pragma mark - Intitializer
+-(id) initWithImage:(UIImage*)image selectedImage:(UIImage*)selectedImage
+{
     self = [super init];
     if (self) {
         
@@ -18,16 +35,6 @@
         self.selectedImage = selectedImage;
         
     } return self;
-}
-
-+(id) itemWithImage:(UIImage*)image selectedImage:(UIImage*)selectedImage {
-    return [[self alloc] initWithImage:image selectedImage:selectedImage];
-}
-
-+(id) itemWithImageName:(NSString*)imageName selectedImageName:(NSString*)selectedImageName {
-    UIImage *image = [UIImage imageNamed:imageName];
-    UIImage *selectedImage = [UIImage imageNamed:selectedImageName];
-    return [self itemWithImage:image selectedImage:selectedImage];
 }
 
 @end

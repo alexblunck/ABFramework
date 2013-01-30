@@ -16,7 +16,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     NSString *myString = @"hi there";
-    ABLogString(myString);
+    ABLogNSString(myString);
     
     [self.window makeKeyAndVisible];
     return YES;

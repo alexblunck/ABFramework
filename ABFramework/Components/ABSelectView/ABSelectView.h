@@ -12,6 +12,7 @@
 
 @interface ABSelectView : UIView
 
+//Utility
 +(id) showWithStringArray:(NSArray*)stringArray
              defaultIndex:(int)defaultIndex
                     theme:(ABSelectViewTheme*)theme

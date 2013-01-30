@@ -11,7 +11,8 @@
 @implementation ABSaveSystem
 
 #pragma mark - Path
-+(NSString*) filePath {
++(NSString*) filePath
+{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *fullFileName = [NSString stringWithFormat:@"%@.absave", APPNAME];
@@ -21,9 +22,10 @@
 }
 
 
+
 #pragma mark - NSData
-+(void) saveData:(NSData*)data key:(NSString*)key {
-    
++(void) saveData:(NSData*)data key:(NSString*)key
+{
     //Check if file exits, if so init Dictionary with it's content, otherwise allocate new one
     BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:[self filePath]];
     NSMutableDictionary *tempDic = nil;
@@ -49,7 +51,8 @@
     
 }
 
-+(NSMutableDictionary*) loadDictionary {
++(NSMutableDictionary*) loadDictionary
+{
     NSData *binaryFile = [NSData dataWithContentsOfFile:[self filePath]];
     
     if (binaryFile == NULL) {
@@ -69,8 +72,8 @@
     return dictionary;
 }
 
-+(NSData*) dataForKey:(NSString*)key {
-    
++(NSData*) dataForKey:(NSString*)key
+{
     NSMutableDictionary *tempDic = [self loadDictionary];
     
     //Get NSData for specific key
@@ -79,13 +82,17 @@
 }
 
 
+
 #pragma mark - NSInteger
-+(void) saveInteger:(NSInteger)integer key:(NSString*)key {
++(void) saveInteger:(NSInteger)integer key:(NSString*)key
+{
     NSNumber *object = [NSNumber numberWithInteger:integer];
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:object];
     [self saveData:data key:key];
 }
-+(NSInteger) integerForKey:(NSString*)key {
+
++(NSInteger) integerForKey:(NSString*)key
+{
     NSData *data = [self dataForKey:key];
     if (data != nil) {
         NSNumber *object = [NSKeyedUnarchiver unarchiveObjectWithData:data];
@@ -95,13 +102,17 @@
 }
 
 
+
 #pragma mark - BOOL
-+(void) saveBool:(BOOL)boolean key:(NSString*)key {
++(void) saveBool:(BOOL)boolean key:(NSString*)key
+{
     NSNumber *object = [NSNumber numberWithBool:boolean];
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:object];
     [self saveData:data key:key];
 }
-+(BOOL) boolForKey:(NSString*)key {
+
++(BOOL) boolForKey:(NSString*)key
+{
     NSData *data = [self dataForKey:key];
     if (data != nil) {
         NSNumber *object = [NSKeyedUnarchiver unarchiveObjectWithData:data];
@@ -111,12 +122,16 @@
 }
 
 
+
 #pragma mark - NSDate
-+(void) saveDate:(NSDate*)date key:(NSString*)key {
++(void) saveDate:(NSDate*)date key:(NSString*)key
+{
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:date];
     [self saveData:data key:key];
 }
-+(NSDate*) dateForKey:(NSString*)key {
+
++(NSDate*) dateForKey:(NSString*)key
+{
     NSData *data = [self dataForKey:key];
     if (data != nil) {
         NSDate *date = [NSKeyedUnarchiver unarchiveObjectWithData:data];
@@ -126,8 +141,10 @@
 }
 
 
+
 #pragma mark - Misc
-+(void) logSavedValues {
++(void) logSavedValues
+{
     NSMutableDictionary *tempDic= [self loadDictionary];
     if (tempDic == nil) {
         NSLog(@"ABSaveSystem: logSavedValues -> NO DATA SAVED!");
@@ -136,8 +153,8 @@
     
     NSLog(@"ABSaveSystem: logSavedValues -> START LOG");
     
-    [tempDic enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        
+    [tempDic enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
+    {
         NSString *valueString = [NSKeyedUnarchiver unarchiveObjectWithData:obj];
         
         NSLog(@"ABSaveSystem: logSavedValues -> Key:%@ -> %@", key, valueString);

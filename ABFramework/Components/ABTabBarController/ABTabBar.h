@@ -8,16 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-//DELEGATE
 @protocol ABTabBarDelegate <NSObject>
-
 @optional
 -(void) tabBarTabSelected:(id)viewController;
-
 @end
 
-//INTERFACE
 @interface ABTabBar : UIView
+
+//Helper
+-(void) forceSwitchToTabIndex:(int)tabIndex;
 
 //Array that holds all ViewControllers available from the TabBar
 @property (nonatomic, strong) NSArray *viewControllers;
@@ -36,7 +35,5 @@
 
 //Delegate Property
 @property (nonatomic, strong) id <ABTabBarDelegate> delegate;
-
--(void) forceSwitchToTabIndex:(int)tabIndex;
 
 @end

@@ -10,7 +10,22 @@
 
 @implementation ABSelectViewTheme
 
--(id) initThemeTop:(NSString*)top middle:(NSString*)middle bottom:(NSString*)bottom {
+#pragma mark - Utility
++(id) themeWithTop:(NSString*)top middle:(NSString*)middle bottom:(NSString*)bottom
+{
+    return [[self alloc] initThemeTop:top middle:middle bottom:bottom];
+}
+
++(id) themeWithTag:(_ABSelectViewThemeTag)theme
+{
+    return [[self alloc] initWithTag:theme];
+}
+
+
+
+#pragma mark - Initializer
+-(id) initThemeTop:(NSString*)top middle:(NSString*)middle bottom:(NSString*)bottom
+{
     if (self = [super init]) {
         self.topRowImageName = top;
         self.middleRowImageName = middle;
@@ -19,11 +34,8 @@
     return self;
 }
 
-+(id) themeWithTop:(NSString*)top middle:(NSString*)middle bottom:(NSString*)bottom {
-    return [[self alloc] initThemeTop:top middle:middle bottom:bottom];
-}
-
--(id) initWithTag:(_ABSelectViewThemeTag)theme {
+-(id) initWithTag:(_ABSelectViewThemeTag)theme
+{
     if (self = [super init]) {
         switch (theme) {
             case ABSelectViewThemeDark:
@@ -36,10 +48,6 @@
                 break;
         }
     } return self;
-}
-
-+(id) themeWithTag:(_ABSelectViewThemeTag)theme {
-    return [[self alloc] initWithTag:theme];
 }
 
 @end

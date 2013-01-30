@@ -9,35 +9,28 @@
 #import "ABSelectViewItem.h"
 
 @interface ABSelectViewItem () {
-    int itemIndex;
-    UILabel *label;
+    int _itemIndex;
+    UILabel *_label;
 }
 @end
 
 @implementation ABSelectViewItem
 
--(void) buttonSelected {
-    [self.delegate selectedIndex:itemIndex];
+#pragma mark - Utility
++(id) itemWithString:(NSString*)string image:(UIImage*)image index:(int)index
+{
+    return [[self alloc] initWithString:string image:image index:index];
 }
 
--(void) labelWhite {
-    label.textColor = [UIColor colorWithWhite:0.910 alpha:1.000];
-    label.shadowColor = [UIColor blackColor];
-    label.shadowOffset = CGSizeMake(0.0f, 1.0f);
-}
 
--(void) labelBlack {
-    label.textColor = [UIColor colorWithWhite:0.089 alpha:1.000];
-    label.shadowColor = [UIColor colorWithWhite:0.428 alpha:1.000];
-    label.shadowOffset = CGSizeMake(1.0f, 1.0f);
-}
 
+#pragma mark - Initializer
 - (id)initWithString:(NSString*)string image:(UIImage*)image index:(int)index
 {
     self = [super init];
     if (self) {
         
-        itemIndex = index;
+        _itemIndex = index;
         
         //Cell Background
         UIImageView *cellBg = [UIImageView new];
@@ -46,27 +39,27 @@
         [self addSubview:cellBg];
         
         //Label
-        label = [UILabel new];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.backgroundColor = [UIColor clearColor];
-        label.textColor = [UIColor colorWithWhite:0.089 alpha:1.000];
-        label.shadowColor = [UIColor colorWithWhite:0.428 alpha:1.000];
-        label.shadowOffset = CGSizeMake(1.0f, 1.0f);
-        label.font = [UIFont fontWithName:@"SourceSansPro-Semibold" size:21.0f];
-        label.text = string;
+        _label = [UILabel new];
+        _label.textAlignment = NSTextAlignmentCenter;
+        _label.backgroundColor = [UIColor clearColor];
+        _label.textColor = [UIColor colorWithWhite:0.089 alpha:1.000];
+        _label.shadowColor = [UIColor colorWithWhite:0.428 alpha:1.000];
+        _label.shadowOffset = CGSizeMake(1.0f, 1.0f);
+        _label.font = [UIFont fontWithName:@"SourceSansPro-Semibold" size:21.0f];
+        _label.text = string;
         //[label sizeToFit];
         //label.center = cellBg.center;
-        [self addSubview:label];
+        [self addSubview:_label];
         
         //label.backgroundColor = [UIColor redColor];
         
         //label.frame = CGRectMake((cellBg.frame.size.width-(cellBg.frame.size.width-18))/2, 0, cellBg.frame.size.width-18, cellBg.frame.size.height);
         
-        [label sizeToFit];
-        label.frame = CGRectMake((cellBg.frame.size.width-(cellBg.frame.size.width-18))/2, 4, cellBg.frame.size.width-18, label.frame.size.height);
+        [_label sizeToFit];
+        _label.frame = CGRectMake((cellBg.frame.size.width-(cellBg.frame.size.width-18))/2, 4, cellBg.frame.size.width-18, _label.frame.size.height);
         
-        label.adjustsFontSizeToFitWidth = YES;
-        label.minimumFontSize = 10.0f;
+        _label.adjustsFontSizeToFitWidth = YES;
+        _label.minimumFontSize = 10.0f;
         
         //Button
         UIButton *button = [UIButton new];
@@ -90,8 +83,29 @@
     return self;
 }
 
-+(id) itemWithString:(NSString*)string image:(UIImage*)image index:(int)index {
-    return [[self alloc] initWithString:string image:image index:index];
+
+
+#pragma mark - Buttons
+-(void) buttonSelected
+{
+    [self.delegate selectedIndex:_itemIndex];
+}
+
+
+
+#pragma mark - Helper
+-(void) labelWhite
+{
+    _label.textColor = [UIColor colorWithWhite:0.910 alpha:1.000];
+    _label.shadowColor = [UIColor blackColor];
+    _label.shadowOffset = CGSizeMake(0.0f, 1.0f);
+}
+
+-(void) labelBlack
+{
+    _label.textColor = [UIColor colorWithWhite:0.089 alpha:1.000];
+    _label.shadowColor = [UIColor colorWithWhite:0.428 alpha:1.000];
+    _label.shadowOffset = CGSizeMake(1.0f, 1.0f);
 }
 
 @end

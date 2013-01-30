@@ -10,7 +10,10 @@
 
 @interface ABDatePickerView : UIView
 
+//Initializer
 -(id) initWithDate:(NSDate*)date completionBlock:( void (^) (NSDate* selectedDate) )block;
+
+//Triggers
 -(void) show;
 
 @end

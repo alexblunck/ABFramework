@@ -10,6 +10,7 @@
 
 @interface ABAlertView : UIAlertView <UIAlertViewDelegate>
 
+//Utility
 +(id) showAlertWithTitle:(NSString *)title
                  message:(NSString *)message
                    block:( void (^) (NSInteger selectedIndex) )block

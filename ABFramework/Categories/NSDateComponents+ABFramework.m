@@ -15,7 +15,7 @@
 
 @implementation NSDateComponents (ABFramework)
 
-+ (NSDateComponents *)componentsFromString:(NSString *)string
++(NSDateComponents*) componentsFromString:(NSString*)string
 {
 	NSDateComponents *comps = [[NSDateComponents alloc] init];
 	if (!string) return comps;
@@ -36,7 +36,7 @@
 		}
 	}
     
-	// if the day was set but the month wasn't, interpret the two digits as the month
+	//If the day was set but the month wasn't, interpret the two digits as the month
 	if ([comps month] == NSUndefinedDateComponent && [comps day] != NSUndefinedDateComponent) {
 		[comps setMonth:MIN([comps day], 12)];
 		[comps setDay:NSUndefinedDateComponent];
@@ -45,7 +45,7 @@
 	return comps;
 }
 
-- (NSString *)stringValue
+-(NSString*) stringValue
 {
 	NSMutableArray *partsArray = [NSMutableArray array];
 	NSDateComponents *required = [self copy];
@@ -66,7 +66,7 @@
 	return [partsArray componentsJoinedByString:@" "];
 }
 
-- (BOOL)isEqualToDateComponents:(NSDateComponents *)components
+-(BOOL) isEqualToDateComponents:(NSDateComponents*)components
 {
 	BOOL era	= self.era					== components.era;
 	BOOL year	= self.year					== components.year;

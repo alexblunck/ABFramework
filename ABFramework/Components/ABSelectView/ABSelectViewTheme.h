@@ -12,11 +12,12 @@ typedef enum {ABSelectViewThemeDark} _ABSelectViewThemeTag;
 
 @interface ABSelectViewTheme : NSObject
 
+//Utility
++(id) themeWithTop:(NSString*)top middle:(NSString*)middle bottom:(NSString*)bottom;
++(id) themeWithTag:(_ABSelectViewThemeTag)theme;
+
 @property (nonatomic, strong) NSString *topRowImageName;
 @property (nonatomic, strong) NSString *middleRowImageName;
 @property (nonatomic, strong) NSString *bottomRowImageName;
-
-+(id) themeWithTop:(NSString*)top middle:(NSString*)middle bottom:(NSString*)bottom;
-+(id) themeWithTag:(_ABSelectViewThemeTag)theme;
 
 @end

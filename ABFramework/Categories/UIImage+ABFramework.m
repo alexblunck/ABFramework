@@ -10,9 +10,9 @@
 
 @implementation UIImage (ABFramework)
 
-#pragma mark - SAVE - LOAD - DELETE
-
--(void)saveImage:(NSString*)imageName {
+#pragma mark - Save / Load / Delete
+-(void) saveImage:(NSString*)imageName
+{
     //Convert image into .png format
     NSData *imageData = UIImagePNGRepresentation(self);
     //Create instance of NSFileManager
@@ -27,7 +27,8 @@
     [fileManager createFileAtPath:fullPath contents:imageData attributes:nil]; 
 }
 
-+(void)removeImage:(NSString*)fileName {
++(void) removeImage:(NSString*)fileName
+{
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -35,7 +36,8 @@
     [fileManager removeItemAtPath: fullPath error:NULL];
 }
 
-+(UIImage*)loadImage:(NSString*)imageName {
++(UIImage*) loadImage:(NSString*)imageName
+{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", imageName]];
@@ -44,10 +46,9 @@
 
 
 
-
-#pragma mark - RESIZE
-
--(UIImage*)resizedImageToSize:(CGSize)dstSize {
+#pragma mark - Resize
+-(UIImage*) resizedImageToSize:(CGSize)dstSize
+{
 	CGImageRef imgRef = self.CGImage;
 	//The below values are regardless of orientation : for UIImages from Camera, width>height (landscape)
     //Not equivalent to self.size (which is dependant on the imageOrientation)!
@@ -131,7 +132,8 @@
 	return resizedImage;
 }
 
--(UIImage*)resizedImageToFitInSize:(CGSize)boundingSize scaleIfSmaller:(BOOL)scale {
+-(UIImage*) resizedImageToFitInSize:(CGSize)boundingSize scaleIfSmaller:(BOOL)scale
+{
 	//Get the image size (independant of imageOrientation)
 	CGImageRef imgRef = self.CGImage;
     //Not equivalent to self.size (which depends on the imageOrientation)!

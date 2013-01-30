@@ -9,56 +9,49 @@
 #import "ABDatePickerView.h"
 
 @interface ABDatePickerView () {
-    CGRect applicationFrame;
-    UIView *contentView;
-    UIDatePicker *datePicker;
-    void (^completionBlock) (NSDate* selectedDate);
+    CGRect _applicationFrame;
+    UIView *_contentView;
+    UIDatePicker *_datePicker;
+    void (^_completionBlock) (NSDate* selectedDate);
 }
 @end
 
 @implementation ABDatePickerView
 
--(void) doneButtonSelected {
-    [self hide];
-}
-
--(void) tomorrowButtonSelected {
-    datePicker.date = [[NSDate dateFromYear:[[NSDate date] year] month:[[NSDate date] monthOfYear] day:[[NSDate date] dayOfMonth] hour:0 minute:0] dateDaysAfter:1];
-}
-
+#pragma mark - Initializer
 -(id) initWithDate:(NSDate*)date completionBlock:( void (^) (NSDate* selectedDate) )block
 {
     self = [super init];
     if (self) {
         
-        completionBlock = block;
+        _completionBlock = block;
         
-        applicationFrame = [[UIScreen mainScreen] applicationFrame];
-        self.frame = CGRectMake(0, 0, applicationFrame.size.width, applicationFrame.size.height);
+        _applicationFrame = [[UIScreen mainScreen] applicationFrame];
+        self.frame = CGRectMake(0, 0, _applicationFrame.size.width, _applicationFrame.size.height);
         self.backgroundColor = [UIColor clearColor];
         self.opaque = NO;
         
-        UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, applicationFrame.size.width, applicationFrame.size.height-216-44)];
+        UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _applicationFrame.size.width, _applicationFrame.size.height-216-44)];
         [self addSubview:backgroundView];
         
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doneButtonSelected)];
         [backgroundView addGestureRecognizer:tapGesture];
         
-        contentView = [[UIView alloc] initWithFrame:CGRectMake(0, applicationFrame.size.height+44+216, applicationFrame.size.width, 44+216)];
-        [self addSubview:contentView];
+        _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, _applicationFrame.size.height+44+216, _applicationFrame.size.width, 44+216)];
+        [self addSubview:_contentView];
         
         //DatePicker
-        datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 44, applicationFrame.size.width, 216)];
-        datePicker.datePickerMode = UIDatePickerModeDate;
-        datePicker.minimumDate = [[NSDate date] dateDaysAfter:1];
-        //datePicker.maximumDate = [[NSDate date] dateDaysAfter:10000];
-        datePicker.date = date;
-        [contentView addSubview:datePicker];
+        _datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 44, _applicationFrame.size.width, 216)];
+        _datePicker.datePickerMode = UIDatePickerModeDate;
+        _datePicker.minimumDate = [[NSDate date] dateDaysAfter:1];
+        //_datePicker.maximumDate = [[NSDate date] dateDaysAfter:10000];
+        _datePicker.date = date;
+        [_contentView addSubview:_datePicker];
         
-        UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, applicationFrame.size.width, 44)];
+        UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, _applicationFrame.size.width, 44)];
         toolbar.barStyle = UIBarStyleBlack;
         toolbar.translucent = YES;
-        [contentView addSubview:toolbar];
+        [_contentView addSubview:toolbar];
          
         //Done Button
         UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonSelected)];
@@ -70,29 +63,48 @@
         UIBarButtonItem *tomorrowButton = [[UIBarButtonItem alloc] initWithTitle:@"Tomorrow" style:UIBarButtonItemStyleBordered target:self action:@selector(tomorrowButtonSelected)];
         
         toolbar.items = @[tomorrowButton, flexibleSpace, doneButton];
-        
     }
     return self;
 }
 
--(void) show {
-    
+
+
+#pragma mark - Buttons
+-(void) doneButtonSelected
+{
+    [self hide];
+}
+
+-(void) tomorrowButtonSelected
+{
+    _datePicker.date = [[NSDate dateFromYear:[[NSDate date] year] month:[[NSDate date] monthOfYear] day:[[NSDate date] dayOfMonth] hour:0 minute:0] dateDaysAfter:1];
+}
+
+
+
+#pragma mark - Triggers
+-(void) show
+{
     [[[[[UIApplication sharedApplication] keyWindow] rootViewController] view] addSubview:self];
     
     [UIView animateWithDuration:0.4f animations:^{
         self.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0.400];
-        contentView.frame = CGRectMake(0, applicationFrame.size.height-contentView.frame.size.height, contentView.frame.size.width, contentView.frame.size.height);
+        _contentView.frame = CGRectMake(0, _applicationFrame.size.height-_contentView.frame.size.height, _contentView.frame.size.width, _contentView.frame.size.height);
     } completion:^(BOOL finished) {
         //
     }];
 }
 
--(void) hide {
-    completionBlock(datePicker.date);
+
+
+#pragma mark - Helper
+-(void) hide
+{
+    _completionBlock(_datePicker.date);
     
     [UIView animateWithDuration:0.3f animations:^{
         self.backgroundColor = [UIColor clearColor];
-        contentView.frame = CGRectMake(0, applicationFrame.size.height+contentView.frame.size.height, contentView.frame.size.width, contentView.frame.size.height);
+        _contentView.frame = CGRectMake(0, _applicationFrame.size.height+_contentView.frame.size.height, _contentView.frame.size.width, _contentView.frame.size.height);
     } completion:^(BOOL finished) {
         [self removeFromSuperview];
     }];

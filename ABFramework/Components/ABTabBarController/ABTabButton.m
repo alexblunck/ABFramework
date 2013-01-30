@@ -10,14 +10,7 @@
 
 @implementation ABTabButton
 
--(void) willMoveToSuperview:(UIView *)newSuperview {
-    [super willMoveToSuperview:newSuperview];
-    
-    //Add the ImageView to the Button View
-    [self addSubview:self.tabImageView];
-    
-}
-
+#pragma mark - Initializer
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -27,13 +20,16 @@
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+
+
+#pragma mark - LifeCycle
+-(void) willMoveToSuperview:(UIView *)newSuperview
 {
-    // Drawing code
+    [super willMoveToSuperview:newSuperview];
+    
+    //Add the ImageView to the Button View
+    [self addSubview:self.tabImageView];
+    
 }
-*/
 
 @end

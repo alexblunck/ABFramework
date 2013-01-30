@@ -15,10 +15,10 @@
 
 @interface ABSelectViewItem : UIView
 
-//Utility Methods
+//Utility
 +(id) itemWithString:(NSString*)string image:(UIImage*)image index:(int)index;
 
-//Instance Methods
+//Helper
 -(void) labelWhite;
 
 @property (nonatomic, strong) id <ABSelectViewItemDelegate> delegate;

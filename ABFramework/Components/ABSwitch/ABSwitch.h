@@ -15,6 +15,7 @@
 
 @interface ABSwitch : UIView
 
+//Initializer
 -(id) initWithBackgroundImage:(UIImage*)bgImage switchImage:(UIImage*)switchImage shadowImage:(UIImage*)shadowImage;
 -(id) initWithDefaultStyle;
 

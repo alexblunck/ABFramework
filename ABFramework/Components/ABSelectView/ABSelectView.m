@@ -9,15 +9,36 @@
 #import "ABSelectView.h"
 
 @interface ABSelectView () <ABSelectViewItemDelegate>{
-    UIView *selectionTable;
-    UIView *shadowMask;
-    void (^completionBlock) (int selectedIndex);
+    UIView *_selectionTable;
+    UIView *_shadowMask;
+    void (^_completionBlock) (int selectedIndex);
 }
 
 @end
 
 @implementation ABSelectView
 
+#pragma mark - Utility
++(id) showInView:(UIView*)view
+ WithStringArray:(NSArray*)stringArray
+    defaultIndex:(int)defaultIndex
+           theme:(ABSelectViewTheme*)theme
+ completionBlock:( void (^) (int selectedIndex) )block
+{
+    return [[self alloc] initWithView:view StringArray:stringArray defaultIndex:defaultIndex theme:theme completionBlock:block];
+}
+
++(id) showWithStringArray:(NSArray*)stringArray
+             defaultIndex:(int)defaultIndex
+                    theme:(ABSelectViewTheme*)theme
+          completionBlock:( void (^) (int selectedIndex) )block
+{
+    return [[self alloc] initWithView:nil StringArray:stringArray defaultIndex:defaultIndex theme:theme completionBlock:block];
+}
+
+
+
+#pragma mark - Initializer
 -(id) initWithView:(UIView*)view
        StringArray:(NSArray*)stringArray
       defaultIndex:(int)defaultIndex
@@ -27,7 +48,7 @@
     self = [super init];
     if (self) {
         
-        completionBlock = block;
+        _completionBlock = block;
         
         CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame];
         if (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
@@ -43,8 +64,8 @@
         [self addGestureRecognizer:tapGesture];
         
         //View to hold all Cells
-        selectionTable = [UIView new];
-        [self addSubview:selectionTable];
+        _selectionTable = [UIView new];
+        [self addSubview:_selectionTable];
         
         //Load images for selected theme
         UIImage *topImage = [UIImage imageNamed:theme.topRowImageName];
@@ -54,7 +75,7 @@
         //calculate selectionTable frame
         float tableHeight = topImage.size.height + bottomImage.size.height + ((stringArray.count-2)*middleImage.size.height);
         float tableWidth = middleImage.size.width;
-        selectionTable.frame = CGRectMake((self.bounds.size.width-tableWidth)/2, (self.bounds.size.height-tableHeight)/2, tableWidth, tableHeight);
+        _selectionTable.frame = CGRectMake((self.bounds.size.width-tableWidth)/2, (self.bounds.size.height-tableHeight)/2, tableWidth, tableHeight);
         
         //Loop Through stringArray and create Cells
         int itr = 1;
@@ -82,7 +103,7 @@
             ABSelectViewItem *cell = [ABSelectViewItem itemWithString:string image:cellImage index:[stringArray indexOfObject:string]];
             cell.frame = CGRectMake(0, currentYPosition, cellImage.size.width, cellImage.size.height);
             cell.delegate = self;
-            [selectionTable addSubview:cell];
+            [_selectionTable addSubview:cell];
             
             //If current string is default index, highlight it
             if (defaultIndex == [stringArray indexOfObject:string]) {
@@ -94,47 +115,34 @@
         }
         
         //Shadow
-        shadowMask = [[UIView alloc] initWithFrame:selectionTable.frame];
-        shadowMask.backgroundColor = [UIColor clearColor];
+        _shadowMask = [[UIView alloc] initWithFrame:_selectionTable.frame];
+        _shadowMask.backgroundColor = [UIColor clearColor];
         
-        shadowMask.layer.shadowColor = [[UIColor blackColor] CGColor];
-        shadowMask.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
-        shadowMask.layer.shadowOpacity = 0.6f;
-        shadowMask.layer.shadowRadius = 7.0f;
-        shadowMask.layer.shadowPath = [[UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, tableWidth, tableHeight) cornerRadius:4.0f] CGPath];
-        shadowMask.layer.shouldRasterize = YES;
+        _shadowMask.layer.shadowColor = [[UIColor blackColor] CGColor];
+        _shadowMask.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+        _shadowMask.layer.shadowOpacity = 0.6f;
+        _shadowMask.layer.shadowRadius = 7.0f;
+        _shadowMask.layer.shadowPath = [[UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, tableWidth, tableHeight) cornerRadius:4.0f] CGPath];
+        _shadowMask.layer.shouldRasterize = YES;
         
-        [self insertSubview:shadowMask belowSubview:selectionTable];
+        [self insertSubview:_shadowMask belowSubview:_selectionTable];
         
         //Set Scale to 0 to allow animation
-        shadowMask.alpha = 0.0f;
-        shadowMask.transform = CGAffineTransformMakeScale(0.1f, 0.1f);
-        selectionTable.alpha = 0.0f;
-        selectionTable.transform = CGAffineTransformMakeScale(0.1f, 0.1f);
+        _shadowMask.alpha = 0.0f;
+        _shadowMask.transform = CGAffineTransformMakeScale(0.1f, 0.1f);
+        _selectionTable.alpha = 0.0f;
+        _selectionTable.transform = CGAffineTransformMakeScale(0.1f, 0.1f);
         
         [self showInView:view];
     }
     return self;
 }
 
-+(id) showInView:(UIView*)view
- WithStringArray:(NSArray*)stringArray
-    defaultIndex:(int)defaultIndex
-           theme:(ABSelectViewTheme*)theme
- completionBlock:( void (^) (int selectedIndex) )block
-{
-    return [[self alloc] initWithView:view StringArray:stringArray defaultIndex:defaultIndex theme:theme completionBlock:block];
-}
 
-+(id) showWithStringArray:(NSArray*)stringArray
-             defaultIndex:(int)defaultIndex
-                    theme:(ABSelectViewTheme*)theme
-          completionBlock:( void (^) (int selectedIndex) )block
-{
-    return [[self alloc] initWithView:nil StringArray:stringArray defaultIndex:defaultIndex theme:theme completionBlock:block];
-}
 
--(void) showInView:(UIView*)view {
+#pragma mark - Helper
+-(void) showInView:(UIView*)view
+{
     if (view) {
         [view addSubview:self];
     } else {
@@ -143,47 +151,54 @@
     
     [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0.400];
-        selectionTable.alpha = 1.0f;
-        selectionTable.transform = CGAffineTransformMakeScale(1.1f, 1.1f);
+        _selectionTable.alpha = 1.0f;
+        _selectionTable.transform = CGAffineTransformMakeScale(1.1f, 1.1f);
         
-        shadowMask.alpha = 1.0f;
-        shadowMask.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+        _shadowMask.alpha = 1.0f;
+        _shadowMask.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
         
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.1f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            selectionTable.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+            _selectionTable.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
         } completion:nil];
     }];
-    
 }
 
--(void) hideWithIndex:(NSInteger)index {
-    
-    completionBlock(index);
+-(void) hideWithIndex:(NSInteger)index
+{
+    _completionBlock(index);
     
     [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
         self.backgroundColor = [UIColor clearColor];
-        selectionTable.transform = CGAffineTransformMakeScale(0.1f, 0.1f);
-        selectionTable.alpha = 0.0f;
+        _selectionTable.transform = CGAffineTransformMakeScale(0.1f, 0.1f);
+        _selectionTable.alpha = 0.0f;
         
-        shadowMask.alpha = 0.0f;
-        shadowMask.transform = CGAffineTransformMakeScale(0.1f, 0.1f);
+        _shadowMask.alpha = 0.0f;
+        _shadowMask.transform = CGAffineTransformMakeScale(0.1f, 0.1f);
         
     } completion:^(BOOL finished) {
         [self removeFromSuperview];
     }];
 }
 
--(void) hideWithoutIndex {
+-(void) hideWithoutIndex
+{
     [self hideWithIndex:-1];
 }
 
+
+
 #pragma mark - ABSelectViewItemDelegate
--(void) selectedIndex:(int)index {
+-(void) selectedIndex:(int)index
+{
     [self hideWithIndex:index];
 }
 
--(void) setLandscape:(BOOL)landscape {
+
+
+#pragma mark - Accessors
+-(void) setLandscape:(BOOL)landscape
+{
     _landscape = landscape;
     
     CGRect applicationFrame = applicationFrame = [[UIScreen mainScreen] applicationFrame];
@@ -198,9 +213,8 @@
         self.frame = CGRectMake(0, 0, applicationFrame.size.width+20, applicationFrame.size.height);
     }
     
-    selectionTable.center = self.center;
-    shadowMask.center = self.center;
-    
+    _selectionTable.center = self.center;
+    _shadowMask.center = self.center;
 }
 
 @end

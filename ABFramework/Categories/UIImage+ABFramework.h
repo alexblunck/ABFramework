@@ -10,12 +10,12 @@
 
 @interface UIImage (ABFramework)
 
-//SAVE - LOAD - DELETE
+//Save / Load / Delete
 -(void)saveImage:(NSString*)imageName;
 +(UIImage*)loadImage:(NSString*)imageName;
 +(void)removeImage:(NSString*)fileName;
 
-//RESIZE
+//Resize
 -(UIImage*)resizedImageToSize:(CGSize)dstSize;
 -(UIImage*)resizedImageToFitInSize:(CGSize)boundingSize scaleIfSmaller:(BOOL)scale;
 

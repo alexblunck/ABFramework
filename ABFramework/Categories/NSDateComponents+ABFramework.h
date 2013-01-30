@@ -14,8 +14,8 @@
 
 @interface NSDateComponents (ABFramework)
 
-+ (NSDateComponents *)componentsFromString:(NSString *)string;
-- (NSString *)stringValue;
-- (BOOL)isEqualToDateComponents:(NSDateComponents *)components;
++(NSDateComponents*) componentsFromString:(NSString*)string;
+-(NSString*) stringValue;
+-(BOOL) isEqualToDateComponents:(NSDateComponents*)components;
 
 @end

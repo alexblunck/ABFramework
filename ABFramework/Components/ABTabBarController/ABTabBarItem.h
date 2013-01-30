@@ -10,12 +10,12 @@
 
 @interface ABTabBarItem : NSObject
 
+//Utility
++(id) itemWithImage:(UIImage*)image selectedImage:(UIImage*)selectedImage;
++(id) itemWithImageName:(NSString*)imageName selectedImageName:(NSString*)selectedImageName;
+
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) UIImage *selectedImage;
 @property (nonatomic, assign) BOOL isDefaultTab;
-
-//Utility Method's that return a ABTabBarItem
-+(id) itemWithImage:(UIImage*)image selectedImage:(UIImage*)selectedImage;
-+(id) itemWithImageName:(NSString*)imageName selectedImageName:(NSString*)selectedImageName;
 
 @end

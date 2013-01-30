@@ -10,16 +10,16 @@
 
 @interface ABCommon : NSObject
 
-#pragma mark - NETWORK
+//Network
 +(BOOL) isOnWifiNetwork;
 
-#pragma mark - URL 's
+//URL 's
 +(NSString *)urlEncodeUsingEncoding:(NSStringEncoding)encoding string:(NSString*)string;
 
-#pragma mark - Toggle
+//Toggle
 +(BOOL) toggleBoolean:(BOOL)boolean;
 
-#pragma mark - Key/Value
+//Key/Value
 +(id) safeObjectForKey:(id)key from:(id)object imidate:(Class)class;
 
 @end

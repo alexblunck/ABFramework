@@ -10,22 +10,23 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface ABSwitch () {
-    UIImageView *backgroundView;
-    UIImageView *backgroundShadowView;
-    UIImageView *switchView;
-    float oldTouchPointX;
+    UIImageView *_backgroundView;
+    UIImageView *_backgroundShadowView;
+    UIImageView *_switchView;
+    float _oldTouchPointX;
     
-    UIView *colorViewContainmentView;
-    UIView *leftColorView;
-    UIView *rightColorView;
+    UIView *_colorViewContainmentView;
+    UIView *_leftColorView;
+    UIView *_rightColorView;
     
-    UITextField *leftLabel;
-    UITextField *rightLabel;
+    UITextField *_leftLabel;
+    UITextField *_rightLabel;
 }
 @end
 
 @implementation ABSwitch
 
+#pragma mark - Initializer
 -(id) initWithBackgroundImage:(UIImage*)bgImage switchImage:(UIImage*)switchImage shadowImage:(UIImage*)shadowImage
 {
     self = [super init];
@@ -33,82 +34,82 @@
         
         //Switch Background
         UIImage *backgroundViewImage = bgImage;
-        backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, backgroundViewImage.size.width, backgroundViewImage.size.height)];
-        backgroundView.image = backgroundViewImage;
-        backgroundView.layer.cornerRadius = self.cornerRadius;
-        backgroundView.clipsToBounds = YES;
-        backgroundView.userInteractionEnabled = YES;
-        [self addSubview:backgroundView];
+        _backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, backgroundViewImage.size.width, backgroundViewImage.size.height)];
+        _backgroundView.image = backgroundViewImage;
+        _backgroundView.layer.cornerRadius = self.cornerRadius;
+        _backgroundView.clipsToBounds = YES;
+        _backgroundView.userInteractionEnabled = YES;
+        [self addSubview:_backgroundView];
         
         //The Switch itself
         UIImage *switchViewImage = switchImage;
-        switchView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, switchViewImage.size.width, switchViewImage.size.height)];
-        switchView.userInteractionEnabled = YES;
-        switchView.image = switchViewImage;
-        [backgroundView addSubview:switchView];
+        _switchView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, switchViewImage.size.width, switchViewImage.size.height)];
+        _switchView.userInteractionEnabled = YES;
+        _switchView.image = switchViewImage;
+        [_backgroundView addSubview:_switchView];
         
         if (self.showShadow) {
-            switchView.layer.shadowColor = [[UIColor blackColor] CGColor];
-            switchView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
-            switchView.layer.shadowOpacity = 0.5f;
-            switchView.layer.shadowRadius = 2.0f;
+            _switchView.layer.shadowColor = [[UIColor blackColor] CGColor];
+            _switchView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+            _switchView.layer.shadowOpacity = 0.5f;
+            _switchView.layer.shadowRadius = 2.0f;
         }
         
-        colorViewContainmentView = [[UIView alloc] initWithFrame:backgroundView.frame];
-        colorViewContainmentView.layer.cornerRadius = self.cornerRadius;
-        colorViewContainmentView.clipsToBounds = YES;
-        [backgroundView insertSubview:colorViewContainmentView belowSubview:switchView];
+        _colorViewContainmentView = [[UIView alloc] initWithFrame:_backgroundView.frame];
+        _colorViewContainmentView.layer.cornerRadius = self.cornerRadius;
+        _colorViewContainmentView.clipsToBounds = YES;
+        [_backgroundView insertSubview:_colorViewContainmentView belowSubview:_switchView];
         
         //Left Color
-        leftColorView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, switchView.center.x, backgroundView.frame.size.height)];
-        leftColorView.backgroundColor = self.leftColor;
-        [colorViewContainmentView insertSubview:leftColorView belowSubview:switchView];
+        _leftColorView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _switchView.center.x, _backgroundView.frame.size.height)];
+        _leftColorView.backgroundColor = self.leftColor;
+        [_colorViewContainmentView insertSubview:_leftColorView belowSubview:_switchView];
          
         //Right Color
-        rightColorView = [[UIView alloc] initWithFrame:CGRectMake(switchView.center.x, 0, backgroundView.frame.size.width-switchView.center.x, backgroundView.frame.size.height)];
-        rightColorView.backgroundColor = self.rightColor;
-        [colorViewContainmentView insertSubview:rightColorView belowSubview:switchView];
+        _rightColorView = [[UIView alloc] initWithFrame:CGRectMake(_switchView.center.x, 0, _backgroundView.frame.size.width-_switchView.center.x, _backgroundView.frame.size.height)];
+        _rightColorView.backgroundColor = self.rightColor;
+        [_colorViewContainmentView insertSubview:_rightColorView belowSubview:_switchView];
         
         //Left Title Label
-        leftLabel = [UITextField new];
-        leftLabel.userInteractionEnabled = NO;
-        leftLabel.backgroundColor = [UIColor clearColor];
-        leftLabel.textAlignment = NSTextAlignmentCenter;
-        leftLabel.contentVerticalAlignment = NSTextAlignmentCenter;
-        leftLabel.textColor = [UIColor colorWithWhite:0.892 alpha:1.000];
-        leftLabel.layer.shadowColor = [[UIColor blackColor] CGColor];
-        leftLabel.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
-        leftLabel.layer.shadowOpacity = 1.0f;
-        leftLabel.layer.shadowRadius = 0.0f;
-        [switchView addSubview:leftLabel];
+        _leftLabel = [UITextField new];
+        _leftLabel.userInteractionEnabled = NO;
+        _leftLabel.backgroundColor = [UIColor clearColor];
+        _leftLabel.textAlignment = NSTextAlignmentCenter;
+        _leftLabel.contentVerticalAlignment = NSTextAlignmentCenter;
+        _leftLabel.textColor = [UIColor colorWithWhite:0.892 alpha:1.000];
+        _leftLabel.layer.shadowColor = [[UIColor blackColor] CGColor];
+        _leftLabel.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
+        _leftLabel.layer.shadowOpacity = 1.0f;
+        _leftLabel.layer.shadowRadius = 0.0f;
+        [_switchView addSubview:_leftLabel];
         
         //Right Title Label
-        rightLabel = [UITextField new];
-        rightLabel.userInteractionEnabled = NO;
-        rightLabel.backgroundColor = [UIColor clearColor];
-        rightLabel.textAlignment = NSTextAlignmentCenter;
-        rightLabel.contentVerticalAlignment = NSTextAlignmentCenter;
-        rightLabel.enabled = NO;
-        rightLabel.textColor = [UIColor colorWithWhite:0.892 alpha:1.000];
-        rightLabel.layer.shadowColor = [[UIColor blackColor] CGColor];
-        rightLabel.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
-        rightLabel.layer.shadowOpacity = 1.0f;
-        rightLabel.layer.shadowRadius = 0.0f;
-        [switchView addSubview:rightLabel];
+        _rightLabel = [UITextField new];
+        _rightLabel.userInteractionEnabled = NO;
+        _rightLabel.backgroundColor = [UIColor clearColor];
+        _rightLabel.textAlignment = NSTextAlignmentCenter;
+        _rightLabel.contentVerticalAlignment = NSTextAlignmentCenter;
+        _rightLabel.enabled = NO;
+        _rightLabel.textColor = [UIColor colorWithWhite:0.892 alpha:1.000];
+        _rightLabel.layer.shadowColor = [[UIColor blackColor] CGColor];
+        _rightLabel.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
+        _rightLabel.layer.shadowOpacity = 1.0f;
+        _rightLabel.layer.shadowRadius = 0.0f;
+        [_switchView addSubview:_rightLabel];
         
         //Shadow View
-        backgroundShadowView = [[UIImageView alloc] initWithImage:shadowImage];
-        backgroundShadowView.frame = CGRectOffset(backgroundShadowView.frame, self.backgroundShadowOffset.x, self.backgroundShadowOffset.y);
-        [backgroundView insertSubview:backgroundShadowView belowSubview:switchView];
+        _backgroundShadowView = [[UIImageView alloc] initWithImage:shadowImage];
+        _backgroundShadowView.frame = CGRectOffset(_backgroundShadowView.frame, self.backgroundShadowOffset.x, self.backgroundShadowOffset.y);
+        [_backgroundView insertSubview:_backgroundShadowView belowSubview:_switchView];
         
         //Pan Gesture Recognizer
         UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc]
                                        initWithTarget:self
                                        action:@selector(handlePan:)];
-        [switchView addGestureRecognizer:panGesture];
+        [_switchView addGestureRecognizer:panGesture];
         
         //Set own frame to background view frame
-        self.frame = backgroundView.frame;
+        self.frame = _backgroundView.frame;
         
         //Set Default Values
         self.currentIndex = 0;
@@ -129,40 +130,45 @@
     return self;
 }
 
--(id) initWithDefaultStyle {
+-(id) initWithDefaultStyle
+{
     return [self initWithBackgroundImage:[UIImage imageNamed:@"ABSwitch-background.png"] switchImage:[UIImage imageNamed:@"ABSwitch-switch.png"] shadowImage:[UIImage imageNamed:@"ABSwitch-background-shadow.png"]];
 }
 
--(id) init {
+-(id) init
+{
     return [self initWithDefaultStyle];
 }
 
+
+
+#pragma mark - Helper
 -(void)handlePan:(UIPanGestureRecognizer*)panGesture;
 {
     //Handle Pan Gesture
     if (panGesture.state == UIGestureRecognizerStateChanged) {
-        CGPoint center = switchView.center;
-        CGPoint translation = [panGesture translationInView:switchView];
+        CGPoint center = _switchView.center;
+        CGPoint translation = [panGesture translationInView:_switchView];
         center = CGPointMake(center.x + translation.x,
-                             switchView.center.y);
+                             _switchView.center.y);
         
         //If switchView is within bounds allow movement
-        if (switchView.frame.origin.x >= 0 && switchView.frame.origin.x <= self.frame.size.width-switchView.frame.size.width) {
-            switchView.center = center;
-            [panGesture setTranslation:CGPointZero inView:switchView];
+        if (_switchView.frame.origin.x >= 0 && _switchView.frame.origin.x <= self.frame.size.width-_switchView.frame.size.width) {
+            _switchView.center = center;
+            [panGesture setTranslation:CGPointZero inView:_switchView];
             
             //Update Left / Right Color
-            leftColorView.frame = CGRectMake(leftColorView.frame.origin.x, leftColorView.frame.origin.y, switchView.center.x, leftColorView.frame.size.height);
-            rightColorView.frame = CGRectMake(switchView.center.x, rightColorView.frame.origin.y, self.frame.size.width-switchView.frame.origin.x, rightColorView.frame.size.height);
+            _leftColorView.frame = CGRectMake(_leftColorView.frame.origin.x, _leftColorView.frame.origin.y, _switchView.center.x, _leftColorView.frame.size.height);
+            _rightColorView.frame = CGRectMake(_switchView.center.x, _rightColorView.frame.origin.y, self.frame.size.width-_switchView.frame.origin.x, _rightColorView.frame.size.height);
             
         }
         
         //Keep switchView frame within bounds (panning it will cuase it to go 0.5 over/under bounds)
-        if (switchView.frame.origin.x < 0) {
-            switchView.frame = CGRectMake(0, switchView.frame.origin.y, switchView.frame.size.width, switchView.frame.size.height);
+        if (_switchView.frame.origin.x < 0) {
+            _switchView.frame = CGRectMake(0, _switchView.frame.origin.y, _switchView.frame.size.width, _switchView.frame.size.height);
         }
-        if (switchView.frame.origin.x > self.frame.size.width-switchView.frame.size.width) {
-            switchView.frame = CGRectMake(self.frame.size.width-switchView.frame.size.width, switchView.frame.origin.y, switchView.frame.size.width, switchView.frame.size.height);
+        if (_switchView.frame.origin.x > self.frame.size.width-_switchView.frame.size.width) {
+            _switchView.frame = CGRectMake(self.frame.size.width-_switchView.frame.size.width, _switchView.frame.origin.y, _switchView.frame.size.width, _switchView.frame.size.height);
         }
         
     }
@@ -176,10 +182,10 @@
 -(void) animateSwitchRight
 {
     [UIView animateWithDuration:0.2f animations:^{
-        switchView.frame = CGRectMake(self.frame.size.width-switchView.frame.size.width-self.switchOffsetXRight, switchView.frame.origin.y, switchView.frame.size.width, switchView.frame.size.height);
+        _switchView.frame = CGRectMake(self.frame.size.width-_switchView.frame.size.width-self.switchOffsetXRight, _switchView.frame.origin.y, _switchView.frame.size.width, _switchView.frame.size.height);
         //Update Left / Right Color
-        leftColorView.frame = CGRectMake(leftColorView.frame.origin.x, leftColorView.frame.origin.y, self.frame.size.width-(switchView.frame.size.width/2), leftColorView.frame.size.height);
-        rightColorView.frame = CGRectMake(self.frame.size.width-(switchView.frame.size.width/2), rightColorView.frame.origin.y, self.frame.size.width-(switchView.frame.size.width/2), rightColorView.frame.size.height);
+        _leftColorView.frame = CGRectMake(_leftColorView.frame.origin.x, _leftColorView.frame.origin.y, self.frame.size.width-(_switchView.frame.size.width/2), _leftColorView.frame.size.height);
+        _rightColorView.frame = CGRectMake(self.frame.size.width-(_switchView.frame.size.width/2), _rightColorView.frame.origin.y, self.frame.size.width-(_switchView.frame.size.width/2), _rightColorView.frame.size.height);
     }];
     //Update index
     self.currentIndex = 1;
@@ -197,10 +203,10 @@
 -(void) animateSwitchLeft
 {
     [UIView animateWithDuration:0.2f animations:^{
-        switchView.frame = CGRectMake(0+self.switchOffsetXLeft, switchView.frame.origin.y, switchView.frame.size.width, switchView.frame.size.height);
+        _switchView.frame = CGRectMake(0+self.switchOffsetXLeft, _switchView.frame.origin.y, _switchView.frame.size.width, _switchView.frame.size.height);
         //Update Left / Right Color
-        leftColorView.frame = CGRectMake(leftColorView.frame.origin.x, leftColorView.frame.origin.y, switchView.frame.size.width/2, leftColorView.frame.size.height);
-        rightColorView.frame = CGRectMake(switchView.center.x, 0, self.frame.size.width-switchView.center.x, rightColorView.frame.size.height);
+        _leftColorView.frame = CGRectMake(_leftColorView.frame.origin.x, _leftColorView.frame.origin.y, _switchView.frame.size.width/2, _leftColorView.frame.size.height);
+        _rightColorView.frame = CGRectMake(_switchView.center.x, 0, self.frame.size.width-_switchView.center.x, _rightColorView.frame.size.height);
     }];
     //Update index
     self.currentIndex = 0;
@@ -220,7 +226,7 @@
 -(void) panEnd
 {
     //If switchView is nearer to the left animate to the left
-    if (switchView.center.x < self.frame.size.width/2) {
+    if (_switchView.center.x < self.frame.size.width/2) {
         [self animateSwitchLeft];
     }
     //If switchView is nearer to the right animate to the right
@@ -229,6 +235,9 @@
     }
 }
 
+
+
+#pragma mark - Touches
 //Called on simple Tap
 -(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -241,102 +250,115 @@
     
 }
 
-#pragma mark - Setters
 
--(void) setCurrentIndex:(NSInteger)currentIndex {
+
+#pragma mark - Accessors
+-(void) setCurrentIndex:(NSInteger)currentIndex
+{
     _currentIndex = currentIndex;
     if (_currentIndex == 0) {
-        switchView.frame = CGRectMake(0+self.switchOffsetXLeft, switchView.frame.origin.y, switchView.frame.size.width, switchView.frame.size.height);
+        _switchView.frame = CGRectMake(0+self.switchOffsetXLeft, _switchView.frame.origin.y, _switchView.frame.size.width, _switchView.frame.size.height);
         //Update Left / Right Color
-        leftColorView.frame = CGRectMake(leftColorView.frame.origin.x, leftColorView.frame.origin.y, switchView.frame.size.width/2, leftColorView.frame.size.height);
-        rightColorView.frame = CGRectMake(switchView.center.x, 0, self.frame.size.width-switchView.center.x, rightColorView.frame.size.height);
+        _leftColorView.frame = CGRectMake(_leftColorView.frame.origin.x, _leftColorView.frame.origin.y, _switchView.frame.size.width/2, _leftColorView.frame.size.height);
+        _rightColorView.frame = CGRectMake(_switchView.center.x, 0, self.frame.size.width-_switchView.center.x, _rightColorView.frame.size.height);
     } else if (_currentIndex == 1) {
-        switchView.frame = CGRectMake(self.frame.size.width-switchView.frame.size.width-self.switchOffsetXRight, switchView.frame.origin.y, switchView.frame.size.width, switchView.frame.size.height);
+        _switchView.frame = CGRectMake(self.frame.size.width-_switchView.frame.size.width-self.switchOffsetXRight, _switchView.frame.origin.y, _switchView.frame.size.width, _switchView.frame.size.height);
         //Update Left / Right Color
-        leftColorView.frame = CGRectMake(leftColorView.frame.origin.x, leftColorView.frame.origin.y, self.frame.size.width-(switchView.frame.size.width/2), leftColorView.frame.size.height);
-        rightColorView.frame = CGRectMake(self.frame.size.width-(switchView.frame.size.width/2), rightColorView.frame.origin.y, self.frame.size.width-(switchView.frame.size.width/2), rightColorView.frame.size.height);
+        _leftColorView.frame = CGRectMake(_leftColorView.frame.origin.x, _leftColorView.frame.origin.y, self.frame.size.width-(_switchView.frame.size.width/2), _leftColorView.frame.size.height);
+        _rightColorView.frame = CGRectMake(self.frame.size.width-(_switchView.frame.size.width/2), _rightColorView.frame.origin.y, self.frame.size.width-(_switchView.frame.size.width/2), _rightColorView.frame.size.height);
     }
 }
 
--(void) setCornerRadius:(CGFloat)cornerRadius {
+-(void) setCornerRadius:(CGFloat)cornerRadius
+{
     _cornerRadius = cornerRadius;
     
-    backgroundView.layer.cornerRadius = _cornerRadius;
-    colorViewContainmentView.layer.cornerRadius = _cornerRadius;
+    _backgroundView.layer.cornerRadius = _cornerRadius;
+    _colorViewContainmentView.layer.cornerRadius = _cornerRadius;
 }
 
--(void) setSwitchOffsetY:(CGFloat)switchOffsetY {
+-(void) setSwitchOffsetY:(CGFloat)switchOffsetY
+{
     _switchOffsetY = switchOffsetY;
-    switchView.frame = CGRectOffset(switchView.frame, 0, _switchOffsetY);
+    _switchView.frame = CGRectOffset(_switchView.frame, 0, _switchOffsetY);
 }
 
--(void) setSwitchOffsetXLeft:(CGFloat)switchOffsetXLeft {
+-(void) setSwitchOffsetXLeft:(CGFloat)switchOffsetXLeft
+{
     _switchOffsetXLeft = switchOffsetXLeft;
     if (self.currentIndex == 0) {
-        switchView.frame = CGRectOffset(switchView.frame, switchOffsetXLeft, 0);
+        _switchView.frame = CGRectOffset(_switchView.frame, switchOffsetXLeft, 0);
     }
 }
 
--(void) setSwitchOffsetXRight:(CGFloat)switchOffsetXRight {
+-(void) setSwitchOffsetXRight:(CGFloat)switchOffsetXRight
+{
     _switchOffsetXRight = switchOffsetXRight;
     if (self.currentIndex == 1) {
-        switchView.frame = CGRectOffset(switchView.frame, -switchOffsetXRight, 0);
+        _switchView.frame = CGRectOffset(_switchView.frame, -switchOffsetXRight, 0);
     }
 }
 
--(void) setColorViewFrame:(CGRect)colorViewFrame {
+-(void) setColorViewFrame:(CGRect)colorViewFrame
+{
     _colorViewFrame = colorViewFrame;
     
-    colorViewContainmentView.frame = _colorViewFrame;
+    _colorViewContainmentView.frame = _colorViewFrame;
 }
 
--(void) setBackgroundShadowOffset:(CGPoint)backgroundShadowOffset {
+-(void) setBackgroundShadowOffset:(CGPoint)backgroundShadowOffset
+{
     _backgroundShadowOffset = backgroundShadowOffset;
-    backgroundShadowView.frame = CGRectOffset(backgroundShadowView.frame, backgroundShadowOffset.x, backgroundShadowOffset.y);
+    _backgroundShadowView.frame = CGRectOffset(_backgroundShadowView.frame, backgroundShadowOffset.x, backgroundShadowOffset.y);
 }
 
--(void) setShowShadow:(BOOL)showShadow {
+-(void) setShowShadow:(BOOL)showShadow
+{
     _showShadow = showShadow;
     if (self.showShadow) {
-        switchView.layer.shadowColor = [[UIColor blackColor] CGColor];
-        switchView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
-        switchView.layer.shadowOpacity = 0.5f;
-        switchView.layer.shadowRadius = 2.0f;
+        _switchView.layer.shadowColor = [[UIColor blackColor] CGColor];
+        _switchView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+        _switchView.layer.shadowOpacity = 0.5f;
+        _switchView.layer.shadowRadius = 2.0f;
     } else {
-        switchView.layer.shadowOpacity = 0.0f;
+        _switchView.layer.shadowOpacity = 0.0f;
     }
 }
 
--(void) setLeftColor:(UIColor *)leftColor {
+-(void) setLeftColor:(UIColor *)leftColor
+{
     _leftColor = leftColor;
-    leftColorView.backgroundColor = _leftColor;
+    _leftColorView.backgroundColor = _leftColor;
 }
 
--(void) setRightColor:(UIColor *)rightColor {
+-(void) setRightColor:(UIColor *)rightColor
+{
     _rightColor = rightColor;
-    rightColorView.backgroundColor = _rightColor;
+    _rightColorView.backgroundColor = _rightColor;
 }
 
--(void) setFont:(UIFont *)font {
+-(void) setFont:(UIFont *)font
+{
     _font = font;
-    leftLabel.font = _font;
-    rightLabel.font = _font;
+    _leftLabel.font = _font;
+    _rightLabel.font = _font;
     [self setLeftText:self.leftText];
     [self setRightText:self.rightText];
 }
 
--(void) setLeftText:(NSString *)leftText {
+-(void) setLeftText:(NSString *)leftText
+{
     _leftText = leftText;
-    leftLabel.text = _leftText;
-    [leftLabel sizeToFit];
-    leftLabel.frame = CGRectMake(-leftLabel.frame.size.width-((switchView.frame.size.width-leftLabel.frame.size.width)/2), (switchView.frame.size.height-leftLabel.frame.size.height)/2, leftLabel.frame.size.width, leftLabel.frame.size.height);
+    _leftLabel.text = _leftText;
+    [_leftLabel sizeToFit];
+    _leftLabel.frame = CGRectMake(-_leftLabel.frame.size.width-((_switchView.frame.size.width-_leftLabel.frame.size.width)/2), (_switchView.frame.size.height-_leftLabel.frame.size.height)/2, _leftLabel.frame.size.width, _leftLabel.frame.size.height);
 }
 
 -(void) setRightText:(NSString *)rightText {
     _rightText = rightText;
-    rightLabel.text = _rightText;
-    [rightLabel sizeToFit];
-    rightLabel.frame = CGRectMake(switchView.frame.size.width+((switchView.frame.size.width-rightLabel.frame.size.width)/2), (switchView.frame.size.height-rightLabel.frame.size.height)/2, rightLabel.frame.size.width, rightLabel.frame.size.height);
+    _rightLabel.text = _rightText;
+    [_rightLabel sizeToFit];
+    _rightLabel.frame = CGRectMake(_switchView.frame.size.width+((_switchView.frame.size.width-_rightLabel.frame.size.width)/2), (_switchView.frame.size.height-_rightLabel.frame.size.height)/2, _rightLabel.frame.size.width, _rightLabel.frame.size.height);
 }
 
 @end

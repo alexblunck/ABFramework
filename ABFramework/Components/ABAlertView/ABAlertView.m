@@ -8,42 +8,14 @@
 
 #import "ABAlertView.h"
 
-
 @interface ABAlertView () {
-    void (^completionBlock) (NSInteger selectedIndex);
+    void (^_completionBlock) (NSInteger selectedIndex);
 }
 @end
 
-
 @implementation ABAlertView
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
--(id) initAlertWithTitle:(NSString *)title
-                 message:(NSString *)message
-                   block:( void (^) (NSInteger selectedIndex) )block
-       cancelButtonTitle:(NSString *)cancelButtonTitle
-       otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION
-{
-    self = [super initWithTitle:title message:message delegate:self cancelButtonTitle:cancelButtonTitle otherButtonTitles:otherButtonTitles, nil];
-    if (self) {
-        
-        completionBlock = block;
-        
-        //Show Alert
-        [self show];
-        
-    } return self;
-}
-
-#pragma mark - Utility Methods
+#pragma mark - Utility
 +(id) showAlertWithTitle:(NSString *)title
                  message:(NSString *)message
                    block:( void (^) (NSInteger selectedIndex) )block
@@ -53,12 +25,34 @@
     return [[self alloc] initAlertWithTitle:title message:message block:block cancelButtonTitle:cancelButtonTitle otherButtonTitles:otherButtonTitles, nil];
 }
 
+
+
+#pragma mark - Initializer
+-(id) initAlertWithTitle:(NSString *)title
+                 message:(NSString *)message
+                   block:( void (^) (NSInteger selectedIndex) )block
+       cancelButtonTitle:(NSString *)cancelButtonTitle
+       otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION
+{
+    self = [super initWithTitle:title message:message delegate:self cancelButtonTitle:cancelButtonTitle otherButtonTitles:otherButtonTitles, nil];
+    if (self) {
+        
+        _completionBlock = block;
+        
+        //Show Alert
+        [self show];
+        
+    } return self;
+}
+
+
+
 #pragma mark - UIAlertViewDelegate
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     //Execute Block
-    if (completionBlock) {
-        completionBlock(buttonIndex);
+    if (_completionBlock) {
+        _completionBlock(buttonIndex);
     }
 }
 

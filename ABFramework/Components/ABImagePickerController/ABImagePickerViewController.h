@@ -10,6 +10,10 @@
 
 @interface ABImagePickerViewController : UIImagePickerController
 
+//Utility
 +(id) photoLibraryPickerWithCompletionBlock:( void (^) (UIImage *selectedImage) )block;
+
+//Tigger
+-(void) show;
 
 @end
