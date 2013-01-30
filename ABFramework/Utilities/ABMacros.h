@@ -24,6 +24,6 @@ DEVICE
 /*
 LOGGING
 */
-#define ABLogNSString(string) NSLog(@"ABLogString -> %s = \"%@\"", #string, string)
-#define ABLogCGRect(rect) NSLog(@"%s -> %@", #rect, NSStringFromCGRect(rect))
-#define ABLogBOOL(bool) NSLog(@"%s -> %@", #bool, (bool) ? @"YES" : @"NO")
+#define ABLogNSString(string) NSLog(@"ABLogNSString -> %s = \"%@\"", #string, string)
+#define ABLogCGRect(rect) NSLog(@"ABLogCGRect -> %s -> %@", #rect, NSStringFromCGRect(rect))
+#define ABLogBOOL(bool) NSLog(@"ABLogBOOL -> %s -> %@", #bool, (bool) ? @"YES" : @"NO")
