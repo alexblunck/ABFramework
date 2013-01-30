@@ -11,20 +11,22 @@
 @interface ABFrame : NSObject
 
 /*
-CGRect
-*/
+ CGRect
+ */
 //CGRect for one CGRect centered in another
 CGRect CGRectCenteredInCGRect (CGRect rect, CGRect rectToCenterIn);
 //CGRect for one CGRect centered horizontally in another
 CGRect CGRectCenteredHorizontally(CGRect rect, CGRect rectToCenterIn, CGFloat originY);
 //CGRect for one CGRect centered vertically in another
 CGRect CGRectCenteredVertically(CGRect rect, CGRect rectToCenterIn, CGFloat originX);
+
 //Adjust only Origin values of a CGRect
 CGRect CGRectChangingOrigin (CGRect rect, CGFloat originX, CGFloat originY);
 //Adjust only X Origin value of a CGRect
 CGRect CGRectChangingOriginX (CGRect rect, CGFloat originX);
 //Adjust only X Origin value of a CGRect
 CGRect CGRectChangingOriginY (CGRect rect, CGFloat originY);
+
 //Adjust only Size values of a CGRect
 CGRect CGRectChangingSize (CGRect rect, CGFloat sizeWidth, CGFloat sizeHeight);
 //Adjust only Size values of a CGRect with a CGSize
