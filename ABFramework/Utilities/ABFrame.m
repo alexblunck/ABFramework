@@ -72,6 +72,47 @@ CGRect CGRectChangingSizeHeight (CGRect rect, CGFloat sizeHeight) {
 }
 
 
+
+//Offset only Origin values of a CGRect
+CGRect CGRectOffsetOrigin (CGRect rect, CGFloat originXBy, CGFloat originYBy)
+{
+    return CGRectChangingOrigin(rect, rect.origin.x+originXBy, rect.origin.y+originYBy);
+}
+
+//Offset only X Origin of a CGRect
+CGRect CGRectOffsetOriginX (CGRect rect, CGFloat originXBy)
+{
+    return CGRectOffsetOrigin(rect, originXBy, 0);
+}
+
+//Offset only Y Origin of a CGRect
+CGRect CGRectOffsetOriginY (CGRect rect, CGFloat originYBy)
+{
+    return CGRectOffsetOrigin(rect, 0, originYBy);
+}
+
+
+
+//Offset only Size values of a CGRect
+CGRect CGRectOffsetSize (CGRect rect, CGFloat sizeWidthBy, CGFloat sizeHeightBy)
+{
+    return CGRectChangingSize(rect, rect.size.width+sizeWidthBy, rect.size.height+sizeHeightBy);
+}
+
+//Offset only Width Size of a CGRect
+CGRect CGRectOffsetSizeWidth (CGRect rect, CGFloat sizeWidthBy)
+{
+    return CGRectOffsetSize(rect, sizeWidthBy, 0);
+}
+
+//Offset only Height Size of a CGRect
+CGRect CGRectOffsetSizeHeight (CGRect rect, CGFloat sizeHeightBy)
+{
+    return CGRectOffsetSize(rect, 0, sizeHeightBy);
+}
+
+
+
 //Returns zeroed CGRect for an imageName (located in bundle)
 +(CGRect) frameForImageName:(NSString*)imageName
 {
