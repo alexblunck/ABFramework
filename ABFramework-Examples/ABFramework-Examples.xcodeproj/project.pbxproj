@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C5D960316BA889800B37045 /* ExampleSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5D960216BA889800B37045 /* ExampleSelectViewController.m */; };
+		3C5D960716BA89C500B37045 /* ABSwitchExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5D960616BA89C500B37045 /* ABSwitchExample.m */; };
+		3C5D961316BA957000B37045 /* ExampleObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5D961016BA957000B37045 /* ExampleObject.m */; };
+		3C5D961416BA957000B37045 /* ExampleSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5D961216BA957000B37045 /* ExampleSection.m */; };
+		3C5D961E16BAA05600B37045 /* switch1_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C5D961916BAA05600B37045 /* switch1_background.png */; };
+		3C5D961F16BAA05600B37045 /* switch1_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C5D961A16BAA05600B37045 /* switch1_background@2x.png */; };
+		3C5D962016BAA05600B37045 /* switch1_switch.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C5D961B16BAA05600B37045 /* switch1_switch.png */; };
+		3C5D962116BAA05600B37045 /* switch1_switch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C5D961C16BAA05600B37045 /* switch1_switch@2x.png */; };
+		3C5D962616BAA9EB00B37045 /* switch2_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C5D962216BAA9EB00B37045 /* switch2_background.png */; };
+		3C5D962716BAA9EB00B37045 /* switch2_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C5D962316BAA9EB00B37045 /* switch2_background@2x.png */; };
+		3C5D962816BAA9EB00B37045 /* switch2_switch.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C5D962416BAA9EB00B37045 /* switch2_switch.png */; };
+		3C5D962916BAA9EB00B37045 /* switch2_switch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C5D962516BAA9EB00B37045 /* switch2_switch@2x.png */; };
 		3CE5668116B6966D00915391 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE5668016B6966D00915391 /* UIKit.framework */; };
 		3CE5668316B6966D00915391 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE5668216B6966D00915391 /* Foundation.framework */; };
 		3CE5668516B6966D00915391 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE5668416B6966D00915391 /* CoreGraphics.framework */; };
@@ -47,6 +59,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C5D960116BA889800B37045 /* ExampleSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleSelectViewController.h; sourceTree = "<group>"; };
+		3C5D960216BA889800B37045 /* ExampleSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleSelectViewController.m; sourceTree = "<group>"; };
+		3C5D960516BA89C500B37045 /* ABSwitchExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSwitchExample.h; sourceTree = "<group>"; };
+		3C5D960616BA89C500B37045 /* ABSwitchExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSwitchExample.m; sourceTree = "<group>"; };
+		3C5D960F16BA957000B37045 /* ExampleObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleObject.h; sourceTree = "<group>"; };
+		3C5D961016BA957000B37045 /* ExampleObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleObject.m; sourceTree = "<group>"; };
+		3C5D961116BA957000B37045 /* ExampleSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleSection.h; sourceTree = "<group>"; };
+		3C5D961216BA957000B37045 /* ExampleSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleSection.m; sourceTree = "<group>"; };
+		3C5D961916BAA05600B37045 /* switch1_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch1_background.png; sourceTree = "<group>"; };
+		3C5D961A16BAA05600B37045 /* switch1_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch1_background@2x.png"; sourceTree = "<group>"; };
+		3C5D961B16BAA05600B37045 /* switch1_switch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch1_switch.png; sourceTree = "<group>"; };
+		3C5D961C16BAA05600B37045 /* switch1_switch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch1_switch@2x.png"; sourceTree = "<group>"; };
+		3C5D962216BAA9EB00B37045 /* switch2_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch2_background.png; sourceTree = "<group>"; };
+		3C5D962316BAA9EB00B37045 /* switch2_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch2_background@2x.png"; sourceTree = "<group>"; };
+		3C5D962416BAA9EB00B37045 /* switch2_switch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch2_switch.png; sourceTree = "<group>"; };
+		3C5D962516BAA9EB00B37045 /* switch2_switch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch2_switch@2x.png"; sourceTree = "<group>"; };
 		3CE5667C16B6966D00915391 /* ABFramework-Examples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ABFramework-Examples.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CE5668016B6966D00915391 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3CE5668216B6966D00915391 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -133,13 +161,77 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C5D960016BA887900B37045 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3C5D960116BA889800B37045 /* ExampleSelectViewController.h */,
+				3C5D960216BA889800B37045 /* ExampleSelectViewController.m */,
+				3C5D960E16BA957000B37045 /* Data Model */,
+				3C5D960416BA88A700B37045 /* Examples */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		3C5D960416BA88A700B37045 /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				3C5D960516BA89C500B37045 /* ABSwitchExample.h */,
+				3C5D960616BA89C500B37045 /* ABSwitchExample.m */,
+			);
+			path = Examples;
+			sourceTree = "<group>";
+		};
+		3C5D960E16BA957000B37045 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				3C5D960F16BA957000B37045 /* ExampleObject.h */,
+				3C5D961016BA957000B37045 /* ExampleObject.m */,
+				3C5D961116BA957000B37045 /* ExampleSection.h */,
+				3C5D961216BA957000B37045 /* ExampleSection.m */,
+			);
+			path = "Data Model";
+			sourceTree = "<group>";
+		};
+		3C5D961516BAA05600B37045 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3C5D961616BAA05600B37045 /* src */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3C5D961616BAA05600B37045 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				3C5D961716BAA05600B37045 /* ABSwitch */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		3C5D961716BAA05600B37045 /* ABSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				3C5D962216BAA9EB00B37045 /* switch2_background.png */,
+				3C5D962316BAA9EB00B37045 /* switch2_background@2x.png */,
+				3C5D962416BAA9EB00B37045 /* switch2_switch.png */,
+				3C5D962516BAA9EB00B37045 /* switch2_switch@2x.png */,
+				3C5D961916BAA05600B37045 /* switch1_background.png */,
+				3C5D961A16BAA05600B37045 /* switch1_background@2x.png */,
+				3C5D961B16BAA05600B37045 /* switch1_switch.png */,
+				3C5D961C16BAA05600B37045 /* switch1_switch@2x.png */,
+			);
+			path = ABSwitch;
+			sourceTree = "<group>";
+		};
 		3CE5667116B6966D00915391 = {
 			isa = PBXGroup;
 			children = (
 				3CE5668616B6966D00915391 /* ABFramework-Examples */,
+				3C5D960016BA887900B37045 /* Classes */,
 				3CE5667F16B6966D00915391 /* Frameworks */,
 				3CE5667D16B6966D00915391 /* Products */,
 				3CE5687316B69F3500915391 /* Vendor */,
+				3C5D961516BAA05600B37045 /* Resources */,
 			);
 			sourceTree = "<group>";
 		};
@@ -409,6 +501,14 @@
 				3CE5669516B6966D00915391 /* Default@2x.png in Resources */,
 				3CE5669716B6966D00915391 /* Default-568h@2x.png in Resources */,
 				3CE568D416B69FC100915391 /* README.md in Resources */,
+				3C5D961E16BAA05600B37045 /* switch1_background.png in Resources */,
+				3C5D961F16BAA05600B37045 /* switch1_background@2x.png in Resources */,
+				3C5D962016BAA05600B37045 /* switch1_switch.png in Resources */,
+				3C5D962116BAA05600B37045 /* switch1_switch@2x.png in Resources */,
+				3C5D962616BAA9EB00B37045 /* switch2_background.png in Resources */,
+				3C5D962716BAA9EB00B37045 /* switch2_background@2x.png in Resources */,
+				3C5D962816BAA9EB00B37045 /* switch2_switch.png in Resources */,
+				3C5D962916BAA9EB00B37045 /* switch2_switch@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +547,10 @@
 				3CE568D016B69F6800915391 /* ABCommon.m in Sources */,
 				3CE568D116B69F6800915391 /* ABFrame.m in Sources */,
 				3CE568D216B69F6800915391 /* ABReachability.m in Sources */,
+				3C5D960316BA889800B37045 /* ExampleSelectViewController.m in Sources */,
+				3C5D960716BA89C500B37045 /* ABSwitchExample.m in Sources */,
+				3C5D961316BA957000B37045 /* ExampleObject.m in Sources */,
+				3C5D961416BA957000B37045 /* ExampleSection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,6 +665,7 @@
 				3CE5669C16B6966D00915391 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

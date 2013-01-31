@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import "ExampleSelectViewController.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -15,8 +17,10 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    NSString *myString = @"hi there";
-    ABLogNSString(myString);
+    ExampleSelectViewController *viewController = [ExampleSelectViewController new];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    
+    self.window.rootViewController = navController;
     
     [self.window makeKeyAndVisible];
     return YES;
