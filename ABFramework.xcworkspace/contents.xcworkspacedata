@@ -63,8 +63,8 @@
          </FileRef>
       </Group>
       <Group
-         location = "group:Components"
-         name = "Components">
+         location = "group:Components (View)"
+         name = "Components (View)">
          <Group
             location = "group:ABAlertView"
             name = "ABAlertView">
@@ -93,16 +93,6 @@
             </FileRef>
             <FileRef
                location = "group:ABImagePickerViewController.m">
-            </FileRef>
-         </Group>
-         <Group
-            location = "group:ABSaveSystem"
-            name = "ABSaveSystem">
-            <FileRef
-               location = "group:ABSaveSystem.h">
-            </FileRef>
-            <FileRef
-               location = "group:ABSaveSystem.m">
             </FileRef>
          </Group>
          <Group
@@ -163,6 +153,20 @@
             </FileRef>
             <FileRef
                location = "group:ABTabButton.m">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:Components (Functional)"
+         name = "Components (Functional)">
+         <Group
+            location = "group:ABSaveSystem"
+            name = "ABSaveSystem">
+            <FileRef
+               location = "group:ABSaveSystem.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABSaveSystem.m">
             </FileRef>
          </Group>
       </Group>
