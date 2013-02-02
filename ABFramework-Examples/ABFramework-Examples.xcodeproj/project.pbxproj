@@ -19,6 +19,18 @@
 		3C5D962716BAA9EB00B37045 /* switch2_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C5D962316BAA9EB00B37045 /* switch2_background@2x.png */; };
 		3C5D962816BAA9EB00B37045 /* switch2_switch.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C5D962416BAA9EB00B37045 /* switch2_switch.png */; };
 		3C5D962916BAA9EB00B37045 /* switch2_switch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C5D962516BAA9EB00B37045 /* switch2_switch@2x.png */; };
+		3CB23BA116BD348B007E6E39 /* ABSaveSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB23B8316BD348B007E6E39 /* ABSaveSystem.m */; };
+		3CB23BA216BD348B007E6E39 /* ABAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB23B8716BD348B007E6E39 /* ABAlertView.m */; };
+		3CB23BA316BD348B007E6E39 /* ABDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB23B8A16BD348B007E6E39 /* ABDatePickerView.m */; };
+		3CB23BA416BD348B007E6E39 /* ABImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB23B8D16BD348B007E6E39 /* ABImagePickerViewController.m */; };
+		3CB23BA516BD348B007E6E39 /* ABSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB23B9016BD348B007E6E39 /* ABSelectView.m */; };
+		3CB23BA616BD348B007E6E39 /* ABSelectViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB23B9216BD348B007E6E39 /* ABSelectViewItem.m */; };
+		3CB23BA716BD348B007E6E39 /* ABSelectViewTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB23B9416BD348B007E6E39 /* ABSelectViewTheme.m */; };
+		3CB23BA816BD348B007E6E39 /* ABSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB23B9716BD348B007E6E39 /* ABSwitch.m */; };
+		3CB23BA916BD348B007E6E39 /* ABTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB23B9A16BD348B007E6E39 /* ABTabBar.m */; };
+		3CB23BAA16BD348B007E6E39 /* ABTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB23B9C16BD348B007E6E39 /* ABTabBarController.m */; };
+		3CB23BAB16BD348B007E6E39 /* ABTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB23B9E16BD348B007E6E39 /* ABTabBarItem.m */; };
+		3CB23BAC16BD348B007E6E39 /* ABTabButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB23BA016BD348B007E6E39 /* ABTabButton.m */; };
 		3CE5668116B6966D00915391 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE5668016B6966D00915391 /* UIKit.framework */; };
 		3CE5668316B6966D00915391 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE5668216B6966D00915391 /* Foundation.framework */; };
 		3CE5668516B6966D00915391 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE5668416B6966D00915391 /* CoreGraphics.framework */; };
@@ -36,18 +48,6 @@
 		3CE568BE16B69F6800915391 /* NSObject+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE5688416B69F6800915391 /* NSObject+ABFramework.m */; };
 		3CE568BF16B69F6800915391 /* NSString+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE5688616B69F6800915391 /* NSString+ABFramework.m */; };
 		3CE568C016B69F6800915391 /* UIImage+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE5688816B69F6800915391 /* UIImage+ABFramework.m */; };
-		3CE568C116B69F6800915391 /* ABAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE5688C16B69F6800915391 /* ABAlertView.m */; };
-		3CE568C216B69F6800915391 /* ABDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE5688F16B69F6800915391 /* ABDatePickerView.m */; };
-		3CE568C316B69F6800915391 /* ABImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE5689216B69F6800915391 /* ABImagePickerViewController.m */; };
-		3CE568C416B69F6800915391 /* ABSaveSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE5689516B69F6800915391 /* ABSaveSystem.m */; };
-		3CE568C516B69F6800915391 /* ABSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE5689816B69F6800915391 /* ABSelectView.m */; };
-		3CE568C616B69F6800915391 /* ABSelectViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE5689A16B69F6800915391 /* ABSelectViewItem.m */; };
-		3CE568C716B69F6800915391 /* ABSelectViewTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE5689C16B69F6800915391 /* ABSelectViewTheme.m */; };
-		3CE568C816B69F6800915391 /* ABSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE5689F16B69F6800915391 /* ABSwitch.m */; };
-		3CE568C916B69F6800915391 /* ABTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE568A216B69F6800915391 /* ABTabBar.m */; };
-		3CE568CA16B69F6800915391 /* ABTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE568A416B69F6800915391 /* ABTabBarController.m */; };
-		3CE568CB16B69F6800915391 /* ABTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE568A616B69F6800915391 /* ABTabBarItem.m */; };
-		3CE568CC16B69F6800915391 /* ABTabButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE568A816B69F6800915391 /* ABTabButton.m */; };
 		3CE568CD16B69F6800915391 /* ABDateDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE568AB16B69F6800915391 /* ABDateDescriptor.m */; };
 		3CE568CE16B69F6800915391 /* ABNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE568AE16B69F6800915391 /* ABNavigationController.m */; };
 		3CE568CF16B69F6800915391 /* ABViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE568B016B69F6800915391 /* ABViewController.m */; };
@@ -75,6 +75,30 @@
 		3C5D962316BAA9EB00B37045 /* switch2_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch2_background@2x.png"; sourceTree = "<group>"; };
 		3C5D962416BAA9EB00B37045 /* switch2_switch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch2_switch.png; sourceTree = "<group>"; };
 		3C5D962516BAA9EB00B37045 /* switch2_switch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch2_switch@2x.png"; sourceTree = "<group>"; };
+		3CB23B8216BD348B007E6E39 /* ABSaveSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSaveSystem.h; sourceTree = "<group>"; };
+		3CB23B8316BD348B007E6E39 /* ABSaveSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSaveSystem.m; sourceTree = "<group>"; };
+		3CB23B8616BD348B007E6E39 /* ABAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABAlertView.h; sourceTree = "<group>"; };
+		3CB23B8716BD348B007E6E39 /* ABAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABAlertView.m; sourceTree = "<group>"; };
+		3CB23B8916BD348B007E6E39 /* ABDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABDatePickerView.h; sourceTree = "<group>"; };
+		3CB23B8A16BD348B007E6E39 /* ABDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABDatePickerView.m; sourceTree = "<group>"; };
+		3CB23B8C16BD348B007E6E39 /* ABImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABImagePickerViewController.h; sourceTree = "<group>"; };
+		3CB23B8D16BD348B007E6E39 /* ABImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABImagePickerViewController.m; sourceTree = "<group>"; };
+		3CB23B8F16BD348B007E6E39 /* ABSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSelectView.h; sourceTree = "<group>"; };
+		3CB23B9016BD348B007E6E39 /* ABSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSelectView.m; sourceTree = "<group>"; };
+		3CB23B9116BD348B007E6E39 /* ABSelectViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSelectViewItem.h; sourceTree = "<group>"; };
+		3CB23B9216BD348B007E6E39 /* ABSelectViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSelectViewItem.m; sourceTree = "<group>"; };
+		3CB23B9316BD348B007E6E39 /* ABSelectViewTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSelectViewTheme.h; sourceTree = "<group>"; };
+		3CB23B9416BD348B007E6E39 /* ABSelectViewTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSelectViewTheme.m; sourceTree = "<group>"; };
+		3CB23B9616BD348B007E6E39 /* ABSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSwitch.h; sourceTree = "<group>"; };
+		3CB23B9716BD348B007E6E39 /* ABSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSwitch.m; sourceTree = "<group>"; };
+		3CB23B9916BD348B007E6E39 /* ABTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTabBar.h; sourceTree = "<group>"; };
+		3CB23B9A16BD348B007E6E39 /* ABTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTabBar.m; sourceTree = "<group>"; };
+		3CB23B9B16BD348B007E6E39 /* ABTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTabBarController.h; sourceTree = "<group>"; };
+		3CB23B9C16BD348B007E6E39 /* ABTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTabBarController.m; sourceTree = "<group>"; };
+		3CB23B9D16BD348B007E6E39 /* ABTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTabBarItem.h; sourceTree = "<group>"; };
+		3CB23B9E16BD348B007E6E39 /* ABTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTabBarItem.m; sourceTree = "<group>"; };
+		3CB23B9F16BD348B007E6E39 /* ABTabButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTabButton.h; sourceTree = "<group>"; };
+		3CB23BA016BD348B007E6E39 /* ABTabButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTabButton.m; sourceTree = "<group>"; };
 		3CE5667C16B6966D00915391 /* ABFramework-Examples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ABFramework-Examples.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CE5668016B6966D00915391 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3CE5668216B6966D00915391 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -105,30 +129,6 @@
 		3CE5688616B69F6800915391 /* NSString+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ABFramework.m"; sourceTree = "<group>"; };
 		3CE5688716B69F6800915391 /* UIImage+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ABFramework.h"; sourceTree = "<group>"; };
 		3CE5688816B69F6800915391 /* UIImage+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ABFramework.m"; sourceTree = "<group>"; };
-		3CE5688B16B69F6800915391 /* ABAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABAlertView.h; sourceTree = "<group>"; };
-		3CE5688C16B69F6800915391 /* ABAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABAlertView.m; sourceTree = "<group>"; };
-		3CE5688E16B69F6800915391 /* ABDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABDatePickerView.h; sourceTree = "<group>"; };
-		3CE5688F16B69F6800915391 /* ABDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABDatePickerView.m; sourceTree = "<group>"; };
-		3CE5689116B69F6800915391 /* ABImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABImagePickerViewController.h; sourceTree = "<group>"; };
-		3CE5689216B69F6800915391 /* ABImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABImagePickerViewController.m; sourceTree = "<group>"; };
-		3CE5689416B69F6800915391 /* ABSaveSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSaveSystem.h; sourceTree = "<group>"; };
-		3CE5689516B69F6800915391 /* ABSaveSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSaveSystem.m; sourceTree = "<group>"; };
-		3CE5689716B69F6800915391 /* ABSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSelectView.h; sourceTree = "<group>"; };
-		3CE5689816B69F6800915391 /* ABSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSelectView.m; sourceTree = "<group>"; };
-		3CE5689916B69F6800915391 /* ABSelectViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSelectViewItem.h; sourceTree = "<group>"; };
-		3CE5689A16B69F6800915391 /* ABSelectViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSelectViewItem.m; sourceTree = "<group>"; };
-		3CE5689B16B69F6800915391 /* ABSelectViewTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSelectViewTheme.h; sourceTree = "<group>"; };
-		3CE5689C16B69F6800915391 /* ABSelectViewTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSelectViewTheme.m; sourceTree = "<group>"; };
-		3CE5689E16B69F6800915391 /* ABSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSwitch.h; sourceTree = "<group>"; };
-		3CE5689F16B69F6800915391 /* ABSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSwitch.m; sourceTree = "<group>"; };
-		3CE568A116B69F6800915391 /* ABTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTabBar.h; sourceTree = "<group>"; };
-		3CE568A216B69F6800915391 /* ABTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTabBar.m; sourceTree = "<group>"; };
-		3CE568A316B69F6800915391 /* ABTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTabBarController.h; sourceTree = "<group>"; };
-		3CE568A416B69F6800915391 /* ABTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTabBarController.m; sourceTree = "<group>"; };
-		3CE568A516B69F6800915391 /* ABTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTabBarItem.h; sourceTree = "<group>"; };
-		3CE568A616B69F6800915391 /* ABTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTabBarItem.m; sourceTree = "<group>"; };
-		3CE568A716B69F6800915391 /* ABTabButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTabButton.h; sourceTree = "<group>"; };
-		3CE568A816B69F6800915391 /* ABTabButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTabButton.m; sourceTree = "<group>"; };
 		3CE568AA16B69F6800915391 /* ABDateDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABDateDescriptor.h; sourceTree = "<group>"; };
 		3CE568AB16B69F6800915391 /* ABDateDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABDateDescriptor.m; sourceTree = "<group>"; };
 		3CE568AD16B69F6800915391 /* ABNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABNavigationController.h; sourceTree = "<group>"; };
@@ -223,6 +223,100 @@
 			path = ABSwitch;
 			sourceTree = "<group>";
 		};
+		3CB23B8016BD348B007E6E39 /* Components (Functional) */ = {
+			isa = PBXGroup;
+			children = (
+				3CB23B8116BD348B007E6E39 /* ABSaveSystem */,
+			);
+			path = "Components (Functional)";
+			sourceTree = "<group>";
+		};
+		3CB23B8116BD348B007E6E39 /* ABSaveSystem */ = {
+			isa = PBXGroup;
+			children = (
+				3CB23B8216BD348B007E6E39 /* ABSaveSystem.h */,
+				3CB23B8316BD348B007E6E39 /* ABSaveSystem.m */,
+			);
+			path = ABSaveSystem;
+			sourceTree = "<group>";
+		};
+		3CB23B8416BD348B007E6E39 /* Components (View) */ = {
+			isa = PBXGroup;
+			children = (
+				3CB23B8516BD348B007E6E39 /* ABAlertView */,
+				3CB23B8816BD348B007E6E39 /* ABDatePickerView */,
+				3CB23B8B16BD348B007E6E39 /* ABImagePickerController */,
+				3CB23B8E16BD348B007E6E39 /* ABSelectView */,
+				3CB23B9516BD348B007E6E39 /* ABSwitch */,
+				3CB23B9816BD348B007E6E39 /* ABTabBarController */,
+			);
+			path = "Components (View)";
+			sourceTree = "<group>";
+		};
+		3CB23B8516BD348B007E6E39 /* ABAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				3CB23B8616BD348B007E6E39 /* ABAlertView.h */,
+				3CB23B8716BD348B007E6E39 /* ABAlertView.m */,
+			);
+			path = ABAlertView;
+			sourceTree = "<group>";
+		};
+		3CB23B8816BD348B007E6E39 /* ABDatePickerView */ = {
+			isa = PBXGroup;
+			children = (
+				3CB23B8916BD348B007E6E39 /* ABDatePickerView.h */,
+				3CB23B8A16BD348B007E6E39 /* ABDatePickerView.m */,
+			);
+			path = ABDatePickerView;
+			sourceTree = "<group>";
+		};
+		3CB23B8B16BD348B007E6E39 /* ABImagePickerController */ = {
+			isa = PBXGroup;
+			children = (
+				3CB23B8C16BD348B007E6E39 /* ABImagePickerViewController.h */,
+				3CB23B8D16BD348B007E6E39 /* ABImagePickerViewController.m */,
+			);
+			path = ABImagePickerController;
+			sourceTree = "<group>";
+		};
+		3CB23B8E16BD348B007E6E39 /* ABSelectView */ = {
+			isa = PBXGroup;
+			children = (
+				3CB23B8F16BD348B007E6E39 /* ABSelectView.h */,
+				3CB23B9016BD348B007E6E39 /* ABSelectView.m */,
+				3CB23B9116BD348B007E6E39 /* ABSelectViewItem.h */,
+				3CB23B9216BD348B007E6E39 /* ABSelectViewItem.m */,
+				3CB23B9316BD348B007E6E39 /* ABSelectViewTheme.h */,
+				3CB23B9416BD348B007E6E39 /* ABSelectViewTheme.m */,
+			);
+			path = ABSelectView;
+			sourceTree = "<group>";
+		};
+		3CB23B9516BD348B007E6E39 /* ABSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				3CB23B9616BD348B007E6E39 /* ABSwitch.h */,
+				3CB23B9716BD348B007E6E39 /* ABSwitch.m */,
+			);
+			path = ABSwitch;
+			sourceTree = "<group>";
+		};
+		3CB23B9816BD348B007E6E39 /* ABTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				3CB23B9916BD348B007E6E39 /* ABTabBar.h */,
+				3CB23B9A16BD348B007E6E39 /* ABTabBar.m */,
+				3CB23B9B16BD348B007E6E39 /* ABTabBarController.h */,
+				3CB23B9C16BD348B007E6E39 /* ABTabBarController.m */,
+				3CB23B9D16BD348B007E6E39 /* ABTabBarItem.h */,
+				3CB23B9E16BD348B007E6E39 /* ABTabBarItem.m */,
+				3CB23B9F16BD348B007E6E39 /* ABTabButton.h */,
+				3CB23BA016BD348B007E6E39 /* ABTabButton.m */,
+			);
+			path = ABTabBarController;
+			sourceTree = "<group>";
+		};
 		3CE5667116B6966D00915391 = {
 			isa = PBXGroup;
 			children = (
@@ -292,7 +386,8 @@
 				3CE568D316B69FC100915391 /* README.md */,
 				3CE5687716B69F6800915391 /* ABFramework.h */,
 				3CE5687816B69F6800915391 /* Categories */,
-				3CE5688916B69F6800915391 /* Components */,
+				3CB23B8416BD348B007E6E39 /* Components (View) */,
+				3CB23B8016BD348B007E6E39 /* Components (Functional) */,
 				3CE568A916B69F6800915391 /* Model */,
 				3CE568AC16B69F6800915391 /* Sub Classes */,
 				3CE568B116B69F6800915391 /* Utilities */,
@@ -322,93 +417,6 @@
 				3CE5688816B69F6800915391 /* UIImage+ABFramework.m */,
 			);
 			path = Categories;
-			sourceTree = "<group>";
-		};
-		3CE5688916B69F6800915391 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				3CE5688A16B69F6800915391 /* ABAlertView */,
-				3CE5688D16B69F6800915391 /* ABDatePickerView */,
-				3CE5689016B69F6800915391 /* ABImagePickerController */,
-				3CE5689316B69F6800915391 /* ABSaveSystem */,
-				3CE5689616B69F6800915391 /* ABSelectView */,
-				3CE5689D16B69F6800915391 /* ABSwitch */,
-				3CE568A016B69F6800915391 /* ABTabBarController */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		3CE5688A16B69F6800915391 /* ABAlertView */ = {
-			isa = PBXGroup;
-			children = (
-				3CE5688B16B69F6800915391 /* ABAlertView.h */,
-				3CE5688C16B69F6800915391 /* ABAlertView.m */,
-			);
-			path = ABAlertView;
-			sourceTree = "<group>";
-		};
-		3CE5688D16B69F6800915391 /* ABDatePickerView */ = {
-			isa = PBXGroup;
-			children = (
-				3CE5688E16B69F6800915391 /* ABDatePickerView.h */,
-				3CE5688F16B69F6800915391 /* ABDatePickerView.m */,
-			);
-			path = ABDatePickerView;
-			sourceTree = "<group>";
-		};
-		3CE5689016B69F6800915391 /* ABImagePickerController */ = {
-			isa = PBXGroup;
-			children = (
-				3CE5689116B69F6800915391 /* ABImagePickerViewController.h */,
-				3CE5689216B69F6800915391 /* ABImagePickerViewController.m */,
-			);
-			path = ABImagePickerController;
-			sourceTree = "<group>";
-		};
-		3CE5689316B69F6800915391 /* ABSaveSystem */ = {
-			isa = PBXGroup;
-			children = (
-				3CE5689416B69F6800915391 /* ABSaveSystem.h */,
-				3CE5689516B69F6800915391 /* ABSaveSystem.m */,
-			);
-			path = ABSaveSystem;
-			sourceTree = "<group>";
-		};
-		3CE5689616B69F6800915391 /* ABSelectView */ = {
-			isa = PBXGroup;
-			children = (
-				3CE5689716B69F6800915391 /* ABSelectView.h */,
-				3CE5689816B69F6800915391 /* ABSelectView.m */,
-				3CE5689916B69F6800915391 /* ABSelectViewItem.h */,
-				3CE5689A16B69F6800915391 /* ABSelectViewItem.m */,
-				3CE5689B16B69F6800915391 /* ABSelectViewTheme.h */,
-				3CE5689C16B69F6800915391 /* ABSelectViewTheme.m */,
-			);
-			path = ABSelectView;
-			sourceTree = "<group>";
-		};
-		3CE5689D16B69F6800915391 /* ABSwitch */ = {
-			isa = PBXGroup;
-			children = (
-				3CE5689E16B69F6800915391 /* ABSwitch.h */,
-				3CE5689F16B69F6800915391 /* ABSwitch.m */,
-			);
-			path = ABSwitch;
-			sourceTree = "<group>";
-		};
-		3CE568A016B69F6800915391 /* ABTabBarController */ = {
-			isa = PBXGroup;
-			children = (
-				3CE568A116B69F6800915391 /* ABTabBar.h */,
-				3CE568A216B69F6800915391 /* ABTabBar.m */,
-				3CE568A316B69F6800915391 /* ABTabBarController.h */,
-				3CE568A416B69F6800915391 /* ABTabBarController.m */,
-				3CE568A516B69F6800915391 /* ABTabBarItem.h */,
-				3CE568A616B69F6800915391 /* ABTabBarItem.m */,
-				3CE568A716B69F6800915391 /* ABTabButton.h */,
-				3CE568A816B69F6800915391 /* ABTabButton.m */,
-			);
-			path = ABTabBarController;
 			sourceTree = "<group>";
 		};
 		3CE568A916B69F6800915391 /* Model */ = {
@@ -529,18 +537,6 @@
 				3CE568BE16B69F6800915391 /* NSObject+ABFramework.m in Sources */,
 				3CE568BF16B69F6800915391 /* NSString+ABFramework.m in Sources */,
 				3CE568C016B69F6800915391 /* UIImage+ABFramework.m in Sources */,
-				3CE568C116B69F6800915391 /* ABAlertView.m in Sources */,
-				3CE568C216B69F6800915391 /* ABDatePickerView.m in Sources */,
-				3CE568C316B69F6800915391 /* ABImagePickerViewController.m in Sources */,
-				3CE568C416B69F6800915391 /* ABSaveSystem.m in Sources */,
-				3CE568C516B69F6800915391 /* ABSelectView.m in Sources */,
-				3CE568C616B69F6800915391 /* ABSelectViewItem.m in Sources */,
-				3CE568C716B69F6800915391 /* ABSelectViewTheme.m in Sources */,
-				3CE568C816B69F6800915391 /* ABSwitch.m in Sources */,
-				3CE568C916B69F6800915391 /* ABTabBar.m in Sources */,
-				3CE568CA16B69F6800915391 /* ABTabBarController.m in Sources */,
-				3CE568CB16B69F6800915391 /* ABTabBarItem.m in Sources */,
-				3CE568CC16B69F6800915391 /* ABTabButton.m in Sources */,
 				3CE568CD16B69F6800915391 /* ABDateDescriptor.m in Sources */,
 				3CE568CE16B69F6800915391 /* ABNavigationController.m in Sources */,
 				3CE568CF16B69F6800915391 /* ABViewController.m in Sources */,
@@ -551,6 +547,18 @@
 				3C5D960716BA89C500B37045 /* ABSwitchExample.m in Sources */,
 				3C5D961316BA957000B37045 /* ExampleObject.m in Sources */,
 				3C5D961416BA957000B37045 /* ExampleSection.m in Sources */,
+				3CB23BA116BD348B007E6E39 /* ABSaveSystem.m in Sources */,
+				3CB23BA216BD348B007E6E39 /* ABAlertView.m in Sources */,
+				3CB23BA316BD348B007E6E39 /* ABDatePickerView.m in Sources */,
+				3CB23BA416BD348B007E6E39 /* ABImagePickerViewController.m in Sources */,
+				3CB23BA516BD348B007E6E39 /* ABSelectView.m in Sources */,
+				3CB23BA616BD348B007E6E39 /* ABSelectViewItem.m in Sources */,
+				3CB23BA716BD348B007E6E39 /* ABSelectViewTheme.m in Sources */,
+				3CB23BA816BD348B007E6E39 /* ABSwitch.m in Sources */,
+				3CB23BA916BD348B007E6E39 /* ABTabBar.m in Sources */,
+				3CB23BAA16BD348B007E6E39 /* ABTabBarController.m in Sources */,
+				3CB23BAB16BD348B007E6E39 /* ABTabBarItem.m in Sources */,
+				3CB23BAC16BD348B007E6E39 /* ABTabButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
