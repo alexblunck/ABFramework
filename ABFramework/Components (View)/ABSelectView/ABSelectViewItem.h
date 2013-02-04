@@ -21,6 +21,6 @@
 //Helper
 -(void) labelWhite;
 
-@property (nonatomic, strong) id <ABSelectViewItemDelegate> delegate;
+@property (nonatomic, assign) id <ABSelectViewItemDelegate> delegate;
 
 @end

@@ -34,6 +34,6 @@
 @property (nonatomic, assign) int selectedIndex;
 
 //Delegate Property
-@property (nonatomic, strong) id <ABTabBarDelegate> delegate;
+@property (nonatomic, assign) id <ABTabBarDelegate> delegate;
 
 @end

@@ -29,7 +29,7 @@
 @property (nonatomic, assign) void (^block) (NSInteger currentIndex);
 
 //Delegate as alternative to using Blocks
-@property (nonatomic, strong) id <ABSwitchDelegate> delegate;
+@property (nonatomic, assign) id <ABSwitchDelegate> delegate;
 
 //If your background image uses rounded corners adjust this value to make the left/right color views fit with the background
 @property (nonatomic, assign) CGFloat cornerRadius;
