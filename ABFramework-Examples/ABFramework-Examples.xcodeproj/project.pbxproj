@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C4A880716C2DC0600BB774D /* ABLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4A880316C2DC0600BB774D /* ABLabel.m */; };
+		3C4A880816C2DC0600BB774D /* ABStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4A880616C2DC0600BB774D /* ABStackController.m */; };
+		3C4A880B16C2DC4900BB774D /* UILabel+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4A880A16C2DC4900BB774D /* UILabel+ABFramework.m */; };
+		3C4A880F16C2DCD300BB774D /* ABButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4A880E16C2DCD300BB774D /* ABButton.m */; };
 		3C5D960316BA889800B37045 /* ExampleSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5D960216BA889800B37045 /* ExampleSelectViewController.m */; };
 		3C5D960716BA89C500B37045 /* ABSwitchExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5D960616BA89C500B37045 /* ABSwitchExample.m */; };
 		3C5D961316BA957000B37045 /* ExampleObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5D961016BA957000B37045 /* ExampleObject.m */; };
@@ -59,6 +63,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C4A880216C2DC0600BB774D /* ABLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABLabel.h; sourceTree = "<group>"; };
+		3C4A880316C2DC0600BB774D /* ABLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABLabel.m; sourceTree = "<group>"; };
+		3C4A880516C2DC0600BB774D /* ABStackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABStackController.h; sourceTree = "<group>"; };
+		3C4A880616C2DC0600BB774D /* ABStackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABStackController.m; sourceTree = "<group>"; };
+		3C4A880916C2DC4900BB774D /* UILabel+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+ABFramework.h"; sourceTree = "<group>"; };
+		3C4A880A16C2DC4900BB774D /* UILabel+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+ABFramework.m"; sourceTree = "<group>"; };
+		3C4A880D16C2DCD300BB774D /* ABButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABButton.h; sourceTree = "<group>"; };
+		3C4A880E16C2DCD300BB774D /* ABButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABButton.m; sourceTree = "<group>"; };
 		3C5D960116BA889800B37045 /* ExampleSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleSelectViewController.h; sourceTree = "<group>"; };
 		3C5D960216BA889800B37045 /* ExampleSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleSelectViewController.m; sourceTree = "<group>"; };
 		3C5D960516BA89C500B37045 /* ABSwitchExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSwitchExample.h; sourceTree = "<group>"; };
@@ -161,6 +173,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C4A880116C2DC0600BB774D /* ABLabel */ = {
+			isa = PBXGroup;
+			children = (
+				3C4A880216C2DC0600BB774D /* ABLabel.h */,
+				3C4A880316C2DC0600BB774D /* ABLabel.m */,
+			);
+			path = ABLabel;
+			sourceTree = "<group>";
+		};
+		3C4A880416C2DC0600BB774D /* ABStackController */ = {
+			isa = PBXGroup;
+			children = (
+				3C4A880516C2DC0600BB774D /* ABStackController.h */,
+				3C4A880616C2DC0600BB774D /* ABStackController.m */,
+			);
+			path = ABStackController;
+			sourceTree = "<group>";
+		};
+		3C4A880C16C2DCD300BB774D /* ABButton */ = {
+			isa = PBXGroup;
+			children = (
+				3C4A880D16C2DCD300BB774D /* ABButton.h */,
+				3C4A880E16C2DCD300BB774D /* ABButton.m */,
+			);
+			path = ABButton;
+			sourceTree = "<group>";
+		};
 		3C5D960016BA887900B37045 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +282,9 @@
 		3CB23B8416BD348B007E6E39 /* Components (View) */ = {
 			isa = PBXGroup;
 			children = (
+				3C4A880C16C2DCD300BB774D /* ABButton */,
+				3C4A880116C2DC0600BB774D /* ABLabel */,
+				3C4A880416C2DC0600BB774D /* ABStackController */,
 				3CB23B8516BD348B007E6E39 /* ABAlertView */,
 				3CB23B8816BD348B007E6E39 /* ABDatePickerView */,
 				3CB23B8B16BD348B007E6E39 /* ABImagePickerController */,
@@ -399,6 +441,8 @@
 		3CE5687816B69F6800915391 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				3C4A880916C2DC4900BB774D /* UILabel+ABFramework.h */,
+				3C4A880A16C2DC4900BB774D /* UILabel+ABFramework.m */,
 				3CE5687916B69F6800915391 /* NSData+ABFramework.h */,
 				3CE5687A16B69F6800915391 /* NSData+ABFramework.m */,
 				3CE5687B16B69F6800915391 /* NSDate+ABFramework.h */,
@@ -559,6 +603,10 @@
 				3CB23BAA16BD348B007E6E39 /* ABTabBarController.m in Sources */,
 				3CB23BAB16BD348B007E6E39 /* ABTabBarItem.m in Sources */,
 				3CB23BAC16BD348B007E6E39 /* ABTabButton.m in Sources */,
+				3C4A880716C2DC0600BB774D /* ABLabel.m in Sources */,
+				3C4A880816C2DC0600BB774D /* ABStackController.m in Sources */,
+				3C4A880B16C2DC4900BB774D /* UILabel+ABFramework.m in Sources */,
+				3C4A880F16C2DCD300BB774D /* ABButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

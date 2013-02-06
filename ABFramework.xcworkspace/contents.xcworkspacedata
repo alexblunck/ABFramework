@@ -61,10 +61,46 @@
          <FileRef
             location = "group:UIImage+ABFramework.m">
          </FileRef>
+         <FileRef
+            location = "group:UILabel+ABFramework.h">
+         </FileRef>
+         <FileRef
+            location = "group:UILabel+ABFramework.m">
+         </FileRef>
       </Group>
       <Group
          location = "group:Components (View)"
          name = "Components (View)">
+         <Group
+            location = "group:ABButton"
+            name = "ABButton">
+            <FileRef
+               location = "group:ABButton.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABButton.m">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:ABLabel"
+            name = "ABLabel">
+            <FileRef
+               location = "group:ABLabel.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABLabel.m">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:ABStackController"
+            name = "ABStackController">
+            <FileRef
+               location = "group:ABStackController.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABStackController.m">
+            </FileRef>
+         </Group>
          <Group
             location = "group:ABAlertView"
             name = "ABAlertView">
