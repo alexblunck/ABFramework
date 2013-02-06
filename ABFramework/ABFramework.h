@@ -46,6 +46,7 @@ CATEGORIES
 #import "NSMutableDictionary+ABFramework.h"
 #import "NSString+ABFramework.h"
 #import "NSObject+ABFramework.h"
+#import "UILabel+ABFramework.h"
 
 
 
@@ -72,6 +73,9 @@ CATEGORIES
 #import "ABTabBarController.h"
 #import "ABTabBarItem.h"
 #import "ABTabButton.h"
+#import "ABStackController.h"
+#import "ABLabel.h"
+#import "ABButton.h"
 
 
 
