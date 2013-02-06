@@ -142,6 +142,25 @@
 
 
 
+#pragma mark - NSNumber
++(void) saveNumber:(NSNumber*)number key:(NSString*)key
+{
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:number];
+    [self saveData:data key:key];
+}
+
++(NSNumber*) numberForKey:(NSString*)key
+{
+    NSData *data = [self dataForKey:key];
+    if (data != nil) {
+        NSNumber *number = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        return number;
+    }
+    return nil;
+}
+
+
+
 #pragma mark - Misc
 +(void) logSavedValues
 {

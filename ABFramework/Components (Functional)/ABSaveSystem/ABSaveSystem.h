@@ -27,6 +27,10 @@
 +(void) saveDate:(NSDate*)date key:(NSString*)key;
 +(NSDate*) dateForKey:(NSString*)key;
 
+//NSNumber
++(void) saveNumber:(NSNumber*)number key:(NSString*)key;
++(NSNumber*) numberForKey:(NSString*)key;
+
 //Misc
 +(void) logSavedValues;
 
