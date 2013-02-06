@@ -11,6 +11,30 @@
 @interface ABFrame : NSObject
 
 /*
+ CGFLoat
+ */
+//Origin Y value of the bottom of a CGRect
+CGFloat CGFloatBottomOriginY(CGRect rect);
+
+
+
+/*
+ CGSize
+ */
+//Offset values of a CGSize
+CGSize CGSizeOffset(CGSize size, CGFloat sizeWidthBy, CGFloat sizeHeightBy);
+//Offset only the Width Size value of a CGSize
+CGSize CGSizeOffsetWidth(CGSize size, CGFloat sizeWidthBy);
+//Offset only the Height Size value of a CGSize
+CGSize CGSizeOffsetHeight(CGSize size, CGFloat sizeHeightBy);
+
+//Exact size of a string in a specific UILabel
++(CGSize) sizeForText:(NSString*)text withLabel:(UILabel*)label;
+
+//CGSize of a specific image
+CGSize CGSizeFromUIImageName(NSString* imageName);
+
+/*
  CGRect
  */
 //CGRect for one CGRect centered in another
@@ -19,6 +43,10 @@ CGRect CGRectCenteredInCGRect (CGRect rect, CGRect rectToCenterIn);
 CGRect CGRectCenteredHorizontally(CGRect rect, CGRect rectToCenterIn, CGFloat originY);
 //CGRect for one CGRect centered vertically in another
 CGRect CGRectCenteredVertically(CGRect rect, CGRect rectToCenterIn, CGFloat originX);
+//CGRect for one CGRect centered horizontally in another (Keeping same Y Origin)
+CGRect CGRectCenteredHorizontallyS(CGRect rect, CGRect rectToCenterIn);
+//CGRect for one CGRect centered vertically in another (Keeping same X Origin)
+CGRect CGRectCenteredVerticallyS(CGRect rect, CGRect rectToCenterIn);
 
 //Adjust only Origin values of a CGRect
 CGRect CGRectChangingOrigin (CGRect rect, CGFloat originX, CGFloat originY);
@@ -49,6 +77,9 @@ CGRect CGRectOffsetSize (CGRect rect, CGFloat sizeWidthBy, CGFloat sizeHeightBy)
 CGRect CGRectOffsetSizeWidth (CGRect rect, CGFloat sizeWidthBy);
 //Offset only Height Size of a CGRect
 CGRect CGRectOffsetSizeHeight (CGRect rect, CGFloat sizeHeightBy);
+
+//CGRect for CGRect right inside of another CGRect
+CGRect CGRectInsideRectRight (CGRect rect, CGRect rectToRightIn);
 
 //Returns zeroed CGRect for an imageName (located in bundle)
 +(CGRect) frameForImageName:(NSString*)imageName;

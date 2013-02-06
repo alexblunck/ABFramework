@@ -10,6 +10,59 @@
 
 @implementation ABFrame
 
+#pragma mark - CGFloat
+//Origin Y value of the bottom of a CGRect
+CGFloat CGFloatBottomOriginY(CGRect rect)
+{
+    return rect.origin.y + rect.size.height;
+}
+
+
+
+
+
+#pragma mark - CGSize
+//Offset values of a CGSize
+CGSize CGSizeOffset(CGSize size, CGFloat sizeWidthBy, CGFloat sizeHeightBy)
+{
+    return CGSizeMake(size.width + sizeWidthBy, size.height + sizeHeightBy);
+}
+
+//Offset only the Width Size value of a CGSize
+CGSize CGSizeOffsetWidth(CGSize size, CGFloat sizeWidthBy)
+{
+    return CGSizeOffset(size, sizeWidthBy, 0);
+}
+
+//Offset only the Height Size value of a CGSize
+CGSize CGSizeOffsetHeight(CGSize size, CGFloat sizeHeightBy)
+{
+    return CGSizeOffset(size, 0, sizeHeightBy);
+}
+
+
+//CGSize of a specific image
+CGSize CGSizeFromUIImageName(NSString* imageName)
+{
+    UIImage *image = [UIImage imageNamed:imageName];
+    return image.size;
+}
+
+
+//Exact size of a string in a specific UILabel
++(CGSize) sizeForText:(NSString*)text withLabel:(UILabel*)label
+{
+    UILabel *l = [label abCopy];
+    l.text = text;
+    [l sizeToFit];
+    
+    return l.bounds.size;
+}
+
+
+
+
+
 #pragma mark - CGRect
 //CGRect for one CGRect centered in another
 CGRect CGRectCenteredInCGRect (CGRect rect, CGRect rectToCenterIn)
@@ -36,6 +89,18 @@ CGRect CGRectCenteredVertically(CGRect rect, CGRect rectToCenterIn, CGFloat orig
                                 originX,
                                 (rectToCenterIn.size.height-rect.size.height)/2
                                 );
+}
+
+//CGRect for one CGRect centered horizontally in another (Keeping same Y Origin)
+CGRect CGRectCenteredHorizontallyS(CGRect rect, CGRect rectToCenterIn)
+{
+    return CGRectChangingOriginX(rect, (rectToCenterIn.size.width-rect.size.width)/2);
+}
+
+//CGRect for one CGRect centered vertically in another (Keeping same X Origin)
+CGRect CGRectCenteredVerticallyS(CGRect rect, CGRect rectToCenterIn)
+{
+    return  CGRectChangingOriginY(rect, (rectToCenterIn.size.height-rect.size.height)/2);
 }
 
 
@@ -122,6 +187,15 @@ CGRect CGRectOffsetSizeWidth (CGRect rect, CGFloat sizeWidthBy)
 CGRect CGRectOffsetSizeHeight (CGRect rect, CGFloat sizeHeightBy)
 {
     return CGRectOffsetSize(rect, 0, sizeHeightBy);
+}
+
+
+
+//CGRect for CGRect right inside of another CGRect
+CGRect CGRectInsideRectRight (CGRect rect, CGRect rectToRightIn)
+{
+    return  CGRectChangingOriginX(rect, rectToRightIn.size.width-rect.size.width);
+    //CGRectChangingOrigin(rect, rectToRightIn.size.width-rect.size.width, <#CGFloat originY#>)
 }
 
 
