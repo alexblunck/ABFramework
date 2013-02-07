@@ -14,6 +14,7 @@
 
 //Example ViewControllers
 #import "ABSwitchExample.h"
+#import "ABSaveSystemExample.h"
 
 @interface ExampleSelectViewController () <UITableViewDataSource, UITableViewDelegate> {
     UITableView *_tableView;
@@ -46,12 +47,20 @@
 #pragma mark - Helper
 -(void) compileData
 {
-    //Components
-    NSArray *componentObjects = @[
+    //Components (Views)
+    NSArray *componentsViewObjects = @[
                                   [ExampleObject objectWithName:@"ABSwitch" viewControllerClass:[ABSwitchExample class]]
                                   ];
-    ExampleSection *componentSection = [ExampleSection sectionWithName:@"Components" exampleObjectArray:componentObjects];
-    [_sectionArray addObject:componentSection];
+    ExampleSection *componentsViewSection = [ExampleSection sectionWithName:@"Components (Views)" exampleObjectArray:componentsViewObjects];
+    [_sectionArray addObject:componentsViewSection];
+    
+    
+    //Components (Functional)
+    NSArray *componentsFunctionalObjects = @[
+                                       [ExampleObject objectWithName:@"ABSaveSystem" viewControllerClass:[ABSaveSystemExample class]]
+                                       ];
+    ExampleSection *componentsFunctionalSection = [ExampleSection sectionWithName:@"Components (Funtional)" exampleObjectArray:componentsFunctionalObjects];
+    [_sectionArray addObject:componentsFunctionalSection];
 }
 
 -(ExampleObject*) exampleObjectForIndexPath:(NSIndexPath*)indexPath
