@@ -8,30 +8,64 @@
 
 #import <Foundation/Foundation.h>
 
-#define APPNAME @"APPNAME_GOES_HERE"
-#define OS @"IOS" /* @"IOS" for iPhone/iPad/iPod & @"MAC" for mac */
+typedef enum {
+    ABSaveSystemOSNone,
+    ABSaveSystemOSMacOSX,
+    ABSaveSystemOSIOS
+} ABSaveSystemOS;
+
 #define ENCRYPTION_ENABLED NO
 #define AESKEY @"aVt7G67Dgjit2"
 
 @interface ABSaveSystem : NSObject
 
-//NSInteger
-+(void) saveInteger:(NSInteger)integer key:(NSString*)key;
-+(NSInteger) integerForKey:(NSString*)key;
+//
+//Objects
+//
 
-//BOOL
-+(void) saveBool:(BOOL)boolean key:(NSString*)key;
-+(BOOL) boolForKey:(NSString*)key;
+//NSData
++(void) saveData:(NSData*)data key:(NSString*)key;
++(NSData*) dataForKey:(NSString*)key;
 
-//NSDate
-+(void) saveDate:(NSDate*)date key:(NSString*)key;
-+(NSDate*) dateForKey:(NSString*)key;
+//Object
++(void) saveObject:(id)object key:(NSString*)key;
++(id) objectForKey:(NSString*)key;
+
+//NSString
++(void) saveString:(NSString*)string key:(NSString*)key;
++(NSString*) stringForKey:(NSString*)key;
 
 //NSNumber
 +(void) saveNumber:(NSNumber*)number key:(NSString*)key;
 +(NSNumber*) numberForKey:(NSString*)key;
 
+//NSDate
++(void) saveDate:(NSDate*)date key:(NSString*)key;
++(NSDate*) dateForKey:(NSString*)key;
+
+
+
+//
+//Primitives
+//
+
+//NSInteger
++(void) saveInteger:(NSInteger)integer key:(NSString*)key;
++(NSInteger) integerForKey:(NSString*)key;
+
+//CGFloat
++(void) saveFloat:(CGFloat)aFloat key:(NSString*)key;
++(CGFloat) floatForKey:(NSString*)key;
+
+//BOOL
++(void) saveBool:(BOOL)boolean key:(NSString*)key;
++(BOOL) boolForKey:(NSString*)key;
+
+
+//
 //Misc
+//
+
 +(void) logSavedValues;
 
 @end

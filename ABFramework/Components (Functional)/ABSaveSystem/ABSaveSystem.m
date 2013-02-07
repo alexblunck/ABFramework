@@ -10,19 +10,74 @@
 
 @implementation ABSaveSystem
 
-#pragma mark - Path
+#pragma mark - Helper
++(NSString*) appName
+{
+    NSString *bundlePath = [[[NSBundle mainBundle] bundleURL] lastPathComponent];
+    return [bundlePath stringByDeletingPathExtension];
+}
+
++(ABSaveSystemOS) os
+{
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+    return ABSaveSystemOSIOS;
+#else
+    return ABSaveSystemOSMacOSX;
+#endif
+}
+
 +(NSString*) filePath
 {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *fullFileName = [NSString stringWithFormat:@"%@.absave", APPNAME];
-    NSString *path = [documentsDirectory stringByAppendingPathComponent:fullFileName];
-    NSString *filePath = path;
-    return filePath;
+    ABSaveSystemOS os = [self os];
+    
+    NSString *fileName = [NSString stringWithFormat:@"%@.abss", [[self appName] lowercaseString]];
+    
+    if (os == ABSaveSystemOSIOS)
+    {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString *path = [documentsDirectory stringByAppendingPathComponent:fileName];
+        return path;
+    }
+    else if (os == ABSaveSystemOSMacOSX)
+    {
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSString *folderPath = [NSString stringWithFormat:@"~/Library/Application Support/%@/", [self appName]];
+        folderPath = [folderPath stringByExpandingTildeInPath];
+        if ([fileManager fileExistsAtPath:folderPath] == NO)
+        {
+            [fileManager createDirectoryAtPath:folderPath withIntermediateDirectories:NO attributes:nil error:nil];
+        }
+        return  [folderPath stringByAppendingPathComponent:fileName];
+    }
+
+    return nil;
+}
+
++(NSMutableDictionary*) loadDictionary
+{
+    NSData *binaryFile = [NSData dataWithContentsOfFile:[self filePath]];
+    
+    if (binaryFile == nil) {
+        return nil;
+    }
+    
+    NSMutableDictionary *dictionary;
+    //Either Decrypt saved data or just load it
+    if (ENCRYPTION_ENABLED) {
+        NSData *dataKey = [AESKEY dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *decryptedData = [binaryFile decryptedWithKey:dataKey];
+        dictionary = [NSKeyedUnarchiver unarchiveObjectWithData:decryptedData];
+    } else {
+        dictionary = [NSKeyedUnarchiver unarchiveObjectWithData:binaryFile];
+    }
+    
+    return dictionary;
 }
 
 
 
+#pragma mark - Objects
 #pragma mark - NSData
 +(void) saveData:(NSData*)data key:(NSString*)key
 {
@@ -51,112 +106,141 @@
     
 }
 
-+(NSMutableDictionary*) loadDictionary
-{
-    NSData *binaryFile = [NSData dataWithContentsOfFile:[self filePath]];
-    
-    if (binaryFile == NULL) {
-        return nil;
-    }
-    
-    NSMutableDictionary *dictionary;
-    //Either Decrypt saved data or just load it
-    if (ENCRYPTION_ENABLED) {
-        NSData *dataKey = [AESKEY dataUsingEncoding:NSUTF8StringEncoding];
-        NSData *decryptedData = [binaryFile decryptedWithKey:dataKey];
-        dictionary = [NSKeyedUnarchiver unarchiveObjectWithData:decryptedData];
-    } else {
-        dictionary = [NSKeyedUnarchiver unarchiveObjectWithData:binaryFile];
-    }
-    
-    return dictionary;
-}
-
 +(NSData*) dataForKey:(NSString*)key
 {
     NSMutableDictionary *tempDic = [self loadDictionary];
     
-    //Get NSData for specific key
+    //Retrieve NSData for specific key
     NSData *loadedData = [tempDic objectForKey:key];
-    return loadedData;
-}
-
-
-
-#pragma mark - NSInteger
-+(void) saveInteger:(NSInteger)integer key:(NSString*)key
-{
-    NSNumber *object = [NSNumber numberWithInteger:integer];
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:object];
-    [self saveData:data key:key];
-}
-
-+(NSInteger) integerForKey:(NSString*)key
-{
-    NSData *data = [self dataForKey:key];
-    if (data != nil) {
-        NSNumber *object = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-        return [object integerValue];
+    
+    //Check if data exists for key
+    if (loadedData != nil)
+    {
+        return loadedData;
     }
-    return 0;
-}
-
-
-
-#pragma mark - BOOL
-+(void) saveBool:(BOOL)boolean key:(NSString*)key
-{
-    NSNumber *object = [NSNumber numberWithBool:boolean];
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:object];
-    [self saveData:data key:key];
-}
-
-+(BOOL) boolForKey:(NSString*)key
-{
-    NSData *data = [self dataForKey:key];
-    if (data != nil) {
-        NSNumber *object = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-        return [object boolValue];
-    }
-    return NO;
-}
-
-
-
-#pragma mark - NSDate
-+(void) saveDate:(NSDate*)date key:(NSString*)key
-{
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:date];
-    [self saveData:data key:key];
-}
-
-+(NSDate*) dateForKey:(NSString*)key
-{
-    NSData *data = [self dataForKey:key];
-    if (data != nil) {
-        NSDate *date = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-        return date;
+    else
+    {
+        NSLog(@"ABSaveSystem ERROR: objectForKey:\"%@\" -> object for key does not exist!", key);
     }
     return nil;
 }
 
+
+#pragma mark - Object
++(void) saveObject:(id)object key:(NSString*)key
+{
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:object];
+    [self saveData:data key:key];
+}
+
++(id) objectForKey:(NSString*)key checkClass:(Class)aClass
+{
+    NSData *data = [self dataForKey:key];
+    if (data != nil)
+    {
+        //Check that the correct kind of class was retrieved from storage (skip check if class is not set)
+        id object = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        if (aClass == nil || [object isKindOfClass:aClass])
+        {
+            return object;
+        }
+        else
+        {
+            NSLog(@"ABSaveSystem ERROR: objectForKey:\"%@\" -> saved object is %@ not a %@", key, [object class],  aClass);
+        }
+    }
+    return nil;
+}
+
++(id) objectForKey:(NSString*)key
+{
+    return [self objectForKey:key checkClass:nil];
+}
+
+
+#pragma mark - NSString
++(void) saveString:(NSString*)string key:(NSString*)key
+{
+    [self saveObject:string key:key];
+}
+
++(NSString*) stringForKey:(NSString*)key
+{
+    return [self objectForKey:key checkClass:[NSString class]];
+}
 
 
 #pragma mark - NSNumber
 +(void) saveNumber:(NSNumber*)number key:(NSString*)key
 {
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:number];
-    [self saveData:data key:key];
+    [self saveObject:number key:key];
 }
 
 +(NSNumber*) numberForKey:(NSString*)key
 {
-    NSData *data = [self dataForKey:key];
-    if (data != nil) {
-        NSNumber *number = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-        return number;
+    return [self objectForKey:key checkClass:[NSNumber class]];
+}
+
+
+#pragma mark - NSDate
++(void) saveDate:(NSDate*)date key:(NSString*)key
+{
+    [self saveObject:date key:key];
+}
+
++(NSDate*) dateForKey:(NSString*)key
+{
+    return [self objectForKey:key checkClass:[NSDate class]];
+}
+
+
+
+#pragma mark - Primitives
+#pragma mark - NSInteger
++(void) saveInteger:(NSInteger)integer key:(NSString*)key
+{
+    [self saveNumber:[NSNumber numberWithInteger:integer] key:key];
+}
+
++(NSInteger) integerForKey:(NSString*)key
+{
+    NSNumber *number = [self numberForKey:key];
+    if (number != nil) {
+        return [number integerValue];
     }
-    return nil;
+    return 0;
+}
+
+
+#pragma mark - CGFloat
++(void) saveFloat:(CGFloat)aFloat key:(NSString*)key
+{
+    [self saveNumber:[NSNumber numberWithFloat:aFloat] key:key];
+}
+
++(CGFloat) floatForKey:(NSString*)key
+{
+    NSNumber *number = [self numberForKey:key];
+    if (number != nil) {
+        return [number floatValue];
+    }
+    return 0.0f;
+}
+
+
+#pragma mark - BOOL
++(void) saveBool:(BOOL)boolean key:(NSString*)key
+{
+    [self saveNumber:[NSNumber numberWithBool:boolean] key:key];
+}
+
++(BOOL) boolForKey:(NSString*)key
+{
+    NSNumber *number = [self numberForKey:key];
+    if (number != nil) {
+        return [number boolValue];
+    }
+    return NO;
 }
 
 
@@ -173,11 +257,11 @@
     NSLog(@"ABSaveSystem: logSavedValues -> START LOG");
     
     [tempDic enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
-    {
-        NSString *valueString = [NSKeyedUnarchiver unarchiveObjectWithData:obj];
-        
-        NSLog(@"ABSaveSystem: logSavedValues -> Key:%@ -> %@", key, valueString);
-    }];
+     {
+         NSString *valueString = [NSKeyedUnarchiver unarchiveObjectWithData:obj];
+         
+         NSLog(@"ABSaveSystem: logSavedValues -> Key:%@ -> %@", key, valueString);
+     }];
     
     NSLog(@"ABSaveSystem: logSavedValues -> END LOG");
 }
