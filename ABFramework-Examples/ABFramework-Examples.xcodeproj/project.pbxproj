@@ -35,6 +35,7 @@
 		3CB23BAA16BD348B007E6E39 /* ABTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB23B9C16BD348B007E6E39 /* ABTabBarController.m */; };
 		3CB23BAB16BD348B007E6E39 /* ABTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB23B9E16BD348B007E6E39 /* ABTabBarItem.m */; };
 		3CB23BAC16BD348B007E6E39 /* ABTabButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB23BA016BD348B007E6E39 /* ABTabButton.m */; };
+		3CD78ADF16C3DD78006C4B21 /* ABSaveSystemExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD78ADE16C3DD78006C4B21 /* ABSaveSystemExample.m */; };
 		3CE5668116B6966D00915391 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE5668016B6966D00915391 /* UIKit.framework */; };
 		3CE5668316B6966D00915391 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE5668216B6966D00915391 /* Foundation.framework */; };
 		3CE5668516B6966D00915391 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE5668416B6966D00915391 /* CoreGraphics.framework */; };
@@ -71,6 +72,10 @@
 		3C4A880A16C2DC4900BB774D /* UILabel+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+ABFramework.m"; sourceTree = "<group>"; };
 		3C4A880D16C2DCD300BB774D /* ABButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABButton.h; sourceTree = "<group>"; };
 		3C4A880E16C2DCD300BB774D /* ABButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABButton.m; sourceTree = "<group>"; };
+		3C4ABB8016C3CA9600A73CDC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		3C4ABB8316C3CA9600A73CDC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		3C4ABB8416C3CA9600A73CDC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		3C4ABB8516C3CA9600A73CDC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3C5D960116BA889800B37045 /* ExampleSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleSelectViewController.h; sourceTree = "<group>"; };
 		3C5D960216BA889800B37045 /* ExampleSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleSelectViewController.m; sourceTree = "<group>"; };
 		3C5D960516BA89C500B37045 /* ABSwitchExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSwitchExample.h; sourceTree = "<group>"; };
@@ -111,6 +116,8 @@
 		3CB23B9E16BD348B007E6E39 /* ABTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTabBarItem.m; sourceTree = "<group>"; };
 		3CB23B9F16BD348B007E6E39 /* ABTabButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTabButton.h; sourceTree = "<group>"; };
 		3CB23BA016BD348B007E6E39 /* ABTabButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTabButton.m; sourceTree = "<group>"; };
+		3CD78ADD16C3DD78006C4B21 /* ABSaveSystemExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSaveSystemExample.h; sourceTree = "<group>"; };
+		3CD78ADE16C3DD78006C4B21 /* ABSaveSystemExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSaveSystemExample.m; sourceTree = "<group>"; };
 		3CE5667C16B6966D00915391 /* ABFramework-Examples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ABFramework-Examples.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CE5668016B6966D00915391 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3CE5668216B6966D00915391 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -200,6 +207,16 @@
 			path = ABButton;
 			sourceTree = "<group>";
 		};
+		3C4ABB8216C3CA9600A73CDC /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3C4ABB8316C3CA9600A73CDC /* AppKit.framework */,
+				3C4ABB8416C3CA9600A73CDC /* CoreData.framework */,
+				3C4ABB8516C3CA9600A73CDC /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
 		3C5D960016BA887900B37045 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +233,8 @@
 			children = (
 				3C5D960516BA89C500B37045 /* ABSwitchExample.h */,
 				3C5D960616BA89C500B37045 /* ABSwitchExample.m */,
+				3CD78ADD16C3DD78006C4B21 /* ABSaveSystemExample.h */,
+				3CD78ADE16C3DD78006C4B21 /* ABSaveSystemExample.m */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -386,6 +405,8 @@
 				3CE5668016B6966D00915391 /* UIKit.framework */,
 				3CE5668216B6966D00915391 /* Foundation.framework */,
 				3CE5668416B6966D00915391 /* CoreGraphics.framework */,
+				3C4ABB8016C3CA9600A73CDC /* Cocoa.framework */,
+				3C4ABB8216C3CA9600A73CDC /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -607,6 +628,7 @@
 				3C4A880816C2DC0600BB774D /* ABStackController.m in Sources */,
 				3C4A880B16C2DC4900BB774D /* UILabel+ABFramework.m in Sources */,
 				3C4A880F16C2DCD300BB774D /* ABButton.m in Sources */,
+				3CD78ADF16C3DD78006C4B21 /* ABSaveSystemExample.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

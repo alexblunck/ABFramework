@@ -19,8 +19,8 @@ APPLE FRAMEWORKS
 
 
 /*
-UTILITIES
-*/
+ UTILITIES
+ */
 #import "ABMacros.h"
 #import "ABReachability.h"
 #import "ABFrame.h"
@@ -36,8 +36,8 @@ UTILITIES
 
 
 /*
-CATEGORIES
-*/
+ CATEGORIES
+ */
 #import "NSData+ABFramework.h"
 #import "NSDate+ABFramework.h"
 #import "NSDateComponents+ABFramework.h"
@@ -76,7 +76,3 @@ CATEGORIES
 #import "ABStackController.h"
 #import "ABLabel.h"
 #import "ABButton.h"
-
-
-
-

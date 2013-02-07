@@ -10,6 +10,9 @@
       <FileRef
          location = "group:ABFramework.h">
       </FileRef>
+      <FileRef
+         location = "group:ABFramework-Mac.h">
+      </FileRef>
       <Group
          location = "group:Categories"
          name = "Categories">
@@ -260,5 +263,8 @@
    </Group>
    <FileRef
       location = "group:ABFramework-Examples/ABFramework-Examples.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ABFramework-Examples-Mac/ABFramework-Examples-Mac.xcodeproj">
    </FileRef>
 </Workspace>
