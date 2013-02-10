@@ -64,6 +64,35 @@
     
 }
 
+
+
+#pragma mark - Reset
+-(void) resetStack
+{
+    //Reset nextOriginY to 0
+    _nextOriginY = 0.0f;
+    
+    //Remove all views
+    for (UIView *view in _viewArray)
+    {
+        [view removeFromSuperview];
+    }
+    
+    //Empty Array
+    [_viewArray removeAllObjects];
+    
+    //Reset scrollView contentSize
+    _scrollView.contentSize = CGSizeMake(_scrollView.contentSize.width, 0.0f);
+    
+    //Reset own frame if fixedHeight wasn't set
+    if (!_isFixedHeight)
+    {
+        self.frame = CGRectChangingSizeHeight(self.frame, 0.0f);
+    }
+}
+
+
+
 #pragma mark - Add Views
 -(void) addView:(UIView*)newView
 {
