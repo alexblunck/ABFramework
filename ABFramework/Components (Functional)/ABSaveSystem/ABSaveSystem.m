@@ -120,7 +120,7 @@
     }
     else
     {
-        NSLog(@"ABSaveSystem ERROR: objectForKey:\"%@\" -> object for key does not exist!", key);
+        NSLog(@"ABSaveSystem ERROR: dataForKey:\"%@\" -> data for key does not exist!", key);
     }
     return nil;
 }
@@ -138,9 +138,9 @@
     NSData *data = [self dataForKey:key];
     if (data != nil)
     {
-        //Check that the correct kind of class was retrieved from storage (skip check if class is not set)
+        //Check that the correct kind of class was retrieved from storage (skip check if aClass is not set)
         id object = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-        if (aClass == nil || [object isKindOfClass:aClass])
+        if ([object isKindOfClass:aClass] || aClass == nil)
         {
             return object;
         }
