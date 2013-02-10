@@ -28,11 +28,10 @@ CGSize CGSizeOffsetWidth(CGSize size, CGFloat sizeWidthBy);
 //Offset only the Height Size value of a CGSize
 CGSize CGSizeOffsetHeight(CGSize size, CGFloat sizeHeightBy);
 
-//Exact size of a string in a specific UILabel
-+(CGSize) sizeForText:(NSString*)text withLabel:(UILabel*)label;
-
 //CGSize of a specific image
 CGSize CGSizeFromUIImageName(NSString* imageName);
+//Exact size of a string in a specific UILabel
+CGSize CGSizeForTextInLabel(NSString *text, UILabel *label);
 
 /*
  CGRect
@@ -80,6 +79,8 @@ CGRect CGRectOffsetSizeHeight (CGRect rect, CGFloat sizeHeightBy);
 
 //CGRect for CGRect right inside of another CGRect
 CGRect CGRectInsideRectRight (CGRect rect, CGRect rectToRightIn);
+//CGRect for CGRect above a certain point
+CGRect CGRectAbovePointY(CGRect rect, CGFloat pointY);
 
 //Returns zeroed CGRect for an imageName (located in bundle)
 +(CGRect) frameForImageName:(NSString*)imageName;

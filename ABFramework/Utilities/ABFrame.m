@@ -48,9 +48,8 @@ CGSize CGSizeFromUIImageName(NSString* imageName)
     return image.size;
 }
 
-
 //Exact size of a string in a specific UILabel
-+(CGSize) sizeForText:(NSString*)text withLabel:(UILabel*)label
+CGSize CGSizeForTextInLabel(NSString *text, UILabel *label)
 {
     UILabel *l = [label abCopy];
     l.text = text;
@@ -198,6 +197,11 @@ CGRect CGRectInsideRectRight (CGRect rect, CGRect rectToRightIn)
     //CGRectChangingOrigin(rect, rectToRightIn.size.width-rect.size.width, <#CGFloat originY#>)
 }
 
+//CGRect for CGRect above a certain point
+CGRect CGRectAbovePointY(CGRect rect, CGFloat pointY)
+{
+    return CGRectChangingOriginY(rect, pointY - rect.size.height);
+}
 
 
 //Returns zeroed CGRect for an imageName (located in bundle)
