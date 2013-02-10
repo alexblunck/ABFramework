@@ -11,7 +11,7 @@
 @interface ABSelectView () <ABSelectViewItemDelegate>{
     UIView *_selectionTable;
     UIView *_shadowMask;
-    void (^_completionBlock) (int selectedIndex);
+    ABBlockIndex _completionBlock;
 }
 
 @end
@@ -23,7 +23,7 @@
  WithStringArray:(NSArray*)stringArray
     defaultIndex:(int)defaultIndex
            theme:(ABSelectViewTheme*)theme
- completionBlock:( void (^) (int selectedIndex) )block
+ completionBlock:(ABBlockIndex)block
 {
     return [[self alloc] initWithView:view StringArray:stringArray defaultIndex:defaultIndex theme:theme completionBlock:block];
 }
@@ -31,7 +31,7 @@
 +(id) showWithStringArray:(NSArray*)stringArray
              defaultIndex:(int)defaultIndex
                     theme:(ABSelectViewTheme*)theme
-          completionBlock:( void (^) (int selectedIndex) )block
+          completionBlock:(ABBlockIndex)block
 {
     return [[self alloc] initWithView:nil StringArray:stringArray defaultIndex:defaultIndex theme:theme completionBlock:block];
 }
@@ -43,7 +43,7 @@
        StringArray:(NSArray*)stringArray
       defaultIndex:(int)defaultIndex
              theme:(ABSelectViewTheme*)theme
-   completionBlock:( void (^) (int selectedIndex) )block
+   completionBlock:(ABBlockIndex)block
 {
     self = [super init];
     if (self) {

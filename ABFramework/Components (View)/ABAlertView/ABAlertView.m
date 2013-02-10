@@ -9,7 +9,7 @@
 #import "ABAlertView.h"
 
 @interface ABAlertView () {
-    void (^_completionBlock) (NSInteger selectedIndex);
+    ABBlockIndex _completionBlock;
 }
 @end
 
@@ -18,7 +18,7 @@
 #pragma mark - Utility
 +(id) showAlertWithTitle:(NSString *)title
                  message:(NSString *)message
-                   block:( void (^) (NSInteger selectedIndex) )block
+                   block:(ABBlockIndex)block
        cancelButtonTitle:(NSString *)cancelButtonTitle
        otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION
 {
@@ -30,7 +30,7 @@
 #pragma mark - Initializer
 -(id) initAlertWithTitle:(NSString *)title
                  message:(NSString *)message
-                   block:( void (^) (NSInteger selectedIndex) )block
+                   block:(ABBlockIndex)block
        cancelButtonTitle:(NSString *)cancelButtonTitle
        otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION
 {

@@ -9,27 +9,27 @@
 #import "ABButton.h"
 
 @interface ABButton () {
-    void (^_actionBlock) ();
+    ABBlockVoid _actionBlock;
 }
 @end
 
 @implementation ABButton
 
 #pragma mark - Utility
-+(id) buttonWithActionBlock:(void(^)())block
++(id) buttonWithActionBlock:(ABBlockVoid)actionBlock
 {
-    return [[self alloc] initWithActionBlock:block];
+    return [[self alloc] initWithActionBlock:actionBlock];
 }
 
 
 
 #pragma mark - Initializer
--(id) initWithActionBlock:(void(^)())block
+-(id) initWithActionBlock:(ABBlockVoid)actionBlock
 {
     self = [super init];
     if (self) {
         
-        _actionBlock = block;
+        _actionBlock = actionBlock;
         
         [self addTarget:self action:@selector(selectedButton) forControlEvents:UIControlEventTouchUpInside];
         

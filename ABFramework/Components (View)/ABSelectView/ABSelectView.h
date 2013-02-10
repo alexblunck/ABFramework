@@ -10,19 +10,19 @@
 #import "ABSelectViewTheme.h"
 #import "ABSelectViewItem.h"
 
-@interface ABSelectView : UIView
+@interface ABSelectView : ABView
 
 //Utility
 +(id) showWithStringArray:(NSArray*)stringArray
              defaultIndex:(int)defaultIndex
                     theme:(ABSelectViewTheme*)theme
-          completionBlock:( void (^) (int selectedIndex) )block;
+          completionBlock:(ABBlockIndex)block;
 
 +(id) showInView:(UIView*)view
  WithStringArray:(NSArray*)stringArray
     defaultIndex:(int)defaultIndex
            theme:(ABSelectViewTheme*)theme
- completionBlock:( void (^) (int selectedIndex) )block;
+ completionBlock:(ABBlockIndex)block;
 
 @property (nonatomic, assign) BOOL landscape;
 

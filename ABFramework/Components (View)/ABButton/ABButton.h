@@ -11,7 +11,7 @@
 @interface ABButton : UIButton
 
 //Utility
-+(id) buttonWithActionBlock:(void(^)())block;
++(id) buttonWithActionBlock:(ABBlockVoid)actionBlock;
 
 @property(nonatomic, strong) NSDictionary *userData;
 

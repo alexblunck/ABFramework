@@ -13,7 +13,7 @@
 //Utility
 +(id) showAlertWithTitle:(NSString *)title
                  message:(NSString *)message
-                   block:( void (^) (NSInteger selectedIndex) )block
+                   block:(ABBlockIndex)block
        cancelButtonTitle:(NSString *)cancelButtonTitle
        otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION;
 

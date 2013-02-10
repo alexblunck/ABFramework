@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ABDatePickerView : UIView
+@interface ABDatePickerView : ABView
 
 //Initializer
 -(id) initWithDate:(NSDate*)date completionBlock:( void (^) (NSDate* selectedDate) )block;
