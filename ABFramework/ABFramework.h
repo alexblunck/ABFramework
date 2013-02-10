@@ -21,6 +21,7 @@ APPLE FRAMEWORKS
 /*
  UTILITIES
  */
+#import "ABTypes.h"
 #import "ABMacros.h"
 #import "ABReachability.h"
 #import "ABFrame.h"
@@ -53,6 +54,7 @@ APPLE FRAMEWORKS
 /*
  SUB CLASSES
  */
+#import "ABView.h"
 #import "ABViewController.h"
 #import "ABNavigationController.h"
 

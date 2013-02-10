@@ -16,7 +16,6 @@
 //-(void) abSwitchDidMove:(ABSwitch*)sender;
 @end
 
-@interface ABSwitch : UIView
 @interface ABSwitch : ABView
 
 //Initializer

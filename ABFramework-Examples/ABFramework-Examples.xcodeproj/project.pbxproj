@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C466F3116C7DC23005463FD /* ABView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C466F3016C7DC23005463FD /* ABView.m */; };
 		3C4A880716C2DC0600BB774D /* ABLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4A880316C2DC0600BB774D /* ABLabel.m */; };
 		3C4A880816C2DC0600BB774D /* ABStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4A880616C2DC0600BB774D /* ABStackController.m */; };
 		3C4A880B16C2DC4900BB774D /* UILabel+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4A880A16C2DC4900BB774D /* UILabel+ABFramework.m */; };
@@ -64,6 +65,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C466F2E16C7DC16005463FD /* ABTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTypes.h; sourceTree = "<group>"; };
+		3C466F2F16C7DC23005463FD /* ABView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABView.h; sourceTree = "<group>"; };
+		3C466F3016C7DC23005463FD /* ABView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABView.m; sourceTree = "<group>"; };
 		3C4A880216C2DC0600BB774D /* ABLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABLabel.h; sourceTree = "<group>"; };
 		3C4A880316C2DC0600BB774D /* ABLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABLabel.m; sourceTree = "<group>"; };
 		3C4A880516C2DC0600BB774D /* ABStackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABStackController.h; sourceTree = "<group>"; };
@@ -496,6 +500,8 @@
 		3CE568AC16B69F6800915391 /* Sub Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3C466F2F16C7DC23005463FD /* ABView.h */,
+				3C466F3016C7DC23005463FD /* ABView.m */,
 				3CE568AD16B69F6800915391 /* ABNavigationController.h */,
 				3CE568AE16B69F6800915391 /* ABNavigationController.m */,
 				3CE568AF16B69F6800915391 /* ABViewController.h */,
@@ -507,6 +513,7 @@
 		3CE568B116B69F6800915391 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				3C466F2E16C7DC16005463FD /* ABTypes.h */,
 				3CE568B216B69F6800915391 /* ABCommon.h */,
 				3CE568B316B69F6800915391 /* ABCommon.m */,
 				3CE568B416B69F6800915391 /* ABFrame.h */,
@@ -629,6 +636,7 @@
 				3C4A880B16C2DC4900BB774D /* UILabel+ABFramework.m in Sources */,
 				3C4A880F16C2DCD300BB774D /* ABButton.m in Sources */,
 				3CD78ADF16C3DD78006C4B21 /* ABSaveSystemExample.m in Sources */,
+				3C466F3116C7DC23005463FD /* ABView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
