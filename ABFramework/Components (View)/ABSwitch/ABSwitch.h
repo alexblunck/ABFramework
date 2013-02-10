@@ -27,7 +27,7 @@
 @property (nonatomic, assign) NSInteger currentIndex;
 
 //Block that is called everytime index changes
-@property (nonatomic, assign) void (^block) (NSInteger currentIndex);
+@property (nonatomic, assign) ABBlockIndex block;
 
 //Delegate as alternative to using Blocks
 @property (nonatomic, assign) id <ABSwitchDelegate> delegate;
