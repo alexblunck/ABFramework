@@ -13,7 +13,7 @@
 -(void) selectedIndex:(int)index;
 @end
 
-@interface ABSelectViewItem : UIView
+@interface ABSelectViewItem : ABView
 
 //Utility
 +(id) itemWithString:(NSString*)string image:(UIImage*)image index:(int)index;

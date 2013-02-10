@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ABStackController : UIView
+@interface ABStackController : ABView
 
 //Initializer
 -(id) initWithWidth:(CGFloat)width fixedHeight:(CGFloat)fixedHeight;

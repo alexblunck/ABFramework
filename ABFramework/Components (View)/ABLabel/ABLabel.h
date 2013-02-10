@@ -15,7 +15,7 @@ typedef enum {
     ABLabelShadowLetterpress
 } ABLabelShadow;
 
-@interface ABLabel : UIView
+@interface ABLabel : ABView
 
 //Tell the ABLabel view to adjust its frame to fit only its text value
 -(void) trim;
