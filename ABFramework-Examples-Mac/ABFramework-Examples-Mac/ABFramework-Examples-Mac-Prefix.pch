@@ -1,9 +1,0 @@
-//
-// Prefix header for all source files of the 'ABFramework-Examples-Mac' target in the 'ABFramework-Examples-Mac' project
-//
-
-#ifdef __OBJC__
-    #import <Cocoa/Cocoa.h>
-#endif
-
-#import "ABFramework-Mac.h"
