@@ -13,8 +13,8 @@
 /*
  CGFLoat
  */
-//Origin Y value of the bottom of a CGRect
-CGFloat CGFloatBottomOriginY(CGRect rect);
+//Y Point value of the bottom edge of a CGRect
+CGFloat CGFloatBottomPointY(CGRect rect);
 
 
 
@@ -32,6 +32,8 @@ CGSize CGSizeOffsetHeight(CGSize size, CGFloat sizeHeightBy);
 CGSize CGSizeFromUIImageName(NSString* imageName);
 //Exact size of a string in a specific UILabel
 CGSize CGSizeForTextInLabel(NSString *text, UILabel *label);
+
+
 
 /*
  CGRect
@@ -77,12 +79,13 @@ CGRect CGRectOffsetSizeWidth (CGRect rect, CGFloat sizeWidthBy);
 //Offset only Height Size of a CGRect
 CGRect CGRectOffsetSizeHeight (CGRect rect, CGFloat sizeHeightBy);
 
-//CGRect for CGRect right inside of another CGRect
+//CGRect for CGRect on the right edge of another CGRect
 CGRect CGRectInsideRectRight (CGRect rect, CGRect rectToRightIn);
+//CGRect for CGRect on the bottom edge of another CGRect
+CGRect CGRectInsideRectBottom (CGRect rect, CGRect rectToBottomIn);
+//CGRect for CGRect in the top right corner of another CGRect
+CGRect CGRectInsideRectTopRight (CGRect rect, CGRect rectToTopRightIn, CGFloat padding);
 //CGRect for CGRect above a certain point
 CGRect CGRectAbovePointY(CGRect rect, CGFloat pointY);
-
-//Returns zeroed CGRect for an imageName (located in bundle)
-+(CGRect) frameForImageName:(NSString*)imageName;
 
 @end

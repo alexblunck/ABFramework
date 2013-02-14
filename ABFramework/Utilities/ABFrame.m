@@ -194,21 +194,32 @@ CGRect CGRectOffsetSizeHeight (CGRect rect, CGFloat sizeHeightBy)
 CGRect CGRectInsideRectRight (CGRect rect, CGRect rectToRightIn)
 {
     return  CGRectChangingOriginX(rect, rectToRightIn.size.width-rect.size.width);
-    //CGRectChangingOrigin(rect, rectToRightIn.size.width-rect.size.width, <#CGFloat originY#>)
+}
+
+//CGRect for CGRect on the bottom edge of another CGRect
+CGRect CGRectInsideRectBottom (CGRect rect, CGRect rectToBottomIn)
+{
+    return CGRectChangingOriginY(rect, rectToBottomIn.size.height-rect.size.height);
+}
+
+//CGRect for CGRect in the top right corner of another CGRect
+CGRect CGRectInsideRectTopRight (CGRect rect, CGRect rectToTopRightIn, CGFloat padding)
+{
+    CGRect newRect;
+    //Top
+    newRect = CGRectChangingOriginY(rect, 0);
+    //Right
+    newRect = CGRectInsideRectRight(rect, rectToTopRightIn);
+    //Padding
+    newRect = CGRectOffsetOrigin(newRect, -padding, padding);
+    
+    return newRect;
 }
 
 //CGRect for CGRect above a certain point
 CGRect CGRectAbovePointY(CGRect rect, CGFloat pointY)
 {
     return CGRectChangingOriginY(rect, pointY - rect.size.height);
-}
-
-
-//Returns zeroed CGRect for an imageName (located in bundle)
-+(CGRect) frameForImageName:(NSString*)imageName
-{
-    UIImage *image = [UIImage imageNamed:imageName];
-    return CGRectMake(0, 0, image.size.width, image.size.height);
 }
 
 @end
