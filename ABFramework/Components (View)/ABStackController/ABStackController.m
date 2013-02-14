@@ -133,7 +133,7 @@
     }
     
     //Iterate nextOriginY
-    _nextOriginY = CGFloatBottomOriginY(containmentView.frame);
+    _nextOriginY = containmentView.bottom;
 }
 
 -(void) addViews:(NSArray*)newViews
