@@ -24,6 +24,8 @@
 		3C5D962716BAA9EB00B37045 /* switch2_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C5D962316BAA9EB00B37045 /* switch2_background@2x.png */; };
 		3C5D962816BAA9EB00B37045 /* switch2_switch.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C5D962416BAA9EB00B37045 /* switch2_switch.png */; };
 		3C5D962916BAA9EB00B37045 /* switch2_switch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C5D962516BAA9EB00B37045 /* switch2_switch@2x.png */; };
+		3C7FC3FF16CD197D0096437F /* UIView+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7FC3FE16CD197D0096437F /* UIView+ABFramework.m */; };
+		3C7FC40316CD19850096437F /* ABTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7FC40216CD19850096437F /* ABTextField.m */; };
 		3CB23BA116BD348B007E6E39 /* ABSaveSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB23B8316BD348B007E6E39 /* ABSaveSystem.m */; };
 		3CB23BA216BD348B007E6E39 /* ABAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB23B8716BD348B007E6E39 /* ABAlertView.m */; };
 		3CB23BA316BD348B007E6E39 /* ABDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB23B8A16BD348B007E6E39 /* ABDatePickerView.m */; };
@@ -96,6 +98,11 @@
 		3C5D962316BAA9EB00B37045 /* switch2_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch2_background@2x.png"; sourceTree = "<group>"; };
 		3C5D962416BAA9EB00B37045 /* switch2_switch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch2_switch.png; sourceTree = "<group>"; };
 		3C5D962516BAA9EB00B37045 /* switch2_switch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch2_switch@2x.png"; sourceTree = "<group>"; };
+		3C7FC3FD16CD197D0096437F /* UIView+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ABFramework.h"; sourceTree = "<group>"; };
+		3C7FC3FE16CD197D0096437F /* UIView+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ABFramework.m"; sourceTree = "<group>"; };
+		3C7FC40116CD19850096437F /* ABTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTextField.h; sourceTree = "<group>"; };
+		3C7FC40216CD19850096437F /* ABTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTextField.m; sourceTree = "<group>"; };
+		3C7FC40416CD1A250096437F /* ABUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABUtilities.h; sourceTree = "<group>"; };
 		3CB23B8216BD348B007E6E39 /* ABSaveSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSaveSystem.h; sourceTree = "<group>"; };
 		3CB23B8316BD348B007E6E39 /* ABSaveSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSaveSystem.m; sourceTree = "<group>"; };
 		3CB23B8616BD348B007E6E39 /* ABAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABAlertView.h; sourceTree = "<group>"; };
@@ -285,6 +292,15 @@
 			path = ABSwitch;
 			sourceTree = "<group>";
 		};
+		3C7FC40016CD19850096437F /* ABTextField */ = {
+			isa = PBXGroup;
+			children = (
+				3C7FC40116CD19850096437F /* ABTextField.h */,
+				3C7FC40216CD19850096437F /* ABTextField.m */,
+			);
+			path = ABTextField;
+			sourceTree = "<group>";
+		};
 		3CB23B8016BD348B007E6E39 /* Components (Functional) */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,6 +321,7 @@
 		3CB23B8416BD348B007E6E39 /* Components (View) */ = {
 			isa = PBXGroup;
 			children = (
+				3C7FC40016CD19850096437F /* ABTextField */,
 				3C4A880C16C2DCD300BB774D /* ABButton */,
 				3C4A880116C2DC0600BB774D /* ABLabel */,
 				3C4A880416C2DC0600BB774D /* ABStackController */,
@@ -466,6 +483,8 @@
 		3CE5687816B69F6800915391 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				3C7FC3FD16CD197D0096437F /* UIView+ABFramework.h */,
+				3C7FC3FE16CD197D0096437F /* UIView+ABFramework.m */,
 				3C4A880916C2DC4900BB774D /* UILabel+ABFramework.h */,
 				3C4A880A16C2DC4900BB774D /* UILabel+ABFramework.m */,
 				3CE5687916B69F6800915391 /* NSData+ABFramework.h */,
@@ -513,6 +532,7 @@
 		3CE568B116B69F6800915391 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				3C7FC40416CD1A250096437F /* ABUtilities.h */,
 				3C466F2E16C7DC16005463FD /* ABTypes.h */,
 				3CE568B216B69F6800915391 /* ABCommon.h */,
 				3CE568B316B69F6800915391 /* ABCommon.m */,
@@ -637,6 +657,8 @@
 				3C4A880F16C2DCD300BB774D /* ABButton.m in Sources */,
 				3CD78ADF16C3DD78006C4B21 /* ABSaveSystemExample.m in Sources */,
 				3C466F3116C7DC23005463FD /* ABView.m in Sources */,
+				3C7FC3FF16CD197D0096437F /* UIView+ABFramework.m in Sources */,
+				3C7FC40316CD19850096437F /* ABTextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

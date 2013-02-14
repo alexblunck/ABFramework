@@ -14,7 +14,7 @@
 +(BOOL) isOnWifiNetwork;
 
 //URL 's
-+(NSString *)urlEncodeUsingEncoding:(NSStringEncoding)encoding string:(NSString*)string;
++(NSString*) urlEncodeUsingEncoding:(NSStringEncoding)encoding string:(NSString*)string;
 
 //Toggle
 +(BOOL) toggleBoolean:(BOOL)boolean;
