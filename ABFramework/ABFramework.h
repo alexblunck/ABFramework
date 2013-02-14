@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 Ablfx. All rights reserved.
 //
 
-#define ABFRAMEWORK_VERSION 1.0
-#define ABFRAMEWORK_LAST_EDIT @"06.02.2013 - 20:04"
+#define ABFRAMEWORK_VERSION 0.1
+#define ABFRAMEWORK_LAST_EDIT @"14.02.2013 - 14:13"
 
 
 
@@ -21,6 +21,7 @@ APPLE FRAMEWORKS
 /*
  UTILITIES
  */
+#import "ABUtilities.h"
 #import "ABTypes.h"
 #import "ABMacros.h"
 #import "ABReachability.h"
@@ -48,7 +49,7 @@ APPLE FRAMEWORKS
 #import "NSString+ABFramework.h"
 #import "NSObject+ABFramework.h"
 #import "UILabel+ABFramework.h"
-
+#import "UIView+ABFramework.h"
 
 
 /*
@@ -63,18 +64,21 @@ APPLE FRAMEWORKS
 /*
  COMPONENTS
  */
-#import "ABAlertView.h"
-#import "ABDatePickerView.h"
-#import "ABImagePickerViewController.h"
-#import "ABSaveSystem.h"
-#import "ABSelectView.h"
-#import "ABSelectViewItem.h"
-#import "ABSelectViewTheme.h"
-#import "ABSwitch.h"
-#import "ABTabBar.h"
-#import "ABTabBarController.h"
-#import "ABTabBarItem.h"
-#import "ABTabButton.h"
-#import "ABStackController.h"
-#import "ABLabel.h"
-#import "ABButton.h"
+    //Functional
+    #import "ABSaveSystem.h"
+    //View
+    #import "ABAlertView.h"
+    #import "ABDatePickerView.h"
+    #import "ABImagePickerViewController.h"
+    #import "ABSelectView.h"
+    #import "ABSelectViewItem.h"
+    #import "ABSelectViewTheme.h"
+    #import "ABSwitch.h"
+    #import "ABTabBar.h"
+    #import "ABTabBarController.h"
+    #import "ABTabBarItem.h"
+    #import "ABTabButton.h"
+    #import "ABStackController.h"
+    #import "ABLabel.h"
+    #import "ABButton.h"
+    #import "ABTextField.h"
