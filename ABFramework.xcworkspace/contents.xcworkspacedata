@@ -14,6 +14,12 @@
          location = "group:Categories"
          name = "Categories">
          <FileRef
+            location = "group:UIColor+ABFramework.h">
+         </FileRef>
+         <FileRef
+            location = "group:UIColor+ABFramework.m">
+         </FileRef>
+         <FileRef
             location = "group:NSData+ABFramework.h">
          </FileRef>
          <FileRef
@@ -211,6 +217,16 @@
       <Group
          location = "group:Components (Functional)"
          name = "Components (Functional)">
+         <Group
+            location = "group:ABStoreKitHelper"
+            name = "ABStoreKitHelper">
+            <FileRef
+               location = "group:ABStoreKitHelper.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABStoreKitHelper.m">
+            </FileRef>
+         </Group>
          <Group
             location = "group:ABSaveSystem"
             name = "ABSaveSystem">
