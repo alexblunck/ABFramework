@@ -3,7 +3,7 @@
 //  ABFramework
 //
 //  Created by Alexander Blunck on 3/4/13.
-//  Copyright (c) 2013 Serrano - Ablfx. All rights reserved.
+//  Copyright (c) 2013 Ablfx. All rights reserved.
 //
 //  Source: http://stackoverflow.com/questions/1560081/how-can-i-create-a-uicolor-from-a-hex-string
 //
