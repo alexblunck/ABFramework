@@ -16,33 +16,39 @@
 @implementation ABAlertView
 
 #pragma mark - Utility
-+(id) showAlertWithTitle:(NSString *)title
-                 message:(NSString *)message
-                   block:(ABBlockIndex)block
-       cancelButtonTitle:(NSString *)cancelButtonTitle
-       otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION
++(id) showAlertWithTitle:(NSString*) title
+                 message:(NSString*) message
+                   block:(ABBlockIndex) block
+       cancelButtonTitle:(NSString*) cancelButtonTitle
+       otherButtonTitles:(NSArray*) otherButtonTitles
 {
-    return [[self alloc] initAlertWithTitle:title message:message block:block cancelButtonTitle:cancelButtonTitle otherButtonTitles:otherButtonTitles, nil];
+    return [[self alloc] initAlertWithTitle:title message:message block:block cancelButtonTitle:cancelButtonTitle otherButtonTitles:otherButtonTitles];
 }
 
 
 
 #pragma mark - Initializer
--(id) initAlertWithTitle:(NSString *)title
-                 message:(NSString *)message
-                   block:(ABBlockIndex)block
-       cancelButtonTitle:(NSString *)cancelButtonTitle
-       otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION
+-(id) initAlertWithTitle:(NSString*) title
+                 message:(NSString*) message
+                   block:(ABBlockIndex) block
+       cancelButtonTitle:(NSString*) cancelButtonTitle
+       otherButtonTitles:(NSArray*) otherButtonTitles
 {
-    self = [super initWithTitle:title message:message delegate:self cancelButtonTitle:cancelButtonTitle otherButtonTitles:otherButtonTitles, nil];
-    if (self) {
+    self = [super initWithTitle:title message:message delegate:self cancelButtonTitle:cancelButtonTitle otherButtonTitles:nil];
+    if (self)
+    {
+        for (NSString* buttonTitle in otherButtonTitles)
+        {
+            [self addButtonWithTitle:buttonTitle];
+        }
         
         _completionBlock = block;
         
         //Show Alert
         [self show];
         
-    } return self;
+    }
+    return self;
 }
 
 

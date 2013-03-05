@@ -11,11 +11,11 @@
 @interface ABAlertView : UIAlertView <UIAlertViewDelegate>
 
 //Utility
-+(id) showAlertWithTitle:(NSString *)title
-                 message:(NSString *)message
-                   block:(ABBlockIndex)block
-       cancelButtonTitle:(NSString *)cancelButtonTitle
-       otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION;
++(id) showAlertWithTitle:(NSString*) title
+                 message:(NSString*) message
+                   block:(ABBlockIndex) block
+       cancelButtonTitle:(NSString*) cancelButtonTitle
+       otherButtonTitles:(NSArray*) otherButtonTitles;
 
 
 
