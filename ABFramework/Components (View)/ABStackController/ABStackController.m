@@ -8,7 +8,8 @@
 
 #import "ABStackController.h"
 
-@interface ABStackController () {
+@interface ABStackController ()
+{
     //If a fixed height is set, views will be added to a scrollView,
     //otherwise the stack will grow with each added item
     BOOL _isFixedHeight;
@@ -124,7 +125,7 @@
     {
         //Add to scrollView
         [_scrollView addSubview:containmentView];
-        //Adjust scrollView frame to account for new view
+        //Adjust scrollView contentSize to account for new view
         _scrollView.contentSize = CGSizeOffsetHeight(_scrollView.contentSize, containmentView.bounds.size.height);
     }
     else
