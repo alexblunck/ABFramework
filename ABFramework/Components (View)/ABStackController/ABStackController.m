@@ -158,6 +158,17 @@
 {
     //Iterate nextOriginY by desired value
     _nextOriginY += padding;
+    
+    if (_isFixedHeight)
+    {
+        //Adjust scrollView contentSize to account for added padding
+        _scrollView.contentSize = CGSizeOffsetHeight(_scrollView.contentSize, padding);
+    }
+    else
+    {
+        //Adjust own view frame to account for added padding
+        self.frame = CGRectOffsetSizeHeight(self.frame, padding);
+    }
 }
 
 
