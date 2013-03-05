@@ -37,15 +37,24 @@ static ABDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 {
 	if (!_calendars) _calendars = [[NSMutableDictionary alloc] initWithCapacity:0];
     
+    NSString *keyName = [[NSOperationQueue currentQueue] name];
+    if (keyName == nil)
+    {
+        keyName = [NSString stringWithFormat:@"%p", (void *) [NSThread currentThread]];
+    }
+    NSCalendar *calendar = [_calendars objectForKey:keyName];
+    
+    /*
 	dispatch_queue_t queue = dispatch_get_current_queue();
 	NSString *queueLabel = [NSString stringWithUTF8String:dispatch_queue_get_label(queue)];
 	NSCalendar *calendar = [_calendars objectForKey:queueLabel];
-    
+    */
+     
 	if (!calendar) {
 		calendar = [[NSCalendar currentCalendar] copy];
 		calendar.firstWeekday = _firstWeekday;
 		calendar.minimumDaysInFirstWeek = (NSUInteger)_weekNumberingSystem;
-		[_calendars setObject:calendar forKey:queueLabel];
+		[_calendars setObject:calendar forKey:keyName];
 	}
     
     return calendar;
@@ -55,15 +64,24 @@ static ABDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 {
 	if (!_components) _components = [[NSMutableDictionary alloc] initWithCapacity:0];
 	
+    /*
 	dispatch_queue_t queue = dispatch_get_current_queue();
 	NSString *queueLabel = [NSString stringWithUTF8String:dispatch_queue_get_label(queue)];
-	NSDateComponents *component = [_components objectForKey:queueLabel];
+    */
+    
+    NSString *keyName = [[NSOperationQueue currentQueue] name];
+    if (keyName == nil)
+    {
+        keyName = [NSString stringWithFormat:@"%p", (void *) [NSThread currentThread]];
+    }
+    
+	NSDateComponents *component = [_components objectForKey:keyName];
     
 	if (!component) {
 		component = [[NSDateComponents alloc] init];
 		component.calendar = [self calendar];
 		if (_timeZone) component.timeZone = _timeZone;
-		[_components setObject:component forKey:queueLabel];
+		[_components setObject:component forKey:keyName];
 	}
     
 	[component setEra:NSUndefinedDateComponent];
@@ -85,16 +103,26 @@ static ABDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 {
 	if (!_formatters) _formatters = [[NSMutableDictionary alloc] initWithCapacity:0];
 	
+    /*
 	dispatch_queue_t queue = dispatch_get_current_queue();
 	NSString *queueLabel = [NSString stringWithUTF8String:dispatch_queue_get_label(queue)];
-	NSDateFormatter *formatter = [_formatters objectForKey:queueLabel];
+    */
+    
+    NSString *keyName = [[NSOperationQueue currentQueue] name];
+    if (keyName == nil)
+    {
+        keyName = [NSString stringWithFormat:@"%p", (void *) [NSThread currentThread]];
+    }
+     
+     
+	NSDateFormatter *formatter = [_formatters objectForKey:keyName];
     
 	if (!formatter) {
 		formatter = [[NSDateFormatter alloc] init];
 		formatter.calendar = [self calendar];
 		if (_locale) formatter.locale = _locale;
 		if (_timeZone) formatter.timeZone = _timeZone;
-		[_formatters setObject:formatter forKey:queueLabel];
+		[_formatters setObject:formatter forKey:keyName];
 	}
     
     return formatter;
