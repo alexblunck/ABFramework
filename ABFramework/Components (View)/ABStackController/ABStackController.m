@@ -38,6 +38,7 @@
         //Configuration
         _isFixedHeight = (fixedHeight > 0.0f) ? YES : NO;
         _nextOriginY = 0.0f;
+        self.delayTouch = NO;
         
         //ScrollView (only instantiate if a fixed height is set)
         if (_isFixedHeight)
@@ -45,6 +46,7 @@
             _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
             _scrollView.alwaysBounceVertical = YES;
             _scrollView.showsVerticalScrollIndicator = YES;
+            _scrollView.delaysContentTouches = self.delayTouch;
             [self addSubview:_scrollView];
         }
         
@@ -161,5 +163,13 @@
 
 
 #pragma mark - Accessors
+-(void) setDelayTouch:(BOOL)delayTouch
+{
+    _delayTouch = delayTouch;
+    if (_isFixedHeight)
+    {
+        _scrollView.delaysContentTouches = delayTouch;
+    }
+}
 
 @end
