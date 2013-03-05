@@ -59,7 +59,7 @@
         _label.frame = CGRectMake((cellBg.frame.size.width-(cellBg.frame.size.width-18))/2, 4, cellBg.frame.size.width-18, _label.frame.size.height);
         
         _label.adjustsFontSizeToFitWidth = YES;
-        _label.minimumFontSize = 10.0f;
+        //_label.minimumFontSize = 10.0f;
         
         //Button
         UIButton *button = [UIButton new];
