@@ -42,8 +42,9 @@
 
 
 #pragma mark - Trigger
--(void) show {
-    [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentModalViewController:self animated:YES];
+-(void) show
+{
+    [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:self animated:YES completion:nil];
 }
 
 
@@ -55,7 +56,7 @@
     
     _completionBlock(selectedImage);
     
-    [picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
