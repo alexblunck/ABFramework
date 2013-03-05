@@ -77,7 +77,8 @@
 
 -(void) tomorrowButtonSelected
 {
-    _datePicker.date = [[NSDate dateFromYear:[[NSDate date] year] month:[[NSDate date] monthOfYear] day:[[NSDate date] dayOfMonth] hour:0 minute:0] dateDaysAfter:1];
+    NSDate *now = [NSDate date];
+    _datePicker.date = [NSDate dateFromYear:now.year month:now.monthOfYear day:now.dayOfMonth hour:0 minute:0 second:0];
 }
 
 
