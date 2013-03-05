@@ -191,9 +191,13 @@ CGRect CGRectOffsetSizeHeight (CGRect rect, CGFloat sizeHeightBy)
 
 
 //CGRect for CGRect right inside of another CGRect
-CGRect CGRectInsideRectRight (CGRect rect, CGRect rectToRightIn)
+CGRect CGRectInsideRectRightS (CGRect rect, CGRect rectToRightIn)
 {
-    return  CGRectChangingOriginX(rect, rectToRightIn.size.width-rect.size.width);
+    return CGRectInsideRectRight(rect, rectToRightIn, 0.0f);
+}
+CGRect CGRectInsideRectRight (CGRect rect, CGRect rectToRightIn, CGFloat padding)
+{
+    return  CGRectChangingOriginX(rect, rectToRightIn.size.width-rect.size.width-padding);
 }
 
 //CGRect for CGRect on the bottom edge of another CGRect
@@ -209,7 +213,7 @@ CGRect CGRectInsideRectTopRight (CGRect rect, CGRect rectToTopRightIn, CGFloat p
     //Top
     newRect = CGRectChangingOriginY(rect, 0);
     //Right
-    newRect = CGRectInsideRectRight(rect, rectToTopRightIn);
+    newRect = CGRectInsideRectRightS(rect, rectToTopRightIn);
     //Padding
     newRect = CGRectOffsetOrigin(newRect, -padding, padding);
     
