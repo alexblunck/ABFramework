@@ -23,7 +23,10 @@ typedef enum {
 //Objects
 //
 
-//NSData
+//NSData (Encryption selectable)
++(void) saveData:(NSData*)data key:(NSString*)key encryption:(BOOL)encryption;
++(NSData*) dataForKey:(NSString*)key encryption:(BOOL)encryption;
+//NSData (Use "ENCRYPTION_ENABLED" setting)
 +(void) saveData:(NSData*)data key:(NSString*)key;
 +(NSData*) dataForKey:(NSString*)key;
 
@@ -62,10 +65,11 @@ typedef enum {
 +(BOOL) boolForKey:(NSString*)key;
 
 
+
 //
 //Misc
 //
 
-+(void) logSavedValues;
++(void) logSavedValues:(BOOL)encrypted;
 
 @end

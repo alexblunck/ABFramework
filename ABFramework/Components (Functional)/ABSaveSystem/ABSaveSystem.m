@@ -26,11 +26,12 @@
 #endif
 }
 
-+(NSString*) filePath
++(NSString*) filePathEncryption:(BOOL)encryption
 {
     ABSaveSystemOS os = [self os];
     
-    NSString *fileName = [NSString stringWithFormat:@"%@.abss", [[self appName] lowercaseString]];
+    NSString *fileExt = (encryption) ? @".abssen" : @".abss";
+    NSString *fileName = [NSString stringWithFormat:@"%@%@", [[self appName] lowercaseString], fileExt];
     
     if (os == ABSaveSystemOSIOS)
     {
@@ -54,9 +55,9 @@
     return nil;
 }
 
-+(NSMutableDictionary*) loadDictionary
++(NSMutableDictionary*) loadDictionaryEncryption:(BOOL)encryption
 {
-    NSData *binaryFile = [NSData dataWithContentsOfFile:[self filePath]];
+    NSData *binaryFile = [NSData dataWithContentsOfFile:[self filePathEncryption:encryption]];
     
     if (binaryFile == nil) {
         return nil;
@@ -64,11 +65,14 @@
     
     NSMutableDictionary *dictionary;
     //Either Decrypt saved data or just load it
-    if (ENCRYPTION_ENABLED) {
+    if (encryption)
+    {
         NSData *dataKey = [AESKEY dataUsingEncoding:NSUTF8StringEncoding];
         NSData *decryptedData = [binaryFile decryptedWithKey:dataKey];
         dictionary = [NSKeyedUnarchiver unarchiveObjectWithData:decryptedData];
-    } else {
+    }
+    else
+    {
         dictionary = [NSKeyedUnarchiver unarchiveObjectWithData:binaryFile];
     }
     
@@ -79,15 +83,15 @@
 
 #pragma mark - Objects
 #pragma mark - NSData
-+(void) saveData:(NSData*)data key:(NSString*)key
++(void) saveData:(NSData*)data key:(NSString*)key encryption:(BOOL)encryption
 {
     //Check if file exits, if so init Dictionary with it's content, otherwise allocate new one
-    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:[self filePath]];
+    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:[self filePathEncryption:ENCRYPTION_ENABLED]];
     NSMutableDictionary *tempDic = nil;
     if (fileExists == NO) {
         tempDic = [[NSMutableDictionary alloc] init];
     } else {
-        tempDic = [self loadDictionary];
+        tempDic = [self loadDictionaryEncryption:encryption];
     }
     
     //Populate Dictionary with to save value/key and write to file
@@ -96,19 +100,27 @@
     NSData *dicData = [NSKeyedArchiver archivedDataWithRootObject:tempDic];
     
     //Either encrypt Data or just save
-    if (ENCRYPTION_ENABLED) {
+    if (encryption)
+    {
         NSData *dataKey = [AESKEY dataUsingEncoding:NSUTF8StringEncoding];
         NSData *encryptedData = [dicData encryptedWithKey:dataKey];
-        [encryptedData writeToFile:[self filePath] atomically:YES];
-    } else {
-        [dicData writeToFile:[self filePath] atomically:YES];
+        [encryptedData writeToFile:[self filePathEncryption:YES] atomically:YES];
+    }
+    else
+    {
+        [dicData writeToFile:[self filePathEncryption:encryption] atomically:YES];
     }
     
 }
 
-+(NSData*) dataForKey:(NSString*)key
++(void) saveData:(NSData*)data key:(NSString*)key
 {
-    NSMutableDictionary *tempDic = [self loadDictionary];
+    [self saveData:data key:key encryption:ENCRYPTION_ENABLED];
+}
+
++(NSData*) dataForKey:(NSString*)key encryption:(BOOL)encryption
+{
+    NSMutableDictionary *tempDic = [self loadDictionaryEncryption:encryption];
     
     //Retrieve NSData for specific key
     NSData *loadedData = [tempDic objectForKey:key];
@@ -125,6 +137,10 @@
     return nil;
 }
 
++(NSData*) dataForKey:(NSString*)key
+{
+    return [self dataForKey:key encryption:ENCRYPTION_ENABLED];
+}
 
 #pragma mark - Object
 +(void) saveObject:(id)object key:(NSString*)key
@@ -246,24 +262,27 @@
 
 
 #pragma mark - Misc
-+(void) logSavedValues
++(void) logSavedValues:(BOOL)encrypted
 {
-    NSMutableDictionary *tempDic= [self loadDictionary];
-    if (tempDic == nil) {
-        NSLog(@"ABSaveSystem: logSavedValues -> NO DATA SAVED!");
+    NSString *baseLogMessage = (encrypted) ? @"ABSaveSystem: logSavedValues (Encrypted)" : @"ABSaveSystem: logSavedValues";
+    
+    NSMutableDictionary *tempDic= [self loadDictionaryEncryption:encrypted];
+    if (tempDic == nil)
+    {
+        NSLog(@"%@ -> NO DATA SAVED!", baseLogMessage);
         return;
     }
     
-    NSLog(@"ABSaveSystem: logSavedValues -> START LOG");
-    
+    NSLog(@"%@ -> START LOG", baseLogMessage);
+        
     [tempDic enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
      {
          NSString *valueString = [NSKeyedUnarchiver unarchiveObjectWithData:obj];
-         
-         NSLog(@"ABSaveSystem: logSavedValues -> Key:%@ -> %@", key, valueString);
+        
+         NSLog(@"%@ -> Key:%@ -> %@", baseLogMessage, key, valueString);
      }];
     
-    NSLog(@"ABSaveSystem: logSavedValues -> END LOG");
+    NSLog(@"%@ -> END LOG", baseLogMessage);
 }
 
 @end
