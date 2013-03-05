@@ -4,6 +4,7 @@
 //ABFramework requires following Apple Framework to be present in the project
 - CoreGraphics
 - SystemConfiguration
+- StoreKit
 
 //2. Import the ABFramework.h header into your project
 
