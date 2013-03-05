@@ -18,6 +18,7 @@
 
 //Add Views
 -(void) addView:(UIView*)newView;
+-(void) addView:(UIView*)newView centered:(BOOL)centered;
 -(void) addViews:(NSArray*)newViews;
 
 //Add Padding

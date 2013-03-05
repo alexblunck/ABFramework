@@ -96,19 +96,20 @@
 #pragma mark - Add Views
 -(void) addView:(UIView*)newView
 {
+    [self addView:newView centered:YES];
+}
+
+-(void) addView:(UIView*)newView centered:(BOOL)centered
+{
     //Containment View
     UIView *containmentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, newView.bounds.size.width, newView.bounds.size.height)];
     [containmentView addSubview:newView];
-    
-    //Retrieve last added view and get it's bottom Y Origin
-    //UIView *lastView = [_viewArray lastObject];
-    //CGFloat lastViewBottomOriginY = (lastView) ? CGFloatBottomOriginY(lastView.frame) : 0.0f;
     
     //Adjust containment view frame to be placed beneath last view
     containmentView.frame = CGRectChangingOriginY(containmentView.frame, _nextOriginY);
     
     //Center containment view if neccessary
-    if (containmentView.bounds.size.width < self.bounds.size.width)
+    if (centered && containmentView.bounds.size.width < self.bounds.size.width)
     {
         containmentView.frame = CGRectCenteredHorizontallyS(containmentView.frame, self.frame);
     }
