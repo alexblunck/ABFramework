@@ -11,8 +11,65 @@
 //APPLE FRAMEWORKS
 #import <StoreKit/StoreKit.h>
 
+#pragma mark - ABStoreKitItem
+/**
+ * ABStoreKitItem
+ */
+@implementation ABStoreKitItem
+
+#pragma mark - Utility
++(id) itemWithProductIdentifier:(NSString*)productIdentifier type:(ABStoreKitItemType)type
+{
+    return [[self alloc] initWithProductIdentifier:productIdentifier type:type];
+}
+
+#pragma mark - Initializer
+-(id) initWithProductIdentifier:(NSString*)productIdentifier type:(ABStoreKitItemType)type
+{
+    self = [super init];
+    if (self)
+    {
+        self.productIdentifier = productIdentifier;
+        self.type = type;
+    }
+    return self;
+}
+
+#pragma mark - NSCoding
+-(id) initWithCoder:(NSCoder*) aDecoder
+{
+    self = [super init];
+    if (self)
+    {
+        self.productIdentifier = [aDecoder decodeObjectForKey:@"productIdentifier"];
+        self.type = [[aDecoder decodeObjectForKey:@"type"] integerValue];
+        self.subscriptionTimeInterval = [[aDecoder decodeObjectForKey:@"subscriptionTimeInterval"] doubleValue];
+        self.transactionDate = [aDecoder decodeObjectForKey:@"transactionDate"];
+        self.transactionIdentifier = [aDecoder decodeObjectForKey:@"transactionIdentifier"];
+    }
+    return self;
+}
+
+-(void) encodeWithCoder:(NSCoder*) aCoder
+{
+    [aCoder encodeObject:self.productIdentifier forKey:@"productIdentifier"];
+    [aCoder encodeObject:[NSNumber numberWithInteger:self.type] forKey:@"type"];
+    [aCoder encodeObject:[NSNumber numberWithDouble:self.subscriptionTimeInterval] forKey:@"subscriptionTimeInterval"];
+    [aCoder encodeObject:self.transactionDate forKey:@"transactionDate"];
+    [aCoder encodeObject:self.transactionIdentifier forKey:@"transactionIdentifier"];
+}
+
+@end
+
+
+
+#pragma mark - ABStoreKitHelper
+/**
+ * ABStoreKitHelper
+ */
 @interface ABStoreKitHelper () <SKProductsRequestDelegate, SKPaymentTransactionObserver>
 {
+    NSMutableSet *_productIdentifiers;
     NSMutableSet *_validatedProducts;
     NSMutableDictionary *_blockDictionary;
 }
@@ -36,7 +93,7 @@
 - (id)init {
     if ((self = [super init]))
     {
-        NSLog(@"ABStoreKitHelper: Started");
+        if(ABSKH_LOG) NSLog(@"ABStoreKitHelper: Started");
         
         //Allocation
         _validatedProducts = [NSMutableSet new];
@@ -56,9 +113,9 @@
 {
     if (![self allProductsValidated])
     {
-        NSLog(@"ABStoreKitHelper: Checking if Product Identifiers are valid...");
+        if(ABSKH_LOG) NSLog(@"ABStoreKitHelper: Checking if Product Identifiers are valid...");
         
-        SKProductsRequest *request = [[SKProductsRequest alloc] initWithProductIdentifiers:self.productIdentifiers];
+        SKProductsRequest *request = [[SKProductsRequest alloc] initWithProductIdentifiers:_productIdentifiers];
         request.delegate = self;
         [request start];
         
@@ -71,13 +128,71 @@
 #pragma mark - Helper
 -(BOOL) isPurchased:(NSString*)productIdentifier
 {
-    return [self loadBoolForKey:productIdentifier];
+    //Retrieve all stored ABStoreKitItems
+    NSArray *items = [self loadStoreKitItemArray];
+    
+    //Find specific item
+    for (ABStoreKitItem *item in items)
+    {
+        //Return YEs if it exists
+        if ([item.productIdentifier isEqualToString:productIdentifier])
+        {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+-(BOOL) isSubscriptionActive:(NSString*)productIdentifier
+{
+    //Retrieve all stored ABStoreKitItems
+    NSArray *items = [self loadStoreKitItemArray];
+    
+    //Find specific subscription
+    //In case of Auto-Renewable subscriptions there might be more than one ABStoreKitItem saved
+    //If one of them is still active this method will return YES immediately
+    for (ABStoreKitItem *item in items)
+    {
+        if (
+            [item.productIdentifier isEqualToString:productIdentifier]
+            &&
+            (item.type == ABStoreKitItemTypeAutoRenewableSubscription || item.type == ABStoreKitItemTypeNonRenewingSubscription)
+            )
+        {
+            //Offline check if subscription is still active
+            NSTimeInterval currentTime = [[NSDate date] timeIntervalSince1970];
+            NSTimeInterval purchaseTime = [item.transactionDate timeIntervalSince1970];
+            NSTimeInterval subscriptionExpireTime = purchaseTime + item.subscriptionTimeInterval;
+            
+            if (purchaseTime <= currentTime && currentTime <= subscriptionExpireTime)
+            {
+                return YES;
+            }
+        }
+    }
+    
+    return NO;
+}
+
+-(NSArray*) purchasedInstancesOfSubscription:(NSString*)productIdentifier
+{
+    NSMutableArray *instances = [NSMutableArray new];
+    
+    for (ABStoreKitItem *item in [self loadStoreKitItemArray])
+    {
+        if ([item.productIdentifier isEqualToString:productIdentifier])
+        {
+            [instances addObject:item];
+        }
+    }
+    
+    return (instances.count != 0) ? instances : nil;
 }
 
 -(BOOL) allProductsValidated
 {
     //Loop through all productIdentifiers
-    for (NSString *productIdentifier in self.productIdentifiers)
+    for (NSString *productIdentifier in _productIdentifiers)
     {
         //Return NO if one product with productIdentifier doesn't exist
         if (![self productValidated:productIdentifier])
@@ -102,6 +217,18 @@
     }
     //..Else return NO
     return NO;
+}
+
+-(ABStoreKitItem*) storeKitItemForProductIdentifier:(NSString*)productIdentifier
+{
+    for (ABStoreKitItem *item in self.storeKitItems)
+    {
+        if ([item.productIdentifier isEqualToString:productIdentifier])
+        {
+            return item;
+        }
+    }
+    return nil;
 }
 
 
@@ -159,7 +286,7 @@
 
 
 
-#pragma mark - SKProductsRequestDelegate 
+#pragma mark - SKProductsRequestDelegate
 -(void) productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
 {
     //Add returned SKProduct's to validatedProducts set
@@ -169,15 +296,15 @@
     }
     
     //Log
-    for (NSString *productIdentifier in self.productIdentifiers)
+    for (NSString *productIdentifier in _productIdentifiers)
     {
         if ([self productValidated:productIdentifier])
         {
-            NSLog(@"ABStoreKitHelper: ProductIdentifier: %@ is Valid!", productIdentifier);
+            if(ABSKH_LOG) NSLog(@"ABStoreKitHelper: ProductIdentifier: %@ is Valid!", productIdentifier);
         }
         else
         {
-            NSLog(@"ABStoreKitHelper: ProductIdentifier: %@ is NOT Valid!", productIdentifier);
+            if(ABSKH_LOG) NSLog(@"ABStoreKitHelper: ProductIdentifier: %@ is NOT Valid!", productIdentifier);
         }
     }
 }
@@ -193,10 +320,10 @@
         
         switch (transaction.transactionState)
         {
-            //FAILED
+                //FAILED
             case SKPaymentTransactionStateFailed:
             {
-                transactionUpdate = @"FAILED";
+                transactionUpdate = @"FAILED.";
                 [queue finishTransaction:transaction];
                 //Execute block
                 ABStoreKitBlock block = [_blockDictionary objectForKey:transaction.payment.productIdentifier];
@@ -209,14 +336,19 @@
                 
                 break;
             }
-            
-            //PURCHASED
+                
+                //PURCHASED
             case SKPaymentTransactionStatePurchased:
             {
-                transactionUpdate = @"PURCHASED";
+                transactionUpdate = @"PURCHASED.";
                 [queue finishTransaction:transaction];
-                //Mark as purchased
-                [self saveBool:YES withKey:transaction.payment.productIdentifier];
+                
+                //Retrieve purchased ABStoreKitItem and mark as purchased
+                ABStoreKitItem *item = [self storeKitItemForProductIdentifier:transaction.payment.productIdentifier];
+                item.transactionIdentifier = transaction.transactionIdentifier;
+                item.transactionDate = transaction.transactionDate;
+                [self saveStoreKitItem:item];
+                
                 //Execute block
                 ABStoreKitBlock block = [_blockDictionary objectForKey:transaction.payment.productIdentifier];
                 if (block)
@@ -228,111 +360,79 @@
                 
                 break;
             }
-            
-            //PURCHASING
+                
+                //PURCHASING
             case SKPaymentTransactionStatePurchasing:
             {
-                transactionUpdate = @"PURCHASING";
+                transactionUpdate = @"PURCHASING...";
                 break;
             }
-            
-            //RESTORED
+                
+                //RESTORED
             case SKPaymentTransactionStateRestored:
             {
-                transactionUpdate = @"RESTORED";
+                transactionUpdate = @"RESTORING...";
                 [queue finishTransaction:transaction];
-                //Execute block
-                ABStoreKitRestoreBlock block = [_blockDictionary objectForKey:@"ABStorekitHelper.restoreBlock"];
-                if (block)
-                {
-                    block(transaction.payment.productIdentifier, NO, YES, ABStoreKitErrorNone);
-                }
-                
                 break;
             }
-            
-            //DEFAULT
+                
+                //DEFAULT
             default:
             {
                 break;
             }
         }
         
-        NSLog(@"ABStoreKitHelper: TransactionState -> %@ (%@)", transaction.payment.productIdentifier, transactionUpdate);
+        if(ABSKH_LOG) NSLog(@"ABStoreKitHelper: TransactionState -> %@ (%@)", transaction.payment.productIdentifier, transactionUpdate);
     }
     
 }
 
 -(void) paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue*) queue
 {
+    //Retrieve restoreBlock
+    ABStoreKitRestoreBlock block = [_blockDictionary objectForKey:@"ABStorekitHelper.restoreBlock"];
+    
     //No products to restore
     if (!queue.transactions || [queue.transactions count] == 0)
     {
         //Execute block
-        ABStoreKitRestoreBlock block = [_blockDictionary objectForKey:@"ABStorekitHelper.restoreBlock"];
         if (block)
         {
-            block(nil, YES, NO, ABStoreKitErrorNone);
+            block(nil, NO, ABStoreKitErrorNone);
         }
     }
-    //Mark non-consumable IAP as restored & check if subscriptions are still active
+    //Products
     else
     {
-        //Keep track if anything was restored at all
-        BOOL restoredSomething = NO;
-        
         for (SKPaymentTransaction *transaction in queue.transactions)
         {
             if (transaction.transactionState == SKPaymentTransactionStateRestored || transaction.transactionState == SKPaymentTransactionStatePurchased)
             {
-                BOOL shouldRestore = NO;
+                //Retrieve ABStoreKitItem from storeKitItems set
+                ABStoreKitItem *item = [self storeKitItemForProductIdentifier:transaction.payment.productIdentifier];
+                //Append Transaction Date / Id
+                item.transactionIdentifier = transaction.transactionIdentifier;
+                item.transactionDate = transaction.transactionDate;
+                //Mark as purchased / restored by saving
+                [self saveStoreKitItem:item];
                 
-                NSData *transactionReciept = transaction.transactionReceipt;
-                NSString *recieptString = [[NSString alloc] initWithData:transactionReciept encoding:NSUTF8StringEncoding];
-                //NSDate *transactionDate = transaction.transactionDate;
-                
-                NSLog(@"%@", recieptString);
-                
-                //IF SUBSCRIPTION
-                //Implement detection if subscription is still active at current time (use server?)
-                //and only restore it if it is
-                //Current time (unix timestamp)
-                //Calculate subscription expiration date: transaction.transactionDate(unix) + subscriptionLengthInSeconds
-                //Get purchase date: transaction.transactionDate(unix)
-                //if subscription expiration date is in the future, restore it
-                shouldRestore = YES;
-
-                //ELSE (consumable IAP) (always restore)
-                shouldRestore = YES;
-                
-                //Mark as purchased
-                if (shouldRestore)
-                {
-                    [self saveBool:YES withKey:transaction.payment.productIdentifier];
-                    
-                    //Did restore something
-                    restoredSomething = YES;
-                }
+                //NSData *transactionReciept = transaction.transactionReceipt;
+                //NSString *recieptString = [[NSString alloc] initWithData:transactionReciept encoding:NSUTF8StringEncoding];
             }
         }
         
         //Execute block
-        ABStoreKitRestoreBlock block = [_blockDictionary objectForKey:@"ABStorekitHelper.restoreBlock"];
-        
-        //Did restore something
-        if (block && restoredSomething)
+        if (block)
         {
-            block(nil, YES, YES, ABStoreKitErrorNone);
-        }
-        //Did NOT restpre anything
-        else if (block && !restoredSomething)
-        {
-            block(nil, YES, NO, ABStoreKitErrorNone);
+            block([self loadStoreKitItemArray], YES, ABStoreKitErrorNone);
         }
     }
     
     //Remove block from block dictionary
     [_blockDictionary removeObjectForKey:@"ABStorekitHelper.restoreBlock"];
+    
+    if(ABSKH_LOG) NSLog(@"ABStoreKitHelper: TransactionState -> RESTORE DONE.");
 }
 
 -(void) paymentQueue:(SKPaymentQueue *)queue restoreCompletedTransactionsFailedWithError:(NSError *)error
@@ -341,7 +441,7 @@
     ABStoreKitRestoreBlock block = [_blockDictionary objectForKey:@"ABStorekitHelper.restoreBlock"];
     if (block)
     {
-        block(nil, YES, NO, ABStoreKitErrorGeneral);
+        block(nil, NO, ABStoreKitErrorGeneral);
     }
 }
 
@@ -353,31 +453,61 @@
 
 
 #pragma mark - Data Persistence
--(void) saveBool:(BOOL)boolean withKey:(NSString*)key
+-(void) saveStoreKitItem:(ABStoreKitItem*)storeKitItem
 {
-    NSNumber *boolNumber = [NSNumber numberWithBool:boolean];
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:boolNumber];
-    [ABSaveSystem saveData:data key:key encryption:YES];
+    NSMutableArray *tempItemArray = [NSMutableArray arrayWithArray:[self loadStoreKitItemArray]];
+    if (tempItemArray == nil) {
+        tempItemArray = [NSMutableArray new];
+    }
+    
+    //Determine whether ABStoreKitItem with the same transaction identifier was already saved
+    BOOL itemAlreadySaved = NO;
+    for (ABStoreKitItem *savedItem in tempItemArray)
+    {
+        if ([savedItem.transactionIdentifier isEqualToString:storeKitItem.transactionIdentifier])
+        {
+            itemAlreadySaved = YES;
+        }
+    }
+    
+    //Only save if ABStoreKitItem wasn't already saved
+    if (!itemAlreadySaved)
+    {
+        [tempItemArray addObject:storeKitItem];
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:tempItemArray];
+        [ABSaveSystem saveData:data key:@"ABStorekitHelper.storeKitItemArray" encryption:YES];
+    }
 }
 
--(BOOL) loadBoolForKey:(NSString*)key
+-(NSArray*) loadStoreKitItemArray
 {
-    NSData *data = [ABSaveSystem dataForKey:key encryption:YES];
+    NSData *data = [ABSaveSystem dataForKey:@"ABStorekitHelper.storeKitItemArray" encryption:YES];
     if (data != nil)
     {
-        NSNumber *boolean = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-        return [boolean boolValue];
+        NSArray *tempItemArray = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        return tempItemArray;
     }
-    return NO;
+    return nil;
 }
 
 
 
 #pragma mark - Accessors
--(void) setProductIdentifiers:(NSMutableSet *)productIdentifiers
+-(void) setStoreKitItems:(NSSet*) storeKitItems
 {
-    _productIdentifiers = productIdentifiers;
+    _storeKitItems = storeKitItems;
     
+    //Populate productIdentifiers Set with product identifiers from items
+    for (ABStoreKitItem *item in _storeKitItems)
+    {
+        if (![_productIdentifiers containsObject:item.productIdentifier])
+        {
+            [_productIdentifiers addObject:item.productIdentifier];
+        }
+        
+    }
+    
+    //Request product data from appel servers
     if (_productIdentifiers.count != 0)
     {
         [self getNewProductData];
