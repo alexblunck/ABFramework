@@ -31,7 +31,7 @@ typedef enum {
 +(NSData*) dataForKey:(NSString*)key;
 
 //Object
-+(void) saveObject:(id)object key:(NSString*)key;
++(void) saveObject:(id<NSCoding>)object key:(NSString*)key;
 +(id) objectForKey:(NSString*)key;
 
 //NSString

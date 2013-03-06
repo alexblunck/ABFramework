@@ -143,7 +143,7 @@
 }
 
 #pragma mark - Object
-+(void) saveObject:(id)object key:(NSString*)key
++(void) saveObject:(id<NSCoding>)object key:(NSString*)key
 {
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:object];
     [self saveData:data key:key];
