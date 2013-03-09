@@ -52,4 +52,17 @@ typedef enum {
 //If set to NO content will be aligned to the top
 @property (nonatomic, assign) BOOL centeredVertically;
 
+//Adjust minimum scale factor thats allowed (works only on UILabel)
+@property (nonatomic, assign) CGFloat minimumFontSize;
+
+//Force UILabel or UITextField, no matter if lineBreak is enabled or not
+@property (nonatomic, assign) BOOL forceUILabel;
+@property (nonatomic, assign) BOOL forceUITextField;
+
+//DIRECT ACCESS to underlying UITextField and UILabel
+//UITextField: when lineBreakEnabled is NO
+//UILabel: when lineBreakEnabled is YES
+-(UITextField*) uiTextField;
+-(UILabel*) uiLabel;
+
 @end

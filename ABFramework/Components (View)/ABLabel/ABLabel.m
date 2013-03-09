@@ -39,7 +39,7 @@
         self.fontName = @"HelveticaNeue";
         self.textSize = 15.0f;
         self.textColor = [UIColor blackColor];
-        self.trimAutomatically = YES;
+        self.trimAutomatically = NO;
         self.lineBreakEnabled = NO;
         self.shadow = ABLabelShadowNone;
         self.shadowColor = nil;
@@ -72,6 +72,18 @@
     }
 }
 
+
+
+#pragma mark - Direct Access
+-(UITextField*) uiTextField
+{
+    return _textField;
+}
+
+-(UILabel*) uiLabel
+{
+    return _label;
+}
 
 
 #pragma mark - Accessors
@@ -213,6 +225,39 @@
     if (self.trimAutomatically) [self trim];
 }
 
+//minimumFontSize
+-(void) setMinimumFontSize:(CGFloat)minimumFontSize
+{
+    _minimumFontSize = minimumFontSize;
+    
+    CGFloat minimumScaleFactor = (1.0f / self.textSize) * _minimumFontSize;
+    
+    _label.adjustsFontSizeToFitWidth = YES;
+    _label.adjustsLetterSpacingToFitWidth = YES;
+    _label.minimumScaleFactor = minimumScaleFactor;
+    
+    //Doesn't seem to work on UITextField
+    _textField.adjustsFontSizeToFitWidth = YES;
+    _textField.minimumFontSize = minimumFontSize;
+}
+
+//forceUILabel
+-(void) setForceUILabel:(BOOL)forceUILabel
+{
+    _forceUILabel = forceUILabel;
+    
+    _label.alpha = (_forceUILabel) ? 1.0f : 0.0f;
+    _textField.alpha = (_forceUILabel) ? 0.0f : 1.0f;
+}
+
+//forceUITextField
+-(void) setForceUITextField:(BOOL)forceUITextField
+{
+    _forceUITextField = forceUITextField;
+    [self setForceUILabel:NO];
+}
+
+//frame
 -(void) setFrame:(CGRect)frame
 {
     [super setFrame:frame];
