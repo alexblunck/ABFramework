@@ -11,3 +11,4 @@
  */
 typedef void (^ABBlockVoid) ();
 typedef void (^ABBlockIndex) (NSInteger index);
+typedef void (^ABBlockString) (NSString *string);
