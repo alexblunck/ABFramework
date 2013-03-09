@@ -17,10 +17,16 @@
 
 #pragma mark - Utility
 #pragma mark - Selectors
++(id) buttonWithtTarget:(id)target selected:(SEL)selector
+{
+    return [[self alloc] initWithImageName:nil target:target selected:selector];
+}
+
 +(id) buttonWithImageName:(NSString*)imageName target:(id)target selected:(SEL)selector
 {
     return [[self alloc] initWithImageName:imageName target:target selected:selector];
 }
+
 
 
 #pragma mark - Blocks
