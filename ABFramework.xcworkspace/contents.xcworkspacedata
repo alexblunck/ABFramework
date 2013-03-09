@@ -218,6 +218,16 @@
          location = "group:Components (Functional)"
          name = "Components (Functional)">
          <Group
+            location = "group:ABFileHelper"
+            name = "ABFileHelper">
+            <FileRef
+               location = "group:ABFileHelper.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABFileHelper.m">
+            </FileRef>
+         </Group>
+         <Group
             location = "group:ABStoreKitHelper"
             name = "ABStoreKitHelper">
             <FileRef

@@ -30,6 +30,7 @@
 		3CE5669516B6966D00915391 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CE5669416B6966D00915391 /* Default@2x.png */; };
 		3CE5669716B6966D00915391 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CE5669616B6966D00915391 /* Default-568h@2x.png */; };
 		3CE568D616B69FEE00915391 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE568D516B69FEE00915391 /* SystemConfiguration.framework */; };
+		D259193F16EBCF2100E63E4B /* ABFileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D259193E16EBCF2100E63E4B /* ABFileHelper.m */; };
 		D271797016E58548009BB5D1 /* NSData+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D271791316E58548009BB5D1 /* NSData+ABFramework.m */; };
 		D271797116E58548009BB5D1 /* NSDate+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D271791516E58548009BB5D1 /* NSDate+ABFramework.m */; };
 		D271797216E58548009BB5D1 /* NSDateComponents+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D271791716E58548009BB5D1 /* NSDateComponents+ABFramework.m */; };
@@ -107,6 +108,8 @@
 		3CE5669416B6966D00915391 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		3CE5669616B6966D00915391 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		3CE568D516B69FEE00915391 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D259193D16EBCF2100E63E4B /* ABFileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFileHelper.h; sourceTree = "<group>"; };
+		D259193E16EBCF2100E63E4B /* ABFileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABFileHelper.m; sourceTree = "<group>"; };
 		D271791016E58548009BB5D1 /* ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFramework.h; sourceTree = "<group>"; };
 		D271791216E58548009BB5D1 /* NSData+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ABFramework.h"; sourceTree = "<group>"; };
 		D271791316E58548009BB5D1 /* NSData+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+ABFramework.m"; sourceTree = "<group>"; };
@@ -343,6 +346,15 @@
 			name = Vendor;
 			sourceTree = "<group>";
 		};
+		D259193C16EBCF2100E63E4B /* ABFileHelper */ = {
+			isa = PBXGroup;
+			children = (
+				D259193D16EBCF2100E63E4B /* ABFileHelper.h */,
+				D259193E16EBCF2100E63E4B /* ABFileHelper.m */,
+			);
+			path = ABFileHelper;
+			sourceTree = "<group>";
+		};
 		D271790F16E58548009BB5D1 /* ABFramework */ = {
 			isa = PBXGroup;
 			children = (
@@ -392,6 +404,7 @@
 		D271792816E58548009BB5D1 /* Components (Functional) */ = {
 			isa = PBXGroup;
 			children = (
+				D259193C16EBCF2100E63E4B /* ABFileHelper */,
 				D271792916E58548009BB5D1 /* ABSaveSystem */,
 				D271792C16E58548009BB5D1 /* ABStoreKitHelper */,
 			);
@@ -697,6 +710,7 @@
 				D271799216E58548009BB5D1 /* ABCommon.m in Sources */,
 				D271799316E58548009BB5D1 /* ABFrame.m in Sources */,
 				D271799416E58548009BB5D1 /* ABReachability.m in Sources */,
+				D259193F16EBCF2100E63E4B /* ABFileHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
