@@ -86,6 +86,8 @@ CGRect CGRectInsideRectRight (CGRect rect, CGRect rectToRightIn, CGFloat padding
 CGRect CGRectInsideRectBottom (CGRect rect, CGRect rectToBottomIn);
 //CGRect for CGRect in the top right corner of another CGRect
 CGRect CGRectInsideRectTopRight (CGRect rect, CGRect rectToTopRightIn, CGFloat padding);
+//CGRect for CGRect in the top left corner of another CGRect
+CGRect CGRectInsideRectTopLeft (CGRect rect, CGRect rectToTopLeftIn, CGFloat padding);
 //CGRect for CGRect above a certain point
 CGRect CGRectAbovePointY(CGRect rect, CGFloat pointY);
 

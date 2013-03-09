@@ -220,6 +220,18 @@ CGRect CGRectInsideRectTopRight (CGRect rect, CGRect rectToTopRightIn, CGFloat p
     return newRect;
 }
 
+//CGRect for CGRect in the top left corner of another CGRect
+CGRect CGRectInsideRectTopLeft (CGRect rect, CGRect rectToTopLeftIn, CGFloat padding)
+{
+    CGRect newRect;
+    //Top / Left
+    newRect = CGRectChangingOrigin(rect, 0, 0);
+    //Padding
+    newRect = CGRectOffsetOrigin(newRect, padding, padding);
+    
+    return newRect;
+}
+
 //CGRect for CGRect above a certain point
 CGRect CGRectAbovePointY(CGRect rect, CGFloat pointY)
 {
