@@ -7,8 +7,8 @@
 //
 
 /*
-DEVICE 
-*/
+ * DEVICE
+ */
 //Returns YES on retina display
 #define IS_RETINA_DISPLAY() [[UIScreen mainScreen] respondsToSelector:@selector(scale)] && [[UIScreen mainScreen] scale] == 2.0f
 //Returns YES on 4 inch display
@@ -20,13 +20,20 @@ DEVICE
 
 
 
-
 /*
-LOGGING
-*/
+ * LOGGING
+ */
 #define ABLogNSString(string) NSLog(@"ABLogNSString -> %s = \"%@\"", #string, string)
 #define ABLogCGRect(rect) NSLog(@"ABLogCGRect -> %s = %@", #rect, NSStringFromCGRect(rect))
 #define ABLogCGSize(size) NSLog(@"ABLogCGSize -> %s = %@", #size, NSStringFromCGSize(size))
 #define ABLogBOOL(bool) NSLog(@"ABLogBOOL -> %s = %@", #bool, (bool) ? @"YES" : @"NO")
 #define ABLogInteger(integer) NSLog(@"ABLogInteger -> %s = %i", #integer, integer)
 #define ABLogFloat(float) NSLog(@"ABLogFloat -> %s = %f", #float, float)
+
+
+
+/*
+ * MATH
+ */
+#define ABMathRadians(degrees) degrees * M_PI/180
+#define ABMathDegrees(radians) radians * 180/M_PI
