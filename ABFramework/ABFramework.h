@@ -89,6 +89,7 @@ CONTAINERS
     #import "ABTabBarItem.h"
     #import "ABTabButton.h"
     #import "ABStackController.h"
+    #import "ABTableStackController.h"
     #import "ABLabel.h"
     #import "ABButton.h"
     #import "ABTextField.h"
