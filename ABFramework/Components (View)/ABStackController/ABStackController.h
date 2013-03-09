@@ -24,6 +24,9 @@
 //Add Padding
 -(void) addPadding:(CGFloat)padding;
 
+//Interaction
+-(void) scrollToTop; //Only available when a fixed height is set
+
 //Config
 //Delay touches on scrollView (Only available when a fixed height is set), default is NO
 @property (nonatomic, assign) BOOL delayTouch;

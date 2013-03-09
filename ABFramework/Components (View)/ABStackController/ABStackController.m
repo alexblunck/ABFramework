@@ -174,6 +174,16 @@
 
 
 
+#pragma mark - Interaction
+-(void) scrollToTop
+{
+    if (_isFixedHeight)
+    {
+        [_scrollView setContentOffset:CGPointZero animated:YES];
+    }
+}
+
+
 #pragma mark - Accessors
 -(void) setDelayTouch:(BOOL)delayTouch
 {
