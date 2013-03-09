@@ -20,41 +20,90 @@
 #pragma mark - Utility
 +(id) itemWithProductIdentifier:(NSString*)productIdentifier type:(ABStoreKitItemType)type
 {
-    return [[self alloc] initWithProductIdentifier:productIdentifier type:type];
+    return [[self alloc] initWithProductIdentifier:productIdentifier type:type subscriptionTimeInterval:ABStoreKitTimeIntervalNone];
+}
+
++(id) itemWithProductIdentifier:(NSString*)productIdentifier type:(ABStoreKitItemType)type subscriptionTimeInterval:(ABStoreKitTimeInterval)interval
+{
+    return [[self alloc] initWithProductIdentifier:productIdentifier type:type subscriptionTimeInterval:interval];
 }
 
 #pragma mark - Initializer
--(id) initWithProductIdentifier:(NSString*)productIdentifier type:(ABStoreKitItemType)type
+-(id) initWithProductIdentifier:(NSString*)productIdentifier type:(ABStoreKitItemType)type subscriptionTimeInterval:(ABStoreKitTimeInterval)interval
 {
     self = [super init];
     if (self)
     {
         self.productIdentifier = productIdentifier;
         self.type = type;
+        self.subscriptionTimeInterval = interval;
     }
     return self;
 }
 
+#pragma mark - Helper
+-(NSDate*) subscriptionExpireDate
+{
+    NSTimeInterval purchaseTime = [self.transactionDate timeIntervalSince1970];
+    NSTimeInterval subscriptionExpireTime = purchaseTime + [self subscriptionTimeIntervalInSeconds];
+    return [NSDate dateWithTimeIntervalSince1970:subscriptionExpireTime];
+}
+
+-(BOOL) isDateInSubscription:(NSDate*)date
+{
+    
+    return [date isBetweenDate:self.transactionDate andDate:[self subscriptionExpireDate]];
+    
+    /*
+     NSTimeInterval currentTime = [[NSDate date] timeIntervalSince1970];
+     NSTimeInterval purchaseTime = [self.transactionDate timeIntervalSince1970];
+     NSTimeInterval subscriptionExpireTime = purchaseTime + [self subscriptionTimeIntervalInSeconds];
+     
+     if (purchaseTime <= currentTime && currentTime <= subscriptionExpireTime)
+     {
+     return YES;
+     }
+     return NO;
+     */
+}
+
+-(NSTimeInterval) subscriptionTimeIntervalInSeconds
+{
+    //1 Month
+    if (self.subscriptionTimeInterval == ABStoreKitTimeIntervalOneMonth)
+    {
+        return 60 * 60 * 24 * 31;
+    }
+    
+    //1 Year
+    else if (self.subscriptionTimeInterval == ABStoreKitTimeIntervalOneYear)
+    {
+        return 60 * 60 * 24 * 365;
+    }
+    
+    return 0;
+}
+
 #pragma mark - NSCoding
--(id) initWithCoder:(NSCoder*) aDecoder
+-(id) initWithCoder:(NSCoder *)aDecoder
 {
     self = [super init];
     if (self)
     {
         self.productIdentifier = [aDecoder decodeObjectForKey:@"productIdentifier"];
         self.type = [[aDecoder decodeObjectForKey:@"type"] integerValue];
-        self.subscriptionTimeInterval = [[aDecoder decodeObjectForKey:@"subscriptionTimeInterval"] doubleValue];
+        self.subscriptionTimeInterval = [[aDecoder decodeObjectForKey:@"subscriptionTimeInterval"] integerValue];
         self.transactionDate = [aDecoder decodeObjectForKey:@"transactionDate"];
         self.transactionIdentifier = [aDecoder decodeObjectForKey:@"transactionIdentifier"];
     }
     return self;
 }
 
--(void) encodeWithCoder:(NSCoder*) aCoder
+-(void) encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeObject:self.productIdentifier forKey:@"productIdentifier"];
     [aCoder encodeObject:[NSNumber numberWithInteger:self.type] forKey:@"type"];
-    [aCoder encodeObject:[NSNumber numberWithDouble:self.subscriptionTimeInterval] forKey:@"subscriptionTimeInterval"];
+    [aCoder encodeObject:[NSNumber numberWithInteger:self.subscriptionTimeInterval] forKey:@"subscriptionTimeInterval"];
     [aCoder encodeObject:self.transactionDate forKey:@"transactionDate"];
     [aCoder encodeObject:self.transactionIdentifier forKey:@"transactionIdentifier"];
 }
@@ -162,7 +211,7 @@
             //Offline check if subscription is still active
             NSTimeInterval currentTime = [[NSDate date] timeIntervalSince1970];
             NSTimeInterval purchaseTime = [item.transactionDate timeIntervalSince1970];
-            NSTimeInterval subscriptionExpireTime = purchaseTime + item.subscriptionTimeInterval;
+            NSTimeInterval subscriptionExpireTime = purchaseTime + [item subscriptionTimeIntervalInSeconds];
             
             if (purchaseTime <= currentTime && currentTime <= subscriptionExpireTime)
             {
@@ -187,6 +236,30 @@
     }
     
     return (instances.count != 0) ? instances : nil;
+}
+
+-(BOOL) isDate:(NSDate*)date inSubscription:(NSString*)productIdentifier
+{
+    for (ABStoreKitItem *instance in [self purchasedInstancesOfSubscription:productIdentifier])
+    {
+        if ([instance isDateInSubscription:date])
+        {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+-(BOOL) isDate:(NSDate*)date inSubscriptions:(NSArray*)productIdentifiers
+{
+    for (NSString *productIdentifier in productIdentifiers)
+    {
+        if ([self isDate:date inSubscription:productIdentifier])
+        {
+            return YES;
+        }
+    }
+    return NO;
 }
 
 -(BOOL) allProductsValidated

@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-#define ABSKH_LOG 1
+#define ABSKH_LOG 0
 
 /**
- * Types Def's
+ * Types
  */
 typedef enum {
     ABStoreKitItemTypeNone,
@@ -20,15 +20,20 @@ typedef enum {
     ABStoreKitItemTypeAutoRenewableSubscription,
     ABStoreKitItemTypeNonRenewingSubscription,
     ABStoreKitItemTypeFreeSubscription
-}ABStoreKitItemType;
+} ABStoreKitItemType;
+
+typedef enum {
+    ABStoreKitTimeIntervalNone,
+    ABStoreKitTimeIntervalOneMonth,
+    ABStoreKitTimeIntervalOneYear
+} ABStoreKitTimeInterval;
 
 typedef enum {
     ABStoreKitErrorNone,
     ABStoreKitErrorPurchaseNotAllowed,
     ABStoreKitErrorProductNotValidated,
     ABStoreKitErrorGeneral
-}
-ABStoreKitError;
+} ABStoreKitError;
 
 typedef void (^ABStoreKitBlock) (NSString *productIdentifier, BOOL successful, ABStoreKitError error);
 typedef void (^ABStoreKitRestoreBlock) (NSArray *restoredItems, BOOL hasProducts, ABStoreKitError error);
@@ -41,14 +46,15 @@ typedef void (^ABStoreKitRestoreBlock) (NSArray *restoredItems, BOOL hasProducts
 @interface ABStoreKitItem : NSObject <NSCoding>
 
 +(id) itemWithProductIdentifier:(NSString*)productIdentifier type:(ABStoreKitItemType)type;
++(id) itemWithProductIdentifier:(NSString*)productIdentifier type:(ABStoreKitItemType)type subscriptionTimeInterval:(ABStoreKitTimeInterval)interval;
+
+-(NSDate*) subscriptionExpireDate;
 
 @property (nonatomic, assign) ABStoreKitItemType type;
 @property (nonatomic, copy) NSString *productIdentifier;
 @property (nonatomic, copy) NSString *transactionIdentifier;
 @property (nonatomic, strong) NSDate *transactionDate;
-
-//Subscription Specific
-@property (nonatomic, assign) NSTimeInterval subscriptionTimeInterval;
+@property (nonatomic, assign) ABStoreKitTimeInterval subscriptionTimeInterval;
 
 @end
 
@@ -88,6 +94,13 @@ typedef void (^ABStoreKitRestoreBlock) (NSArray *restoredItems, BOOL hasProducts
  * with the same product identifier with alternating "transactionDate"'s
  */
 -(NSArray*) purchasedInstancesOfSubscription:(NSString*)productIdentifier;
+
+
+/**
+ * Returns YES if a date is in the active timespan(s) of a specific subscription / or an array of subscriptions
+ */
+-(BOOL) isDate:(NSDate*)date inSubscription:(NSString*)productIdentifier;
+-(BOOL) isDate:(NSDate*)date inSubscriptions:(NSArray*)productIdentifiers;
 
 
 /**
