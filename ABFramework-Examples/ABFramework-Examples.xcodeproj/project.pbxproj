@@ -31,6 +31,7 @@
 		3CE5669716B6966D00915391 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CE5669616B6966D00915391 /* Default-568h@2x.png */; };
 		3CE568D616B69FEE00915391 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE568D516B69FEE00915391 /* SystemConfiguration.framework */; };
 		D259193F16EBCF2100E63E4B /* ABFileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D259193E16EBCF2100E63E4B /* ABFileHelper.m */; };
+		D2633D6616EBDDF400FCE9D0 /* ABTableStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2633D6516EBDDF400FCE9D0 /* ABTableStackController.m */; };
 		D271797016E58548009BB5D1 /* NSData+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D271791316E58548009BB5D1 /* NSData+ABFramework.m */; };
 		D271797116E58548009BB5D1 /* NSDate+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D271791516E58548009BB5D1 /* NSDate+ABFramework.m */; };
 		D271797216E58548009BB5D1 /* NSDateComponents+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D271791716E58548009BB5D1 /* NSDateComponents+ABFramework.m */; };
@@ -110,6 +111,8 @@
 		3CE568D516B69FEE00915391 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D259193D16EBCF2100E63E4B /* ABFileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFileHelper.h; sourceTree = "<group>"; };
 		D259193E16EBCF2100E63E4B /* ABFileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABFileHelper.m; sourceTree = "<group>"; };
+		D2633D6416EBDDF400FCE9D0 /* ABTableStackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTableStackController.h; sourceTree = "<group>"; };
+		D2633D6516EBDDF400FCE9D0 /* ABTableStackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTableStackController.m; sourceTree = "<group>"; };
 		D271791016E58548009BB5D1 /* ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFramework.h; sourceTree = "<group>"; };
 		D271791216E58548009BB5D1 /* NSData+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ABFramework.h"; sourceTree = "<group>"; };
 		D271791316E58548009BB5D1 /* NSData+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+ABFramework.m"; sourceTree = "<group>"; };
@@ -355,6 +358,15 @@
 			path = ABFileHelper;
 			sourceTree = "<group>";
 		};
+		D2633D6316EBDDF400FCE9D0 /* ABTableStackController */ = {
+			isa = PBXGroup;
+			children = (
+				D2633D6416EBDDF400FCE9D0 /* ABTableStackController.h */,
+				D2633D6516EBDDF400FCE9D0 /* ABTableStackController.m */,
+			);
+			path = ABTableStackController;
+			sourceTree = "<group>";
+		};
 		D271790F16E58548009BB5D1 /* ABFramework */ = {
 			isa = PBXGroup;
 			children = (
@@ -432,6 +444,7 @@
 		D271792F16E58548009BB5D1 /* Components (View) */ = {
 			isa = PBXGroup;
 			children = (
+				D2633D6316EBDDF400FCE9D0 /* ABTableStackController */,
 				D271793016E58548009BB5D1 /* ABAlertView */,
 				D271793316E58548009BB5D1 /* ABButton */,
 				D271793616E58548009BB5D1 /* ABDatePickerView */,
@@ -711,6 +724,7 @@
 				D271799316E58548009BB5D1 /* ABFrame.m in Sources */,
 				D271799416E58548009BB5D1 /* ABReachability.m in Sources */,
 				D259193F16EBCF2100E63E4B /* ABFileHelper.m in Sources */,
+				D2633D6616EBDDF400FCE9D0 /* ABTableStackController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

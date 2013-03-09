@@ -84,6 +84,16 @@
          location = "group:Components (View)"
          name = "Components (View)">
          <Group
+            location = "group:ABTableStackController"
+            name = "ABTableStackController">
+            <FileRef
+               location = "group:ABTableStackController.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABTableStackController.m">
+            </FileRef>
+         </Group>
+         <Group
             location = "group:ABTextField"
             name = "ABTextField">
             <FileRef
