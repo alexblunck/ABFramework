@@ -8,8 +8,6 @@
 
 #import "ABSwitchExample.h"
 
-#import "ABSwitch.h"
-
 @interface ABSwitchExample () <ABSwitchDelegate>
 
 @end
