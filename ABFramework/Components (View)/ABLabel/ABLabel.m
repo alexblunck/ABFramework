@@ -45,7 +45,7 @@
         self.lineBreakEnabled = NO;
         self.shadow = ABLabelShadowNone;
         self.shadowColor = nil;
-        self.centeredHorizontally = YES;
+        self.centeredHorizontally = NO;
         self.centeredVertically = YES;
     }
     return self;
@@ -146,7 +146,7 @@
     //Hide TextField & Show Label if enabled
     _textField.alpha = (_lineBreakEnabled) ? 0.0f : 1.0f;
     _label.alpha = (_lineBreakEnabled) ? 1.0f :0.0f;
-
+    
 }
 
 //shadow
@@ -169,7 +169,7 @@
         shadowOffset = CGSizeMake(0.0f, 1.0f);
         shadowRadius = 0.0f;
         shadowOpactiy = 1.0f;
-
+        
     }
     else if (_shadow == ABLabelShadowLetterpress)
     {
