@@ -195,6 +195,8 @@ CGRect CGRectInsideRectRightS (CGRect rect, CGRect rectToRightIn)
 {
     return CGRectInsideRectRight(rect, rectToRightIn, 0.0f);
 }
+
+//CGRect for CGRect on the right edge of another CGRect (With Padding)
 CGRect CGRectInsideRectRight (CGRect rect, CGRect rectToRightIn, CGFloat padding)
 {
     return  CGRectChangingOriginX(rect, rectToRightIn.size.width-rect.size.width-padding);
@@ -213,7 +215,7 @@ CGRect CGRectInsideRectTopRight (CGRect rect, CGRect rectToTopRightIn, CGFloat p
     //Top
     newRect = CGRectChangingOriginY(rect, 0);
     //Right
-    newRect = CGRectInsideRectRightS(rect, rectToTopRightIn);
+    newRect = CGRectInsideRectRightS(newRect, rectToTopRightIn);
     //Padding
     newRect = CGRectOffsetOrigin(newRect, -padding, padding);
     

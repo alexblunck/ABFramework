@@ -81,6 +81,7 @@ CGRect CGRectOffsetSizeHeight (CGRect rect, CGFloat sizeHeightBy);
 
 //CGRect for CGRect on the right edge of another CGRect
 CGRect CGRectInsideRectRightS (CGRect rect, CGRect rectToRightIn);
+//CGRect for CGRect on the right edge of another CGRect (With Padding)
 CGRect CGRectInsideRectRight (CGRect rect, CGRect rectToRightIn, CGFloat padding);
 //CGRect for CGRect on the bottom edge of another CGRect
 CGRect CGRectInsideRectBottom (CGRect rect, CGRect rectToBottomIn);
