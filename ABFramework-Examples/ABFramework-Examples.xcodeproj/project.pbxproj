@@ -71,6 +71,7 @@
 		D271799416E58548009BB5D1 /* ABReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D271796D16E58548009BB5D1 /* ABReachability.m */; };
 		D271799616E58573009BB5D1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D271799516E58573009BB5D1 /* StoreKit.framework */; };
 		D2B331B916EC9E5A00DED125 /* ABLabelExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B331B816EC9E5A00DED125 /* ABLabelExample.m */; };
+		D2B331C916ED047D00DED125 /* ABImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B331C816ED047D00DED125 /* ABImageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -194,6 +195,8 @@
 		D271799516E58573009BB5D1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D2B331B716EC9E5A00DED125 /* ABLabelExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABLabelExample.h; sourceTree = "<group>"; };
 		D2B331B816EC9E5A00DED125 /* ABLabelExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABLabelExample.m; sourceTree = "<group>"; };
+		D2B331C716ED047D00DED125 /* ABImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABImageView.h; sourceTree = "<group>"; };
+		D2B331C816ED047D00DED125 /* ABImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABImageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -449,6 +452,7 @@
 		D271792F16E58548009BB5D1 /* Components (View) */ = {
 			isa = PBXGroup;
 			children = (
+				D2B331C616ED047D00DED125 /* ABImageView */,
 				D2633D6316EBDDF400FCE9D0 /* ABTableStackController */,
 				D271793016E58548009BB5D1 /* ABAlertView */,
 				D271793316E58548009BB5D1 /* ABButton */,
@@ -611,6 +615,15 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		D2B331C616ED047D00DED125 /* ABImageView */ = {
+			isa = PBXGroup;
+			children = (
+				D2B331C716ED047D00DED125 /* ABImageView.h */,
+				D2B331C816ED047D00DED125 /* ABImageView.m */,
+			);
+			path = ABImageView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -731,6 +744,7 @@
 				D259193F16EBCF2100E63E4B /* ABFileHelper.m in Sources */,
 				D2633D6616EBDDF400FCE9D0 /* ABTableStackController.m in Sources */,
 				D2B331B916EC9E5A00DED125 /* ABLabelExample.m in Sources */,
+				D2B331C916ED047D00DED125 /* ABImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
