@@ -26,6 +26,7 @@
         _textField = [[UITextField alloc] initWithFrame:self.bounds];
         _textField.backgroundColor = [UIColor clearColor];
         _textField.userInteractionEnabled = NO;
+        _textField.clipsToBounds = NO;
         [self addSubview:_textField];
         
         //Label (not used by default)
@@ -36,10 +37,11 @@
         [self addSubview:_label];
         
         //Configuration
+        
+        self.trimAutomatically = NO;
         self.fontName = @"HelveticaNeue";
         self.textSize = 15.0f;
         self.textColor = [UIColor blackColor];
-        self.trimAutomatically = NO;
         self.lineBreakEnabled = NO;
         self.shadow = ABLabelShadowNone;
         self.shadowColor = nil;
@@ -136,10 +138,10 @@
     _lineBreakEnabled = lineBreakEnabled;
     
     //Turn of automatic trimming if enabled
-    self.trimAutomatically = (_lineBreakEnabled) ? NO : YES;
+    self.trimAutomatically = (_lineBreakEnabled) ? NO : self.trimAutomatically;
     
     //Assume left text alignment if enabled
-    self.centeredHorizontally = (_lineBreakEnabled) ? NO : YES;
+    self.centeredHorizontally = (_lineBreakEnabled) ? NO : self.centeredHorizontally;
     
     //Hide TextField & Show Label if enabled
     _textField.alpha = (_lineBreakEnabled) ? 0.0f : 1.0f;
@@ -238,7 +240,7 @@
     
     //Doesn't seem to work on UITextField
     _textField.adjustsFontSizeToFitWidth = YES;
-    _textField.minimumFontSize = minimumFontSize;
+    _textField.minimumFontSize = _minimumFontSize;
 }
 
 //forceUILabel
