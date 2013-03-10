@@ -222,6 +222,20 @@ CGRect CGRectInsideRectTopRight (CGRect rect, CGRect rectToTopRightIn, CGFloat p
     return newRect;
 }
 
+//CGRect for CGRect in the center right of another CGRect
+CGRect CGRectInsideRectCenterRight (CGRect rect, CGRect rectToCenterRightIn, CGFloat padding)
+{
+    CGRect newRect;
+    //Center
+    newRect = CGRectCenteredVerticallyS(rect, rectToCenterRightIn);
+    //Right
+    newRect = CGRectInsideRectRightS(newRect, rectToCenterRightIn);
+    //Padding
+    newRect = CGRectOffsetOriginX(newRect, -padding);
+    
+    return newRect;
+}
+
 //CGRect for CGRect in the top left corner of another CGRect
 CGRect CGRectInsideRectTopLeft (CGRect rect, CGRect rectToTopLeftIn, CGFloat padding)
 {
