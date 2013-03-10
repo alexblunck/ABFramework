@@ -108,4 +108,18 @@
     }
 }
 
+
+
+#pragma mark - Accessors
+-(void) setSelectedImageName:(NSString *)selectedImageName
+{
+    _selectedImageName = selectedImageName;
+    
+    UIImage *imageSel = [UIImage imageNamed:selectedImageName];
+    if (imageSel)
+    {
+        [self setImage:imageSel forState:UIControlStateSelected];
+    }
+}
+
 @end
