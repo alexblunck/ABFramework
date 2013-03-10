@@ -15,6 +15,7 @@
 //Example ViewControllers
 #import "ABSwitchExample.h"
 #import "ABSaveSystemExample.h"
+#import "ABLabelExample.h"
 
 @interface ExampleSelectViewController () <UITableViewDataSource, UITableViewDelegate> {
     UITableView *_tableView;
@@ -49,7 +50,8 @@
 {
     //Components (Views)
     NSArray *componentsViewObjects = @[
-                                  [ExampleObject objectWithName:@"ABSwitch" viewControllerClass:[ABSwitchExample class]]
+                                  [ExampleObject objectWithName:@"ABSwitch" viewControllerClass:[ABSwitchExample class]],
+                                  [ExampleObject objectWithName:@"ABLabel" viewControllerClass:[ABLabelExample class]]
                                   ];
     ExampleSection *componentsViewSection = [ExampleSection sectionWithName:@"Components (Views)" exampleObjectArray:componentsViewObjects];
     [_sectionArray addObject:componentsViewSection];

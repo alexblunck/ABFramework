@@ -70,6 +70,7 @@
 		D271799316E58548009BB5D1 /* ABFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = D271796A16E58548009BB5D1 /* ABFrame.m */; };
 		D271799416E58548009BB5D1 /* ABReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D271796D16E58548009BB5D1 /* ABReachability.m */; };
 		D271799616E58573009BB5D1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D271799516E58573009BB5D1 /* StoreKit.framework */; };
+		D2B331B916EC9E5A00DED125 /* ABLabelExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B331B816EC9E5A00DED125 /* ABLabelExample.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -191,6 +192,8 @@
 		D271796E16E58548009BB5D1 /* ABTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTypes.h; sourceTree = "<group>"; };
 		D271796F16E58548009BB5D1 /* ABUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABUtilities.h; sourceTree = "<group>"; };
 		D271799516E58573009BB5D1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		D2B331B716EC9E5A00DED125 /* ABLabelExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABLabelExample.h; sourceTree = "<group>"; };
+		D2B331B816EC9E5A00DED125 /* ABLabelExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABLabelExample.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +238,8 @@
 			children = (
 				3C5D960516BA89C500B37045 /* ABSwitchExample.h */,
 				3C5D960616BA89C500B37045 /* ABSwitchExample.m */,
+				D2B331B716EC9E5A00DED125 /* ABLabelExample.h */,
+				D2B331B816EC9E5A00DED125 /* ABLabelExample.m */,
 				3CD78ADD16C3DD78006C4B21 /* ABSaveSystemExample.h */,
 				3CD78ADE16C3DD78006C4B21 /* ABSaveSystemExample.m */,
 			);
@@ -725,6 +730,7 @@
 				D271799416E58548009BB5D1 /* ABReachability.m in Sources */,
 				D259193F16EBCF2100E63E4B /* ABFileHelper.m in Sources */,
 				D2633D6616EBDDF400FCE9D0 /* ABTableStackController.m in Sources */,
+				D2B331B916EC9E5A00DED125 /* ABLabelExample.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
