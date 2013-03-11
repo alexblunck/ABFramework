@@ -17,6 +17,7 @@
 //Block
 +(id) buttonWithImageName:(NSString*)imageName actionBlock:(ABBlockVoid)actionBlock;
 +(id) buttonWithActionBlock:(ABBlockVoid)actionBlock;
++(id) buttonBasicWithText:(NSString*)text actionBlock:(ABBlockVoid)actionBlock; //ABButton with default UIButton styling
 
 @property(nonatomic, strong) NSDictionary *userData;
 

@@ -40,6 +40,10 @@
     return [[self alloc] initWithImageName:imageName actionBlock:actionBlock];
 }
 
++(id) buttonBasicWithText:(NSString*)text actionBlock:(ABBlockVoid)actionBlock
+{
+    return [[self alloc] initBasicWithText:text actionBlock:actionBlock];
+}
 
 
 #pragma mark - Initializer
@@ -68,11 +72,36 @@
     self = [super init];
     if (self)
     {
-        _actionBlock = actionBlock;
+        _actionBlock = [actionBlock copy];
         
         [self setupImages:imageName];
         
         [self addTarget:self action:@selector(selectedButton) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return self;
+}
+
+-(id) initBasicWithText:(NSString*)text actionBlock:(ABBlockVoid)actionBlock
+{
+    self = [super init];
+    if (self)
+    {
+        _actionBlock = [actionBlock copy];
+        
+        //Create UIButton with default styling
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        
+        //Adjust button frame to fit text + padding
+        CGSize buttonSize = CGSizeForTextInLabel(text, button.titleLabel);
+        buttonSize = CGSizeOffset(buttonSize, 20, 20);
+        button.frame = CGRectChangingCGSize(button.frame, buttonSize);
+        
+        [button setTitle:text forState:UIControlStateNormal];
+        
+        [button addTarget:self action:@selector(selectedButton) forControlEvents:UIControlEventTouchUpInside];
+        
+        self.frame = button.bounds;
+        [self addSubview:button];
     }
     return self;
 }
