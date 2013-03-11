@@ -23,9 +23,12 @@ typedef enum {
 @interface ABHud : UIView
 
 //Utility
+//Show
 +(void) showActivity;
 +(void) showActivityAndHide;
-+(void) showActivityAndHide:(NSString*)text;
++(void) showActivityAndHide:(NSString*)text; // TO DO
+//Dismiss
++(void) dismiss;
 
 //Accessors
 +(void) setAnimationType:(ABHudAnimationType)type;

@@ -80,6 +80,7 @@
 
 
 #pragma mark - Utility
+#pragma mark - Show
 +(void) showActivity
 {
     [[ABHud sharedClass] show:YES];
@@ -94,6 +95,13 @@
 {
     [[ABHud sharedClass] show:YES];
     [[ABHud sharedClass] scheduleHide:2];
+}
+
+
+#pragma mark - Dismiss
++(void) dismiss
+{
+    [[ABHud sharedClass] hide];
 }
 
 
@@ -133,6 +141,10 @@
 
 -(void) hide
 {
+    //Invalidate possible active hide timer
+    [_hideTimer invalidate];
+    _hideTimer = nil;
+    
     [self show:NO];
 }
 
