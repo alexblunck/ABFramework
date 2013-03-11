@@ -30,6 +30,8 @@
 		3CE5669516B6966D00915391 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CE5669416B6966D00915391 /* Default@2x.png */; };
 		3CE5669716B6966D00915391 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CE5669616B6966D00915391 /* Default-568h@2x.png */; };
 		3CE568D616B69FEE00915391 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE568D516B69FEE00915391 /* SystemConfiguration.framework */; };
+		D24A0D6716EE2E660093AE2A /* ABHudExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D24A0D6616EE2E660093AE2A /* ABHudExample.m */; };
+		D24A0D6B16EE30040093AE2A /* ABHud.m in Sources */ = {isa = PBXBuildFile; fileRef = D24A0D6A16EE30040093AE2A /* ABHud.m */; };
 		D259193F16EBCF2100E63E4B /* ABFileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D259193E16EBCF2100E63E4B /* ABFileHelper.m */; };
 		D2633D6616EBDDF400FCE9D0 /* ABTableStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2633D6516EBDDF400FCE9D0 /* ABTableStackController.m */; };
 		D271797016E58548009BB5D1 /* NSData+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D271791316E58548009BB5D1 /* NSData+ABFramework.m */; };
@@ -111,6 +113,10 @@
 		3CE5669416B6966D00915391 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		3CE5669616B6966D00915391 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		3CE568D516B69FEE00915391 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D24A0D6516EE2E660093AE2A /* ABHudExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABHudExample.h; sourceTree = "<group>"; };
+		D24A0D6616EE2E660093AE2A /* ABHudExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABHudExample.m; sourceTree = "<group>"; };
+		D24A0D6916EE30040093AE2A /* ABHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABHud.h; sourceTree = "<group>"; };
+		D24A0D6A16EE30040093AE2A /* ABHud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABHud.m; sourceTree = "<group>"; };
 		D259193D16EBCF2100E63E4B /* ABFileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFileHelper.h; sourceTree = "<group>"; };
 		D259193E16EBCF2100E63E4B /* ABFileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABFileHelper.m; sourceTree = "<group>"; };
 		D2633D6416EBDDF400FCE9D0 /* ABTableStackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTableStackController.h; sourceTree = "<group>"; };
@@ -245,6 +251,8 @@
 				D2B331B816EC9E5A00DED125 /* ABLabelExample.m */,
 				3CD78ADD16C3DD78006C4B21 /* ABSaveSystemExample.h */,
 				3CD78ADE16C3DD78006C4B21 /* ABSaveSystemExample.m */,
+				D24A0D6516EE2E660093AE2A /* ABHudExample.h */,
+				D24A0D6616EE2E660093AE2A /* ABHudExample.m */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -357,6 +365,15 @@
 			name = Vendor;
 			sourceTree = "<group>";
 		};
+		D24A0D6816EE30040093AE2A /* ABHud */ = {
+			isa = PBXGroup;
+			children = (
+				D24A0D6916EE30040093AE2A /* ABHud.h */,
+				D24A0D6A16EE30040093AE2A /* ABHud.m */,
+			);
+			path = ABHud;
+			sourceTree = "<group>";
+		};
 		D259193C16EBCF2100E63E4B /* ABFileHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -452,6 +469,7 @@
 		D271792F16E58548009BB5D1 /* Components (View) */ = {
 			isa = PBXGroup;
 			children = (
+				D24A0D6816EE30040093AE2A /* ABHud */,
 				D2B331C616ED047D00DED125 /* ABImageView */,
 				D2633D6316EBDDF400FCE9D0 /* ABTableStackController */,
 				D271793016E58548009BB5D1 /* ABAlertView */,
@@ -745,6 +763,8 @@
 				D2633D6616EBDDF400FCE9D0 /* ABTableStackController.m in Sources */,
 				D2B331B916EC9E5A00DED125 /* ABLabelExample.m in Sources */,
 				D2B331C916ED047D00DED125 /* ABImageView.m in Sources */,
+				D24A0D6716EE2E660093AE2A /* ABHudExample.m in Sources */,
+				D24A0D6B16EE30040093AE2A /* ABHud.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

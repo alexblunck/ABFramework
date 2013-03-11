@@ -84,6 +84,16 @@
          location = "group:Components (View)"
          name = "Components (View)">
          <Group
+            location = "group:ABHud"
+            name = "ABHud">
+            <FileRef
+               location = "group:ABHud.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABHud.m">
+            </FileRef>
+         </Group>
+         <Group
             location = "group:ABImageView"
             name = "ABImageView">
             <FileRef
