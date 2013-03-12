@@ -35,7 +35,7 @@
         [self addSubview:backgroundImageView];
         
         //Center Background ImageView
-        backgroundImageView.frame = CGRectCenteredInCGRect(backgroundImageView.frame, self.frame);
+        backgroundImageView.frame = CGRectCenteredWithCGRect(backgroundImageView.frame, self.bounds);
         
         //Text Field
         _textField = [UITextField new];

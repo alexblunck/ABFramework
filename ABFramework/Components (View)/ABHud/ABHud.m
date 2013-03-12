@@ -52,21 +52,21 @@
         
         //Circle view
         _circleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-        _circleView.frame = CGRectCenteredInCGRect(_circleView.frame, self.bounds);
+        _circleView.frame = CGRectCenteredWithCGRect(_circleView.frame, self.bounds);
         _circleView.backgroundColor = [UIColor blackColor];
         _circleView.alpha = ABHUD_OPACITY;
         [self addSubview:_circleView];
         
         //Activity View
         UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        activityView.frame = CGRectCenteredInCGRect(activityView.frame, _circleView.bounds);
+        activityView.frame = CGRectCenteredWithCGRect(activityView.frame, _circleView.bounds);
         [activityView startAnimating];
         [_circleView addSubview:activityView];
         
         //Label
         _label = [ABLabel new];
         _label.frame = CGRectMake(0, 0, 200, 50);
-        _label.frame = CGRectCenteredInCGRect(_label.frame, self.bounds);
+        _label.frame = CGRectCenteredWithCGRect(_label.frame, self.bounds);
         _label.backgroundColor = [UIColor greenColor];
         //[self addSubview:_label];
         
@@ -165,7 +165,7 @@
 #pragma mark - Animation
 -(void) bounceCircleViewIn:(BOOL)bounceIn
 {
-    CGRect centerRect = CGRectCenteredInCGRect(_circleView.frame, self.bounds);
+    CGRect centerRect = CGRectCenteredWithCGRect(_circleView.frame, self.bounds);
     CGRect centerRectOffset = CGRectOffsetOriginY(centerRect, 30);
     CGRect outsideTopRect = CGRectChangingOriginY(_circleView.frame, 0 - _circleView.frame.size.height);
     
@@ -226,7 +226,7 @@
     
     //Default values for circle view
     _circleView.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
-    _circleView.frame = CGRectCenteredInCGRect(_circleView.frame, self.bounds);
+    _circleView.frame = CGRectCenteredWithCGRect(_circleView.frame, self.bounds);
     _circleView.alpha = ABHUD_OPACITY;
     
     //Prepare circle view for animation type

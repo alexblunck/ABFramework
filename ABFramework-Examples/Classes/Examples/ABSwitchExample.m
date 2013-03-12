@@ -27,7 +27,7 @@
                                                            shadowImage:[UIImage imageNamed:@"switch2_shadow.png"]];
     
     //Position in current view
-    customSwitch.frame = CGRectCenteredInCGRect(customSwitch.frame, CGRectOffsetSizeHeight(self.view.bounds, -44));
+    customSwitch.frame = CGRectCenteredWithCGRect(customSwitch.frame, CGRectOffsetSizeHeight(self.view.bounds, -44));
     
     //Use delegate pattern
     customSwitch.delegate = self;
