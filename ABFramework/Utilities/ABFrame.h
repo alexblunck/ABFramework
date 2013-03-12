@@ -10,88 +10,144 @@
 
 @interface ABFrame : NSObject
 
-/*
- CGFLoat
+/**
+ * CGFloat
  */
-//Y Point value of the bottom edge of a CGRect
+#pragma mark - CGFloat Relative
+//Bottom Point Of CGRect
 CGFloat CGFloatBottomPointY(CGRect rect);
 
 
 
-/*
- CGSize
+/**
+ * CGSize
  */
-//Offset values of a CGSize
+#pragma mark - CGSize Offset
+//Size
 CGSize CGSizeOffset(CGSize size, CGFloat sizeWidthBy, CGFloat sizeHeightBy);
-//Offset only the Width Size value of a CGSize
+
+//Size Width
 CGSize CGSizeOffsetWidth(CGSize size, CGFloat sizeWidthBy);
-//Offset only the Height Size value of a CGSize
+
+//Size Height
 CGSize CGSizeOffsetHeight(CGSize size, CGFloat sizeHeightBy);
 
-//CGSize of a specific image
-CGSize CGSizeFromUIImageName(NSString* imageName);
-//Exact size of a string in a specific UILabel
+
+#pragma mark - CGSize Misc
+//CGSize For Image
+CGSize CGSizeForImageName(NSString* imageName);
+
+//CGSize For Text In UILabel
 CGSize CGSizeForTextInLabel(NSString *text, UILabel *label);
 
 
 
-/*
- CGRect
+/**
+ * CGRect
  */
-//CGRect for one CGRect centered in another
-CGRect CGRectCenteredInCGRect (CGRect rect, CGRect rectToCenterIn);
-//CGRect for one CGRect centered horizontally in another
-CGRect CGRectCenteredHorizontally(CGRect rect, CGRect rectToCenterIn, CGFloat originY);
-//CGRect for one CGRect centered vertically in another
-CGRect CGRectCenteredVertically(CGRect rect, CGRect rectToCenterIn, CGFloat originX);
-//CGRect for one CGRect centered horizontally in another (Keeping same Y Origin)
-CGRect CGRectCenteredHorizontallyS(CGRect rect, CGRect rectToCenterIn);
-//CGRect for one CGRect centered vertically in another (Keeping same X Origin)
-CGRect CGRectCenteredVerticallyS(CGRect rect, CGRect rectToCenterIn);
+#pragma mark - CGRect Centered
+//CGRect Centered in CGRect
+CGRect CGRectCenteredWithCGRect (CGRect rect, CGRect rectToCenterWith);
 
-//Adjust only Origin values of a CGRect
+//CGRect Centered Horizontally With CGRect
+CGRect CGRectCenteredHorizontally(CGRect rect, CGRect rectToCenterWith, CGFloat originY);
+
+//CGRect Centered Vertically With CGRect
+CGRect CGRectCenteredVertically(CGRect rect, CGRect rectToCenterWith, CGFloat originX);
+
+//CGRect Centered Horizontally With CGRect (Simple)
+CGRect CGRectCenteredHorizontallyS(CGRect rect, CGRect rectToCenterWith);
+
+//CGRect Centered Vertically With CGRect (Simple)
+CGRect CGRectCenteredVerticallyS(CGRect rect, CGRect rectToCenterWith);
+
+
+#pragma mark - CGRect Changing Origin
+//Origin
 CGRect CGRectChangingOrigin (CGRect rect, CGFloat originX, CGFloat originY);
-//Adjust only X Origin value of a CGRect
+
+//Origin X
 CGRect CGRectChangingOriginX (CGRect rect, CGFloat originX);
-//Adjust only X Origin value of a CGRect
+
+//Origin Y
 CGRect CGRectChangingOriginY (CGRect rect, CGFloat originY);
 
-//Adjust only Size values of a CGRect
+
+#pragma mark - CGRect Changing Size
+//Size
 CGRect CGRectChangingSize (CGRect rect, CGFloat sizeWidth, CGFloat sizeHeight);
-//Adjust only Size values of a CGRect with a CGSize
+
+//CGSize
 CGRect CGRectChangingCGSize(CGRect rect, CGSize size);
-//Adjust only Width Size value of a CGRect
+
+//Size Width
 CGRect CGRectChangingSizeWidth (CGRect rect, CGFloat sizeWidth);
-//Adjust only Height Size value of a CGRect
+
+//Size Height
 CGRect CGRectChangingSizeHeight (CGRect rect, CGFloat sizeHeight);
 
-//Offset only Origin values of a CGRect
+
+#pragma mark - CGRect Offset Origin
+//Origin
 CGRect CGRectOffsetOrigin (CGRect rect, CGFloat originXBy, CGFloat originYBy);
-//Offset only X Origin of a CGRect
+
+//Origin X
 CGRect CGRectOffsetOriginX (CGRect rect, CGFloat originXBy);
-//Offset only Y Origin of a CGRect
+
+//Origin Y
 CGRect CGRectOffsetOriginY (CGRect rect, CGFloat originYBy);
 
-//Offset only Size values of a CGRect
+
+#pragma mark - CGRect Offset Size
+//Size
 CGRect CGRectOffsetSize (CGRect rect, CGFloat sizeWidthBy, CGFloat sizeHeightBy);
-//Offset only Width Size of a CGRect
+
+//Size Width
 CGRect CGRectOffsetSizeWidth (CGRect rect, CGFloat sizeWidthBy);
-//Offset only Height Size of a CGRect
+
+//Size Height
 CGRect CGRectOffsetSizeHeight (CGRect rect, CGFloat sizeHeightBy);
 
-//CGRect for CGRect on the right edge of another CGRect
-CGRect CGRectInsideRectRightS (CGRect rect, CGRect rectToRightIn);
-//CGRect for CGRect on the right edge of another CGRect (With Padding)
-CGRect CGRectInsideRectRight (CGRect rect, CGRect rectToRightIn, CGFloat padding);
-//CGRect for CGRect on the bottom edge of another CGRect
-CGRect CGRectInsideRectBottom (CGRect rect, CGRect rectToBottomIn);
-//CGRect for CGRect in the top right corner of another CGRect
-CGRect CGRectInsideRectTopRight (CGRect rect, CGRect rectToTopRightIn, CGFloat padding);
-//CGRect for CGRect in the center right of another CGRect
-CGRect CGRectInsideRectCenterRight (CGRect rect, CGRect rectToCenterRightIn, CGFloat padding);
-//CGRect for CGRect in the top left corner of another CGRect
-CGRect CGRectInsideRectTopLeft (CGRect rect, CGRect rectToTopLeftIn, CGFloat padding);
-//CGRect for CGRect above a certain point
+
+#pragma mark - CGRect Relative Inside
+//TopCenter
+CGRect CGRectInsideTopCenter(CGRect rect, CGRect rectToTopCenterWith, CGFloat padding);
+
+//TopRight
+CGRect CGRectInsideTopRight(CGRect rect, CGRect rectToTopRightWith, CGFloat padding);
+
+//RightCenter
+CGRect CGRectInsideRightCenter(CGRect rect, CGRect rectToRightCenterWith, CGFloat padding);
+
+//RightBottom
+CGRect CGRectInsideRightBottom(CGRect rect, CGRect rectToRightBottomWith, CGFloat padding);
+
+//BottomCenter
+CGRect CGRectInsideBottomCenter(CGRect rect, CGRect rectToBottomCenterWith, CGFloat padding);
+
+//BottomLeft
+CGRect CGRectInsideBottomLeft(CGRect rect, CGRect rectToBottomLeftWith, CGFloat padding);
+
+//LeftCenter
+CGRect CGRectInsideLeftCenter(CGRect rect, CGRect rectToLeftCenterWith, CGFloat padding);
+
+
+#pragma mark - CGRect Relative Outside
+//TopCenter
+CGRect CGRectOutsideTopCenter(CGRect rect, CGRect rectToTopCenterWith, CGFloat padding);
+
+//RightCenter
+CGRect CGRectOutsideRightCenter(CGRect rect, CGRect rectToRightCenterWith, CGFloat padding);
+
+//BottomCenter
+CGRect CGRectOutsideBottomCenter(CGRect rect, CGRect rectToBottomCenterWith, CGFloat padding);
+
+//LeftCenter
+CGRect CGRectOutsideLeftCenter(CGRect rect, CGRect rectToLeftCenterWith, CGFloat padding);
+
+
+#pragma mark - CGRect Relative With Points
+//Above
 CGRect CGRectAbovePointY(CGRect rect, CGFloat pointY);
 
 @end

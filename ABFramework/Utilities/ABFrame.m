@@ -11,44 +11,45 @@
 @implementation ABFrame
 
 #pragma mark - CGFloat
-//Origin Y value of the bottom of a CGRect
-CGFloat CGFloatBottomOriginY(CGRect rect)
+#pragma mark - CGFloat Relative
+//Bottom Point Of CGRect
+CGFloat CGFloatBottomPointY(CGRect rect)
 {
     return rect.origin.y + rect.size.height;
 }
 
 
 
-
-
 #pragma mark - CGSize
-//Offset values of a CGSize
+#pragma mark - CGSize Offset
+//Size
 CGSize CGSizeOffset(CGSize size, CGFloat sizeWidthBy, CGFloat sizeHeightBy)
 {
     return CGSizeMake(size.width + sizeWidthBy, size.height + sizeHeightBy);
 }
 
-//Offset only the Width Size value of a CGSize
+//Size Width
 CGSize CGSizeOffsetWidth(CGSize size, CGFloat sizeWidthBy)
 {
     return CGSizeOffset(size, sizeWidthBy, 0);
 }
 
-//Offset only the Height Size value of a CGSize
+//Size Height
 CGSize CGSizeOffsetHeight(CGSize size, CGFloat sizeHeightBy)
 {
     return CGSizeOffset(size, 0, sizeHeightBy);
 }
 
 
-//CGSize of a specific image
-CGSize CGSizeFromUIImageName(NSString* imageName)
+#pragma mark - CGSize Misc
+//CGSize For Image
+CGSize CGSizeForImageName(NSString* imageName)
 {
     UIImage *image = [UIImage imageNamed:imageName];
     return image.size;
 }
 
-//Exact size of a string in a specific UILabel
+//CGSize For Text In UILabel
 CGSize CGSizeForTextInLabel(NSString *text, UILabel *label)
 {
     UILabel *l = [label abCopy];
@@ -60,195 +61,296 @@ CGSize CGSizeForTextInLabel(NSString *text, UILabel *label)
 
 
 
-
-
 #pragma mark - CGRect
-//CGRect for one CGRect centered in another
-CGRect CGRectCenteredInCGRect (CGRect rect, CGRect rectToCenterIn)
+#pragma mark - CGRect Centered
+//CGRect Centered in CGRect
+CGRect CGRectCenteredWithCGRect (CGRect rect, CGRect rectToCenterWith)
 {
-    return CGRectChangingOrigin(rect,
-                                (rectToCenterIn.size.width-rect.size.width)/2,
-                                (rectToCenterIn.size.height-rect.size.height)/2
-                                );
+    CGRect newRect;
+    //Horizontal
+    newRect = CGRectCenteredHorizontallyS(rect, rectToCenterWith);
+    //Vertical
+    newRect = CGRectCenteredVerticallyS(newRect, rectToCenterWith);
+    
+    return newRect;
 }
 
-//CGRect for one CGRect centered horizontally in another
-CGRect CGRectCenteredHorizontally(CGRect rect, CGRect rectToCenterIn, CGFloat originY)
+//CGRect Centered Horizontally With CGRect
+CGRect CGRectCenteredHorizontally(CGRect rect, CGRect rectToCenterWith, CGFloat originY)
 {
     return CGRectChangingOrigin(rect,
-                                (rectToCenterIn.size.width-rect.size.width)/2,
+                                rectToCenterWith.origin.x + (rectToCenterWith.size.width-rect.size.width)/2,
                                 originY
                                 );
 }
 
-//CGRect for one CGRect centered vertically in another
-CGRect CGRectCenteredVertically(CGRect rect, CGRect rectToCenterIn, CGFloat originX)
+//CGRect Centered Vertically With CGRect
+CGRect CGRectCenteredVertically(CGRect rect, CGRect rectToCenterWith, CGFloat originX)
 {
     return CGRectChangingOrigin(rect,
                                 originX,
-                                (rectToCenterIn.size.height-rect.size.height)/2
+                                rectToCenterWith.origin.y + (rectToCenterWith.size.height-rect.size.height)/2
                                 );
 }
 
-//CGRect for one CGRect centered horizontally in another (Keeping same Y Origin)
-CGRect CGRectCenteredHorizontallyS(CGRect rect, CGRect rectToCenterIn)
+//CGRect Centered Horizontally With CGRect (Simple)
+CGRect CGRectCenteredHorizontallyS(CGRect rect, CGRect rectToCenterWith)
 {
-    return CGRectChangingOriginX(rect, (rectToCenterIn.size.width-rect.size.width)/2);
+    return CGRectCenteredHorizontally(rect, rectToCenterWith, rect.origin.y);
 }
 
-//CGRect for one CGRect centered vertically in another (Keeping same X Origin)
-CGRect CGRectCenteredVerticallyS(CGRect rect, CGRect rectToCenterIn)
+//CGRect Centered Vertically With CGRect (Simple)
+CGRect CGRectCenteredVerticallyS(CGRect rect, CGRect rectToCenterWith)
 {
-    return  CGRectChangingOriginY(rect, (rectToCenterIn.size.height-rect.size.height)/2);
+    return CGRectCenteredVertically(rect, rectToCenterWith, rect.origin.x);
 }
 
 
-
-//Adjust only Origin values of a CGRect
+#pragma mark - CGRect Changing Origin
+//Origin
 CGRect CGRectChangingOrigin (CGRect rect, CGFloat originX, CGFloat originY)
 {
     return CGRectMake(originX, originY, rect.size.width, rect.size.height);
 }
 
-//Adjust only X Origin value of a CGRect
+//Origin X
 CGRect CGRectChangingOriginX (CGRect rect, CGFloat originX)
 {
     return CGRectChangingOrigin(rect, originX, rect.origin.y);
 }
 
-//Adjust only X Origin value of a CGRect
+//Origin Y
 CGRect CGRectChangingOriginY (CGRect rect, CGFloat originY)
 {
     return CGRectChangingOrigin(rect, rect.origin.x, originY);
 }
 
 
-
-//Adjust only Size values of a CGRect
+#pragma mark - CGRect Changing Size
+//Size
 CGRect CGRectChangingSize (CGRect rect, CGFloat sizeWidth, CGFloat sizeHeight)
 {
     return CGRectMake(rect.origin.x, rect.origin.y, sizeWidth, sizeHeight);
 }
 
-//Adjust only Size values of a CGRect with a CGSize
+//CGSize
 CGRect CGRectChangingCGSize(CGRect rect, CGSize size)
 {
     return CGRectChangingSize(rect, size.width, size.height);
 }
 
-//Adjust only Width Size value of a CGRect
+//Size Width
 CGRect CGRectChangingSizeWidth (CGRect rect, CGFloat sizeWidth)
 {
     return CGRectChangingSize(rect, sizeWidth, rect.size.height);
 }
 
-//Adjust only Height Size value of a CGRect
+//Size Height
 CGRect CGRectChangingSizeHeight (CGRect rect, CGFloat sizeHeight)
 {
     return CGRectChangingSize(rect, rect.size.width, sizeHeight);
 }
 
 
-
-//Offset only Origin values of a CGRect
+#pragma mark - CGRect Offset Origin
+//Origin
 CGRect CGRectOffsetOrigin (CGRect rect, CGFloat originXBy, CGFloat originYBy)
 {
     return CGRectChangingOrigin(rect, rect.origin.x+originXBy, rect.origin.y+originYBy);
 }
 
-//Offset only X Origin of a CGRect
+//Origin X
 CGRect CGRectOffsetOriginX (CGRect rect, CGFloat originXBy)
 {
     return CGRectOffsetOrigin(rect, originXBy, 0);
 }
 
-//Offset only Y Origin of a CGRect
+//Origin Y
 CGRect CGRectOffsetOriginY (CGRect rect, CGFloat originYBy)
 {
     return CGRectOffsetOrigin(rect, 0, originYBy);
 }
 
 
-
-//Offset only Size values of a CGRect
+#pragma mark - CGRect Offset Size
+//Size
 CGRect CGRectOffsetSize (CGRect rect, CGFloat sizeWidthBy, CGFloat sizeHeightBy)
 {
     return CGRectChangingSize(rect, rect.size.width+sizeWidthBy, rect.size.height+sizeHeightBy);
 }
 
-//Offset only Width Size of a CGRect
+//Size Width
 CGRect CGRectOffsetSizeWidth (CGRect rect, CGFloat sizeWidthBy)
 {
     return CGRectOffsetSize(rect, sizeWidthBy, 0);
 }
 
-//Offset only Height Size of a CGRect
+//Size Height
 CGRect CGRectOffsetSizeHeight (CGRect rect, CGFloat sizeHeightBy)
 {
     return CGRectOffsetSize(rect, 0, sizeHeightBy);
 }
 
 
-
-//CGRect for CGRect right inside of another CGRect
-CGRect CGRectInsideRectRightS (CGRect rect, CGRect rectToRightIn)
-{
-    return CGRectInsideRectRight(rect, rectToRightIn, 0.0f);
-}
-
-//CGRect for CGRect on the right edge of another CGRect (With Padding)
-CGRect CGRectInsideRectRight (CGRect rect, CGRect rectToRightIn, CGFloat padding)
-{
-    return  CGRectChangingOriginX(rect, rectToRightIn.size.width-rect.size.width-padding);
-}
-
-//CGRect for CGRect on the bottom edge of another CGRect
-CGRect CGRectInsideRectBottom (CGRect rect, CGRect rectToBottomIn)
-{
-    return CGRectChangingOriginY(rect, rectToBottomIn.size.height-rect.size.height);
-}
-
-//CGRect for CGRect in the top right corner of another CGRect
-CGRect CGRectInsideRectTopRight (CGRect rect, CGRect rectToTopRightIn, CGFloat padding)
+#pragma mark - CGRect Relative Inside
+//TopCenter
+CGRect CGRectInsideTopCenter(CGRect rect, CGRect rectToTopCenterWith, CGFloat padding)
 {
     CGRect newRect;
-    //Top
-    newRect = CGRectChangingOriginY(rect, 0);
-    //Right
-    newRect = CGRectInsideRectRightS(newRect, rectToTopRightIn);
+    //Inside
+    newRect = CGRectChangingOrigin(rect, rectToTopCenterWith.origin.x, rectToTopCenterWith.origin.y);
+    //Center
+    newRect = CGRectCenteredHorizontallyS(newRect, rectToTopCenterWith);
+    //Padding
+    newRect = CGRectOffsetOriginY(newRect, padding);
+    
+    return newRect;
+}
+
+//TopRight
+CGRect CGRectInsideTopRight(CGRect rect, CGRect rectToTopRightWith, CGFloat padding)
+{
+    CGRect newRect;
+    //Inside
+    newRect = CGRectChangingOrigin(rect,
+                                   rectToTopRightWith.origin.x + rectToTopRightWith.size.width - rect.size.width,
+                                   rectToTopRightWith.origin.y
+                                   );
     //Padding
     newRect = CGRectOffsetOrigin(newRect, -padding, padding);
     
     return newRect;
 }
 
-//CGRect for CGRect in the center right of another CGRect
-CGRect CGRectInsideRectCenterRight (CGRect rect, CGRect rectToCenterRightIn, CGFloat padding)
+//RightCenter
+CGRect CGRectInsideRightCenter(CGRect rect, CGRect rectToRightCenterWith, CGFloat padding)
 {
     CGRect newRect;
+    //Inside
+    newRect = CGRectChangingOriginX(newRect,
+                                    rectToRightCenterWith.origin.x + rectToRightCenterWith.size.width - rect.size.width
+                                    );
     //Center
-    newRect = CGRectCenteredVerticallyS(rect, rectToCenterRightIn);
-    //Right
-    newRect = CGRectInsideRectRightS(newRect, rectToCenterRightIn);
-    //Padding
-    newRect = CGRectOffsetOriginX(newRect, -padding);
+    newRect = CGRectCenteredVerticallyS(newRect, rectToRightCenterWith);
     
     return newRect;
 }
 
-//CGRect for CGRect in the top left corner of another CGRect
-CGRect CGRectInsideRectTopLeft (CGRect rect, CGRect rectToTopLeftIn, CGFloat padding)
+//RightBottom
+CGRect CGRectInsideRightBottom(CGRect rect, CGRect rectToRightBottomWith, CGFloat padding)
 {
     CGRect newRect;
-    //Top / Left
-    newRect = CGRectChangingOrigin(rect, 0, 0);
+    //Inside
+    newRect = CGRectChangingOrigin(rect,
+                                   rectToRightBottomWith.origin.x + rectToRightBottomWith.size.width - rect.size.width,
+                                   rectToRightBottomWith.origin.y + rectToRightBottomWith.size.height - rect.size.height
+                                   );
     //Padding
-    newRect = CGRectOffsetOrigin(newRect, padding, padding);
+    newRect = CGRectOffsetOrigin(newRect, -padding, -padding);
     
     return newRect;
 }
 
-//CGRect for CGRect above a certain point
+//BottomCenter
+CGRect CGRectInsideBottomCenter(CGRect rect, CGRect rectToBottomCenterWith, CGFloat padding)
+{
+    CGRect newRect;
+    //Inside
+    newRect = CGRectChangingOriginY(rect,
+                                    rectToBottomCenterWith.origin.y + rectToBottomCenterWith.size.height - rect.size.height
+                                    );
+    //Center
+    newRect = CGRectCenteredHorizontallyS(newRect, rectToBottomCenterWith);
+    //Padding
+    newRect = CGRectOffsetOriginY(newRect, -padding);
+    
+    return newRect;
+}
+
+//BottomLeft
+CGRect CGRectInsideBottomLeft(CGRect rect, CGRect rectToBottomLeftWith, CGFloat padding)
+{
+    CGRect newRect;
+    //Inside
+    newRect = CGRectChangingOrigin(rect,
+                                   rectToBottomLeftWith.origin.x,
+                                   rectToBottomLeftWith.origin.y + rectToBottomLeftWith.size.height - rect.size.height
+                                   );
+    //Padding
+    newRect = CGRectOffsetOrigin(newRect, padding, -padding);
+    
+    return newRect;
+}
+
+//LeftCenter
+CGRect CGRectInsideLeftCenter(CGRect rect, CGRect rectToLeftCenterWith, CGFloat padding)
+{
+    CGRect newRect;
+    //Inside
+    newRect = CGRectChangingOriginX(rect,
+                                    rectToLeftCenterWith.origin.x
+                                    );
+    //Center
+    newRect = CGRectCenteredVerticallyS(newRect, rectToLeftCenterWith);
+    //Padding
+    newRect = CGRectOffsetOriginX(newRect, padding);
+    
+    return newRect;
+}
+
+
+#pragma mark - CGRect Relative Outside
+//TopCenter
+CGRect CGRectOutsideTopCenter(CGRect rect, CGRect rectToTopCenterWith, CGFloat padding)
+{
+    CGRect newRect;
+    //Inside Top Center
+    newRect = CGRectInsideTopCenter(rect, rectToTopCenterWith, 0.0f);
+    //Offset to position above rectToTopCenterWith + Padding
+    newRect = CGRectOffsetOriginY(newRect, -(rect.size.height + padding));
+    
+    return newRect;
+}
+
+//RightCenter
+CGRect CGRectOutsideRightCenter(CGRect rect, CGRect rectToRightCenterWith, CGFloat padding)
+{
+    CGRect newRect;
+    //Inside Right Center
+    newRect = CGRectInsideRightCenter(rect, rectToRightCenterWith, 0.0f);
+    //Offset to position right beside rectToRightCenterWith + Padding
+    newRect = CGRectOffsetOriginX(newRect, (rect.size.width + padding));
+    
+    return newRect;
+}
+
+//BottomCenter
+CGRect CGRectOutsideBottomCenter(CGRect rect, CGRect rectToBottomCenterWith, CGFloat padding)
+{
+    CGRect newRect;
+    //Inside Bottom Center
+    newRect = CGRectInsideBottomCenter(rect, rectToBottomCenterWith, 0.0f);
+    //Offset to position below rectToBottomCenterWith + Padding
+    newRect = CGRectOffsetOriginY(newRect, (rect.size.height + padding));
+    
+    return newRect;
+}
+
+//LeftCenter
+CGRect CGRectOutsideLeftCenter(CGRect rect, CGRect rectToLeftCenterWith, CGFloat padding)
+{
+    CGRect newRect;
+    //Inside Left Center
+    newRect = CGRectInsideLeftCenter(rect, rectToLeftCenterWith, 0.0f);
+    //Offset to position left beside rectToLeftCenterWith + Padding
+    newRect = CGRectOffsetOriginX(newRect, -(rect.size.width + padding));
+    
+    return newRect;
+}
+
+
+#pragma mark - CGRect Relative With Points
+//Above
 CGRect CGRectAbovePointY(CGRect rect, CGFloat pointY)
 {
     return CGRectChangingOriginY(rect, pointY - rect.size.height);
