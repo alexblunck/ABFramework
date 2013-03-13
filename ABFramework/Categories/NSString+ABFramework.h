@@ -12,4 +12,8 @@
 
 -(BOOL) empty;
 
+-(NSString*) encodedString:(NSStringEncoding)encoding;
+-(NSString*) asciiEncodedString;
+-(NSString*) utf8EncodedString;
+
 @end

@@ -16,4 +16,19 @@
     return (string.length == 0) ? YES : NO;
 }
 
+-(NSString*) encodedString:(NSStringEncoding)encoding
+{
+    return (__bridge NSString *)(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)self, NULL, (CFStringRef)@"!*'\"();:@&=+$,/?%#[]% ", CFStringConvertNSStringEncodingToEncoding(encoding)));
+}
+
+-(NSString*) asciiEncodedString
+{
+    return [self encodedString:NSASCIIStringEncoding];
+}
+
+-(NSString*) utf8EncodedString
+{
+    return [self encodedString:NSUTF8StringEncoding];
+}
+
 @end

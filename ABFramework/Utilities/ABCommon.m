@@ -26,14 +26,6 @@
 
 
 
-#pragma mark - URL 's
-+(NSString *)urlEncodeUsingEncoding:(NSStringEncoding)encoding string:(NSString*)string
-{
-    return (__bridge NSString *)(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)string, NULL, (CFStringRef)@"!*'\"();:@&=+$,/?%#[]% ", CFStringConvertNSStringEncodingToEncoding(encoding)));
-}
-
-
-
 #pragma mark - Toggle
 +(BOOL) toggleBoolean:(BOOL)boolean
 {
