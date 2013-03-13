@@ -11,7 +11,7 @@
 
 @implementation ABCommon
 
-#pragma mark - Network
+#pragma mark - Networking
 +(BOOL) isOnWifiNetwork
 {
     ABReachability *reachability = [ABReachability reachabilityForInternetConnection];
@@ -30,26 +30,6 @@
 +(BOOL) toggleBoolean:(BOOL)boolean
 {
     return (boolean) ? NO : YES;
-}
-
-
-
-#pragma mark - Key/Value
-+(id) safeObjectForKey:(id)key from:(id)object imidate:(Class)class
-{
-    id returnObject = nil;
-    
-    if ([object objectForKey:key] != [NSNull null] && [object objectForKey:key] != nil) {
-        returnObject = [object objectForKey:key];
-    }
-    
-    else if (class != nil) {
-        if (class == [NSString class]) {
-            returnObject = [NSString string];
-        }
-    }
-    
-    return returnObject;
 }
 
 @end

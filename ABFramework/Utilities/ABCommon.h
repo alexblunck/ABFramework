@@ -10,13 +10,10 @@
 
 @interface ABCommon : NSObject
 
-//Network
+//Networking
 +(BOOL) isOnWifiNetwork;
 
 //Toggle
 +(BOOL) toggleBoolean:(BOOL)boolean;
-
-//Key/Value
-+(id) safeObjectForKey:(id)key from:(id)object imidate:(Class)class;
 
 @end
