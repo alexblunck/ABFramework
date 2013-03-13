@@ -129,7 +129,7 @@
 - (id)init {
     if ((self = [super init]))
     {
-        if(ABSKH_LOG) NSLog(@"ABStoreKitHelper: Started");
+        if(ABSTOREKITHELPER_LOGGING) NSLog(@"ABStoreKitHelper: Started");
         
         //Allocation
         _validatedProducts = [NSMutableSet new];
@@ -149,7 +149,7 @@
 {
     if (![self allProductsValidated])
     {
-        if(ABSKH_LOG) NSLog(@"ABStoreKitHelper: Checking if Product Identifiers are valid...");
+        if(ABSTOREKITHELPER_LOGGING) NSLog(@"ABStoreKitHelper: Checking if Product Identifiers are valid...");
         
         SKProductsRequest *request = [[SKProductsRequest alloc] initWithProductIdentifiers:_productIdentifiers];
         request.delegate = self;
@@ -360,11 +360,11 @@
     {
         if ([self productValidated:productIdentifier])
         {
-            if(ABSKH_LOG) NSLog(@"ABStoreKitHelper: ProductIdentifier: %@ is Valid!", productIdentifier);
+            if(ABSTOREKITHELPER_LOGGING) NSLog(@"ABStoreKitHelper: ProductIdentifier: %@ is Valid!", productIdentifier);
         }
         else
         {
-            if(ABSKH_LOG) NSLog(@"ABStoreKitHelper: ProductIdentifier: %@ is NOT Valid!", productIdentifier);
+            if(ABSTOREKITHELPER_LOGGING) NSLog(@"ABStoreKitHelper: ProductIdentifier: %@ is NOT Valid!", productIdentifier);
         }
     }
 }
@@ -443,7 +443,7 @@
             }
         }
         
-        if(ABSKH_LOG) NSLog(@"ABStoreKitHelper: TransactionState -> %@ (%@)", transaction.payment.productIdentifier, transactionUpdate);
+        if(ABSTOREKITHELPER_LOGGING) NSLog(@"ABStoreKitHelper: TransactionState -> %@ (%@)", transaction.payment.productIdentifier, transactionUpdate);
     }
     
 }
@@ -492,7 +492,7 @@
     //Remove block from block dictionary
     [_blockDictionary removeObjectForKey:@"ABStorekitHelper.restoreBlock"];
     
-    if(ABSKH_LOG) NSLog(@"ABStoreKitHelper: TransactionState -> RESTORE DONE.");
+    if(ABSTOREKITHELPER_LOGGING) NSLog(@"ABStoreKitHelper: TransactionState -> RESTORE DONE.");
 }
 
 -(void) paymentQueue:(SKPaymentQueue *)queue restoreCompletedTransactionsFailedWithError:(NSError *)error

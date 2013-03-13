@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-#define ABSKH_LOG 0
+#ifndef ABSTOREKITHELPER_LOGGING
+#define ABSTOREKITHELPER_LOGGING 1
+#endif
 
 /**
  * Types
