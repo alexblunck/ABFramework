@@ -132,7 +132,7 @@
     }
     else
     {
-        NSLog(@"ABSaveSystem ERROR: dataForKey:\"%@\" -> data for key does not exist!", key);
+        if (ABSAVESYSTEM_LOGGING) NSLog(@"ABSaveSystem ERROR: dataForKey:\"%@\" -> data for key does not exist!", key);
     }
     return nil;
 }
@@ -162,7 +162,7 @@
         }
         else
         {
-            NSLog(@"ABSaveSystem ERROR: objectForKey:\"%@\" -> saved object is %@ not a %@", key, [object class],  aClass);
+            if (ABSAVESYSTEM_LOGGING) NSLog(@"ABSaveSystem ERROR: objectForKey:\"%@\" -> saved object is %@ not a %@", key, [object class],  aClass);
         }
     }
     return nil;

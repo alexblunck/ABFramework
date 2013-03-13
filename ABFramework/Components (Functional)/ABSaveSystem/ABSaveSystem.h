@@ -8,14 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+#ifndef ABSAVESYSTEM_LOGGING
+#define ABSAVESYSTEM_LOGGING 1
+#endif
+
+#define ENCRYPTION_ENABLED NO
+#define AESKEY @"aVt7G67Dgjit2"
+
 typedef enum {
     ABSaveSystemOSNone,
     ABSaveSystemOSMacOSX,
     ABSaveSystemOSIOS
 } ABSaveSystemOS;
-
-#define ENCRYPTION_ENABLED NO
-#define AESKEY @"aVt7G67Dgjit2"
 
 @interface ABSaveSystem : NSObject
 
