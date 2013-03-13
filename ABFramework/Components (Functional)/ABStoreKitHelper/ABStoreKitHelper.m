@@ -51,20 +51,7 @@
 
 -(BOOL) isDateInSubscription:(NSDate*)date
 {
-    
     return [date isBetweenDate:self.transactionDate andDate:[self subscriptionExpireDate]];
-    
-    /*
-     NSTimeInterval currentTime = [[NSDate date] timeIntervalSince1970];
-     NSTimeInterval purchaseTime = [self.transactionDate timeIntervalSince1970];
-     NSTimeInterval subscriptionExpireTime = purchaseTime + [self subscriptionTimeIntervalInSeconds];
-     
-     if (purchaseTime <= currentTime && currentTime <= subscriptionExpireTime)
-     {
-     return YES;
-     }
-     return NO;
-     */
 }
 
 -(NSTimeInterval) subscriptionTimeIntervalInSeconds
