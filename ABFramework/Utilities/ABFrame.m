@@ -239,11 +239,13 @@ CGRect CGRectInsideRightCenter(CGRect rect, CGRect rectToRightCenterWith, CGFloa
 {
     CGRect newRect;
     //Inside
-    newRect = CGRectChangingOriginX(newRect,
+    newRect = CGRectChangingOriginX(rect,
                                     rectToRightCenterWith.origin.x + rectToRightCenterWith.size.width - rect.size.width
                                     );
     //Center
     newRect = CGRectCenteredVerticallyS(newRect, rectToRightCenterWith);
+    //Padding
+    newRect = CGRectOffsetOriginX(newRect, -padding);
     
     return newRect;
 }
