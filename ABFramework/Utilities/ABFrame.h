@@ -110,6 +110,9 @@ CGRect CGRectOffsetSizeHeight (CGRect rect, CGFloat sizeHeightBy);
 
 
 #pragma mark - CGRect Relative Inside
+//TopLeft
+CGRect CGRectInsideTopLeft(CGRect rect, CGRect rectToTopLeftWith, CGFloat padding);
+
 //TopCenter
 CGRect CGRectInsideTopCenter(CGRect rect, CGRect rectToTopCenterWith, CGFloat padding);
 
