@@ -16,6 +16,11 @@
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
++(NSString*) pathForPathInDocumentsFolder:(NSString*)folderPath
+{
+    return [NSString stringWithFormat:@"%@/%@", [self documentsPath], folderPath];
+}
+
 +(NSString*) pathForFile:(NSString*)fileName forPathInDocumentsFolder:(NSString*)folderPath
 {
     return [NSString stringWithFormat:@"%@/%@/%@", [self documentsPath], folderPath, fileName];
@@ -42,6 +47,30 @@
     }
     
     [data writeToFile:path atomically:YES];
+}
+
+
+
+#pragma mark - Read
++(NSData*) dataFromFile:(NSString*)fileName inPathInDocumentsFolder:(NSString*)folderPath
+{
+    NSData *data = [[NSData alloc] initWithContentsOfFile:[self pathForFile:fileName forPathInDocumentsFolder:folderPath]];
+    return data;
+}
+
+
+
+#pragma mark - Delete
++(void) deleteFile:(NSString*)fileName inPathInDocumentsFolder:(NSString*)folderPath
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    NSString *filePath = [self pathForFile:fileName forPathInDocumentsFolder:folderPath];
+    
+    if ([fileManager fileExistsAtPath:filePath])
+    {
+        [fileManager removeItemAtPath:filePath error:nil];
+    }
 }
 
 @end
