@@ -29,6 +29,8 @@
 #define ABLogBOOL(bool) NSLog(@"ABLogBOOL -> %s = %@", #bool, (bool) ? @"YES" : @"NO")
 #define ABLogInteger(integer) NSLog(@"ABLogInteger -> %s = %i", #integer, integer)
 #define ABLogFloat(float) NSLog(@"ABLogFloat -> %s = %f", #float, float)
+#define ABLogLong(long) NSLog(@"ABLogFloat -> %s = %lu", #long, long)
+#define ABLogLongLong(longLong) NSLog(@"ABLogFloat -> %s = %llu", #longLong, longLong)
 
 
 
