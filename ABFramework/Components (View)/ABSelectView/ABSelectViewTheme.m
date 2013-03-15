@@ -36,18 +36,26 @@
 
 -(id) initWithTag:(_ABSelectViewThemeTag)theme
 {
-    if (self = [super init]) {
-        switch (theme) {
-            case ABSelectViewThemeDark:
-                self.topRowImageName = @"abselecttheme-dark-top-cell.png";
-                self.middleRowImageName = @"abselecttheme-dark-middle-cell.png";
-                self.bottomRowImageName = @"abselecttheme-dark-bottom-cell.png";
-                break;
-            default:
-                NSLog(@"ABSelectViewTheme: INVALID THEME");
-                break;
+    if (self = [super init])
+    {
+        
+        NSString *baseName = nil;
+        
+        if (theme == ABSelectViewThemeDark)
+        {
+            baseName = @"ABSelectViewThemeDark";
         }
-    } return self;
+        else
+        {
+            NSLog(@"ABSelectViewTheme: ERROR -> INVALID THEME");
+            return nil;
+        }
+        
+        self.topRowImageName = [NSString stringWithFormat:@"ABFramework.bundle/ABSelectView/%@-top-cell", baseName];
+        self.middleRowImageName = [NSString stringWithFormat:@"ABFramework.bundle/ABSelectView/%@-middle-cell", baseName];
+        self.bottomRowImageName = [NSString stringWithFormat:@"ABFramework.bundle/ABSelectView/%@-bottom-cell", baseName];
+    }
+    return self;
 }
 
 @end
