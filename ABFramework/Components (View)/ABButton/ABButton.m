@@ -122,7 +122,7 @@
         UIImage *imageSel = [UIImage imageNamed:[NSString stringWithFormat:@"%@-sel", imageName]];
         if (imageSel)
         {
-            [self setImage:imageSel forState:UIControlStateSelected];
+            [self setImage:imageSel forState:UIControlStateHighlighted];
         }
     }
 }
