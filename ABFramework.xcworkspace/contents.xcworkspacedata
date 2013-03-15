@@ -14,6 +14,12 @@
          location = "group:Categories"
          name = "Categories">
          <FileRef
+            location = "group:UIImageView+ABFramework.h">
+         </FileRef>
+         <FileRef
+            location = "group:UIImageView+ABFramework.m">
+         </FileRef>
+         <FileRef
             location = "group:UIColor+ABFramework.h">
          </FileRef>
          <FileRef
@@ -83,6 +89,16 @@
       <Group
          location = "group:Components (View)"
          name = "Components (View)">
+         <Group
+            location = "group:ABFlexibleView"
+            name = "ABFlexibleView">
+            <FileRef
+               location = "group:ABFlexibleView.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABFlexibleView.m">
+            </FileRef>
+         </Group>
          <Group
             location = "group:ABHud"
             name = "ABHud">
@@ -341,6 +357,9 @@
             location = "group:ABReachability.m">
          </FileRef>
       </Group>
+      <FileRef
+         location = "group:ABFramework.bundle">
+      </FileRef>
    </Group>
    <FileRef
       location = "group:ABFramework-Examples/ABFramework-Examples.xcodeproj">

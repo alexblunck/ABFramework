@@ -30,6 +30,9 @@
 		3CE5669516B6966D00915391 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CE5669416B6966D00915391 /* Default@2x.png */; };
 		3CE5669716B6966D00915391 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CE5669616B6966D00915391 /* Default-568h@2x.png */; };
 		3CE568D616B69FEE00915391 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE568D516B69FEE00915391 /* SystemConfiguration.framework */; };
+		D241362D16F345390033C56B /* ABFramework.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D241362C16F345390033C56B /* ABFramework.bundle */; };
+		D241363116F345430033C56B /* ABFlexibleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D241363016F345430033C56B /* ABFlexibleView.m */; };
+		D241363416F3454A0033C56B /* UIImageView+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D241363316F3454A0033C56B /* UIImageView+ABFramework.m */; };
 		D24A0D6716EE2E660093AE2A /* ABHudExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D24A0D6616EE2E660093AE2A /* ABHudExample.m */; };
 		D24A0D6B16EE30040093AE2A /* ABHud.m in Sources */ = {isa = PBXBuildFile; fileRef = D24A0D6A16EE30040093AE2A /* ABHud.m */; };
 		D259193F16EBCF2100E63E4B /* ABFileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D259193E16EBCF2100E63E4B /* ABFileHelper.m */; };
@@ -113,6 +116,11 @@
 		3CE5669416B6966D00915391 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		3CE5669616B6966D00915391 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		3CE568D516B69FEE00915391 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D241362C16F345390033C56B /* ABFramework.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ABFramework.bundle; sourceTree = "<group>"; };
+		D241362F16F345430033C56B /* ABFlexibleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFlexibleView.h; sourceTree = "<group>"; };
+		D241363016F345430033C56B /* ABFlexibleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABFlexibleView.m; sourceTree = "<group>"; };
+		D241363216F3454A0033C56B /* UIImageView+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ABFramework.h"; sourceTree = "<group>"; };
+		D241363316F3454A0033C56B /* UIImageView+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ABFramework.m"; sourceTree = "<group>"; };
 		D24A0D6516EE2E660093AE2A /* ABHudExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABHudExample.h; sourceTree = "<group>"; };
 		D24A0D6616EE2E660093AE2A /* ABHudExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABHudExample.m; sourceTree = "<group>"; };
 		D24A0D6916EE30040093AE2A /* ABHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABHud.h; sourceTree = "<group>"; };
@@ -365,6 +373,15 @@
 			name = Vendor;
 			sourceTree = "<group>";
 		};
+		D241362E16F345430033C56B /* ABFlexibleView */ = {
+			isa = PBXGroup;
+			children = (
+				D241362F16F345430033C56B /* ABFlexibleView.h */,
+				D241363016F345430033C56B /* ABFlexibleView.m */,
+			);
+			path = ABFlexibleView;
+			sourceTree = "<group>";
+		};
 		D24A0D6816EE30040093AE2A /* ABHud */ = {
 			isa = PBXGroup;
 			children = (
@@ -395,15 +412,16 @@
 		D271790F16E58548009BB5D1 /* ABFramework */ = {
 			isa = PBXGroup;
 			children = (
+				D271795E16E58548009BB5D1 /* README.md */,
 				D271791016E58548009BB5D1 /* ABFramework.h */,
 				D271791116E58548009BB5D1 /* Categories */,
 				D271792816E58548009BB5D1 /* Components (Functional) */,
 				D271792F16E58548009BB5D1 /* Components (View) */,
 				D271795816E58548009BB5D1 /* Containers */,
 				D271795B16E58548009BB5D1 /* Model */,
-				D271795E16E58548009BB5D1 /* README.md */,
 				D271795F16E58548009BB5D1 /* Sub Classes */,
 				D271796616E58548009BB5D1 /* Utilities */,
+				D241362C16F345390033C56B /* ABFramework.bundle */,
 			);
 			name = ABFramework;
 			path = ../ABFramework;
@@ -412,6 +430,8 @@
 		D271791116E58548009BB5D1 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				D241363216F3454A0033C56B /* UIImageView+ABFramework.h */,
+				D241363316F3454A0033C56B /* UIImageView+ABFramework.m */,
 				D271791216E58548009BB5D1 /* NSData+ABFramework.h */,
 				D271791316E58548009BB5D1 /* NSData+ABFramework.m */,
 				D271791416E58548009BB5D1 /* NSDate+ABFramework.h */,
@@ -469,6 +489,7 @@
 		D271792F16E58548009BB5D1 /* Components (View) */ = {
 			isa = PBXGroup;
 			children = (
+				D241362E16F345430033C56B /* ABFlexibleView */,
 				D24A0D6816EE30040093AE2A /* ABHud */,
 				D2B331C616ED047D00DED125 /* ABImageView */,
 				D2633D6316EBDDF400FCE9D0 /* ABTableStackController */,
@@ -706,6 +727,7 @@
 				3C5D962816BAA9EB00B37045 /* switch2_switch.png in Resources */,
 				3C5D962916BAA9EB00B37045 /* switch2_switch@2x.png in Resources */,
 				D271798E16E58548009BB5D1 /* README.md in Resources */,
+				D241362D16F345390033C56B /* ABFramework.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -765,6 +787,8 @@
 				D2B331C916ED047D00DED125 /* ABImageView.m in Sources */,
 				D24A0D6716EE2E660093AE2A /* ABHudExample.m in Sources */,
 				D24A0D6B16EE30040093AE2A /* ABHud.m in Sources */,
+				D241363116F345430033C56B /* ABFlexibleView.m in Sources */,
+				D241363416F3454A0033C56B /* UIImageView+ABFramework.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

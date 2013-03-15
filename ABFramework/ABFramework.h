@@ -7,7 +7,7 @@
 //
 
 #define ABFRAMEWORK_VERSION 0.1
-#define ABFRAMEWORK_LAST_EDIT @"13.03.2013 - 19:45"
+#define ABFRAMEWORK_LAST_EDIT @"15.03.2013 - 13:02"
 
 
 
@@ -58,6 +58,7 @@ CONTAINERS
 #import "UILabel+ABFramework.h"
 #import "UIView+ABFramework.h"
 #import "UIColor+ABFramework.h"
+#import "UIImageView+ABFramework.h"
 
 
 /*
@@ -95,3 +96,4 @@ CONTAINERS
     #import "ABTextField.h"
     #import "ABImageView.h"
     #import "ABHud.h"
+    #import "ABFlexibleView.h"
