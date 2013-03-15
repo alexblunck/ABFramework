@@ -45,6 +45,9 @@ CGSize CGSizeForTextInLabel(NSString *text, UILabel *label);
 /**
  * CGRect
  */
+#pragma mark - CGRect Make
+CGRect cgr(CGFloat x, CGFloat y, CGFloat w, CGFloat h);
+
 #pragma mark - CGRect Centered
 //CGRect Centered in CGRect
 CGRect CGRectCenteredWithCGRect (CGRect rect, CGRect rectToCenterWith);
