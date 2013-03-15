@@ -20,6 +20,9 @@ typedef enum {
 //Tell the ABLabel view to adjust its frame to fit only its text value
 -(void) trim;
 
+//Info
+-(CGFloat) heightToFitAllText;
+
 //Label text value
 @property (nonatomic, copy) NSString *text;
 

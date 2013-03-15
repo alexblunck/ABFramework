@@ -57,6 +57,21 @@
 }
 
 
+#pragma mark - Info
+-(CGFloat) heightToFitAllText
+{
+    UILabel *l = [_label abCopy];
+    l.text = self.text;
+    [l sizeToFit];
+    
+    CGFloat height = l.bounds.size.height;
+    
+    l = nil;
+    
+    return height;
+}
+
+
 
 #pragma mark - Change
 -(void) trim
