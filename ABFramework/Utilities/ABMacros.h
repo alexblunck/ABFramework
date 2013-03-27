@@ -32,11 +32,3 @@
 #define ABLogLong(long) NSLog(@"ABLogFloat -> %s = %lu", #long, long)
 #define ABLogLongLong(longLong) NSLog(@"ABLogFloat -> %s = %llu", #longLong, longLong)
 #define ABLogMethod() NSLog(@"%s", __PRETTY_FUNCTION__)
-
-
-
-/*
- * MATH
- */
-#define ABMathRadians(degrees) degrees * M_PI/180
-#define ABMathDegrees(radians) radians * 180/M_PI
