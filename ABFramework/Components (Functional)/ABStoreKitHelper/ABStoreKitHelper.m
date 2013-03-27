@@ -170,7 +170,7 @@
     //Find specific item
     for (ABStoreKitItem *item in items)
     {
-        //Return YEs if it exists
+        //Return YES if it exists
         if ([item.productIdentifier isEqualToString:productIdentifier])
         {
             return YES;
@@ -342,6 +342,31 @@
     
     //Start restore request
     [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
+}
+
+
+
+#pragma mark - Misc
+-(void) logSubscriptions
+{
+    //Retrieve all stored ABStoreKitItems
+    NSArray *items = [self loadStoreKitItemArray];
+    
+    NSInteger itemCount = 0;
+    
+    for (ABStoreKitItem *item in items)
+    {
+        if (item.type == ABStoreKitItemTypeNonRenewingSubscription || item.type == ABStoreKitItemTypeFreeSubscription || item.type == ABStoreKitItemTypeAutoRenewableSubscription)
+        {
+            itemCount += 1;
+            NSLog(@"ABStoreKitHelper: logSubscriptions-> Subscription Active Timespan: FROM:%@ -> TO:%@", item.transactionDate, [item subscriptionExpireDate]);
+        }
+    }
+    
+    if (itemCount == 0)
+    {
+        NSLog(@"ABStoreKitHelper: logSubscriptions-> No Subscriptions Purcahsed");
+    }
 }
 
 

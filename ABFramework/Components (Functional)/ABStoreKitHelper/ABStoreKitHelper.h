@@ -118,6 +118,12 @@ typedef void (^ABStoreKitRestoreBlock) (NSArray *restoredItems, BOOL hasProducts
 
 
 /**
+ * Log all purchased subscriptions
+ */
+-(void) logSubscriptions;
+
+
+/**
  * Set of ABStoreKitItem's, you need to set all you intend to use!
  */
 @property (nonatomic, strong) NSSet *storeKitItems;
