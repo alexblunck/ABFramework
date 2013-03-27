@@ -17,7 +17,6 @@ APPLE FRAMEWORKS
 #import <QuartzCore/QuartzCore.h>
 
 
-
 /*
  UTILITIES
  */
@@ -27,6 +26,7 @@ APPLE FRAMEWORKS
 #import "ABReachability.h"
 #import "ABFrame.h"
 #import "ABCommon.h"
+#import "ABMath.h"
 
 
 
@@ -77,6 +77,7 @@ CONTAINERS
     #import "ABSaveSystem.h"
     #import "ABStoreKitHelper.h"
     #import "ABFileHelper.h"
+    #import "ABNewsstandHelper.h"
     //View
     #import "ABAlertView.h"
     #import "ABDatePickerView.h"

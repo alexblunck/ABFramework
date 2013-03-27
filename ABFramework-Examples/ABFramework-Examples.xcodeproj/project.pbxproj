@@ -30,6 +30,9 @@
 		3CE5669516B6966D00915391 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CE5669416B6966D00915391 /* Default@2x.png */; };
 		3CE5669716B6966D00915391 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CE5669616B6966D00915391 /* Default-568h@2x.png */; };
 		3CE568D616B69FEE00915391 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE568D516B69FEE00915391 /* SystemConfiguration.framework */; };
+		D20670CA1703601800DE9E5B /* ABNewsstandHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D20670C91703601800DE9E5B /* ABNewsstandHelper.m */; };
+		D20670CD1703601F00DE9E5B /* ABMath.m in Sources */ = {isa = PBXBuildFile; fileRef = D20670CC1703601F00DE9E5B /* ABMath.m */; };
+		D20670CF1703606900DE9E5B /* NewsstandKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D20670CE1703606900DE9E5B /* NewsstandKit.framework */; };
 		D241362D16F345390033C56B /* ABFramework.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D241362C16F345390033C56B /* ABFramework.bundle */; };
 		D241363116F345430033C56B /* ABFlexibleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D241363016F345430033C56B /* ABFlexibleView.m */; };
 		D241363416F3454A0033C56B /* UIImageView+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D241363316F3454A0033C56B /* UIImageView+ABFramework.m */; };
@@ -116,6 +119,11 @@
 		3CE5669416B6966D00915391 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		3CE5669616B6966D00915391 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		3CE568D516B69FEE00915391 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D20670C81703601800DE9E5B /* ABNewsstandHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABNewsstandHelper.h; sourceTree = "<group>"; };
+		D20670C91703601800DE9E5B /* ABNewsstandHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABNewsstandHelper.m; sourceTree = "<group>"; };
+		D20670CB1703601F00DE9E5B /* ABMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABMath.h; sourceTree = "<group>"; };
+		D20670CC1703601F00DE9E5B /* ABMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABMath.m; sourceTree = "<group>"; };
+		D20670CE1703606900DE9E5B /* NewsstandKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NewsstandKit.framework; path = System/Library/Frameworks/NewsstandKit.framework; sourceTree = SDKROOT; };
 		D241362C16F345390033C56B /* ABFramework.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ABFramework.bundle; sourceTree = "<group>"; };
 		D241362F16F345430033C56B /* ABFlexibleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFlexibleView.h; sourceTree = "<group>"; };
 		D241363016F345430033C56B /* ABFlexibleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABFlexibleView.m; sourceTree = "<group>"; };
@@ -218,6 +226,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D20670CF1703606900DE9E5B /* NewsstandKit.framework in Frameworks */,
 				D271799616E58573009BB5D1 /* StoreKit.framework in Frameworks */,
 				3CE568D616B69FEE00915391 /* SystemConfiguration.framework in Frameworks */,
 				3CE5668116B6966D00915391 /* UIKit.framework in Frameworks */,
@@ -330,6 +339,7 @@
 		3CE5667F16B6966D00915391 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D20670CE1703606900DE9E5B /* NewsstandKit.framework */,
 				D271799516E58573009BB5D1 /* StoreKit.framework */,
 				3CE568D516B69FEE00915391 /* SystemConfiguration.framework */,
 				3CE5668016B6966D00915391 /* UIKit.framework */,
@@ -371,6 +381,15 @@
 				D271790F16E58548009BB5D1 /* ABFramework */,
 			);
 			name = Vendor;
+			sourceTree = "<group>";
+		};
+		D20670C71703601800DE9E5B /* ABNewsstandHelper */ = {
+			isa = PBXGroup;
+			children = (
+				D20670C81703601800DE9E5B /* ABNewsstandHelper.h */,
+				D20670C91703601800DE9E5B /* ABNewsstandHelper.m */,
+			);
+			path = ABNewsstandHelper;
 			sourceTree = "<group>";
 		};
 		D241362E16F345430033C56B /* ABFlexibleView */ = {
@@ -461,6 +480,7 @@
 		D271792816E58548009BB5D1 /* Components (Functional) */ = {
 			isa = PBXGroup;
 			children = (
+				D20670C71703601800DE9E5B /* ABNewsstandHelper */,
 				D259193C16EBCF2100E63E4B /* ABFileHelper */,
 				D271792916E58548009BB5D1 /* ABSaveSystem */,
 				D271792C16E58548009BB5D1 /* ABStoreKitHelper */,
@@ -641,6 +661,8 @@
 		D271796616E58548009BB5D1 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				D20670CB1703601F00DE9E5B /* ABMath.h */,
+				D20670CC1703601F00DE9E5B /* ABMath.m */,
 				D271796716E58548009BB5D1 /* ABCommon.h */,
 				D271796816E58548009BB5D1 /* ABCommon.m */,
 				D271796916E58548009BB5D1 /* ABFrame.h */,
@@ -789,6 +811,8 @@
 				D24A0D6B16EE30040093AE2A /* ABHud.m in Sources */,
 				D241363116F345430033C56B /* ABFlexibleView.m in Sources */,
 				D241363416F3454A0033C56B /* UIImageView+ABFramework.m in Sources */,
+				D20670CA1703601800DE9E5B /* ABNewsstandHelper.m in Sources */,
+				D20670CD1703601F00DE9E5B /* ABMath.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

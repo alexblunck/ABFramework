@@ -264,6 +264,16 @@
          location = "group:Components (Functional)"
          name = "Components (Functional)">
          <Group
+            location = "group:ABNewsstandHelper"
+            name = "ABNewsstandHelper">
+            <FileRef
+               location = "group:ABNewsstandHelper.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABNewsstandHelper.m">
+            </FileRef>
+         </Group>
+         <Group
             location = "group:ABFileHelper"
             name = "ABFileHelper">
             <FileRef
@@ -329,6 +339,12 @@
       <Group
          location = "group:Utilities"
          name = "Utilities">
+         <FileRef
+            location = "group:ABMath.h">
+         </FileRef>
+         <FileRef
+            location = "group:ABMath.m">
+         </FileRef>
          <FileRef
             location = "group:ABUtilities.h">
          </FileRef>
