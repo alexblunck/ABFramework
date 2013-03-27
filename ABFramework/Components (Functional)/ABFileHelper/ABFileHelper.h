@@ -11,6 +11,7 @@
 @interface ABFileHelper : NSObject
 
 //Paths
++(NSString*) pathForFile:(NSString*)fileName atPath:(NSString*)folderPath;
 
 /**
  * Returns full path to "documents" directory
@@ -27,26 +28,24 @@
  *
  * Example: [ABFileHelper pathForFile:@"myFile.json" forPathInDocumentsFolder:@"some/sub/folder"];
  */
-+(NSString*) pathForFile:(NSString*)fileName forPathInDocumentsFolder:(NSString*)folderPath;
-
++(NSString*) pathForFile:(NSString*)fileName atPathInDocumentsFolder:(NSString*)folderPath;
 
 
 //Write
-
 /**
  * Write data to a file in a folder in the "documents" directory
  */
 +(void) writeDataToFile:(NSData*)data fileName:(NSString*)fileName toPathInDocumentsFolder:(NSString*)folderPath;
 
 
-
 //Read
-
-+(NSData*) dataFromFile:(NSString*)fileName inPathInDocumentsFolder:(NSString*)folderPath;
++(NSData*) dataFromFile:(NSString *)fileName atPath:(NSString*)folderPath;
++(NSData*) dataFromFile:(NSString*)fileName atPathInDocumentsFolder:(NSString*)folderPath;
 
 
 //Delete
-
-+(void) deleteFile:(NSString*)fileName inPathInDocumentsFolder:(NSString*)folderPath;
++(void) deleteFileAtPath:(NSString*)filePath;
++(void) deleteFile:(NSString*)fileName atPathInDocumentsFolder:(NSString*)folderPath;
++(void) deleteAllFilesAtFolderPath:(NSString*)folderPath;
 
 @end
