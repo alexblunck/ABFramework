@@ -13,7 +13,7 @@
 //Utility
 +(id) showAlertWithTitle:(NSString*) title
                  message:(NSString*) message
-                   block:(ABBlockIndex) block
+                   block:(ABBlockInteger) block
        cancelButtonTitle:(NSString*) cancelButtonTitle
        otherButtonTitles:(NSArray*) otherButtonTitles;
 

@@ -16,13 +16,13 @@
 +(id) showWithStringArray:(NSArray*)stringArray
              defaultIndex:(int)defaultIndex
                     theme:(ABSelectViewTheme*)theme
-          completionBlock:(ABBlockIndex)block;
+          completionBlock:(ABBlockInteger)block;
 
 +(id) showInView:(UIView*)view
  WithStringArray:(NSArray*)stringArray
     defaultIndex:(int)defaultIndex
            theme:(ABSelectViewTheme*)theme
- completionBlock:(ABBlockIndex)block;
+ completionBlock:(ABBlockInteger)block;
 
 @property (nonatomic, assign) BOOL landscape;
 

@@ -9,7 +9,7 @@
 #import "ABAlertView.h"
 
 @interface ABAlertView () {
-    ABBlockIndex _completionBlock;
+    ABBlockInteger _completionBlock;
 }
 @end
 
@@ -18,7 +18,7 @@
 #pragma mark - Utility
 +(id) showAlertWithTitle:(NSString*) title
                  message:(NSString*) message
-                   block:(ABBlockIndex) block
+                   block:(ABBlockInteger) block
        cancelButtonTitle:(NSString*) cancelButtonTitle
        otherButtonTitles:(NSArray*) otherButtonTitles
 {
@@ -30,7 +30,7 @@
 #pragma mark - Initializer
 -(id) initAlertWithTitle:(NSString*) title
                  message:(NSString*) message
-                   block:(ABBlockIndex) block
+                   block:(ABBlockInteger) block
        cancelButtonTitle:(NSString*) cancelButtonTitle
        otherButtonTitles:(NSArray*) otherButtonTitles
 {
