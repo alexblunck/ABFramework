@@ -19,4 +19,22 @@
     return nil;
 }
 
+-(NSString*) httpBodyString
+{
+    //Construct requestBody String from Dic
+    NSMutableString *requestBody = [NSMutableString new];
+    [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
+     {
+         //NSString -> url encode
+         if ([obj isKindOfClass:[NSString class]])
+         {
+             obj = [obj asciiEncodedString];
+         }
+         
+         [requestBody appendFormat:@"&%@=%@", key, obj];
+     }];
+    
+    return requestBody;
+}
+
 @end

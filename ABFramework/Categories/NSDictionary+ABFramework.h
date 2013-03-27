@@ -12,4 +12,6 @@
 
 -(id) safeObjectForKey:(id)key;
 
+-(NSString*) httpBodyString;
+
 @end
