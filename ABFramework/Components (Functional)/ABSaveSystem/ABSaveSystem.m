@@ -285,4 +285,18 @@
     NSLog(@"%@ -> END LOG", baseLogMessage);
 }
 
++(void) truncate
+{
+    NSMutableDictionary *tempDic = [self loadDictionaryEncryption:NO];
+    [tempDic removeAllObjects];
+    NSData *dicData = [NSKeyedArchiver archivedDataWithRootObject:tempDic];
+    [dicData writeToFile:[self filePathEncryption:NO] atomically:YES];
+    
+    NSMutableDictionary *tempDicEnc = [self loadDictionaryEncryption:YES];
+    [tempDicEnc removeAllObjects];
+    NSData *dataKey = [AESKEY dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *encryptedData = [dicData encryptedWithKey:dataKey];
+    [encryptedData writeToFile:[self filePathEncryption:YES] atomically:YES];
+}
+
 @end

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #ifndef ABSAVESYSTEM_LOGGING
-#define ABSAVESYSTEM_LOGGING 1
+    #define ABSAVESYSTEM_LOGGING 1
 #endif
 
 #define ENCRYPTION_ENABLED NO
@@ -75,5 +75,6 @@ typedef enum {
 //
 
 +(void) logSavedValues:(BOOL)encrypted;
++(void) truncate; //Deletes everything
 
 @end
