@@ -162,93 +162,6 @@
 
 
 #pragma mark - Helper
--(BOOL) isPurchased:(NSString*)productIdentifier
-{
-    //Retrieve all stored ABStoreKitItems
-    NSArray *items = [self loadStoreKitItemArray];
-    
-    //Find specific item
-    for (ABStoreKitItem *item in items)
-    {
-        //Return YES if it exists
-        if ([item.productIdentifier isEqualToString:productIdentifier])
-        {
-            return YES;
-        }
-    }
-    return NO;
-}
-
--(BOOL) isSubscriptionActive:(NSString*)productIdentifier
-{
-    //Retrieve all stored ABStoreKitItems
-    NSArray *items = [self loadStoreKitItemArray];
-    
-    //Find specific subscription
-    //In case of Auto-Renewable subscriptions there might be more than one ABStoreKitItem saved
-    //If one of them is still active this method will return YES immediately
-    for (ABStoreKitItem *item in items)
-    {
-        if (
-            [item.productIdentifier isEqualToString:productIdentifier]
-            &&
-            (item.type == ABStoreKitItemTypeAutoRenewableSubscription || item.type == ABStoreKitItemTypeNonRenewingSubscription)
-            )
-        {
-            //Offline check if subscription is still active
-            NSTimeInterval currentTime = [[NSDate date] timeIntervalSince1970];
-            NSTimeInterval purchaseTime = [item.transactionDate timeIntervalSince1970];
-            NSTimeInterval subscriptionExpireTime = purchaseTime + [item subscriptionTimeIntervalInSeconds];
-            
-            if (purchaseTime <= currentTime && currentTime <= subscriptionExpireTime)
-            {
-                return YES;
-            }
-        }
-    }
-    
-    return NO;
-}
-
--(NSArray*) purchasedInstancesOfSubscription:(NSString*)productIdentifier
-{
-    NSMutableArray *instances = [NSMutableArray new];
-    
-    for (ABStoreKitItem *item in [self loadStoreKitItemArray])
-    {
-        if ([item.productIdentifier isEqualToString:productIdentifier])
-        {
-            [instances addObject:item];
-        }
-    }
-    
-    return (instances.count != 0) ? instances : nil;
-}
-
--(BOOL) isDate:(NSDate*)date inSubscription:(NSString*)productIdentifier
-{
-    for (ABStoreKitItem *instance in [self purchasedInstancesOfSubscription:productIdentifier])
-    {
-        if ([instance isDateInSubscription:date])
-        {
-            return YES;
-        }
-    }
-    return NO;
-}
-
--(BOOL) isDate:(NSDate*)date inSubscriptions:(NSArray*)productIdentifiers
-{
-    for (NSString *productIdentifier in productIdentifiers)
-    {
-        if ([self isDate:date inSubscription:productIdentifier])
-        {
-            return YES;
-        }
-    }
-    return NO;
-}
-
 -(BOOL) allProductsValidated
 {
     //Loop through all productIdentifiers
@@ -289,6 +202,102 @@
         }
     }
     return nil;
+}
+
+-(BOOL) isPurchased:(NSString*)productIdentifier
+{
+    //Retrieve all stored ABStoreKitItems
+    NSArray *items = [self loadStoreKitItemArray];
+    
+    //Find specific item
+    for (ABStoreKitItem *item in items)
+    {
+        //Return YES if it exists
+        if ([item.productIdentifier isEqualToString:productIdentifier])
+        {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+
+
+#pragma mark - Subscriptions
+-(BOOL) isSubscriptionActive:(NSString*)productIdentifier
+{
+    //Retrieve all stored ABStoreKitItems
+    NSArray *items = [self loadStoreKitItemArray];
+    
+    //Find specific subscription
+    //In case of Auto-Renewable subscriptions there might be more than one ABStoreKitItem saved
+    //If one of them is still active this method will return YES immediately
+    for (ABStoreKitItem *item in items)
+    {
+        if (
+            [item.productIdentifier isEqualToString:productIdentifier]
+            &&
+            (item.type == ABStoreKitItemTypeAutoRenewableSubscription || item.type == ABStoreKitItemTypeNonRenewingSubscription)
+            )
+        {
+            //Offline check if subscription is still active
+            NSTimeInterval currentTime = [[NSDate date] timeIntervalSince1970];
+            NSTimeInterval purchaseTime = [item.transactionDate timeIntervalSince1970];
+            NSTimeInterval subscriptionExpireTime = purchaseTime + [item subscriptionTimeIntervalInSeconds];
+            
+            if (purchaseTime <= currentTime && currentTime <= subscriptionExpireTime)
+            {
+                return YES;
+            }
+        }
+        
+        //Fake Purchase is always active
+        if ([item.productIdentifier isEqualToString:productIdentifier] && item.type == ABStoreKitItemTypeFake)
+        {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+-(NSArray*) purchasedInstancesOfSubscription:(NSString*)productIdentifier
+{
+    NSMutableArray *instances = [NSMutableArray new];
+    
+    for (ABStoreKitItem *item in [self loadStoreKitItemArray])
+    {
+        if ([item.productIdentifier isEqualToString:productIdentifier])
+        {
+            [instances addObject:item];
+        }
+    }
+    
+    return (instances.count != 0) ? instances : nil;
+}
+
+-(BOOL) isDate:(NSDate*)date inSubscription:(NSString*)productIdentifier
+{
+    for (ABStoreKitItem *instance in [self purchasedInstancesOfSubscription:productIdentifier])
+    {
+        if ([instance isDateInSubscription:date] || instance.type == ABStoreKitItemTypeFake)
+        {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+-(BOOL) isDate:(NSDate*)date inSubscriptions:(NSArray*)productIdentifiers
+{
+    for (NSString *productIdentifier in productIdentifiers)
+    {
+        if ([self isDate:date inSubscription:productIdentifier])
+        {
+            return YES;
+        }
+    }
+    return NO;
 }
 
 
@@ -366,6 +375,25 @@
     if (itemCount == 0)
     {
         NSLog(@"ABStoreKitHelper: logSubscriptions-> No Subscriptions Purcahsed");
+    }
+}
+
+-(void) fakePurchaseProduct:(NSString*)productIdentifier
+{
+    ABStoreKitItem *item = [ABStoreKitItem itemWithProductIdentifier:productIdentifier type:ABStoreKitItemTypeFake];
+    item.transactionIdentifier = productIdentifier;
+    item.transactionDate = [NSDate date];
+    [self saveStoreKitItem:item];
+}
+
+-(void) removeAllFakePurchases
+{
+    for (ABStoreKitItem *item in [self loadStoreKitItemArray])
+    {
+        if (item.type == ABStoreKitItemTypeFake)
+        {
+            [self deleteStoreKitItem:item];
+        }
     }
 }
 
@@ -541,7 +569,8 @@
 -(void) saveStoreKitItem:(ABStoreKitItem*)storeKitItem
 {
     NSMutableArray *tempItemArray = [NSMutableArray arrayWithArray:[self loadStoreKitItemArray]];
-    if (tempItemArray == nil) {
+    if (tempItemArray == nil)
+    {
         tempItemArray = [NSMutableArray new];
     }
     
@@ -573,6 +602,27 @@
         return tempItemArray;
     }
     return nil;
+}
+
+-(void) deleteStoreKitItem:(ABStoreKitItem*)storeKitItem
+{
+    NSMutableArray *tempItemArray = [NSMutableArray arrayWithArray:[self loadStoreKitItemArray]];
+    NSMutableArray *removeItemArray = [NSMutableArray new];
+    if (tempItemArray != nil)
+    {
+        for (ABStoreKitItem *savedItem in tempItemArray)
+        {
+            if ([savedItem.productIdentifier isEqualToString:storeKitItem.productIdentifier])
+            {
+                [removeItemArray addObject:savedItem];
+            }
+        }
+        
+        [tempItemArray removeObjectsInArray:removeItemArray];
+        
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:tempItemArray];
+        [ABSaveSystem saveData:data key:@"ABStorekitHelper.storeKitItemArray" encryption:YES];
+    }
 }
 
 

@@ -21,7 +21,8 @@ typedef enum {
     ABStoreKitItemTypeNonConsumable,
     ABStoreKitItemTypeAutoRenewableSubscription,
     ABStoreKitItemTypeNonRenewingSubscription,
-    ABStoreKitItemTypeFreeSubscription
+    ABStoreKitItemTypeFreeSubscription,
+    ABStoreKitItemTypeFake
 } ABStoreKitItemType;
 
 typedef enum {
@@ -70,6 +71,7 @@ typedef void (^ABStoreKitRestoreBlock) (NSArray *restoredItems, BOOL hasProducts
     //
 }
 
+//Utility
 /**
  * Call this once on launch to setup everything up (don't forget to set "storeKitItems"),
  * actually why not do it in same step: [[ABStoreKitHelper sharedHelper] setStoreKitItems:...];
@@ -77,17 +79,18 @@ typedef void (^ABStoreKitRestoreBlock) (NSArray *restoredItems, BOOL hasProducts
 + (id) sharedHelper;
 
 
+//Helper
 /**
  * Returns YES if a specfic product was purchased
  */
 -(BOOL) isPurchased:(NSString*)productIdentifier;
 
 
+//Subscriptions
 /**
  * Returns YES if a subscription is still active (Offline check)
  */
 -(BOOL) isSubscriptionActive:(NSString*)productIdentifier;
-
 
 /**
  * Returns an array of ABStoreKitItem's for a subscription product identifier, if it has been purchased/restored (nil otherwise)
@@ -97,7 +100,6 @@ typedef void (^ABStoreKitRestoreBlock) (NSArray *restoredItems, BOOL hasProducts
  */
 -(NSArray*) purchasedInstancesOfSubscription:(NSString*)productIdentifier;
 
-
 /**
  * Returns YES if a date is in the active timespan(s) of a specific subscription / or an array of subscriptions
  */
@@ -105,22 +107,31 @@ typedef void (^ABStoreKitRestoreBlock) (NSArray *restoredItems, BOOL hasProducts
 -(BOOL) isDate:(NSDate*)date inSubscriptions:(NSArray*)productIdentifiers;
 
 
+//Purchase
 /**
  * Perform a purchase request
  */
 -(void) purchaseProduct:(NSString*)productIdentifier block:(ABStoreKitBlock)block;
 
 
+//Restore
 /**
  * Restore all previous purchases
  */
 -(void) restorePurchases:(ABStoreKitRestoreBlock)block;
 
 
+//Misc
 /**
  * Log all purchased subscriptions
  */
 -(void) logSubscriptions;
+
+/**
+ * Fake purchase a specific product, if product is a subscription it will always be active
+ */
+-(void) fakePurchaseProduct:(NSString*)productIdentifier;
+-(void) removeAllFakePurchases;
 
 
 /**
