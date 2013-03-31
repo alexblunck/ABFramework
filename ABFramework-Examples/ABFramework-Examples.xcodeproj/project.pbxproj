@@ -32,7 +32,12 @@
 		3CE568D616B69FEE00915391 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE568D516B69FEE00915391 /* SystemConfiguration.framework */; };
 		D20670CA1703601800DE9E5B /* ABNewsstandHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D20670C91703601800DE9E5B /* ABNewsstandHelper.m */; };
 		D20670CD1703601F00DE9E5B /* ABMath.m in Sources */ = {isa = PBXBuildFile; fileRef = D20670CC1703601F00DE9E5B /* ABMath.m */; };
-		D20670CF1703606900DE9E5B /* NewsstandKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D20670CE1703606900DE9E5B /* NewsstandKit.framework */; };
+		D21694FF1704FA73009000FC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21694FE1704FA73009000FC /* StoreKit.framework */; };
+		D21695011704FBD7009000FC /* NewsstandKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21695001704FBD7009000FC /* NewsstandKit.framework */; };
+		D217B2EC1708916800CADAF4 /* ABCGRectArray.m in Sources */ = {isa = PBXBuildFile; fileRef = D217B2E91708916800CADAF4 /* ABCGRectArray.m */; };
+		D217B2ED1708916800CADAF4 /* ABPrimitiveArray.m in Sources */ = {isa = PBXBuildFile; fileRef = D217B2EB1708916800CADAF4 /* ABPrimitiveArray.m */; };
+		D217B2F41708917600CADAF4 /* ABEntypoView.m in Sources */ = {isa = PBXBuildFile; fileRef = D217B2F01708917600CADAF4 /* ABEntypoView.m */; };
+		D217B2F51708917600CADAF4 /* ABSeperator.m in Sources */ = {isa = PBXBuildFile; fileRef = D217B2F31708917600CADAF4 /* ABSeperator.m */; };
 		D241362D16F345390033C56B /* ABFramework.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D241362C16F345390033C56B /* ABFramework.bundle */; };
 		D241363116F345430033C56B /* ABFlexibleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D241363016F345430033C56B /* ABFlexibleView.m */; };
 		D241363416F3454A0033C56B /* UIImageView+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D241363316F3454A0033C56B /* UIImageView+ABFramework.m */; };
@@ -77,16 +82,11 @@
 		D271799216E58548009BB5D1 /* ABCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D271796816E58548009BB5D1 /* ABCommon.m */; };
 		D271799316E58548009BB5D1 /* ABFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = D271796A16E58548009BB5D1 /* ABFrame.m */; };
 		D271799416E58548009BB5D1 /* ABReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D271796D16E58548009BB5D1 /* ABReachability.m */; };
-		D271799616E58573009BB5D1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D271799516E58573009BB5D1 /* StoreKit.framework */; };
 		D2B331B916EC9E5A00DED125 /* ABLabelExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B331B816EC9E5A00DED125 /* ABLabelExample.m */; };
 		D2B331C916ED047D00DED125 /* ABImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B331C816ED047D00DED125 /* ABImageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3C4ABB8016C3CA9600A73CDC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
-		3C4ABB8316C3CA9600A73CDC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		3C4ABB8416C3CA9600A73CDC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		3C4ABB8516C3CA9600A73CDC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3C5D960116BA889800B37045 /* ExampleSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleSelectViewController.h; sourceTree = "<group>"; };
 		3C5D960216BA889800B37045 /* ExampleSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleSelectViewController.m; sourceTree = "<group>"; };
 		3C5D960516BA89C500B37045 /* ABSwitchExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSwitchExample.h; sourceTree = "<group>"; };
@@ -123,7 +123,16 @@
 		D20670C91703601800DE9E5B /* ABNewsstandHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABNewsstandHelper.m; sourceTree = "<group>"; };
 		D20670CB1703601F00DE9E5B /* ABMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABMath.h; sourceTree = "<group>"; };
 		D20670CC1703601F00DE9E5B /* ABMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABMath.m; sourceTree = "<group>"; };
-		D20670CE1703606900DE9E5B /* NewsstandKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NewsstandKit.framework; path = System/Library/Frameworks/NewsstandKit.framework; sourceTree = SDKROOT; };
+		D21694FE1704FA73009000FC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		D21695001704FBD7009000FC /* NewsstandKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NewsstandKit.framework; path = System/Library/Frameworks/NewsstandKit.framework; sourceTree = SDKROOT; };
+		D217B2E81708916800CADAF4 /* ABCGRectArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABCGRectArray.h; sourceTree = "<group>"; };
+		D217B2E91708916800CADAF4 /* ABCGRectArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABCGRectArray.m; sourceTree = "<group>"; };
+		D217B2EA1708916800CADAF4 /* ABPrimitiveArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABPrimitiveArray.h; sourceTree = "<group>"; };
+		D217B2EB1708916800CADAF4 /* ABPrimitiveArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABPrimitiveArray.m; sourceTree = "<group>"; };
+		D217B2EF1708917600CADAF4 /* ABEntypoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABEntypoView.h; sourceTree = "<group>"; };
+		D217B2F01708917600CADAF4 /* ABEntypoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABEntypoView.m; sourceTree = "<group>"; };
+		D217B2F21708917600CADAF4 /* ABSeperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSeperator.h; sourceTree = "<group>"; };
+		D217B2F31708917600CADAF4 /* ABSeperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSeperator.m; sourceTree = "<group>"; };
 		D241362C16F345390033C56B /* ABFramework.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ABFramework.bundle; sourceTree = "<group>"; };
 		D241362F16F345430033C56B /* ABFlexibleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFlexibleView.h; sourceTree = "<group>"; };
 		D241363016F345430033C56B /* ABFlexibleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABFlexibleView.m; sourceTree = "<group>"; };
@@ -214,7 +223,6 @@
 		D271796D16E58548009BB5D1 /* ABReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABReachability.m; sourceTree = "<group>"; };
 		D271796E16E58548009BB5D1 /* ABTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTypes.h; sourceTree = "<group>"; };
 		D271796F16E58548009BB5D1 /* ABUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABUtilities.h; sourceTree = "<group>"; };
-		D271799516E58573009BB5D1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D2B331B716EC9E5A00DED125 /* ABLabelExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABLabelExample.h; sourceTree = "<group>"; };
 		D2B331B816EC9E5A00DED125 /* ABLabelExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABLabelExample.m; sourceTree = "<group>"; };
 		D2B331C716ED047D00DED125 /* ABImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABImageView.h; sourceTree = "<group>"; };
@@ -226,8 +234,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D20670CF1703606900DE9E5B /* NewsstandKit.framework in Frameworks */,
-				D271799616E58573009BB5D1 /* StoreKit.framework in Frameworks */,
+				D21695011704FBD7009000FC /* NewsstandKit.framework in Frameworks */,
+				D21694FF1704FA73009000FC /* StoreKit.framework in Frameworks */,
 				3CE568D616B69FEE00915391 /* SystemConfiguration.framework in Frameworks */,
 				3CE5668116B6966D00915391 /* UIKit.framework in Frameworks */,
 				3CE5668316B6966D00915391 /* Foundation.framework in Frameworks */,
@@ -238,16 +246,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3C4ABB8216C3CA9600A73CDC /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				3C4ABB8316C3CA9600A73CDC /* AppKit.framework */,
-				3C4ABB8416C3CA9600A73CDC /* CoreData.framework */,
-				3C4ABB8516C3CA9600A73CDC /* Foundation.framework */,
-			);
-			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
 		3C5D960016BA887900B37045 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,14 +337,12 @@
 		3CE5667F16B6966D00915391 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D20670CE1703606900DE9E5B /* NewsstandKit.framework */,
-				D271799516E58573009BB5D1 /* StoreKit.framework */,
+				D21695001704FBD7009000FC /* NewsstandKit.framework */,
+				D21694FE1704FA73009000FC /* StoreKit.framework */,
 				3CE568D516B69FEE00915391 /* SystemConfiguration.framework */,
 				3CE5668016B6966D00915391 /* UIKit.framework */,
 				3CE5668216B6966D00915391 /* Foundation.framework */,
 				3CE5668416B6966D00915391 /* CoreGraphics.framework */,
-				3C4ABB8016C3CA9600A73CDC /* Cocoa.framework */,
-				3C4ABB8216C3CA9600A73CDC /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -390,6 +386,24 @@
 				D20670C91703601800DE9E5B /* ABNewsstandHelper.m */,
 			);
 			path = ABNewsstandHelper;
+			sourceTree = "<group>";
+		};
+		D217B2EE1708917600CADAF4 /* ABEntypoView */ = {
+			isa = PBXGroup;
+			children = (
+				D217B2EF1708917600CADAF4 /* ABEntypoView.h */,
+				D217B2F01708917600CADAF4 /* ABEntypoView.m */,
+			);
+			path = ABEntypoView;
+			sourceTree = "<group>";
+		};
+		D217B2F11708917600CADAF4 /* ABSeperator */ = {
+			isa = PBXGroup;
+			children = (
+				D217B2F21708917600CADAF4 /* ABSeperator.h */,
+				D217B2F31708917600CADAF4 /* ABSeperator.m */,
+			);
+			path = ABSeperator;
 			sourceTree = "<group>";
 		};
 		D241362E16F345430033C56B /* ABFlexibleView */ = {
@@ -509,6 +523,8 @@
 		D271792F16E58548009BB5D1 /* Components (View) */ = {
 			isa = PBXGroup;
 			children = (
+				D217B2EE1708917600CADAF4 /* ABEntypoView */,
+				D217B2F11708917600CADAF4 /* ABSeperator */,
 				D241362E16F345430033C56B /* ABFlexibleView */,
 				D24A0D6816EE30040093AE2A /* ABHud */,
 				D2B331C616ED047D00DED125 /* ABImageView */,
@@ -630,6 +646,10 @@
 		D271795816E58548009BB5D1 /* Containers */ = {
 			isa = PBXGroup;
 			children = (
+				D217B2E81708916800CADAF4 /* ABCGRectArray.h */,
+				D217B2E91708916800CADAF4 /* ABCGRectArray.m */,
+				D217B2EA1708916800CADAF4 /* ABPrimitiveArray.h */,
+				D217B2EB1708916800CADAF4 /* ABPrimitiveArray.m */,
 				D271795916E58548009BB5D1 /* ABPair.h */,
 				D271795A16E58548009BB5D1 /* ABPair.m */,
 			);
@@ -813,6 +833,10 @@
 				D241363416F3454A0033C56B /* UIImageView+ABFramework.m in Sources */,
 				D20670CA1703601800DE9E5B /* ABNewsstandHelper.m in Sources */,
 				D20670CD1703601F00DE9E5B /* ABMath.m in Sources */,
+				D217B2EC1708916800CADAF4 /* ABCGRectArray.m in Sources */,
+				D217B2ED1708916800CADAF4 /* ABPrimitiveArray.m in Sources */,
+				D217B2F41708917600CADAF4 /* ABEntypoView.m in Sources */,
+				D217B2F51708917600CADAF4 /* ABSeperator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

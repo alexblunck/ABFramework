@@ -7,7 +7,7 @@
 //
 
 #define ABFRAMEWORK_VERSION 0.1
-#define ABFRAMEWORK_LAST_EDIT @"27.03.2013 - 18:20"
+#define ABFRAMEWORK_LAST_EDIT @"31.03.2013 - 17:45"
 
 #ifndef ABFRAMEWORK_LOGGING
 #define ABFRAMEWORK_LOGGING 1
@@ -17,6 +17,7 @@
 APPLE FRAMEWORKS
 */
 #import <QuartzCore/QuartzCore.h>
+#import <NewsstandKit/NewsstandKit.h>
 
 
 /*
@@ -36,6 +37,8 @@ APPLE FRAMEWORKS
 CONTAINERS
 */
 #import "ABPair.h"
+#import "ABPrimitiveArray.h"
+#import "ABCGRectArray.h"
 
 
 
@@ -100,3 +103,5 @@ CONTAINERS
     #import "ABImageView.h"
     #import "ABHud.h"
     #import "ABFlexibleView.h"
+    #import "ABSeperator.h"
+    #import "ABEntypoView.h"

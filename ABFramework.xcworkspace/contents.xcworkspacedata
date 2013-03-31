@@ -90,6 +90,26 @@
          location = "group:Components (View)"
          name = "Components (View)">
          <Group
+            location = "group:ABEntypoView"
+            name = "ABEntypoView">
+            <FileRef
+               location = "group:ABEntypoView.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABEntypoView.m">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:ABSeperator"
+            name = "ABSeperator">
+            <FileRef
+               location = "group:ABSeperator.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABSeperator.m">
+            </FileRef>
+         </Group>
+         <Group
             location = "group:ABFlexibleView"
             name = "ABFlexibleView">
             <FileRef
@@ -303,6 +323,28 @@
                location = "group:ABSaveSystem.m">
             </FileRef>
          </Group>
+      </Group>
+      <Group
+         location = "group:Containers"
+         name = "Containers">
+         <FileRef
+            location = "group:ABCGRectArray.h">
+         </FileRef>
+         <FileRef
+            location = "group:ABCGRectArray.m">
+         </FileRef>
+         <FileRef
+            location = "group:ABPair.h">
+         </FileRef>
+         <FileRef
+            location = "group:ABPair.m">
+         </FileRef>
+         <FileRef
+            location = "group:ABPrimitiveArray.h">
+         </FileRef>
+         <FileRef
+            location = "group:ABPrimitiveArray.m">
+         </FileRef>
       </Group>
       <Group
          location = "group:Model"
