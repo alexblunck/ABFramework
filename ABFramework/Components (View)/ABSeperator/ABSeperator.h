@@ -1,9 +1,9 @@
 //
 //  ABSeperator.h
-//  Serrano iOS
+//  ABFramework
 //
 //  Created by Alexander Blunck on 3/30/13.
-//  Copyright (c) 2013 Serrano - Ablfx. All rights reserved.
+//  Copyright (c) 2013 Ablfx. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
