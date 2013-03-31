@@ -87,7 +87,7 @@
     label6.fontName = @"AppleSDGothicNeo-Bold";
     label6.textSize = 20.0f;
     label6.textColor = [UIColor orangeColor];
-    label6.shadow = ABLabelShadowSoft;
+    label6.shadow = ABShadowTypeSoft;
     label6.shadowColor = [UIColor purpleColor];
     
     [self.view addSubview:label6];

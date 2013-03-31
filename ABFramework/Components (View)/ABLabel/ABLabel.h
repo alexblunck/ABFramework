@@ -8,13 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum {
-    ABLabelShadowNone,
-    ABLabelShadowHard,
-    ABLabelShadowSoft,
-    ABLabelShadowLetterpress
-} ABLabelShadow;
-
 @interface ABLabel : ABView
 
 //Tell the ABLabel view to adjust its frame to fit only its text value
@@ -42,7 +35,7 @@ typedef enum {
 @property (nonatomic, assign) BOOL lineBreakEnabled;
 
 //Shadowtype, default ABLabelShadowNone
-@property (nonatomic, assign) ABLabelShadow shadow;
+@property (nonatomic, assign) ABShadowType shadow;
 
 //Shadow color, default are the selected ABLabelShadow values
 @property (nonatomic, strong) UIColor *shadowColor;

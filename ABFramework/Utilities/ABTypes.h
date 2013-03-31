@@ -13,3 +13,13 @@ typedef void (^ABBlockVoid) ();
 typedef void (^ABBlockBool) (BOOL);
 typedef void (^ABBlockInteger) (NSInteger);
 typedef void (^ABBlockString) (NSString *);
+
+/*
+ ENUMS
+ */
+typedef enum {
+    ABShadowTypeNone,
+    ABShadowTypeHard,
+    ABShadowTypeSoft,
+    ABShadowTypeLetterpress
+} ABShadowType;

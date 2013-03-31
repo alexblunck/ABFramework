@@ -43,7 +43,7 @@
         self.textSize = 15.0f;
         self.textColor = [UIColor blackColor];
         self.lineBreakEnabled = NO;
-        self.shadow = ABLabelShadowNone;
+        self.shadow = ABShadowTypeNone;
         self.shadowColor = nil;
         self.centeredHorizontally = NO;
         self.centeredVertically = YES;
@@ -165,7 +165,7 @@
 }
 
 //shadow
--(void) setShadow:(ABLabelShadow)shadow
+-(void) setShadow:(ABShadowType)shadow
 {
     _shadow = shadow;
     
@@ -174,11 +174,11 @@
     CGFloat shadowRadius = 0.0f;
     CGFloat shadowOpactiy = 0.0f;
     
-    if (_shadow == ABLabelShadowNone)
+    if (_shadow == ABShadowTypeNone)
     {
         shadowOpactiy = 0.0f;
     }
-    else if (shadow == ABLabelShadowHard)
+    else if (shadow == ABShadowTypeHard)
     {
         shadowColor = [UIColor blackColor];
         shadowOffset = CGSizeMake(0.0f, 1.0f);
@@ -186,14 +186,14 @@
         shadowOpactiy = 1.0f;
         
     }
-    else if (_shadow == ABLabelShadowLetterpress)
+    else if (_shadow == ABShadowTypeLetterpress)
     {
         shadowColor = [UIColor whiteColor];
         shadowOffset = CGSizeMake(1.0f, 1.0f);
         shadowRadius = 0.0f;
         shadowOpactiy = 1.0f;
     }
-    else if (_shadow == ABLabelShadowSoft)
+    else if (_shadow == ABShadowTypeSoft)
     {
         shadowColor = [UIColor blackColor];
         shadowOffset = CGSizeMake(0.0f, 0.0f);
