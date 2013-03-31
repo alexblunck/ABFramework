@@ -6,10 +6,9 @@
 //  Copyright (c) 2013 Ablfx. All rights reserved.
 //
 
-#import "ABStoreKitHelper.h"
+#ifdef SK_EXTERN
 
-//APPLE FRAMEWORKS
-#import <StoreKit/StoreKit.h>
+#import "ABStoreKitHelper.h"
 
 #pragma mark - ABStoreKitItem
 /**
@@ -650,3 +649,5 @@
 }
 
 @end
+
+#endif
