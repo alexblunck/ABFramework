@@ -8,9 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-//APPLE FRAMEWORKS
-#import <NewsstandKit/NewsstandKit.h>
-
 typedef void (^ABNewsstandHelperBlockProgress) (NSInteger percent, NKIssue *issue);
 typedef void (^ABNewsstandHelperBlockCompletion) (BOOL connectionError, BOOL issueExists, NKIssue *issue, NSString *localAssetPath);
 
@@ -59,4 +56,3 @@ typedef void (^ABNewsstandHelperBlockCompletion) (BOOL connectionError, BOOL iss
                                               completionBlock:(ABNewsstandHelperBlockCompletion)cBlock;
 
 @end
-
