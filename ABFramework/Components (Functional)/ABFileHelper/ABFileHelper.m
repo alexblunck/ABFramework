@@ -16,6 +16,12 @@
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
++(NSString*) tempPath
+{
+    NSURL *tempUrl = [NSURL fileURLWithPath:NSTemporaryDirectory() isDirectory:YES];
+    return [tempUrl path];
+}
+
 +(NSString*) pathForPathInDocumentsFolder:(NSString*)folderPath
 {
     return [NSString stringWithFormat:@"%@/%@", [self documentsPath], folderPath];
@@ -41,17 +47,58 @@
 
 +(void) writeDataToFile:(NSData*)data path:(NSString*)path
 {
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    NSString *pathWithoutFileName = [path stringByDeletingLastPathComponent];
-    
-    //Create path if it doesn't exist yet
-    if (![fileManager fileExistsAtPath:pathWithoutFileName])
-    {
-        [fileManager createDirectoryAtPath:pathWithoutFileName withIntermediateDirectories:NO attributes:nil error:nil];
-    }
+    [self createPath:[path stringByDeletingLastPathComponent]];
     
     [data writeToFile:path atomically:YES];
+}
+
++(NSString*) createPath:(NSString*)path
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if (![fileManager fileExistsAtPath:path])
+    {
+        [fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    
+    return path;
+}
+
++(NSString*) createFile:(NSString*)fileName atPath:(NSString*)folderPath;
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    //Create parent folders if neccessary
+    [self createPath:folderPath];
+    
+    NSString *fullPath = [self pathForFile:fileName atPath:folderPath];
+    
+    //Delete existing file with same name
+    [self deleteFileAtPath:fullPath];
+    
+    //Create new empty file
+    [fileManager createFileAtPath:fullPath contents:nil attributes:nil];
+    
+    return fullPath;
+}
+
+
+
+#pragma mark - Move
++(void) movePath:(NSString*)aPath toPath:(NSString*)bPath
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if (![fileManager fileExistsAtPath:aPath]) {
+        return;
+    }
+    
+    if (![fileManager fileExistsAtPath:[bPath stringByDeletingLastPathComponent] isDirectory:YES])
+    {
+        [self createPath:[bPath stringByDeletingLastPathComponent]];
+    }
+    
+    [fileManager moveItemAtPath:aPath toPath:bPath error:nil];
 }
 
 
