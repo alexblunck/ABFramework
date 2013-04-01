@@ -16,4 +16,6 @@
 //APPLE FRAMEWORKS
 #import <StoreKit/StoreKit.h>
 
+#define ABFRAMEWORK_LOGGING 1
+#define ABNETWORKING_ALLOW_ALL_SSL_CERTIFICATES 1
 #import "ABFramework.h"
