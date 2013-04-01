@@ -10,6 +10,14 @@
 
 @implementation NSString (ABFramework)
 
++(NSString*) uniqueString;
+{
+    CFUUIDRef uuidObj = CFUUIDCreate(nil);
+    NSString *uuidString = (NSString*)CFBridgingRelease(CFUUIDCreateString(nil, uuidObj));
+    CFRelease(uuidObj);
+    return uuidString;
+}
+
 -(BOOL) empty
 {
     NSString *string = [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];

@@ -10,6 +10,8 @@
 
 @interface NSString (ABFramework)
 
++(NSString*) uniqueString;
+
 -(BOOL) empty;
 
 -(NSString*) encodedString:(NSStringEncoding)encoding;
