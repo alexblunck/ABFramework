@@ -284,6 +284,16 @@
          location = "group:Components (Functional)"
          name = "Components (Functional)">
          <Group
+            location = "group:ABNetworking"
+            name = "ABNetworking">
+            <FileRef
+               location = "group:ABNetworking.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABNetworking.m">
+            </FileRef>
+         </Group>
+         <Group
             location = "group:ABNewsstandHelper"
             name = "ABNewsstandHelper">
             <FileRef

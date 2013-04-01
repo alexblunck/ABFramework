@@ -32,6 +32,8 @@
 		3CE568D616B69FEE00915391 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE568D516B69FEE00915391 /* SystemConfiguration.framework */; };
 		D20670CA1703601800DE9E5B /* ABNewsstandHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D20670C91703601800DE9E5B /* ABNewsstandHelper.m */; };
 		D20670CD1703601F00DE9E5B /* ABMath.m in Sources */ = {isa = PBXBuildFile; fileRef = D20670CC1703601F00DE9E5B /* ABMath.m */; };
+		D211D7281709A98E00326B25 /* ABNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D211D7271709A98E00326B25 /* ABNetworking.m */; };
+		D211D72B1709AEB500326B25 /* ABNetworkingExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D211D72A1709AEB500326B25 /* ABNetworkingExample.m */; };
 		D21694FF1704FA73009000FC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21694FE1704FA73009000FC /* StoreKit.framework */; };
 		D21695011704FBD7009000FC /* NewsstandKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21695001704FBD7009000FC /* NewsstandKit.framework */; };
 		D217B2EC1708916800CADAF4 /* ABCGRectArray.m in Sources */ = {isa = PBXBuildFile; fileRef = D217B2E91708916800CADAF4 /* ABCGRectArray.m */; };
@@ -123,6 +125,10 @@
 		D20670C91703601800DE9E5B /* ABNewsstandHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABNewsstandHelper.m; sourceTree = "<group>"; };
 		D20670CB1703601F00DE9E5B /* ABMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABMath.h; sourceTree = "<group>"; };
 		D20670CC1703601F00DE9E5B /* ABMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABMath.m; sourceTree = "<group>"; };
+		D211D7261709A98E00326B25 /* ABNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABNetworking.h; sourceTree = "<group>"; };
+		D211D7271709A98E00326B25 /* ABNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABNetworking.m; sourceTree = "<group>"; };
+		D211D7291709AEB500326B25 /* ABNetworkingExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABNetworkingExample.h; sourceTree = "<group>"; };
+		D211D72A1709AEB500326B25 /* ABNetworkingExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABNetworkingExample.m; sourceTree = "<group>"; };
 		D21694FE1704FA73009000FC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D21695001704FBD7009000FC /* NewsstandKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NewsstandKit.framework; path = System/Library/Frameworks/NewsstandKit.framework; sourceTree = SDKROOT; };
 		D217B2E81708916800CADAF4 /* ABCGRectArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABCGRectArray.h; sourceTree = "<group>"; };
@@ -268,6 +274,8 @@
 				3CD78ADE16C3DD78006C4B21 /* ABSaveSystemExample.m */,
 				D24A0D6516EE2E660093AE2A /* ABHudExample.h */,
 				D24A0D6616EE2E660093AE2A /* ABHudExample.m */,
+				D211D7291709AEB500326B25 /* ABNetworkingExample.h */,
+				D211D72A1709AEB500326B25 /* ABNetworkingExample.m */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -388,6 +396,15 @@
 			path = ABNewsstandHelper;
 			sourceTree = "<group>";
 		};
+		D211D7251709A97300326B25 /* ABNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				D211D7261709A98E00326B25 /* ABNetworking.h */,
+				D211D7271709A98E00326B25 /* ABNetworking.m */,
+			);
+			path = ABNetworking;
+			sourceTree = "<group>";
+		};
 		D217B2EE1708917600CADAF4 /* ABEntypoView */ = {
 			isa = PBXGroup;
 			children = (
@@ -494,6 +511,7 @@
 		D271792816E58548009BB5D1 /* Components (Functional) */ = {
 			isa = PBXGroup;
 			children = (
+				D211D7251709A97300326B25 /* ABNetworking */,
 				D20670C71703601800DE9E5B /* ABNewsstandHelper */,
 				D259193C16EBCF2100E63E4B /* ABFileHelper */,
 				D271792916E58548009BB5D1 /* ABSaveSystem */,
@@ -837,6 +855,8 @@
 				D217B2ED1708916800CADAF4 /* ABPrimitiveArray.m in Sources */,
 				D217B2F41708917600CADAF4 /* ABEntypoView.m in Sources */,
 				D217B2F51708917600CADAF4 /* ABSeperator.m in Sources */,
+				D211D7281709A98E00326B25 /* ABNetworking.m in Sources */,
+				D211D72B1709AEB500326B25 /* ABNetworkingExample.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
