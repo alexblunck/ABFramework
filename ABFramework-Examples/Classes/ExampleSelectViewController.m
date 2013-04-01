@@ -17,6 +17,7 @@
 #import "ABSaveSystemExample.h"
 #import "ABLabelExample.h"
 #import "ABHudExample.h"
+#import "ABNetworkingExample.h"
 
 @interface ExampleSelectViewController () <UITableViewDataSource, UITableViewDelegate> {
     UITableView *_tableView;
@@ -61,7 +62,8 @@
     
     //Components (Functional)
     NSArray *componentsFunctionalObjects = @[
-                                       [ExampleObject objectWithName:@"ABSaveSystem" viewControllerClass:[ABSaveSystemExample class]]
+                                       [ExampleObject objectWithName:@"ABSaveSystem" viewControllerClass:[ABSaveSystemExample class]],
+                                       [ExampleObject objectWithName:@"ABNetworking" viewControllerClass:[ABNetworkingExample class]]
                                        ];
     ExampleSection *componentsFunctionalSection = [ExampleSection sectionWithName:@"Components (Funtional)" exampleObjectArray:componentsFunctionalObjects];
     [_sectionArray addObject:componentsFunctionalSection];
