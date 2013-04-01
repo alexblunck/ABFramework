@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Ablfx. All rights reserved.
 //
 
+#ifdef ABFRAMEWORK_NEWSSTAND
+
 #import "ABNewsstandHelper.h"
 
 @interface ABNewsstandHelper () <NSURLConnectionDelegate, NSURLConnectionDownloadDelegate>
@@ -259,3 +261,5 @@
 }
 
 @end
+
+#endif

@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Ablfx. All rights reserved.
 //
 
+#ifdef ABFRAMEWORK_NEWSSTAND
+
 #import <Foundation/Foundation.h>
 
 typedef void (^ABNewsstandHelperBlockProgress) (NSInteger percent, NKIssue *issue);
@@ -56,3 +58,5 @@ typedef void (^ABNewsstandHelperBlockCompletion) (BOOL connectionError, BOOL iss
                                               completionBlock:(ABNewsstandHelperBlockCompletion)cBlock;
 
 @end
+
+#endif
