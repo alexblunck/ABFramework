@@ -185,6 +185,7 @@
 
 
 #pragma mark - Accessors
+#pragma mark - delayTouch
 -(void) setDelayTouch:(BOOL)delayTouch
 {
     _delayTouch = delayTouch;
@@ -192,6 +193,12 @@
     {
         _scrollView.delaysContentTouches = delayTouch;
     }
+}
+
+#pragma mark - stackViews
+-(NSArray*) stackViews
+{
+    return _viewArray;
 }
 
 @end

@@ -31,4 +31,7 @@
 //Delay touches on scrollView (Only available when a fixed height is set), default is NO
 @property (nonatomic, assign) BOOL delayTouch;
 
+//Access
+@property (nonatomic, copy) NSArray *stackViews;
+
 @end
