@@ -19,13 +19,24 @@
 @implementation ABSelectView
 
 #pragma mark - Utility
-+(id) showInView:(UIView*)view
- WithStringArray:(NSArray*)stringArray
-    defaultIndex:(int)defaultIndex
-           theme:(ABSelectViewTheme*)theme
- completionBlock:(ABBlockInteger)block
++(id) showWithStringArray:(NSArray*)stringArray
+          completionBlock:(ABBlockInteger)block
 {
-    return [[self alloc] initWithView:view StringArray:stringArray defaultIndex:defaultIndex theme:theme completionBlock:block];
+    return [self showWithStringArray:stringArray theme:[ABSelectViewTheme themeWithTag:ABSELECTVIEW_THEME_DEFAULT] completionBlock:block];
+}
+
++(id) showWithStringArray:(NSArray*)stringArray
+             defaultIndex:(int)defaultIndex
+          completionBlock:(ABBlockInteger)block
+{
+    return [self showInView:nil WithStringArray:stringArray defaultIndex:defaultIndex theme:[ABSelectViewTheme themeWithTag:ABSELECTVIEW_THEME_DEFAULT] completionBlock:block];
+}
+
++(id) showWithStringArray:(NSArray*)stringArray
+                    theme:(ABSelectViewTheme*)theme
+          completionBlock:(ABBlockInteger)block
+{
+    return [self showWithStringArray:stringArray defaultIndex:stringArray.count theme:theme completionBlock:block];
 }
 
 +(id) showWithStringArray:(NSArray*)stringArray
@@ -33,7 +44,16 @@
                     theme:(ABSelectViewTheme*)theme
           completionBlock:(ABBlockInteger)block
 {
-    return [[self alloc] initWithView:nil StringArray:stringArray defaultIndex:defaultIndex theme:theme completionBlock:block];
+    return [self showInView:nil WithStringArray:stringArray defaultIndex:defaultIndex theme:theme completionBlock:block];
+}
+
++(id) showInView:(UIView*)view
+ WithStringArray:(NSArray*)stringArray
+    defaultIndex:(int)defaultIndex
+           theme:(ABSelectViewTheme*)theme
+ completionBlock:(ABBlockInteger)block
+{
+    return [[self alloc] initWithView:view StringArray:stringArray defaultIndex:defaultIndex theme:theme completionBlock:block];
 }
 
 

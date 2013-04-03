@@ -10,9 +10,18 @@
 #import "ABSelectViewTheme.h"
 #import "ABSelectViewItem.h"
 
+#define ABSELECTVIEW_THEME_DEFAULT ABSelectViewThemeTagDark
+
 @interface ABSelectView : ABView
 
 //Utility
++(id) showWithStringArray:(NSArray*)stringArray
+          completionBlock:(ABBlockInteger)block;
+
++(id) showWithStringArray:(NSArray*)stringArray
+                    theme:(ABSelectViewTheme*)theme
+          completionBlock:(ABBlockInteger)block;
+
 +(id) showWithStringArray:(NSArray*)stringArray
              defaultIndex:(int)defaultIndex
                     theme:(ABSelectViewTheme*)theme
