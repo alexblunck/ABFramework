@@ -43,7 +43,7 @@
         self.frame = [[UIScreen mainScreen] bounds];
         
         self.backgroundColor = [UIColor clearColor];
-
+        
         //Background view
         _backgroundView = [[UIView alloc] initWithFrame:self.bounds];
         _backgroundView.backgroundColor = [UIColor blackColor];
@@ -101,7 +101,8 @@
 #pragma mark - Dismiss
 +(void) dismiss
 {
-    [[ABHud sharedClass] hide];
+    //Make sure any running animations are npt interupted
+    [[ABHud sharedClass] scheduleHide:1.0f];
 }
 
 
