@@ -338,12 +338,6 @@
          location = "group:Containers"
          name = "Containers">
          <FileRef
-            location = "group:ABCGRectArray.h">
-         </FileRef>
-         <FileRef
-            location = "group:ABCGRectArray.m">
-         </FileRef>
-         <FileRef
             location = "group:ABPair.h">
          </FileRef>
          <FileRef

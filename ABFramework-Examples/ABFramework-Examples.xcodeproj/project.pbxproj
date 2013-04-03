@@ -36,7 +36,6 @@
 		D211D72B1709AEB500326B25 /* ABNetworkingExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D211D72A1709AEB500326B25 /* ABNetworkingExample.m */; };
 		D21694FF1704FA73009000FC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21694FE1704FA73009000FC /* StoreKit.framework */; };
 		D21695011704FBD7009000FC /* NewsstandKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21695001704FBD7009000FC /* NewsstandKit.framework */; };
-		D217B2EC1708916800CADAF4 /* ABCGRectArray.m in Sources */ = {isa = PBXBuildFile; fileRef = D217B2E91708916800CADAF4 /* ABCGRectArray.m */; };
 		D217B2ED1708916800CADAF4 /* ABPrimitiveArray.m in Sources */ = {isa = PBXBuildFile; fileRef = D217B2EB1708916800CADAF4 /* ABPrimitiveArray.m */; };
 		D217B2F41708917600CADAF4 /* ABEntypoView.m in Sources */ = {isa = PBXBuildFile; fileRef = D217B2F01708917600CADAF4 /* ABEntypoView.m */; };
 		D217B2F51708917600CADAF4 /* ABSeperator.m in Sources */ = {isa = PBXBuildFile; fileRef = D217B2F31708917600CADAF4 /* ABSeperator.m */; };
@@ -131,8 +130,6 @@
 		D211D72A1709AEB500326B25 /* ABNetworkingExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABNetworkingExample.m; sourceTree = "<group>"; };
 		D21694FE1704FA73009000FC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D21695001704FBD7009000FC /* NewsstandKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NewsstandKit.framework; path = System/Library/Frameworks/NewsstandKit.framework; sourceTree = SDKROOT; };
-		D217B2E81708916800CADAF4 /* ABCGRectArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABCGRectArray.h; sourceTree = "<group>"; };
-		D217B2E91708916800CADAF4 /* ABCGRectArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABCGRectArray.m; sourceTree = "<group>"; };
 		D217B2EA1708916800CADAF4 /* ABPrimitiveArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABPrimitiveArray.h; sourceTree = "<group>"; };
 		D217B2EB1708916800CADAF4 /* ABPrimitiveArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABPrimitiveArray.m; sourceTree = "<group>"; };
 		D217B2EF1708917600CADAF4 /* ABEntypoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABEntypoView.h; sourceTree = "<group>"; };
@@ -664,8 +661,6 @@
 		D271795816E58548009BB5D1 /* Containers */ = {
 			isa = PBXGroup;
 			children = (
-				D217B2E81708916800CADAF4 /* ABCGRectArray.h */,
-				D217B2E91708916800CADAF4 /* ABCGRectArray.m */,
 				D217B2EA1708916800CADAF4 /* ABPrimitiveArray.h */,
 				D217B2EB1708916800CADAF4 /* ABPrimitiveArray.m */,
 				D271795916E58548009BB5D1 /* ABPair.h */,
@@ -851,7 +846,6 @@
 				D241363416F3454A0033C56B /* UIImageView+ABFramework.m in Sources */,
 				D20670CA1703601800DE9E5B /* ABNewsstandHelper.m in Sources */,
 				D20670CD1703601F00DE9E5B /* ABMath.m in Sources */,
-				D217B2EC1708916800CADAF4 /* ABCGRectArray.m in Sources */,
 				D217B2ED1708916800CADAF4 /* ABPrimitiveArray.m in Sources */,
 				D217B2F41708917600CADAF4 /* ABEntypoView.m in Sources */,
 				D217B2F51708917600CADAF4 /* ABSeperator.m in Sources */,
