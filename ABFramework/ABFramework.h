@@ -38,7 +38,6 @@ CONTAINERS
 */
 #import "ABPair.h"
 #import "ABPrimitiveArray.h"
-#import "ABCGRectArray.h"
 
 
 
