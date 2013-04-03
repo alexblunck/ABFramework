@@ -244,6 +244,7 @@ typedef enum {
 
 
 //Misc
+-(NSDate*) midnight;
 +(NSDate*) localDateForDate:(NSDate*)date;
 +(NSArray*) datesCollectionFromDate:(NSDate*)startDate untilDate:(NSDate*)endDate;
 -(NSArray*) hoursInCurrentDayAsDatesCollection;

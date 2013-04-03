@@ -985,6 +985,11 @@ static ABDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 
 
 #pragma mark - Misc
+-(NSDate*) midnight
+{
+    return [NSDate dateFromYear:self.year month:self.monthOfYear day:self.dayOfMonth hour:0 minute:0 second:0];
+}
+
 +(NSDate*) localDateForDate:(NSDate*)date
 {
     int localDateSecondOffset = [[NSTimeZone localTimeZone] secondsFromGMT];
