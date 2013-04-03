@@ -16,7 +16,7 @@
     return [[self alloc] initThemeTop:top middle:middle bottom:bottom];
 }
 
-+(id) themeWithTag:(_ABSelectViewThemeTag)theme
++(id) themeWithTag:(ABSelectViewThemeTag)theme
 {
     return [[self alloc] initWithTag:theme];
 }
@@ -34,14 +34,14 @@
     return self;
 }
 
--(id) initWithTag:(_ABSelectViewThemeTag)theme
+-(id) initWithTag:(ABSelectViewThemeTag)theme
 {
     if (self = [super init])
     {
         
         NSString *baseName = nil;
         
-        if (theme == ABSelectViewThemeDark)
+        if (theme == ABSelectViewThemeTagDark)
         {
             baseName = @"ABSelectViewThemeDark";
         }

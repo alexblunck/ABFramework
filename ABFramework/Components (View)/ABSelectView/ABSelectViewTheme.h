@@ -8,13 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum {ABSelectViewThemeDark} _ABSelectViewThemeTag;
+typedef enum {
+    ABSelectViewThemeTagNone,
+    ABSelectViewThemeTagDark
+} ABSelectViewThemeTag;
 
 @interface ABSelectViewTheme : NSObject
 
 //Utility
 +(id) themeWithTop:(NSString*)top middle:(NSString*)middle bottom:(NSString*)bottom;
-+(id) themeWithTag:(_ABSelectViewThemeTag)theme;
++(id) themeWithTag:(ABSelectViewThemeTag)theme;
 
 @property (nonatomic, strong) NSString *topRowImageName;
 @property (nonatomic, strong) NSString *middleRowImageName;
