@@ -17,9 +17,14 @@
 @implementation ABSeperator
 
 #pragma mark - Utility
-+(id) seperatorWithType:(ABSeperatorType)type length:(CGFloat)length top:(NSString*)topColorHex bottom:(NSString*)bottomColorHex
++(id) seperatorWithType:(ABSeperatorType)type length:(CGFloat)length topHex:(NSString*)topColorHex bottomHex:(NSString*)bottomColorHex
 {
     return [[self alloc] initWithType:type length:length top:[UIColor colorWithHexString:topColorHex] bottom:[UIColor colorWithHexString:bottomColorHex]];
+}
+
++(id) seperatorWithType:(ABSeperatorType)type length:(CGFloat)length top:(UIColor*)topColor bottom:(UIColor*)bottomColor
+{
+    return [[self alloc] initWithType:type length:length top:topColor bottom:bottomColor];
 }
 
 

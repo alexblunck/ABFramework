@@ -17,6 +17,7 @@ typedef enum {
 @interface ABSeperator : UIView
 
 //Utility
-+(id) seperatorWithType:(ABSeperatorType)type length:(CGFloat)length top:(NSString*)topColorHex bottom:(NSString*)bottomColorHex;
++(id) seperatorWithType:(ABSeperatorType)type length:(CGFloat)length topHex:(NSString*)topColorHex bottomHex:(NSString*)bottomColorHex;
++(id) seperatorWithType:(ABSeperatorType)type length:(CGFloat)length top:(UIColor*)topColor bottom:(UIColor*)bottomColor;
 
 @end
