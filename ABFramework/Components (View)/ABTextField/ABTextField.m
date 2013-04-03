@@ -19,23 +19,23 @@
 @synthesize text = _text;
 
 #pragma mark - Initializer
-- (id)initWithFrame:(CGRect)frame
+-(id) initWithImage:(NSString*)imageName
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        
+    self = [super init];
+    if (self)
+    {
         //Default Config
         self.hideKeyboardOnReturn = YES;
         
         //Background Image
-        UIImage *backgroundImage = [UIImage imageNamed:@"textfield-bg.png"];
+        UIImage *backgroundImage = [UIImage imageNamed:imageName];
         UIImageView *backgroundImageView = [UIImageView new];
         backgroundImageView.frame = CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height);
         backgroundImageView.image = backgroundImage;
         [self addSubview:backgroundImageView];
         
-        //Center Background ImageView
-        backgroundImageView.frame = CGRectCenteredWithCGRect(backgroundImageView.frame, self.bounds);
+        //Assume frame of image
+        self.frame = CGRectChangingCGSize(CGRectZero, backgroundImage.size);
         
         //Text Field
         _textField = [UITextField new];
@@ -53,11 +53,9 @@
         _textField.layer.shadowRadius = 0.0f;
         _textField.layer.shadowOpacity = 0.6f;
         [self addSubview:_textField];
-        
     }
     return self;
 }
-
 
 
 #pragma mark - Helper

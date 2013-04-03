@@ -20,6 +20,9 @@
 
 @interface ABTextField : UIView
 
+//Initializer
+-(id) initWithImage:(NSString*)imageName;
+
 //Helper
 -(void) hideKeyboard;
 
