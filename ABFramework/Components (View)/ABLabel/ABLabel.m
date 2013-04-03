@@ -22,6 +22,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         
+        self.userInteractionEnabled = NO;
+        
         //TextField
         _textField = [[UITextField alloc] initWithFrame:self.bounds];
         _textField.backgroundColor = [UIColor clearColor];
