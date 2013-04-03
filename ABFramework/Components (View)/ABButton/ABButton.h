@@ -19,6 +19,9 @@
 +(id) buttonWithActionBlock:(ABBlockVoid)actionBlock;
 +(id) buttonBasicWithText:(NSString*)text actionBlock:(ABBlockVoid)actionBlock; //ABButton with default UIButton styling
 
+//Conversion
+-(UIBarButtonItem*) barButtonItem;
+
 @property(nonatomic, strong) NSDictionary *userData;
 
 //Use custom selected image

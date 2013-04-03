@@ -139,6 +139,14 @@
 
 
 
+#pragma mark - Conversion
+-(UIBarButtonItem*) barButtonItem
+{
+    return [[UIBarButtonItem alloc] initWithCustomView:self];
+}
+
+
+
 #pragma mark - Accessors
 -(void) setSelectedImageName:(NSString *)selectedImageName
 {
