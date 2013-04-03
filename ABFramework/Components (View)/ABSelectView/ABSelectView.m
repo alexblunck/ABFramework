@@ -22,7 +22,7 @@
 +(id) showWithStringArray:(NSArray*)stringArray
           completionBlock:(ABBlockInteger)block
 {
-    return [self showWithStringArray:stringArray theme:[ABSelectViewTheme themeWithTag:ABSELECTVIEW_THEME_DEFAULT] completionBlock:block];
+    return [self showWithStringArray:stringArray defaultIndex:stringArray.count completionBlock:block];
 }
 
 +(id) showWithStringArray:(NSArray*)stringArray
@@ -30,13 +30,6 @@
           completionBlock:(ABBlockInteger)block
 {
     return [self showInView:nil WithStringArray:stringArray defaultIndex:defaultIndex theme:[ABSelectViewTheme themeWithTag:ABSELECTVIEW_THEME_DEFAULT] completionBlock:block];
-}
-
-+(id) showWithStringArray:(NSArray*)stringArray
-                    theme:(ABSelectViewTheme*)theme
-          completionBlock:(ABBlockInteger)block
-{
-    return [self showWithStringArray:stringArray defaultIndex:stringArray.count theme:theme completionBlock:block];
 }
 
 +(id) showWithStringArray:(NSArray*)stringArray

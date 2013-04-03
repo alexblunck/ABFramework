@@ -19,7 +19,7 @@
           completionBlock:(ABBlockInteger)block;
 
 +(id) showWithStringArray:(NSArray*)stringArray
-                    theme:(ABSelectViewTheme*)theme
+             defaultIndex:(int)defaultIndex
           completionBlock:(ABBlockInteger)block;
 
 +(id) showWithStringArray:(NSArray*)stringArray
