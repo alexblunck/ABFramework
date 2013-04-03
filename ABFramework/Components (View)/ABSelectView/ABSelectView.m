@@ -166,7 +166,9 @@
 
 -(void) hideWithIndex:(NSInteger)index
 {
-    _completionBlock(index);
+    if (index >= 0) {
+        _completionBlock(index);
+    }
     
     [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
         self.backgroundColor = [UIColor clearColor];
