@@ -106,7 +106,8 @@
     _hasAlreadyReturned = NO;
     
     //Inform Delegate
-    if ([self.delegate respondsToSelector:@selector(abTextFieldDidBeginEditing:)]) {
+    if ([self.delegate respondsToSelector:@selector(abTextFieldDidBeginEditing:)])
+    {
         [self.delegate abTextFieldDidBeginEditing:self];
     }
 }
@@ -114,17 +115,32 @@
 -(void) textFieldDidEndEditing:(UITextField *)textField
 {
     //Inform Delegate, that value of textField did change
-    if ([self.delegate respondsToSelector:@selector(abTextFieldDidChangeText:)]) {
-        [self.delegate abTextFieldDidChangeText:self];
+    if ([self.delegate respondsToSelector:@selector(abTextFieldDidChangeText:string:)])
+    {
+        [self.delegate abTextFieldDidChangeText:self string:self.text];
     }
     
     //Inform Delegate, that textField did end editing (!!ONLY if return button hasn't already been selected)
-    if ([self.delegate respondsToSelector:@selector(abTextFieldDidEndEditing:)] && !_hasAlreadyReturned) {
+    if ([self.delegate respondsToSelector:@selector(abTextFieldDidEndEditing:)] && !_hasAlreadyReturned)
+    {
         [self.delegate abTextFieldDidEndEditing:self];
     }
 }
 
-
+-(BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    //Compute current visibile text field string
+    NSMutableString *completeString = [[NSMutableString alloc] initWithString:textField.text];
+    [completeString replaceCharactersInRange:range withString:string];
+    
+    //Inform delegate
+    if ([self.delegate respondsToSelector:@selector(abTextFieldDidChangeText:string:)])
+    {
+        [self.delegate abTextFieldDidChangeText:self string:completeString];
+    }
+    
+    return YES;
+}
 
 #pragma mark - Superclass
 -(BOOL) becomeFirstResponder

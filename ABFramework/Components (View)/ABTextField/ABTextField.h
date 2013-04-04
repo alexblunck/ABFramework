@@ -15,7 +15,7 @@
 -(void) abTextFieldDidBeginEditing:(ABTextField*)textField;
 -(void) abTextFieldDidEndEditing:(ABTextField*)textField;
 -(void) abTextFieldDidReturn:(ABTextField*)textField;
--(void) abTextFieldDidChangeText:(ABTextField*)textField;
+-(void) abTextFieldDidChangeText:(ABTextField*)textField string:(NSString*)string;
 @end
 
 @interface ABTextField : UIView
