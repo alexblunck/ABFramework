@@ -151,7 +151,7 @@
 
 -(void) addToView
 {
-    [[[UIApplication sharedApplication] keyWindow] addSubview:self];
+    [[UIView topView] addSubview:self];
 }
 
 -(void) scheduleHide:(NSInteger)seconds

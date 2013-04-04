@@ -44,7 +44,7 @@
 #pragma mark - Trigger
 -(void) show
 {
-    [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:self animated:YES completion:nil];
+    [[UIViewController topViewController] presentViewController:self animated:YES completion:nil];
 }
 
 

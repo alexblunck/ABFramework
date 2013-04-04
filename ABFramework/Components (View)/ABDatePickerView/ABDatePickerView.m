@@ -26,7 +26,7 @@
         
         _completionBlock = block;
         
-        _applicationFrame = [[UIScreen mainScreen] applicationFrame];
+        _applicationFrame = [[UIView topView] bounds];
         self.frame = CGRectMake(0, 0, _applicationFrame.size.width, _applicationFrame.size.height);
         self.backgroundColor = [UIColor clearColor];
         self.opaque = NO;
@@ -86,7 +86,7 @@
 #pragma mark - Triggers
 -(void) show
 {
-    [[[[[UIApplication sharedApplication] keyWindow] rootViewController] view] addSubview:self];
+    [[UIView topView] addSubview:self];
     
     [UIView animateWithDuration:0.4f animations:^{
         self.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0.400];

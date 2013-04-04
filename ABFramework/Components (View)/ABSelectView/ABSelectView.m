@@ -63,8 +63,10 @@
         
         _completionBlock = block;
         
-        CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame];
-        if (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
+        CGRect applicationFrame = [UIView topView].bounds;
+        
+        if (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]))
+        {
             applicationFrame = CGRectMake(applicationFrame.origin.x, applicationFrame.origin.y, applicationFrame.size.height, applicationFrame.size.width);
         }
         
@@ -156,10 +158,12 @@
 #pragma mark - Helper
 -(void) showInView:(UIView*)view
 {
-    if (view) {
+    if (view)
+    {
         [view addSubview:self];
-    } else {
-        [[[[[UIApplication sharedApplication] keyWindow] rootViewController] view] addSubview:self];
+    } else
+    {
+        [[UIView topView] addSubview:self];
     }
     
     [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
