@@ -7,7 +7,7 @@
 //
 
 #define ABFRAMEWORK_VERSION 0.1
-#define ABFRAMEWORK_LAST_EDIT @"03.04.2013 - 23:56"
+#define ABFRAMEWORK_LAST_EDIT @"04.04.2013 - 22:57"
 
 #ifndef ABFRAMEWORK_LOGGING
 #define ABFRAMEWORK_LOGGING 1
@@ -63,6 +63,7 @@ CONTAINERS
 #import "UIView+ABFramework.h"
 #import "UIColor+ABFramework.h"
 #import "UIImageView+ABFramework.h"
+#import "UIViewController+ABFramework.h"
 
 
 /*
@@ -83,6 +84,7 @@ CONTAINERS
     #import "ABFileHelper.h"
     #import "ABNewsstandHelper.h"
     #import "ABNetworking.h"
+    #import "ABNotificationHelper.h"
     //View
     #import "ABAlertView.h"
     #import "ABDatePickerView.h"
