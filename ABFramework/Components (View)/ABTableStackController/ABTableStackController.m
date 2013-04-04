@@ -1,6 +1,6 @@
 //
 //  ABTableStackController.m
-//  ComingUp iOS
+//  ABFramework
 //
 //  Created by Alexander Blunck on 3/8/13.
 //  Copyright (c) 2013 Ablfx. All rights reserved.
