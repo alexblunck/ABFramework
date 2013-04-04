@@ -8,8 +8,10 @@
 
 #import "ABAlertView.h"
 
-@interface ABAlertView () {
+@interface ABAlertView ()
+{
     ABBlockInteger _completionBlock;
+    ABBlockVoid _voidCompletionBlock;
 }
 @end
 
@@ -18,11 +20,18 @@
 #pragma mark - Utility
 +(id) showAlertWithTitle:(NSString*) title
                  message:(NSString*) message
+                   block:(ABBlockVoid) block
+{
+    return [[self alloc] initAlertWithTitle:title message:message block:nil voidBlock:block cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+}
+
++(id) showAlertWithTitle:(NSString*) title
+                 message:(NSString*) message
                    block:(ABBlockInteger) block
        cancelButtonTitle:(NSString*) cancelButtonTitle
        otherButtonTitles:(NSArray*) otherButtonTitles
 {
-    return [[self alloc] initAlertWithTitle:title message:message block:block cancelButtonTitle:cancelButtonTitle otherButtonTitles:otherButtonTitles];
+    return [[self alloc] initAlertWithTitle:title message:message block:block voidBlock:nil cancelButtonTitle:cancelButtonTitle otherButtonTitles:otherButtonTitles];
 }
 
 
@@ -31,6 +40,7 @@
 -(id) initAlertWithTitle:(NSString*) title
                  message:(NSString*) message
                    block:(ABBlockInteger) block
+               voidBlock:(ABBlockVoid) voidBlock
        cancelButtonTitle:(NSString*) cancelButtonTitle
        otherButtonTitles:(NSArray*) otherButtonTitles
 {
@@ -42,7 +52,8 @@
             [self addButtonWithTitle:buttonTitle];
         }
         
-        _completionBlock = block;
+        _completionBlock = [block copy];
+        _voidCompletionBlock = [voidBlock copy];
         
         //Show Alert
         [self show];
@@ -57,8 +68,13 @@
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     //Execute Block
-    if (_completionBlock) {
+    if (_completionBlock)
+    {
         _completionBlock(buttonIndex);
+    }
+    
+    if (_voidCompletionBlock) {
+        _voidCompletionBlock();
     }
 }
 
