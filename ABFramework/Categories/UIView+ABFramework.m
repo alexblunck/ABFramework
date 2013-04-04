@@ -11,24 +11,32 @@
 @implementation UIView (ABFramework)
 
 #pragma mark - Frame
-- (CGFloat) right
+-(CGFloat) right
 {
     return self.frame.origin.x + self.frame.size.width;
 }
 
-- (CGFloat) left
+-(CGFloat) left
 {
     return self.frame.origin.x;
 }
 
-- (CGFloat) top
+-(CGFloat) top
 {
     return self.frame.origin.y;
 }
 
-- (CGFloat) bottom
+-(CGFloat) bottom
 {
     return self.frame.origin.y + self.frame.size.height;
+}
+
+
+
+#pragma mark - Universal Access
++(UIView*) topView
+{
+    return [[[UIApplication sharedApplication] windows] lastObject];
 }
 
 @end
