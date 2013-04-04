@@ -27,4 +27,7 @@
 //Use custom selected image
 @property (nonatomic, copy) NSString *selectedImageName;
 
+//Set if all button subvviews are dimmed with button
+@property (nonatomic, assign) BOOL dimSubViews;
+
 @end

@@ -47,6 +47,17 @@
 
 
 #pragma mark - Initializer
+-(id) init
+{
+    self = [super init];
+    if (self)
+    {
+        //Config
+        self.dimSubViews = NO;
+    }
+    return self;
+}
+
 #pragma mark - Selectors
 -(id) initWithImageName:(NSString*)imageName target:(id)target selected:(SEL)selector
 {
@@ -54,6 +65,8 @@
     if (self)
     {
         [self setupImages:imageName];
+        
+        [self setupTouchDown];
         
         [self addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
     }
@@ -75,6 +88,8 @@
         _actionBlock = [actionBlock copy];
         
         [self setupImages:imageName];
+        
+        [self setupTouchDown];
         
         [self addTarget:self action:@selector(selectedButton) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -124,7 +139,19 @@
         {
             [self setImage:imageSel forState:UIControlStateHighlighted];
         }
+        
+        UIImage *imageDisabled = [UIImage imageNamed:[NSString stringWithFormat:@"%@-disabled", imageName]];
+        if (imageDisabled)
+        {
+            [self setImage:imageDisabled forState:UIControlStateDisabled];
+        }
     }
+}
+
+-(void) setupTouchDown
+{
+    [self addTarget:self action:@selector(dimAllSubViews) forControlEvents:UIControlEventTouchDown|UIControlEventTouchDragInside];
+    [self addTarget:self action:@selector(unDimAllSubViews) forControlEvents:UIControlEventTouchUpInside|UIControlEventTouchUpOutside|UIControlEventTouchCancel|UIControlEventTouchDragOutside];
 }
 
 
@@ -134,6 +161,25 @@
 {
     if (_actionBlock) {
         _actionBlock();
+    }
+}
+
+-(void) dimAllSubViews
+{
+    if (!self.dimSubViews) return;
+    
+    for (UIView* subView in self.subviews)
+    {
+        subView.alpha = 0.3f;
+    }
+}
+-(void) unDimAllSubViews
+{
+    if (!self.dimSubViews) return;
+    
+    for (UIView* subView in self.subviews)
+    {
+        subView.alpha = 1.0f;
     }
 }
 
@@ -148,6 +194,7 @@
 
 
 #pragma mark - Accessors
+#pragma mark - selectedImageName
 -(void) setSelectedImageName:(NSString *)selectedImageName
 {
     _selectedImageName = selectedImageName;
