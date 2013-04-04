@@ -14,6 +14,12 @@
          location = "group:Categories"
          name = "Categories">
          <FileRef
+            location = "group:UIViewController+ABFramework.h">
+         </FileRef>
+         <FileRef
+            location = "group:UIViewController+ABFramework.m">
+         </FileRef>
+         <FileRef
             location = "group:UIImageView+ABFramework.h">
          </FileRef>
          <FileRef
@@ -283,6 +289,16 @@
       <Group
          location = "group:Components (Functional)"
          name = "Components (Functional)">
+         <Group
+            location = "group:ABNotificationHelper"
+            name = "ABNotificationHelper">
+            <FileRef
+               location = "group:ABNotificationHelper.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABNotificationHelper.m">
+            </FileRef>
+         </Group>
          <Group
             location = "group:ABNetworking"
             name = "ABNetworking">

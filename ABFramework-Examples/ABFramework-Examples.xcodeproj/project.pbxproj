@@ -83,6 +83,8 @@
 		D271799216E58548009BB5D1 /* ABCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D271796816E58548009BB5D1 /* ABCommon.m */; };
 		D271799316E58548009BB5D1 /* ABFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = D271796A16E58548009BB5D1 /* ABFrame.m */; };
 		D271799416E58548009BB5D1 /* ABReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D271796D16E58548009BB5D1 /* ABReachability.m */; };
+		D294B0CF170E2108007C2808 /* ABNotificationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D294B0CE170E2108007C2808 /* ABNotificationHelper.m */; };
+		D294B0D2170E210D007C2808 /* UIViewController+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D294B0D1170E210D007C2808 /* UIViewController+ABFramework.m */; };
 		D2B331B916EC9E5A00DED125 /* ABLabelExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B331B816EC9E5A00DED125 /* ABLabelExample.m */; };
 		D2B331C916ED047D00DED125 /* ABImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B331C816ED047D00DED125 /* ABImageView.m */; };
 /* End PBXBuildFile section */
@@ -226,6 +228,10 @@
 		D271796D16E58548009BB5D1 /* ABReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABReachability.m; sourceTree = "<group>"; };
 		D271796E16E58548009BB5D1 /* ABTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTypes.h; sourceTree = "<group>"; };
 		D271796F16E58548009BB5D1 /* ABUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABUtilities.h; sourceTree = "<group>"; };
+		D294B0CD170E2108007C2808 /* ABNotificationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABNotificationHelper.h; sourceTree = "<group>"; };
+		D294B0CE170E2108007C2808 /* ABNotificationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABNotificationHelper.m; sourceTree = "<group>"; };
+		D294B0D0170E210D007C2808 /* UIViewController+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ABFramework.h"; sourceTree = "<group>"; };
+		D294B0D1170E210D007C2808 /* UIViewController+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ABFramework.m"; sourceTree = "<group>"; };
 		D2B331B716EC9E5A00DED125 /* ABLabelExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABLabelExample.h; sourceTree = "<group>"; };
 		D2B331B816EC9E5A00DED125 /* ABLabelExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABLabelExample.m; sourceTree = "<group>"; };
 		D2B331C716ED047D00DED125 /* ABImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABImageView.h; sourceTree = "<group>"; };
@@ -477,6 +483,8 @@
 		D271791116E58548009BB5D1 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				D294B0D0170E210D007C2808 /* UIViewController+ABFramework.h */,
+				D294B0D1170E210D007C2808 /* UIViewController+ABFramework.m */,
 				D241363216F3454A0033C56B /* UIImageView+ABFramework.h */,
 				D241363316F3454A0033C56B /* UIImageView+ABFramework.m */,
 				D271791216E58548009BB5D1 /* NSData+ABFramework.h */,
@@ -508,6 +516,7 @@
 		D271792816E58548009BB5D1 /* Components (Functional) */ = {
 			isa = PBXGroup;
 			children = (
+				D294B0CC170E2108007C2808 /* ABNotificationHelper */,
 				D211D7251709A97300326B25 /* ABNetworking */,
 				D20670C71703601800DE9E5B /* ABNewsstandHelper */,
 				D259193C16EBCF2100E63E4B /* ABFileHelper */,
@@ -709,6 +718,15 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		D294B0CC170E2108007C2808 /* ABNotificationHelper */ = {
+			isa = PBXGroup;
+			children = (
+				D294B0CD170E2108007C2808 /* ABNotificationHelper.h */,
+				D294B0CE170E2108007C2808 /* ABNotificationHelper.m */,
+			);
+			path = ABNotificationHelper;
+			sourceTree = "<group>";
+		};
 		D2B331C616ED047D00DED125 /* ABImageView */ = {
 			isa = PBXGroup;
 			children = (
@@ -851,6 +869,8 @@
 				D217B2F51708917600CADAF4 /* ABSeperator.m in Sources */,
 				D211D7281709A98E00326B25 /* ABNetworking.m in Sources */,
 				D211D72B1709AEB500326B25 /* ABNetworkingExample.m in Sources */,
+				D294B0CF170E2108007C2808 /* ABNotificationHelper.m in Sources */,
+				D294B0D2170E210D007C2808 /* UIViewController+ABFramework.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
