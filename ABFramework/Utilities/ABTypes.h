@@ -10,6 +10,7 @@
  BLOCKS
  */
 typedef void (^ABBlockVoid) ();
+typedef void (^ABBlockObject) (id);
 typedef void (^ABBlockBool) (BOOL);
 typedef void (^ABBlockInteger) (NSInteger);
 typedef void (^ABBlockString) (NSString *);
