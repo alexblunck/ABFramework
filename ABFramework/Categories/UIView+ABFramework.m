@@ -36,7 +36,8 @@
 #pragma mark - Universal Access
 +(UIView*) topView
 {
-    return [[[UIApplication sharedApplication] windows] lastObject];
+    return [[UIViewController topViewController] view];
+    //return [[[UIApplication sharedApplication] windows] lastObject];
 }
 
 @end
