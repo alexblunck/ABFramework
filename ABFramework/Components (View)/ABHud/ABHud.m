@@ -151,7 +151,7 @@
 
 -(void) addToView
 {
-    [[UIView topView] addSubview:self];
+    [[UIView topWindowView] addSubview:self];
 }
 
 -(void) scheduleHide:(NSInteger)seconds
