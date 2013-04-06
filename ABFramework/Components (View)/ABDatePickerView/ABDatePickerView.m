@@ -34,7 +34,7 @@
         UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _applicationFrame.size.width, _applicationFrame.size.height-216-44)];
         [self addSubview:backgroundView];
         
-        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doneButtonSelected)];
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelButtonSelected)];
         [backgroundView addGestureRecognizer:tapGesture];
         
         _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, _applicationFrame.size.height+44+216, _applicationFrame.size.width, 44+216)];
@@ -56,13 +56,16 @@
         //Done Button
         UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonSelected)];
         
+        //Cancel Button
+        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonSelected)];
+        
         //Flexible space
         UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         
         //Tomorrow Button
         UIBarButtonItem *tomorrowButton = [[UIBarButtonItem alloc] initWithTitle:@"Tomorrow" style:UIBarButtonItemStyleBordered target:self action:@selector(tomorrowButtonSelected)];
         
-        toolbar.items = @[tomorrowButton, flexibleSpace, doneButton];
+        toolbar.items = @[tomorrowButton, flexibleSpace, cancelButton, doneButton];
     }
     return self;
 }
@@ -72,7 +75,12 @@
 #pragma mark - Buttons
 -(void) doneButtonSelected
 {
-    [self hide];
+    [self hideWithCallback:YES];
+}
+
+-(void) cancelButtonSelected
+{
+    [self hideWithCallback:NO];
 }
 
 -(void) tomorrowButtonSelected
@@ -99,9 +107,16 @@
 
 
 #pragma mark - Helper
--(void) hide
+-(void) hideWithCallback:(BOOL)callback
 {
-    _completionBlock(_datePicker.date);
+    
+    NSDate *returnDate = (callback) ? _datePicker.date : nil;
+    
+    if (_completionBlock)
+    {
+        _completionBlock(returnDate);
+    }
+    
     
     [UIView animateWithDuration:0.3f animations:^{
         self.backgroundColor = [UIColor clearColor];
