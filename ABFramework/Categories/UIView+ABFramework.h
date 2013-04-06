@@ -15,8 +15,11 @@
 -(CGFloat) left; //Returns X Point of the left edge of View
 -(CGFloat) top; //Returns Y Point of the top edge of View
 -(CGFloat) bottom; //Returns Y Point of the bottom edge of View
+-(CGFloat) width;
+-(CGFloat) height;
 
 //Universal Access
++(UIView*) topWindowView;
 +(UIView*) topView;
 
 @end

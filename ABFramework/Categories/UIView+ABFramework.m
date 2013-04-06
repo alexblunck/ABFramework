@@ -31,9 +31,24 @@
     return self.frame.origin.y + self.frame.size.height;
 }
 
+-(CGFloat) width
+{
+    return self.frame.size.width;
+}
+
+-(CGFloat) height
+{
+    return self.frame.size.height;
+}
+
 
 
 #pragma mark - Universal Access
++(UIView*) topWindowView
+{
+    return [[[UIApplication sharedApplication] windows] lastObject];
+}
+
 +(UIView*) topView
 {
     return [[UIViewController topViewController] view];
