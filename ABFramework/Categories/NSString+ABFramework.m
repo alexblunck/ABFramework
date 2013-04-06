@@ -18,6 +18,11 @@
     return uuidString;
 }
 
+-(BOOL) isEqualToStringU:(NSString *)aString
+{
+    return [[self lowercaseString] isEqualToString:[aString lowercaseString]];
+}
+
 -(BOOL) empty
 {
     NSString *string = [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];

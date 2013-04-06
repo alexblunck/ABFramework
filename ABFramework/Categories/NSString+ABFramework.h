@@ -12,6 +12,8 @@
 
 +(NSString*) uniqueString;
 
+-(BOOL) isEqualToStringU:(NSString *)aString; 
+
 -(BOOL) empty;
 
 -(NSString*) encodedString:(NSStringEncoding)encoding;
