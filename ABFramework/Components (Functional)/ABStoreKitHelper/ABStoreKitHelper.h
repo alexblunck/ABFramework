@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Ablfx. All rights reserved.
 //
 
-#ifdef SK_EXTERN
+#ifdef ABFRAMEWORK_STOREKIT
 
 #import <Foundation/Foundation.h>
 
@@ -144,7 +144,7 @@ typedef void (^ABStoreKitRestoreBlock) (NSArray *restoredItems, BOOL hasProducts
 @end
 
 #else
-    #ifdef ABFRAMEWORK_STOREKIT
+    #ifndef SK_EXTERN
         #warning Link / Import StoreKit Framework to use ABStoreKitHelper
     #endif
 #endif

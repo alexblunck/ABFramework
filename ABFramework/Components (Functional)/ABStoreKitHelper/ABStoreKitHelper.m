@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Ablfx. All rights reserved.
 //
 
-#ifdef SK_EXTERN
+#ifdef ABFRAMEWORK_STOREKIT
 
 #import "ABStoreKitHelper.h"
 
