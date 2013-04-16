@@ -70,7 +70,7 @@
         [self addSubview:button];
         
         //Use Gesture Recognizer to catch valid selection (odd iOS 5 issue keeps UIButton from called selector)
-        if (IS_IOS6) {
+        if (IS_MIN_IOS6) {
             [button addTarget:self action:@selector(buttonSelected) forControlEvents:UIControlEventTouchUpInside];
         }
         else {
