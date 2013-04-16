@@ -10,6 +10,8 @@
 
 @interface ABHud ()
 {
+    BOOL _hideScheduled;
+    
     NSTimer *_hideTimer;
     UIView *_backgroundView;
     UIView *_circleView;
@@ -43,6 +45,9 @@
         self.frame = [[UIScreen mainScreen] bounds];
         
         self.backgroundColor = [UIColor clearColor];
+        
+        //Config
+        _hideScheduled = NO;
         
         //Background view
         _backgroundView = [[UIView alloc] initWithFrame:self.bounds];
@@ -101,8 +106,7 @@
 #pragma mark - Dismiss
 +(void) dismiss
 {
-    //Make sure any running animations are npt interupted
-    [[ABHud sharedClass] scheduleHide:1.0f];
+    [[ABHud sharedClass] hide];
 }
 
 
@@ -115,17 +119,7 @@
         [self addToView];
     }
     
-    //Fade in/out background
-    [UIView animateWithDuration:0.4f delay:0.0f options:0 animations:^{
-        _backgroundView.alpha = (show) ? 0.5f : 0.0f;
-    } completion:^(BOOL finished) {
-        if (!show)
-        {
-            [self removeFromSuperview];
-        }
-    }];
-    
-    //Choose correct animation for circle view
+    //Choose correct animation
     if (_configAnimationType == ABHudAnimationTypeBounce)
     {
         [self bounceCircleViewIn:show];
@@ -142,10 +136,6 @@
 
 -(void) hide
 {
-    //Invalidate possible active hide timer
-    [_hideTimer invalidate];
-    _hideTimer = nil;
-    
     [self show:NO];
 }
 
@@ -171,14 +161,10 @@
     CGRect outsideTopRect = CGRectChangingOriginY(_circleView.frame, 0 - _circleView.frame.size.height);
     
     [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        //In
-        if (bounceIn) {
-            _circleView.frame = centerRectOffset;
-        }
-        //Out
-        else {
-            _circleView.frame = outsideTopRect;
-        }
+        //Fade background
+        _backgroundView.alpha = (bounceIn) ? 0.5f : 0.0f;
+        //Move circle
+        _circleView.frame = (bounceIn) ? centerRectOffset : outsideTopRect;
     } completion:^(BOOL finished) {
         //In
         if (bounceIn)
@@ -186,7 +172,8 @@
             [UIView animateWithDuration:0.1f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
                 _circleView.frame = centerRect;
             } completion:^(BOOL finished) {
-                //
+                //Perform post animation logic
+                [self animationDone:bounceIn];
             }];
         }
     }];
@@ -195,12 +182,17 @@
 -(void) popCircleViewIn:(BOOL)popIn
 {
     [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        //Fade background
+        _backgroundView.alpha = (popIn) ? 0.5f : 0.0f;
+        //Scale circle
         _circleView.transform = CGAffineTransformMakeScale(1.2f, 1.2f);
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.1f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            //Scale circle
             _circleView.transform = (popIn) ? CGAffineTransformMakeScale(1.0f, 1.0f) : CGAffineTransformMakeScale(0.01f, 0.01f);
         } completion:^(BOOL finished) {
-            //
+            //Perform post animation logic
+            [self animationDone:popIn];
         }];
         
     }];
@@ -209,11 +201,32 @@
 -(void) fadeCircleViewIn:(BOOL)fadeIn
 {
     [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        //Fade background
+        _backgroundView.alpha = (fadeIn) ? 0.5f : 0.0f;
+        //Fade circle
         _circleView.alpha = (fadeIn) ? ABHUD_OPACITY : 0.0f;
     } completion:^(BOOL finished) {
-        //
+        //Perform post animation logic
+        [self animationDone:fadeIn];
     }];
 }
+
+-(void) animationDone:(BOOL)isIn
+{
+    //If enter animation is done and hide is schedule perform hide
+    if (isIn && _hideScheduled)
+    {
+        [self hide];
+    }
+    
+    //If exit animation is done hide ABHud
+    if (!isIn)
+    {
+        [self removeFromSuperview];
+    }
+}
+
+
 
 #pragma mark - Accessors
 #pragma mark - AnimationType
