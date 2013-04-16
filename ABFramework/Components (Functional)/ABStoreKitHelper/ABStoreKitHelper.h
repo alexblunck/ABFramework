@@ -144,5 +144,7 @@ typedef void (^ABStoreKitRestoreBlock) (NSArray *restoredItems, BOOL hasProducts
 @end
 
 #else
-    #warning Link / Import StoreKit Framework to use ABStoreKitHelper
+    #ifdef ABFRAMEWORK_STOREKIT
+        #warning Link / Import StoreKit Framework to use ABStoreKitHelper
+    #endif
 #endif
