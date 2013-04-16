@@ -96,6 +96,26 @@
          location = "group:Components (View)"
          name = "Components (View)">
          <Group
+            location = "group:ABActivityView"
+            name = "ABActivityView">
+            <FileRef
+               location = "group:ABActivityView.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABActivityView.m">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:ABTapGestureRecognizer"
+            name = "ABTapGestureRecognizer">
+            <FileRef
+               location = "group:ABTapGestureRecognizer.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABTapGestureRecognizer.m">
+            </FileRef>
+         </Group>
+         <Group
             location = "group:ABEntypoView"
             name = "ABEntypoView">
             <FileRef

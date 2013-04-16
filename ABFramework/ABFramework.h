@@ -7,7 +7,7 @@
 //
 
 #define ABFRAMEWORK_VERSION 0.1
-#define ABFRAMEWORK_LAST_EDIT @"06.04.2013 - 13:27"
+#define ABFRAMEWORK_LAST_EDIT @"16.04.2013 - 20:28"
 
 #ifndef ABFRAMEWORK_LOGGING
 #define ABFRAMEWORK_LOGGING 1
@@ -18,7 +18,8 @@ APPLE FRAMEWORKS
 */
 #import <QuartzCore/QuartzCore.h>
 #import <NewsstandKit/NewsstandKit.h>
-
+#import <Social/Social.h>
+#import <Twitter/Twitter.h>
 
 /*
  UTILITIES
@@ -107,3 +108,5 @@ CONTAINERS
     #import "ABFlexibleView.h"
     #import "ABSeperator.h"
     #import "ABEntypoView.h"
+    #import "ABActivityView.h"
+    #import "ABTapGestureRecognizer.h"
