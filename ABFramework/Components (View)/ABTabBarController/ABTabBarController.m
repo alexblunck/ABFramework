@@ -8,7 +8,8 @@
 
 #import "ABTabBarController.h"
 
-@interface ABTabBarController () <ABTabBarDelegate> {
+@interface ABTabBarController () <ABTabBarDelegate>
+{
     UIView *_activeView;
     UIView *_newView;
 }
@@ -92,6 +93,10 @@
 
 -(void) switchToViewController:(id)viewController
 {
+    if ([viewController isEqual:self.activeViewController])
+    {
+        return;
+    }
     
     //Inform Application of Tab switch
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ABTabBarController.TabSwitched" object:nil];
@@ -111,6 +116,7 @@
     _activeView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-self.tabBarHeight);
     
     [self.view addSubview:_activeView];
+    
 }
 
 
