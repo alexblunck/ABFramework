@@ -252,8 +252,15 @@
     CGFloat minimumScaleFactor = (1.0f / self.textSize) * _minimumFontSize;
     
     _label.adjustsFontSizeToFitWidth = YES;
-    _label.adjustsLetterSpacingToFitWidth = YES;
-    _label.minimumScaleFactor = minimumScaleFactor;
+    if (IS_MIN_IOS6)
+    {
+        _label.adjustsLetterSpacingToFitWidth = YES;
+        _label.minimumScaleFactor = minimumScaleFactor;
+    }
+    else
+    {
+        _label.minimumFontSize = minimumFontSize;
+    }
     
     //Doesn't seem to work on UITextField
     _textField.adjustsFontSizeToFitWidth = YES;
