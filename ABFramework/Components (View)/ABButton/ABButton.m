@@ -17,14 +17,14 @@
 
 #pragma mark - Utility
 #pragma mark - Selectors
-+(id) buttonWithtTarget:(id)target selected:(SEL)selector
++(id) buttonWithtTarget:(id)target selector:(SEL)selector
 {
-    return [[self alloc] initWithImageName:nil target:target selected:selector];
+    return [[self alloc] initWithImageName:nil target:target selector:selector];
 }
 
-+(id) buttonWithImageName:(NSString*)imageName target:(id)target selected:(SEL)selector
++(id) buttonWithImageName:(NSString*)imageName target:(id)target selector:(SEL)selector
 {
-    return [[self alloc] initWithImageName:imageName target:target selected:selector];
+    return [[self alloc] initWithImageName:imageName target:target selector:selector];
 }
 
 
@@ -59,7 +59,7 @@
 }
 
 #pragma mark - Selectors
--(id) initWithImageName:(NSString*)imageName target:(id)target selected:(SEL)selector
+-(id) initWithImageName:(NSString*)imageName target:(id)target selector:(SEL)selector
 {
     self = [super init];
     if (self)

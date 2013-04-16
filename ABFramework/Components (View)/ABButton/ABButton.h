@@ -12,8 +12,8 @@
 
 //Utility
 //Selector
-+(id) buttonWithImageName:(NSString*)imageName target:(id)target selected:(SEL)selector;
-+(id) buttonWithtTarget:(id)target selected:(SEL)selector;
++(id) buttonWithImageName:(NSString*)imageName target:(id)target selector:(SEL)selector;
++(id) buttonWithtTarget:(id)target selector:(SEL)selector;
 //Block
 +(id) buttonWithImageName:(NSString*)imageName actionBlock:(ABBlockVoid)actionBlock;
 +(id) buttonWithActionBlock:(ABBlockVoid)actionBlock;
