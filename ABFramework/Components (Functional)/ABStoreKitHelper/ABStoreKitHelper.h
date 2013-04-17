@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <StoreKit/StoreKit.h>
 
 #ifndef ABSTOREKITHELPER_LOGGING
 #define ABSTOREKITHELPER_LOGGING 1

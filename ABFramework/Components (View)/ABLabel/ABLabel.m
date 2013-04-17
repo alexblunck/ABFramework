@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Ablfx. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "ABLabel.h"
 
 @interface ABLabel () {

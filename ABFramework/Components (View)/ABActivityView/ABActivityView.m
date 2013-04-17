@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Ablfx. All rights reserved.
 //
 
+#import <Twitter/Twitter.h>
+#import <Social/Social.h>
 #import "ABActivityView.h"
 
 #define SLIDEVIEW_ANIMATION_DUR 0.3f

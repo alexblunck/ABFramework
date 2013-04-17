@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Ablfx. All rights reserved.
 //
 
+#import <NewsstandKit/NewsstandKit.h>
 #import <Foundation/Foundation.h>
 
 typedef void (^ABNewsstandHelperBlockProgress) (NSInteger percent, NKIssue *issue);
