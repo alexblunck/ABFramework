@@ -39,6 +39,7 @@
 		D217B2ED1708916800CADAF4 /* ABPrimitiveArray.m in Sources */ = {isa = PBXBuildFile; fileRef = D217B2EB1708916800CADAF4 /* ABPrimitiveArray.m */; };
 		D217B2F41708917600CADAF4 /* ABEntypoView.m in Sources */ = {isa = PBXBuildFile; fileRef = D217B2F01708917600CADAF4 /* ABEntypoView.m */; };
 		D217B2F51708917600CADAF4 /* ABSeperator.m in Sources */ = {isa = PBXBuildFile; fileRef = D217B2F31708917600CADAF4 /* ABSeperator.m */; };
+		D23093AF171EC69B00F2DAAB /* NSArray+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D23093AE171EC69B00F2DAAB /* NSArray+ABFramework.m */; };
 		D241362D16F345390033C56B /* ABFramework.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D241362C16F345390033C56B /* ABFramework.bundle */; };
 		D241363116F345430033C56B /* ABFlexibleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D241363016F345430033C56B /* ABFlexibleView.m */; };
 		D241363416F3454A0033C56B /* UIImageView+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D241363316F3454A0033C56B /* UIImageView+ABFramework.m */; };
@@ -87,6 +88,8 @@
 		D2821FB0171DCFE1005A19C0 /* ABTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2821FAE171DCFE1005A19C0 /* ABTapGestureRecognizer.m */; };
 		D294B0CF170E2108007C2808 /* ABNotificationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D294B0CE170E2108007C2808 /* ABNotificationHelper.m */; };
 		D294B0D2170E210D007C2808 /* UIViewController+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D294B0D1170E210D007C2808 /* UIViewController+ABFramework.m */; };
+		D2ADFF15171ED856002D723B /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2ADFF14171ED856002D723B /* Social.framework */; };
+		D2ADFF17171ED85A002D723B /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2ADFF16171ED85A002D723B /* Twitter.framework */; };
 		D2B331B916EC9E5A00DED125 /* ABLabelExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B331B816EC9E5A00DED125 /* ABLabelExample.m */; };
 		D2B331C916ED047D00DED125 /* ABImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B331C816ED047D00DED125 /* ABImageView.m */; };
 /* End PBXBuildFile section */
@@ -140,6 +143,8 @@
 		D217B2F01708917600CADAF4 /* ABEntypoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABEntypoView.m; sourceTree = "<group>"; };
 		D217B2F21708917600CADAF4 /* ABSeperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSeperator.h; sourceTree = "<group>"; };
 		D217B2F31708917600CADAF4 /* ABSeperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSeperator.m; sourceTree = "<group>"; };
+		D23093AD171EC69B00F2DAAB /* NSArray+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ABFramework.h"; sourceTree = "<group>"; };
+		D23093AE171EC69B00F2DAAB /* NSArray+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ABFramework.m"; sourceTree = "<group>"; };
 		D241362C16F345390033C56B /* ABFramework.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ABFramework.bundle; sourceTree = "<group>"; };
 		D241362F16F345430033C56B /* ABFlexibleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFlexibleView.h; sourceTree = "<group>"; };
 		D241363016F345430033C56B /* ABFlexibleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABFlexibleView.m; sourceTree = "<group>"; };
@@ -238,6 +243,8 @@
 		D294B0CE170E2108007C2808 /* ABNotificationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABNotificationHelper.m; sourceTree = "<group>"; };
 		D294B0D0170E210D007C2808 /* UIViewController+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ABFramework.h"; sourceTree = "<group>"; };
 		D294B0D1170E210D007C2808 /* UIViewController+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ABFramework.m"; sourceTree = "<group>"; };
+		D2ADFF14171ED856002D723B /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		D2ADFF16171ED85A002D723B /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		D2B331B716EC9E5A00DED125 /* ABLabelExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABLabelExample.h; sourceTree = "<group>"; };
 		D2B331B816EC9E5A00DED125 /* ABLabelExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABLabelExample.m; sourceTree = "<group>"; };
 		D2B331C716ED047D00DED125 /* ABImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABImageView.h; sourceTree = "<group>"; };
@@ -249,6 +256,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2ADFF17171ED85A002D723B /* Twitter.framework in Frameworks */,
+				D2ADFF15171ED856002D723B /* Social.framework in Frameworks */,
 				D21695011704FBD7009000FC /* NewsstandKit.framework in Frameworks */,
 				D21694FF1704FA73009000FC /* StoreKit.framework in Frameworks */,
 				3CE568D616B69FEE00915391 /* SystemConfiguration.framework in Frameworks */,
@@ -354,6 +363,8 @@
 		3CE5667F16B6966D00915391 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D2ADFF16171ED85A002D723B /* Twitter.framework */,
+				D2ADFF14171ED856002D723B /* Social.framework */,
 				D21695001704FBD7009000FC /* NewsstandKit.framework */,
 				D21694FE1704FA73009000FC /* StoreKit.framework */,
 				3CE568D516B69FEE00915391 /* SystemConfiguration.framework */,
@@ -489,6 +500,8 @@
 		D271791116E58548009BB5D1 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				D23093AD171EC69B00F2DAAB /* NSArray+ABFramework.h */,
+				D23093AE171EC69B00F2DAAB /* NSArray+ABFramework.m */,
 				D294B0D0170E210D007C2808 /* UIViewController+ABFramework.h */,
 				D294B0D1170E210D007C2808 /* UIViewController+ABFramework.m */,
 				D241363216F3454A0033C56B /* UIImageView+ABFramework.h */,
@@ -899,6 +912,7 @@
 				D294B0D2170E210D007C2808 /* UIViewController+ABFramework.m in Sources */,
 				D2821FAF171DCFE1005A19C0 /* ABActivityView.m in Sources */,
 				D2821FB0171DCFE1005A19C0 /* ABTapGestureRecognizer.m in Sources */,
+				D23093AF171EC69B00F2DAAB /* NSArray+ABFramework.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -91,6 +91,12 @@
          <FileRef
             location = "group:UIView+ABFramework.m">
          </FileRef>
+         <FileRef
+            location = "group:NSArray+ABFramework.h">
+         </FileRef>
+         <FileRef
+            location = "group:NSArray+ABFramework.m">
+         </FileRef>
       </Group>
       <Group
          location = "group:Components (View)"
