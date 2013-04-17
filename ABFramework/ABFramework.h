@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Ablfx. All rights reserved.
 //
 
-#define ABFRAMEWORK_VERSION 0.1
+#define ABFRAMEWORK_VERSION 0.0.1
 #define ABFRAMEWORK_LAST_EDIT @"16.04.2013 - 20:28"
 
 #ifndef ABFRAMEWORK_LOGGING
