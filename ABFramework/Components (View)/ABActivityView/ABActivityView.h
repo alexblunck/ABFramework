@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Ablfx. All rights reserved.
 //
 
-#ifdef ABFRAMEWORK_SOCIAL
-
 #import <UIKit/UIKit.h>
 
 @interface ABActivityView : UIView
@@ -27,5 +25,3 @@
 @property (nonatomic, copy) NSDictionary *facebookDef;
 
 @end
-
-#endif

@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Ablfx. All rights reserved.
 //
 
-#ifdef ABFRAMEWORK_SOCIAL
-
 #import "ABActivityView.h"
 
 #define SLIDEVIEW_ANIMATION_DUR 0.3f
@@ -179,5 +177,3 @@
 }
 
 @end
-
-#endif

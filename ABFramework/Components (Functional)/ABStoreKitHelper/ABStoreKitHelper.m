@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Ablfx. All rights reserved.
 //
 
-#ifdef ABFRAMEWORK_STOREKIT
-
 #import "ABStoreKitHelper.h"
 
 #pragma mark - ABStoreKitItem
@@ -649,5 +647,3 @@
 }
 
 @end
-
-#endif

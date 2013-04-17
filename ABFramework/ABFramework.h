@@ -14,15 +14,6 @@
 #endif
 
 /*
-APPLE FRAMEWORKS
-*/
-//#import <QuartzCore/QuartzCore.h>
-//#import <NewsstandKit/NewsstandKit.h>
-//#import <StoreKit/StoreKit.h>
-//#import <Social/Social.h>
-//#import <Twitter/Twitter.h>
-
-/*
  UTILITIES
  */
 #import "ABUtilities.h"

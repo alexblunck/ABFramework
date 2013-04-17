@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Ablfx. All rights reserved.
 //
 
-#ifdef ABFRAMEWORK_STOREKIT
-
 #import <Foundation/Foundation.h>
 
 #ifndef ABSTOREKITHELPER_LOGGING
@@ -142,9 +140,3 @@ typedef void (^ABStoreKitRestoreBlock) (NSArray *restoredItems, BOOL hasProducts
 @property (nonatomic, strong) NSSet *storeKitItems;
 
 @end
-
-#else
-    #ifndef SK_EXTERN
-        #warning Link / Import StoreKit Framework to use ABStoreKitHelper
-    #endif
-#endif
