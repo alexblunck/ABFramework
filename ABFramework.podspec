@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, '5.1'
 
-  s.source_files = 'ABFramework'
+  s.source_files = 'ABFramework/**/*.{h,m}'
   s.requires_arc = true
   s.frameworks = 'QuartzCore', 'NewsstandKit', 'StoreKit', 'Social', 'Twitter'
 
