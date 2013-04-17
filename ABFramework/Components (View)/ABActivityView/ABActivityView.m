@@ -58,13 +58,11 @@
         ABButton *twitterButton = [ABButton buttonWithImageName:@"ABFramework.bundle/ABActivityView/ABActivityView-button-twitter"
                                                         target:self
                                                       selector:@selector(twitterButtonSelected)];
-        [_slideView addSubview:twitterButton];
         
         //Facebook Button
         ABButton *facebookButton = [ABButton buttonWithImageName:@"ABFramework.bundle/ABActivityView/ABActivityView-button-facebook"
                                                          target:self
                                                        selector:@selector(facebookButtonSelected)];
-        [_slideView addSubview:facebookButton];
         
         //Button Containment View
         UIView *buttonContaimentView = [UIView new];
