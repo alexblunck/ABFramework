@@ -8,16 +8,9 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/ablfx/ABFramework.git", :tag => "v0.0.1" }
 
   s.platform     = :ios, '5.1'
-
   s.source_files = 'ABFramework/**/*.{h,m}'
   s.resource = 'ABFramework/ABFramework.bundle'
   s.requires_arc = true
   s.frameworks = 'QuartzCore', 'NewsstandKit', 'StoreKit', 'Social', 'Twitter'
-
-  s.prefix_header_contents =
-    '#define ABFRAMEWORK_LOGGING 1',
-    '#define ABNETWORKING_ALLOW_ALL_SSL_CERTIFICATES 1',
-    '#define ABFRAMEWORK_NEWSSTAND',
-    '#define ABFRAMEWORK_STOREKIT',
-    '#define ABFRAMEWORK_SOCIAL'
+  s.prefix_header_contents = '#import "ABFramework.h"'
 end
