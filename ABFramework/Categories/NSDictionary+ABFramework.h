@@ -14,4 +14,6 @@
 
 -(NSString*) httpBodyString;
 
+-(NSString*) jsonString;
+
 @end
