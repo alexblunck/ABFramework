@@ -11,6 +11,10 @@
 @interface ABAlertView : UIAlertView <UIAlertViewDelegate>
 
 //Utility
++(id) showAlertWithMessage:(NSString*)message;
+
++(id) showAlertWithMessage:(NSString*)message block:(ABBlockVoid)block;
+
 +(id) showAlertWithTitle:(NSString*) title
                  message:(NSString*) message
                    block:(ABBlockVoid) block;
