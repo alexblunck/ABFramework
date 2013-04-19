@@ -85,13 +85,14 @@
 		D271799316E58548009BB5D1 /* ABFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = D271796A16E58548009BB5D1 /* ABFrame.m */; };
 		D271799416E58548009BB5D1 /* ABReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D271796D16E58548009BB5D1 /* ABReachability.m */; };
 		D2821FAF171DCFE1005A19C0 /* ABActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2821FAB171DCFE1005A19C0 /* ABActivityView.m */; };
-		D2821FB0171DCFE1005A19C0 /* ABTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2821FAE171DCFE1005A19C0 /* ABTapGestureRecognizer.m */; };
 		D294B0CF170E2108007C2808 /* ABNotificationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D294B0CE170E2108007C2808 /* ABNotificationHelper.m */; };
 		D294B0D2170E210D007C2808 /* UIViewController+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D294B0D1170E210D007C2808 /* UIViewController+ABFramework.m */; };
 		D2ADFF15171ED856002D723B /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2ADFF14171ED856002D723B /* Social.framework */; };
 		D2ADFF17171ED85A002D723B /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2ADFF16171ED85A002D723B /* Twitter.framework */; };
 		D2B331B916EC9E5A00DED125 /* ABLabelExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B331B816EC9E5A00DED125 /* ABLabelExample.m */; };
 		D2B331C916ED047D00DED125 /* ABImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B331C816ED047D00DED125 /* ABImageView.m */; };
+		D2BB292817215A3900F6E152 /* ABTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BB292717215A3900F6E152 /* ABTapGestureRecognizer.m */; };
+		D2BB292B17215A5200F6E152 /* ABSwipeGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BB292A17215A5200F6E152 /* ABSwipeGestureRecognizer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -237,8 +238,6 @@
 		D271796F16E58548009BB5D1 /* ABUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABUtilities.h; sourceTree = "<group>"; };
 		D2821FAA171DCFE1005A19C0 /* ABActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABActivityView.h; sourceTree = "<group>"; };
 		D2821FAB171DCFE1005A19C0 /* ABActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABActivityView.m; sourceTree = "<group>"; };
-		D2821FAD171DCFE1005A19C0 /* ABTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTapGestureRecognizer.h; sourceTree = "<group>"; };
-		D2821FAE171DCFE1005A19C0 /* ABTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTapGestureRecognizer.m; sourceTree = "<group>"; };
 		D294B0CD170E2108007C2808 /* ABNotificationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABNotificationHelper.h; sourceTree = "<group>"; };
 		D294B0CE170E2108007C2808 /* ABNotificationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABNotificationHelper.m; sourceTree = "<group>"; };
 		D294B0D0170E210D007C2808 /* UIViewController+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ABFramework.h"; sourceTree = "<group>"; };
@@ -249,6 +248,10 @@
 		D2B331B816EC9E5A00DED125 /* ABLabelExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABLabelExample.m; sourceTree = "<group>"; };
 		D2B331C716ED047D00DED125 /* ABImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABImageView.h; sourceTree = "<group>"; };
 		D2B331C816ED047D00DED125 /* ABImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABImageView.m; sourceTree = "<group>"; };
+		D2BB292617215A3900F6E152 /* ABTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTapGestureRecognizer.h; sourceTree = "<group>"; };
+		D2BB292717215A3900F6E152 /* ABTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTapGestureRecognizer.m; sourceTree = "<group>"; };
+		D2BB292917215A5200F6E152 /* ABSwipeGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSwipeGestureRecognizer.h; sourceTree = "<group>"; };
+		D2BB292A17215A5200F6E152 /* ABSwipeGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSwipeGestureRecognizer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -566,8 +569,8 @@
 		D271792F16E58548009BB5D1 /* Components (View) */ = {
 			isa = PBXGroup;
 			children = (
+				D2BB292517215A3900F6E152 /* ABGestureRecognizer */,
 				D2821FA9171DCFE1005A19C0 /* ABActivityView */,
-				D2821FAC171DCFE1005A19C0 /* ABTapGestureRecognizer */,
 				D217B2EE1708917600CADAF4 /* ABEntypoView */,
 				D217B2F11708917600CADAF4 /* ABSeperator */,
 				D241362E16F345430033C56B /* ABFlexibleView */,
@@ -748,15 +751,6 @@
 			path = ABActivityView;
 			sourceTree = "<group>";
 		};
-		D2821FAC171DCFE1005A19C0 /* ABTapGestureRecognizer */ = {
-			isa = PBXGroup;
-			children = (
-				D2821FAD171DCFE1005A19C0 /* ABTapGestureRecognizer.h */,
-				D2821FAE171DCFE1005A19C0 /* ABTapGestureRecognizer.m */,
-			);
-			path = ABTapGestureRecognizer;
-			sourceTree = "<group>";
-		};
 		D294B0CC170E2108007C2808 /* ABNotificationHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -773,6 +767,17 @@
 				D2B331C816ED047D00DED125 /* ABImageView.m */,
 			);
 			path = ABImageView;
+			sourceTree = "<group>";
+		};
+		D2BB292517215A3900F6E152 /* ABGestureRecognizer */ = {
+			isa = PBXGroup;
+			children = (
+				D2BB292617215A3900F6E152 /* ABTapGestureRecognizer.h */,
+				D2BB292717215A3900F6E152 /* ABTapGestureRecognizer.m */,
+				D2BB292917215A5200F6E152 /* ABSwipeGestureRecognizer.h */,
+				D2BB292A17215A5200F6E152 /* ABSwipeGestureRecognizer.m */,
+			);
+			path = ABGestureRecognizer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -911,8 +916,9 @@
 				D294B0CF170E2108007C2808 /* ABNotificationHelper.m in Sources */,
 				D294B0D2170E210D007C2808 /* UIViewController+ABFramework.m in Sources */,
 				D2821FAF171DCFE1005A19C0 /* ABActivityView.m in Sources */,
-				D2821FB0171DCFE1005A19C0 /* ABTapGestureRecognizer.m in Sources */,
 				D23093AF171EC69B00F2DAAB /* NSArray+ABFramework.m in Sources */,
+				D2BB292817215A3900F6E152 /* ABTapGestureRecognizer.m in Sources */,
+				D2BB292B17215A5200F6E152 /* ABSwipeGestureRecognizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

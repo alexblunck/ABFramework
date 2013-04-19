@@ -7,7 +7,7 @@
 //
 
 #define ABFRAMEWORK_VERSION 0.0.1
-#define ABFRAMEWORK_LAST_EDIT @"16.04.2013 - 20:28"
+#define ABFRAMEWORK_LAST_EDIT @"19.04.2013 - 17:12"
 
 #ifndef ABFRAMEWORK_LOGGING
 #define ABFRAMEWORK_LOGGING 1
@@ -103,3 +103,4 @@ CONTAINERS
     #import "ABEntypoView.h"
     #import "ABActivityView.h"
     #import "ABTapGestureRecognizer.h"
+    #import "ABSwipeGestureRecognizer.h"

@@ -40,6 +40,9 @@
     return self;
 }
 
+
+
+#pragma mark - Handle
 -(void) handleGesture:(UIGestureRecognizer*)recognizer
 {
     if (_block)
