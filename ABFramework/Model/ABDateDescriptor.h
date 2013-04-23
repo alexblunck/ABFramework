@@ -11,7 +11,6 @@
 @interface ABDateDescriptor : NSObject
 
 @property (nonatomic, assign) NSInteger dateUnits;
-@property (nonatomic, strong) NSString *dateUnitName;
 @property (nonatomic, copy) NSString *dateUnitName;
 
 @end

@@ -20,10 +20,8 @@
 @property(nonatomic, strong) NSArray *viewControllers;
 
 //The ViewController that is shown initially by the Tab Controller
-@property(nonatomic, strong) id defaultViewController;
 @property(nonatomic, weak) id defaultViewController;
 
-@property(nonatomic, assign) id activeViewController;
 @property(nonatomic, weak) id activeViewController;
 
 //Height of the TabBar View

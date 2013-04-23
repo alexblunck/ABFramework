@@ -175,5 +175,4 @@
 	return [self resizedImageToSize:dstSize];
 }
 
-
 @end

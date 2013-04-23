@@ -45,8 +45,11 @@
 		D241363416F3454A0033C56B /* UIImageView+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D241363316F3454A0033C56B /* UIImageView+ABFramework.m */; };
 		D24A0D6716EE2E660093AE2A /* ABHudExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D24A0D6616EE2E660093AE2A /* ABHudExample.m */; };
 		D24A0D6B16EE30040093AE2A /* ABHud.m in Sources */ = {isa = PBXBuildFile; fileRef = D24A0D6A16EE30040093AE2A /* ABHud.m */; };
+		D255AD9E1723D61B00E71590 /* ABViewExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D255AD9D1723D61B00E71590 /* ABViewExample.m */; };
+		D255ADA7172430A000E71590 /* ABInfiniteViewExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D255ADA6172430A000E71590 /* ABInfiniteViewExample.m */; };
 		D259193F16EBCF2100E63E4B /* ABFileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D259193E16EBCF2100E63E4B /* ABFileHelper.m */; };
 		D2633D6616EBDDF400FCE9D0 /* ABTableStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2633D6516EBDDF400FCE9D0 /* ABTableStackController.m */; };
+		D264B2F1172535F5006B18FD /* ABInfiniteView.m in Sources */ = {isa = PBXBuildFile; fileRef = D264B2F0172535F5006B18FD /* ABInfiniteView.m */; };
 		D271797016E58548009BB5D1 /* NSData+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D271791316E58548009BB5D1 /* NSData+ABFramework.m */; };
 		D271797116E58548009BB5D1 /* NSDate+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D271791516E58548009BB5D1 /* NSDate+ABFramework.m */; };
 		D271797216E58548009BB5D1 /* NSDateComponents+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D271791716E58548009BB5D1 /* NSDateComponents+ABFramework.m */; };
@@ -155,10 +158,17 @@
 		D24A0D6616EE2E660093AE2A /* ABHudExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABHudExample.m; sourceTree = "<group>"; };
 		D24A0D6916EE30040093AE2A /* ABHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABHud.h; sourceTree = "<group>"; };
 		D24A0D6A16EE30040093AE2A /* ABHud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABHud.m; sourceTree = "<group>"; };
+		D255AD9C1723D61B00E71590 /* ABViewExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABViewExample.h; sourceTree = "<group>"; };
+		D255AD9D1723D61B00E71590 /* ABViewExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABViewExample.m; sourceTree = "<group>"; };
+		D255ADA01724011500E71590 /* ABViewSelectionProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABViewSelectionProtocol.h; sourceTree = "<group>"; };
+		D255ADA5172430A000E71590 /* ABInfiniteViewExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABInfiniteViewExample.h; sourceTree = "<group>"; };
+		D255ADA6172430A000E71590 /* ABInfiniteViewExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABInfiniteViewExample.m; sourceTree = "<group>"; };
 		D259193D16EBCF2100E63E4B /* ABFileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFileHelper.h; sourceTree = "<group>"; };
 		D259193E16EBCF2100E63E4B /* ABFileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABFileHelper.m; sourceTree = "<group>"; };
 		D2633D6416EBDDF400FCE9D0 /* ABTableStackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTableStackController.h; sourceTree = "<group>"; };
 		D2633D6516EBDDF400FCE9D0 /* ABTableStackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTableStackController.m; sourceTree = "<group>"; };
+		D264B2EF172535F5006B18FD /* ABInfiniteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABInfiniteView.h; sourceTree = "<group>"; };
+		D264B2F0172535F5006B18FD /* ABInfiniteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABInfiniteView.m; sourceTree = "<group>"; };
 		D271791016E58548009BB5D1 /* ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFramework.h; sourceTree = "<group>"; };
 		D271791216E58548009BB5D1 /* NSData+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ABFramework.h"; sourceTree = "<group>"; };
 		D271791316E58548009BB5D1 /* NSData+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+ABFramework.m"; sourceTree = "<group>"; };
@@ -297,6 +307,10 @@
 				D24A0D6616EE2E660093AE2A /* ABHudExample.m */,
 				D211D7291709AEB500326B25 /* ABNetworkingExample.h */,
 				D211D72A1709AEB500326B25 /* ABNetworkingExample.m */,
+				D255AD9C1723D61B00E71590 /* ABViewExample.h */,
+				D255AD9D1723D61B00E71590 /* ABViewExample.m */,
+				D255ADA5172430A000E71590 /* ABInfiniteViewExample.h */,
+				D255ADA6172430A000E71590 /* ABInfiniteViewExample.m */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -464,6 +478,14 @@
 			path = ABHud;
 			sourceTree = "<group>";
 		};
+		D255AD9F172400FC00E71590 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D255ADA01724011500E71590 /* ABViewSelectionProtocol.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		D259193C16EBCF2100E63E4B /* ABFileHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -482,6 +504,15 @@
 			path = ABTableStackController;
 			sourceTree = "<group>";
 		};
+		D264B2EE172535F5006B18FD /* ABInfiniteView */ = {
+			isa = PBXGroup;
+			children = (
+				D264B2EF172535F5006B18FD /* ABInfiniteView.h */,
+				D264B2F0172535F5006B18FD /* ABInfiniteView.m */,
+			);
+			path = ABInfiniteView;
+			sourceTree = "<group>";
+		};
 		D271790F16E58548009BB5D1 /* ABFramework */ = {
 			isa = PBXGroup;
 			children = (
@@ -494,6 +525,7 @@
 				D271795B16E58548009BB5D1 /* Model */,
 				D271795F16E58548009BB5D1 /* Sub Classes */,
 				D271796616E58548009BB5D1 /* Utilities */,
+				D255AD9F172400FC00E71590 /* Protocols */,
 				D241362C16F345390033C56B /* ABFramework.bundle */,
 			);
 			name = ABFramework;
@@ -569,6 +601,7 @@
 		D271792F16E58548009BB5D1 /* Components (View) */ = {
 			isa = PBXGroup;
 			children = (
+				D264B2EE172535F5006B18FD /* ABInfiniteView */,
 				D2BB292517215A3900F6E152 /* ABGestureRecognizer */,
 				D2821FA9171DCFE1005A19C0 /* ABActivityView */,
 				D217B2EE1708917600CADAF4 /* ABEntypoView */,
@@ -919,6 +952,9 @@
 				D23093AF171EC69B00F2DAAB /* NSArray+ABFramework.m in Sources */,
 				D2BB292817215A3900F6E152 /* ABTapGestureRecognizer.m in Sources */,
 				D2BB292B17215A5200F6E152 /* ABSwipeGestureRecognizer.m in Sources */,
+				D255AD9E1723D61B00E71590 /* ABViewExample.m in Sources */,
+				D255ADA7172430A000E71590 /* ABInfiniteViewExample.m in Sources */,
+				D264B2F1172535F5006B18FD /* ABInfiniteView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

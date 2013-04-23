@@ -7,7 +7,7 @@
 //
 
 #define ABFRAMEWORK_VERSION 0.0.1
-#define ABFRAMEWORK_LAST_EDIT @"19.04.2013 - 17:12"
+#define ABFRAMEWORK_LAST_EDIT @"24.04.2013 - 00:40"
 
 #ifndef ABFRAMEWORK_LOGGING
 #define ABFRAMEWORK_LOGGING 1
@@ -24,6 +24,10 @@
 #import "ABCommon.h"
 #import "ABMath.h"
 
+/**
+ * Protocols
+ */
+#import "ABViewSelectionProtocol.h"
 
 
 /*
@@ -104,3 +108,4 @@ CONTAINERS
     #import "ABActivityView.h"
     #import "ABTapGestureRecognizer.h"
     #import "ABSwipeGestureRecognizer.h"
+    #import "ABInfiniteView.h"

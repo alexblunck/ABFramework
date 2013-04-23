@@ -8,7 +8,8 @@
 
 #import "ABButton.h"
 
-@interface ABButton () {
+@interface ABButton ()
+{
     ABBlockVoid _actionBlock;
 }
 @end

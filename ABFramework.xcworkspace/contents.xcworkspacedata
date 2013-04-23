@@ -102,6 +102,16 @@
          location = "group:Components (View)"
          name = "Components (View)">
          <Group
+            location = "group:ABInfiniteView"
+            name = "ABInfiniteView">
+            <FileRef
+               location = "group:ABInfiniteView.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABInfiniteView.m">
+            </FileRef>
+         </Group>
+         <Group
             location = "group:ABGestureRecognizer"
             name = "ABGestureRecognizer">
             <FileRef
@@ -465,6 +475,13 @@
          </FileRef>
          <FileRef
             location = "group:ABReachability.m">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Protocols"
+         name = "Protocols">
+         <FileRef
+            location = "group:ABViewSelectionProtocol.h">
          </FileRef>
       </Group>
       <FileRef

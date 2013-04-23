@@ -10,8 +10,6 @@
 
 @interface ABNavigationController : UINavigationController
 
-@property (nonatomic, strong) ABTabBarItem *abTabBarItem;
-@property (nonatomic, strong) ABTabBarController *abTabBarController;
 @property (nonatomic, weak) ABTabBarItem *abTabBarItem;
 @property (nonatomic, weak) ABTabBarController *abTabBarController;
 

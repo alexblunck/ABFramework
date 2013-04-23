@@ -22,11 +22,9 @@
 @property (nonatomic, strong) NSArray *viewControllers;
 
 //Height of the TabBar View
-@property (nonatomic, assign) int height;
 @property (nonatomic, assign) NSInteger height;
 
 //Spacing between Tabs
-@property (nonatomic, assign) int tabSpacing;
 @property (nonatomic, assign) NSInteger tabSpacing;
 
 //TabBar Background Image
@@ -36,7 +34,6 @@
 @property (nonatomic, assign) int selectedIndex;
 
 //Delegate Property
-@property (nonatomic, assign) id <ABTabBarDelegate> delegate;
 @property (nonatomic, weak) id <ABTabBarDelegate> delegate;
 
 @end

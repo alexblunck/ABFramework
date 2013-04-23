@@ -10,9 +10,9 @@
  * DEVICE
  */
 //Returns YES on retina display
-#define IS_RETINA_DISPLAY() [[UIScreen mainScreen] respondsToSelector:@selector(scale)] && [[UIScreen mainScreen] scale] == 2.0f
+#define IS_RETINA_DISPLAY [[UIScreen mainScreen] respondsToSelector:@selector(scale)] && [[UIScreen mainScreen] scale] == 2.0f
 //Returns YES on 4 inch display
-#define IS_4_INCH() ([[UIScreen mainScreen] applicationFrame].size.height > 480)
+#define IS_4_INCH ([[UIScreen mainScreen] applicationFrame].size.height > 480)
 //Returns YES on device running iOS 6.0+
 #define IS_MIN_IOS6 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0f)
 //Returns YES on iPad
