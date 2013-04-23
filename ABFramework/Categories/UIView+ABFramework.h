@@ -18,8 +18,13 @@
 -(CGFloat) width;
 -(CGFloat) height;
 
+//Recursion
+-(void) enumerateAllSubviews:(void(^)(UIView *subview))block;
+
 //Universal Access
 +(UIView*) topWindowView;
 +(UIView*) topView;
+
+-(UIImage*) renderCGRect:(CGRect)frame;
 
 @end

@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Ablfx. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "UIView+ABFramework.h"
 
 @implementation UIView (ABFramework)
@@ -43,6 +44,18 @@
 
 
 
+#pragma mark - Recursion
+-(void) enumerateAllSubviews:(void(^)(UIView *subview))block
+{
+    for (UIView *subview in self.subviews)
+    {
+        block(subview);
+        [subview enumerateAllSubviews:block];
+    }
+}
+
+
+
 #pragma mark - Universal Access
 +(UIView*) topWindowView
 {
@@ -53,6 +66,20 @@
 {
     return [[UIViewController topViewController] view];
     //return [[[UIApplication sharedApplication] windows] lastObject];
+}
+
+-(UIImage*) renderCGRect:(CGRect)frame
+{
+    UIGraphicsBeginImageContextWithOptions(frame.size, NO, 0.0);
+    CGContextRef c = UIGraphicsGetCurrentContext();
+    
+    CGContextConcatCTM(c, CGAffineTransformMakeTranslation(-frame.origin.x, -frame.origin.y));
+    [self.layer renderInContext:c];
+    
+    UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return screenshot;
 }
 
 @end
