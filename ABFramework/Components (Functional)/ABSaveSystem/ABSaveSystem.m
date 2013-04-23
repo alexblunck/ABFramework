@@ -14,7 +14,7 @@
 +(NSString*) appName
 {
     NSString *bundlePath = [[[NSBundle mainBundle] bundleURL] lastPathComponent];
-    return [bundlePath stringByDeletingPathExtension];
+    return [[bundlePath stringByDeletingPathExtension] lowercaseString];
 }
 
 +(ABSaveSystemOS) os
