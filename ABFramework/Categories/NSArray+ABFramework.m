@@ -16,4 +16,13 @@
     return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 }
 
+-(id) safeObjectAtIndex:(NSUInteger)index
+{
+    if (self.count >= index+1)
+    {
+        return [self objectAtIndex:index];
+    }
+    return nil;
+}
+
 @end

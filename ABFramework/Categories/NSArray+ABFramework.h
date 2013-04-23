@@ -12,4 +12,6 @@
 
 -(NSString*) jsonString;
 
+-(id) safeObjectAtIndex:(NSUInteger)index;
+
 @end
