@@ -33,6 +33,8 @@
     self = [super initWithFrame:CGRectMake(0, 0, width, fixedHeight)];
     if (self) {
         
+        self.backgroundColor = [UIColor whiteColor];
+        
         //Allocation
         _viewArray = [NSMutableArray new];
         
@@ -184,6 +186,15 @@
 }
 
 
+
+#pragma mark - Access
+-(UIScrollView*) uiScrollView
+{
+    return _scrollView;
+}
+
+
+
 #pragma mark - Accessors
 #pragma mark - delayTouch
 -(void) setDelayTouch:(BOOL)delayTouch
@@ -198,7 +209,13 @@
 #pragma mark - stackViews
 -(NSArray*) stackViews
 {
-    return _viewArray;
+    NSMutableArray *stackViews = [NSMutableArray new];
+    for (UIView *view in _viewArray)
+    {
+        [stackViews addObject:[[view subviews] objectAtIndex:0]];
+    }
+    
+    return stackViews;
 }
 
 @end

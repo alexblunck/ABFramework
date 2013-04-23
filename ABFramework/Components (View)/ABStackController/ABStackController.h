@@ -27,6 +27,9 @@
 //Interaction
 -(void) scrollToTop; //Only available when a fixed height is set
 
+//Access
+-(UIScrollView*) uiScrollView;
+
 //Config
 //Delay touches on scrollView (Only available when a fixed height is set), default is NO
 @property (nonatomic, assign) BOOL delayTouch;
