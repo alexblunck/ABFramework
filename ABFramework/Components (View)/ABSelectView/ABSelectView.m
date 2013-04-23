@@ -9,7 +9,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "ABSelectView.h"
 
-@interface ABSelectView () <ABSelectViewItemDelegate>{
+@interface ABSelectView () <ABSelectViewItemDelegate>
+{
     UIView *_selectionTable;
     UIView *_shadowMask;
     ABBlockInteger _completionBlock;

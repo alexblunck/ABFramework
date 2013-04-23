@@ -10,6 +10,8 @@
 #import "ABLabel.h"
 
 @interface ABLabel () {
+@interface ABLabel ()
+{
     UITextField *_textField;
     UILabel *_label;
 }
