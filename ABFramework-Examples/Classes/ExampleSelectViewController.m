@@ -18,8 +18,11 @@
 #import "ABLabelExample.h"
 #import "ABHudExample.h"
 #import "ABNetworkingExample.h"
+#import "ABViewExample.h"
+#import "ABInfiniteViewExample.h"
 
-@interface ExampleSelectViewController () <UITableViewDataSource, UITableViewDelegate> {
+@interface ExampleSelectViewController () <UITableViewDataSource, UITableViewDelegate>
+{
     UITableView *_tableView;
     NSMutableArray *_sectionArray;
 }
@@ -39,7 +42,8 @@
     [self compileData];
     
     //TableView
-    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    CGRect tableViewFrame = CGRectOffsetSizeHeight(self.view.bounds, -44);
+    _tableView = [[UITableView alloc] initWithFrame:tableViewFrame style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     [self.view addSubview:_tableView];
@@ -54,7 +58,8 @@
     NSArray *componentsViewObjects = @[
                                   [ExampleObject objectWithName:@"ABSwitch" viewControllerClass:[ABSwitchExample class]],
                                   [ExampleObject objectWithName:@"ABLabel" viewControllerClass:[ABLabelExample class]],
-                                  [ExampleObject objectWithName:@"ABHud" viewControllerClass:[ABHudExample class]]
+                                  [ExampleObject objectWithName:@"ABHud" viewControllerClass:[ABHudExample class]],
+                                  [ExampleObject objectWithName:@"ABInfiniteView" viewControllerClass:[ABInfiniteViewExample class]]
                                   ];
     ExampleSection *componentsViewSection = [ExampleSection sectionWithName:@"Components (Views)" exampleObjectArray:componentsViewObjects];
     [_sectionArray addObject:componentsViewSection];
@@ -67,6 +72,14 @@
                                        ];
     ExampleSection *componentsFunctionalSection = [ExampleSection sectionWithName:@"Components (Funtional)" exampleObjectArray:componentsFunctionalObjects];
     [_sectionArray addObject:componentsFunctionalSection];
+    
+    
+    //Subclasses
+    NSArray *subclassesObjects = @[
+                            [ExampleObject objectWithName:@"ABView" viewControllerClass:[ABViewExample class]]
+                            ];
+    ExampleSection *subclassesSection = [ExampleSection sectionWithName:@"Subclasses" exampleObjectArray:subclassesObjects];
+    [_sectionArray addObject:subclassesSection];
 }
 
 -(ExampleObject*) exampleObjectForIndexPath:(NSIndexPath*)indexPath
