@@ -37,24 +37,27 @@
     {
         _type = type;
         
+        CGFloat topWith = 1.0f;
+        CGFloat bottomWidth = (IS_RETINA_DISPLAY) ? 0.5f : 1.0f;
+        
         //Set frame
-        CGFloat width = ([self isVertical]) ? 1.5f : length;
-        CGFloat height = ([self isVertical]) ? length : 1.5f;
+        CGFloat width = ([self isVertical]) ? topWith+bottomWidth : length;
+        CGFloat height = ([self isVertical]) ? length : topWith+bottomWidth;
         self.frame = CGRectMake(0, 0, width, height);
         
         //Top seperator
-        CGFloat topSepWidth = ([self isVertical]) ? 1.0f : self.bounds.size.width;
-        CGFloat topSepHeight = ([self isVertical]) ? self.bounds.size.height : 1.0f;
+        CGFloat topSepWidth = ([self isVertical]) ? topWith : self.bounds.size.width;
+        CGFloat topSepHeight = ([self isVertical]) ? self.bounds.size.height : topWith;
         UIView *topSep = [UIView new];
         topSep.frame = CGRectMake(0, 0, topSepWidth, topSepHeight);
         topSep.backgroundColor = topColor;
         [self addSubview:topSep];
         
         //Bottom seperator
-        CGFloat bottomSepX = ([self isVertical]) ? 1.0f : 0.0f;
-        CGFloat bottomSepY = ([self isVertical]) ? 0.0f : 1.0f;
-        CGFloat bottomSepWidth = ([self isVertical]) ? 0.5f : self.bounds.size.width;
-        CGFloat bottomSepHeight = ([self isVertical]) ? self.bounds.size.height : 0.5f;
+        CGFloat bottomSepX = ([self isVertical]) ? topWith : 0.0f;
+        CGFloat bottomSepY = ([self isVertical]) ? 0.0f : topWith;
+        CGFloat bottomSepWidth = ([self isVertical]) ? bottomWidth : self.bounds.size.width;
+        CGFloat bottomSepHeight = ([self isVertical]) ? self.bounds.size.height : bottomWidth;
         UIView *bottomSep = [UIView new];
         bottomSep.frame = CGRectMake(bottomSepX, bottomSepY, bottomSepWidth, bottomSepHeight);
         bottomSep.backgroundColor = bottomColor;
