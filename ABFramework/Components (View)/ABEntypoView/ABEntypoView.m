@@ -42,8 +42,8 @@
         _label.centeredVertically = YES;
         _label.fontName = @"Entypo";
         _label.textSize = size*1.7;
+        _label.minimumFontSize = 20.0f;
         [self addSubview:_label];
-        
     }
     return self;
 }
