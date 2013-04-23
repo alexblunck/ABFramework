@@ -8,7 +8,7 @@
 
 #import "ABTapGestureRecognizer.h"
 
-@interface ABTapGestureRecognizer ()
+@interface ABTapGestureRecognizer () <UIGestureRecognizerDelegate>
 {
     ABBlockVoid _block;
 }
@@ -33,6 +33,8 @@
     {
         self.numberOfTapsRequired = taps;
         
+        self.delegate = self;
+        
         _block = [block copy];
         
         [view addGestureRecognizer:self];
@@ -49,6 +51,19 @@
     {
         _block();
     }
+}
+
+
+
+#pragma mark - UIGestureRecognizerDelegate
+-(BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    if ([touch.view isKindOfClass:[ABButton class]])
+    {
+        return NO;
+    }
+    
+    return YES;
 }
 
 @end
