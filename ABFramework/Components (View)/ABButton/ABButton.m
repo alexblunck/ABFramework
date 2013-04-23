@@ -17,7 +17,7 @@
 
 #pragma mark - Utility
 #pragma mark - Selectors
-+(id) buttonWithtTarget:(id)target selector:(SEL)selector
++(id) buttonWithTarget:(id)target selector:(SEL)selector
 {
     return [[self alloc] initWithImageName:nil target:target selector:selector];
 }
