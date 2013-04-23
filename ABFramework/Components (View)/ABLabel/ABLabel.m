@@ -9,11 +9,12 @@
 #import <QuartzCore/QuartzCore.h>
 #import "ABLabel.h"
 
-@interface ABLabel () {
 @interface ABLabel ()
 {
     UITextField *_textField;
     UILabel *_label;
+    
+    UIColor *_originalTextColor;
 }
 @end
 
@@ -62,6 +63,7 @@
 }
 
 
+
 #pragma mark - Info
 -(CGFloat) heightToFitAllText
 {
@@ -108,6 +110,21 @@
 }
 
 
+
+#pragma mark - ABViewSelectionProtocol
+-(void) defaultStyle
+{
+    _originalTextColor = self.textColor;
+}
+
+-(void) setSelectedStyle:(BOOL)selected
+{
+    //Text color
+    self.textColor = (selected && self.selectedTextColor) ? self.selectedTextColor : _originalTextColor;
+}
+
+
+
 #pragma mark - Accessors
 //name
 -(void) setText:(NSString *)text
@@ -147,7 +164,7 @@
 
 //textColor
 -(void) setTextColor:(UIColor *)textColor
-{
+{    
     _textColor = textColor;
     _textField.textColor = _textColor;
     _label.textColor = _textColor;

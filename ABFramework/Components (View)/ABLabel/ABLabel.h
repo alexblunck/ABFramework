@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ABLabel : ABView
+@interface ABLabel : ABView <ABViewSelectionProtocol>
 
 //Tell the ABLabel view to adjust its frame to fit only its text value
 -(void) trim;
@@ -27,6 +27,7 @@
 
 //Label text color, default Black
 @property (nonatomic, strong) UIColor *textColor;
+@property (nonatomic, strong) UIColor *selectedTextColor;
 
 //Adjust ABLabel view to perfectly fit its text view automatically if certain values are altered, default is YES
 @property (nonatomic, assign) BOOL trimAutomatically;
