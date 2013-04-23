@@ -8,7 +8,7 @@
 
 #import "ABSwitchExample.h"
 
-@interface ABSwitchExample () <ABSwitchDelegate>
+@interface ABSwitchExample () <ABViewDelegate, ABSwitchDelegate>
 
 @end
 
@@ -45,7 +45,7 @@
 #pragma mark - ABSwitchDelegate
 -(void) abSwitchDidChangeIndex:(ABSwitch *)sender
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    ABLogMethod();
     
     if (sender.currentIndex == 0)
     {

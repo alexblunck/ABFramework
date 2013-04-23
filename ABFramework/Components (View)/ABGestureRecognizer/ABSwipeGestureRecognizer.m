@@ -62,7 +62,8 @@
 #pragma mark - UIGestureRecognizerDelegate
 -(BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
-    if (!gestureRecognizer.enabled) {
+    if (!gestureRecognizer.enabled)
+    {
         return NO;
     }
     return YES;
