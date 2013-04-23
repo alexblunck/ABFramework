@@ -28,10 +28,9 @@
 #pragma mark - Singleton
 +(id) sharedClass
 {
-    static dispatch_once_t pred;
     static ABHud *sharedClass = nil;
-    
-    dispatch_once(&pred, ^{ sharedClass = [[self alloc] init]; });
+    static dispatch_once_t once = 0;
+    dispatch_once(&once, ^{sharedClass = [[self alloc] init];});
     return sharedClass;
 }
 

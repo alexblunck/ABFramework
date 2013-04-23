@@ -23,10 +23,10 @@
 #pragma mark - Singleton
 +(id) sharedHelper
 {
-    static dispatch_once_t pred;
-    static ABNewsstandHelper *sharedClass = nil;
-    dispatch_once(&pred, ^{ sharedClass = [[self alloc] init]; });
-    return sharedClass;
+    static ABNewsstandHelper *sharedHelper = nil;
+    static dispatch_once_t once = 0;
+    dispatch_once(&once, ^{sharedHelper = [[self alloc] init];});
+    return sharedHelper;
 }
 
 #pragma mark - Initializer
