@@ -24,3 +24,11 @@ typedef enum {
     ABShadowTypeSoft,
     ABShadowTypeLetterpress
 } ABShadowType;
+
+typedef enum {
+    ABTouchStateNone,
+    ABTouchStateTouchesBegan,
+    ABTouchStateTouchesMoved,
+    ABTouchStateTouchesEnded,
+    ABTouchStateTouchesCancelled
+} ABTouchState;
