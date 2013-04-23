@@ -116,7 +116,6 @@
     _activeView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-self.tabBarHeight);
     
     [self.view addSubview:_activeView];
-    
 }
 
 

@@ -81,21 +81,7 @@
 
 #pragma mark - UITextFieldDelegate
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
-{
-    /*
-    //Update state
-    _hasAlreadyReturned = YES;
-    
-    //Hide Keyboard
-    [textField resignFirstResponder];
-    
-    //Inform Delegate
-    if ([self.delegate respondsToSelector:@selector(cuTextFieldDidReturn:)])
-    {
-        [self.delegate cuTextFieldDidReturn:self];
-    }
-    */
-    
+{    
     [self hideKeyboard];
     
     return YES;

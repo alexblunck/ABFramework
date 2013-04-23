@@ -110,7 +110,6 @@
     //Set Initial selected Tab
     ABTabButton *selectedButton = [_tabButtonArray objectAtIndex:self.selectedIndex];
     [self highlight:selectedButton];
-    
 }
 
 
