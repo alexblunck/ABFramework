@@ -27,12 +27,15 @@
 -(void) hideKeyboard;
 
 @property (nonatomic, strong) id <ABTextFieldDelegate> delegate;
+@property (nonatomic, weak) id <ABTextFieldDelegate> delegate;
 
 //Underlying UITextField for specific configuration
 @property (nonatomic, strong) UITextField *textField;
 
 @property (nonatomic, strong) NSString *placeholder;
 @property (nonatomic, strong) NSString *text;
+@property (nonatomic, copy) NSString *placeholder;
+@property (nonatomic, copy) NSString *text;
 @property (nonatomic, assign) BOOL editing;
 
 //Keep keyboard from beeing hidden on return

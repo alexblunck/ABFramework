@@ -27,9 +27,11 @@
 
 //Block that is called everytime index changes
 @property (nonatomic, assign) ABBlockInteger block;
+@property (nonatomic, copy) ABBlockInteger block;
 
 //Delegate as alternative to using Blocks
 @property (nonatomic, assign) id <ABSwitchDelegate> delegate;
+@property (nonatomic, weak) id <ABViewDelegate, ABSwitchDelegate> delegate;
 
 //If your background image uses rounded corners adjust this value to make the left/right color views fit with the background
 @property (nonatomic, assign) CGFloat cornerRadius;

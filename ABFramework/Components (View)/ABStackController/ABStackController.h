@@ -33,5 +33,6 @@
 
 //Access
 @property (nonatomic, copy) NSArray *stackViews;
+@property (nonatomic, strong) NSArray *stackViews;
 
 @end

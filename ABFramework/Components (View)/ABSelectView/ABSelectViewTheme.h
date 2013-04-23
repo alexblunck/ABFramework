@@ -19,8 +19,8 @@ typedef enum {
 +(id) themeWithTop:(NSString*)top middle:(NSString*)middle bottom:(NSString*)bottom;
 +(id) themeWithTag:(ABSelectViewThemeTag)theme;
 
-@property (nonatomic, strong) NSString *topRowImageName;
-@property (nonatomic, strong) NSString *middleRowImageName;
-@property (nonatomic, strong) NSString *bottomRowImageName;
+@property (nonatomic, weak) NSString *topRowImageName;
+@property (nonatomic, weak) NSString *middleRowImageName;
+@property (nonatomic, weak) NSString *bottomRowImageName;
 
 @end
