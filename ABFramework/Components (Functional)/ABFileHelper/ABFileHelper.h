@@ -64,6 +64,7 @@
 +(void) movePath:(NSString*)aPath toPath:(NSString*)bPath;
 
 
+
 //Read
 +(NSData*) dataFromFile:(NSString *)fileName atPath:(NSString*)folderPath;
 +(NSData*) dataFromFile:(NSString*)fileName atPathInDocumentsFolder:(NSString*)folderPath;
@@ -74,5 +75,10 @@
 +(void) deleteFileAtPath:(NSString*)filePath;
 +(void) deleteFile:(NSString*)fileName atPathInDocumentsFolder:(NSString*)folderPath;
 +(void) deleteAllFilesAtFolderPath:(NSString*)folderPath;
+
+
+
+//Rename
++(void) renameFileAtPath:(NSString*)filePath newName:(NSString*)newName;
 
 @end

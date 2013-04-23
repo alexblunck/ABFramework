@@ -151,4 +151,20 @@
    }
 }
 
+
+
+#pragma mark - Rename
++(void) renameFileAtPath:(NSString*)filePath newName:(NSString*)newName
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if (![fileManager fileExistsAtPath:filePath]) {
+        return;
+    }
+    
+    NSString *toPath = [[filePath stringByDeletingLastPathComponent] stringByAppendingPathComponent:newName];
+    
+    [fileManager moveItemAtPath:filePath toPath:toPath error:nil];
+}
+
 @end
