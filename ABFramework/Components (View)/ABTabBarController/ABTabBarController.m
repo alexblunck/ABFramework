@@ -38,10 +38,10 @@
     
     //Retrieve Screen Dimensions
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    int screenWidth = screenSize.width;
-    int screenHeight = screenSize.height;
+    CGFloat screenWidth = screenSize.width;
+    CGFloat screenHeight = screenSize.height;
     
-    int statusBarHeight = 20;
+    CGFloat statusBarHeight = 20;
     
     //If no tabBarHeight is set, use default height of 49
     if (!self.tabBarHeight) {
@@ -138,27 +138,22 @@
     //Loop through added ViewController
     for (id viewController in _viewControllers)
     {
-        
         //If ViewController is ABViewController set it's abTabBarController property
-        if ([viewController isMemberOfClass:[ABViewController class]] || [viewController isMemberOfClass:[ABNavigationController class]])
+        if ([viewController respondsToSelector:@selector(setAbTabBarController:)])
         {
             [(ABViewController*)viewController setAbTabBarController:self];
             
-            if ([viewController isMemberOfClass:[ABNavigationController class]])
+            if ([viewController respondsToSelector:@selector(viewControllers)])
             {
-                
-                for (id subViewController in [(ABNavigationController*)viewController viewControllers]) {
-                    
-                    if ([subViewController isMemberOfClass:[ABViewController class]]) {
+                for (id subViewController in [(ABNavigationController*)viewController viewControllers])
+                {
+                    if ([subViewController respondsToSelector:@selector(setAbTabBarController:)])
+                    {
                         [(ABViewController*)subViewController setAbTabBarController:self];
                     }
-                    
                 }
-            
             }
-            
         }
-        
     }
     
 }
