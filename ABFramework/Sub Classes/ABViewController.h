@@ -15,4 +15,7 @@
 @property (nonatomic, weak) ABTabBarItem *abTabBarItem;
 @property (nonatomic, weak) ABTabBarController *abTabBarController;
 
+@property (nonatomic, assign) BOOL wasPushed;
+@property (nonatomic, assign) BOOL wasPresented;
+
 @end
