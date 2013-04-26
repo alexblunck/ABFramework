@@ -20,8 +20,20 @@ CGFloat CGFloatBottomPointY(CGRect rect);
 
 
 /**
+ * CGPoint
+ */
+#pragma mark - CGPoint Make
+CGPoint cgp(CGFloat x, CGFloat y);
+
+
+
+/**
  * CGSize
  */
+#pragma mark - CGSize Make
+CGSize cgs(CGFloat width, CGFloat height);
+
+
 #pragma mark - CGSize Offset
 //Size
 CGSize CGSizeOffset(CGSize size, CGFloat sizeWidthBy, CGFloat sizeHeightBy);
