@@ -185,6 +185,15 @@
     }
 }
 
+-(void) scrollToBottom
+{
+    if (_isFixedHeight && _scrollView.contentSize.height > _scrollView.bounds.size.height)
+    {
+        CGPoint bottomOffset = CGPointMake(0, _scrollView.contentSize.height - _scrollView.bounds.size.height);
+        [_scrollView setContentOffset:bottomOffset animated:YES];
+    }
+}
+
 
 
 #pragma mark - Access

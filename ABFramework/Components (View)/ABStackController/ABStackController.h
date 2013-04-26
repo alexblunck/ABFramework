@@ -26,6 +26,7 @@
 
 //Interaction
 -(void) scrollToTop; //Only available when a fixed height is set
+-(void) scrollToBottom;
 
 //Access
 -(UIScrollView*) uiScrollView;
