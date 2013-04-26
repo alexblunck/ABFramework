@@ -32,3 +32,10 @@ typedef enum {
     ABTouchStateTouchesEnded,
     ABTouchStateTouchesCancelled
 } ABTouchState;
+
+typedef enum {
+    ABPositionTypeNone,
+    ABPositionTypeTop,
+    ABPositionTypeCenter,
+    ABPositionTypeBottom
+} ABPositionType;
