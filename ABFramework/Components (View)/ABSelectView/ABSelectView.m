@@ -141,6 +141,7 @@
         _shadowMask.layer.shadowRadius = 7.0f;
         _shadowMask.layer.shadowPath = [[UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, tableWidth, tableHeight) cornerRadius:4.0f] CGPath];
         _shadowMask.layer.shouldRasterize = YES;
+        _shadowMask.layer.rasterizationScale = [[UIScreen mainScreen] scale];
         
         [self insertSubview:_shadowMask belowSubview:_selectionTable];
         

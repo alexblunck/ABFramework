@@ -53,6 +53,8 @@
         _textField.layer.shadowOffset = CGSizeMake(0.8f, 0.8f);
         _textField.layer.shadowRadius = 0.0f;
         _textField.layer.shadowOpacity = 0.6f;
+        _textField.layer.shouldRasterize = YES;
+        _textField.layer.rasterizationScale = [[UIScreen mainScreen] scale];
         [self addSubview:_textField];
     }
     return self;
