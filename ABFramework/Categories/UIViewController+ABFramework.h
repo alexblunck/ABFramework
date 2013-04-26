@@ -11,5 +11,4 @@
 @interface UIViewController (ABFramework)
 
 +(UIViewController*) topViewController;
-
 @end

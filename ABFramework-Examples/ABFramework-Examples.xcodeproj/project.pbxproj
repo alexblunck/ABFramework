@@ -96,6 +96,7 @@
 		D2B331C916ED047D00DED125 /* ABImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B331C816ED047D00DED125 /* ABImageView.m */; };
 		D2BB292817215A3900F6E152 /* ABTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BB292717215A3900F6E152 /* ABTapGestureRecognizer.m */; };
 		D2BB292B17215A5200F6E152 /* ABSwipeGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BB292A17215A5200F6E152 /* ABSwipeGestureRecognizer.m */; };
+		D2DD67971728A2E600CA7EFF /* UITableView+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DD67961728A2E600CA7EFF /* UITableView+ABFramework.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -262,6 +263,8 @@
 		D2BB292717215A3900F6E152 /* ABTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTapGestureRecognizer.m; sourceTree = "<group>"; };
 		D2BB292917215A5200F6E152 /* ABSwipeGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSwipeGestureRecognizer.h; sourceTree = "<group>"; };
 		D2BB292A17215A5200F6E152 /* ABSwipeGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSwipeGestureRecognizer.m; sourceTree = "<group>"; };
+		D2DD67951728A2E600CA7EFF /* UITableView+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+ABFramework.h"; sourceTree = "<group>"; };
+		D2DD67961728A2E600CA7EFF /* UITableView+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+ABFramework.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -563,6 +566,8 @@
 				D271792516E58548009BB5D1 /* UILabel+ABFramework.m */,
 				D271792616E58548009BB5D1 /* UIView+ABFramework.h */,
 				D271792716E58548009BB5D1 /* UIView+ABFramework.m */,
+				D2DD67951728A2E600CA7EFF /* UITableView+ABFramework.h */,
+				D2DD67961728A2E600CA7EFF /* UITableView+ABFramework.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -955,6 +960,7 @@
 				D255AD9E1723D61B00E71590 /* ABViewExample.m in Sources */,
 				D255ADA7172430A000E71590 /* ABInfiniteViewExample.m in Sources */,
 				D264B2F1172535F5006B18FD /* ABInfiniteView.m in Sources */,
+				D2DD67971728A2E600CA7EFF /* UITableView+ABFramework.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

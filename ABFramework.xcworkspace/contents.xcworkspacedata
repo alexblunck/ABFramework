@@ -14,6 +14,12 @@
          location = "group:Categories"
          name = "Categories">
          <FileRef
+            location = "group:UITableView+ABFramework.h">
+         </FileRef>
+         <FileRef
+            location = "group:UITableView+ABFramework.m">
+         </FileRef>
+         <FileRef
             location = "group:UIViewController+ABFramework.h">
          </FileRef>
          <FileRef
