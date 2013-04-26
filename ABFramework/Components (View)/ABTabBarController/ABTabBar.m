@@ -108,7 +108,7 @@
     }
     
     //Set Initial selected Tab
-    ABTabButton *selectedButton = [_tabButtonArray objectAtIndex:self.selectedIndex];
+    ABTabButton *selectedButton = [_tabButtonArray safeObjectAtIndex:self.selectedIndex];
     [self highlight:selectedButton];
 }
 
@@ -118,7 +118,7 @@
 -(void) tabTouchUpInside:(id)sender
 {
     ABTabButton *tabButton = sender;
-    ABViewController *viewController = [self.viewControllers objectAtIndex:tabButton.viewControllerIndex];
+    ABViewController *viewController = [self.viewControllers safeObjectAtIndex:tabButton.viewControllerIndex];
     
     //Unhightlight all other tabs / highlight selected one
     for (ABTabButton *button in _tabButtonArray) {
@@ -136,7 +136,7 @@
 -(void) forceSwitchToTabIndex:(int)tabIndex
 {
     //Highlight Correct Tab
-    ABTabButton *tabButton = [_tabButtonArray objectAtIndex:tabIndex];
+    ABTabButton *tabButton = [_tabButtonArray safeObjectAtIndex:tabIndex];
     [self highlight:tabButton];
     
     //Simulate touchUpInside

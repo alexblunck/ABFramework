@@ -20,7 +20,7 @@
     //Create an array and store result of our search for the documents directory in it
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     //Create NSString object, that holds our exact path to the documents directory
-    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *documentsDirectory = [paths safeObjectAtIndex:0];
     //Add our image to the path
     NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", imageName]];
     //Finally save the path (image)
@@ -31,7 +31,7 @@
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *documentsDirectory = [paths safeObjectAtIndex:0];
     NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", fileName]];
     [fileManager removeItemAtPath: fullPath error:NULL];
 }
@@ -39,7 +39,7 @@
 +(UIImage*) loadImage:(NSString*)imageName
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *documentsDirectory = [paths safeObjectAtIndex:0];
     NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", imageName]];
     return [UIImage imageWithContentsOfFile:fullPath];
 }

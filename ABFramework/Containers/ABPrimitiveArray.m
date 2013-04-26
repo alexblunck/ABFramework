@@ -133,7 +133,7 @@
 #pragma mark - Select
 -(CGRect) rectAtIndex:(NSUInteger)index
 {
-    return [self rectFromObject:[self.objectArray objectAtIndex:index]];
+    return [self rectFromObject:[self.objectArray safeObjectAtIndex:index]];
 }
 
 #pragma mark - Enumerate
@@ -227,7 +227,7 @@
 #pragma mark - Select
 -(CGFloat) floatAtIndex:(NSUInteger)index
 {
-    return [[self.objectArray objectAtIndex:index] floatValue];
+    return [[self.objectArray safeObjectAtIndex:index] floatValue];
 }
 
 #pragma mark - Enumerate

@@ -212,7 +212,7 @@
     NSMutableArray *stackViews = [NSMutableArray new];
     for (UIView *view in _viewArray)
     {
-        [stackViews addObject:[[view subviews] objectAtIndex:0]];
+        [stackViews addObject:[[view subviews] safeObjectAtIndex:0]];
     }
     
     return stackViews;

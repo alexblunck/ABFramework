@@ -239,7 +239,7 @@
     
     for (int index = 0; index < (_viewArray.count/3); index++)
     {
-        [array addObject:[_viewArray objectAtIndex:index]];
+        [array addObject:[_viewArray safeObjectAtIndex:index]];
     }
     
     return array;

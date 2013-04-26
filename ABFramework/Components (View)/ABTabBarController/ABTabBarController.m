@@ -77,7 +77,7 @@
     }
     
     //Do the actual View switching
-    [self switchToViewController:[self.viewControllers objectAtIndex:self.tabBar.selectedIndex]];
+    [self switchToViewController:[self.viewControllers safeObjectAtIndex:self.tabBar.selectedIndex]];
     
     //Add tabBar as SubView
     [self.view addSubview:self.tabBar];

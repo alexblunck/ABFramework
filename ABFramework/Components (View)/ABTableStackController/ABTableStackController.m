@@ -117,7 +117,7 @@
 #pragma mark - Helper
 -(UIView*) viewAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [_viewArray objectAtIndex:indexPath.row];
+    return [_viewArray safeObjectAtIndex:indexPath.row];
 }
 
 

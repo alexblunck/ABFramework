@@ -36,7 +36,7 @@
     if (os == ABSaveSystemOSIOS)
     {
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString *documentsDirectory = [paths safeObjectAtIndex:0];
         NSString *path = [documentsDirectory stringByAppendingPathComponent:fileName];
         return path;
     }
