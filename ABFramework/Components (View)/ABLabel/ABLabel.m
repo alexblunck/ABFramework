@@ -15,6 +15,7 @@
     UILabel *_label;
     
     UIColor *_originalTextColor;
+    NSString *_originalFontName;
 }
 @end
 
@@ -115,12 +116,16 @@
 -(void) defaultStyle
 {
     _originalTextColor = self.textColor;
+    _originalFontName = self.fontName;
 }
 
 -(void) setSelectedStyle:(BOOL)selected
 {
     //Text color
     self.textColor = (selected && self.selectedTextColor) ? self.selectedTextColor : _originalTextColor;
+    
+    //Font
+    self.fontName = (selected && self.selectedFontName) ? self.selectedFontName : _originalFontName;
 }
 
 
