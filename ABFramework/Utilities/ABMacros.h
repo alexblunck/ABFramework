@@ -28,6 +28,7 @@
 #define ABLogCGSize(size) NSLog(@"ABLogCGSize -> %s = %@", #size, NSStringFromCGSize(size))
 #define ABLogBOOL(bool) NSLog(@"ABLogBOOL -> %s = %@", #bool, (bool) ? @"YES" : @"NO")
 #define ABLogInteger(integer) NSLog(@"ABLogInteger -> %s = %i", #integer, integer)
+#define ABLogDouble(double) NSLog(@"ABLogDouble -> %s = %f", #double, double)
 #define ABLogFloat(float) NSLog(@"ABLogFloat -> %s = %f", #float, float)
 #define ABLogLong(long) NSLog(@"ABLogFloat -> %s = %lu", #long, long)
 #define ABLogLongLong(longLong) NSLog(@"ABLogFloat -> %s = %llu", #longLong, longLong)
