@@ -43,6 +43,7 @@ typedef enum {
         
         //Config
         self.selectRecursively = NO;
+        self.userInteractionEnabled = YES;
     }
     return self;
 }
@@ -97,7 +98,7 @@ typedef enum {
 
 #pragma mark - Touch
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
+{    
     //Only "allow" touch if "selected" property is NO
     if (!self.isSelected)
     {

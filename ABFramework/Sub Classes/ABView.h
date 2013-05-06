@@ -10,7 +10,7 @@
 
 @class ABView;
 
-typedef void (^ABViewTouchHandler) (ABView *view);
+typedef void (^ABViewTouchHandler) (ABView *);
 
 //ABViewDelegate
 @protocol ABViewDelegate <NSObject>
