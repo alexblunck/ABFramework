@@ -10,6 +10,7 @@
 
 @implementation NSString (ABFramework)
 
+#pragma mark - Utility
 +(NSString*) uniqueString;
 {
     CFUUIDRef uuidObj = CFUUIDCreate(nil);
@@ -18,6 +19,9 @@
     return uuidString;
 }
 
+
+
+#pragma mark - Checking / Comparing
 -(BOOL) isEqualToStringU:(NSString *)aString
 {
     return [[self lowercaseString] isEqualToString:[aString lowercaseString]];
@@ -29,6 +33,9 @@
     return (string.length == 0) ? YES : NO;
 }
 
+
+
+#pragma mark - Encoding
 -(NSString*) encodedString:(NSStringEncoding)encoding
 {
     return (__bridge NSString *)(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)self, NULL, (CFStringRef)@"!*'\"();:@&=+$,/?%#[]% ", CFStringConvertNSStringEncodingToEncoding(encoding)));
@@ -42,6 +49,40 @@
 -(NSString*) utf8EncodedString
 {
     return [self encodedString:NSUTF8StringEncoding];
+}
+
+
+
+#pragma mark - Regular Expressions
+-(NSString*) substringAtGroupIndex:(NSUInteger)index forPattern:(NSString*)regexPattern
+{
+    NSError *error = nil;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regexPattern options:NSRegularExpressionCaseInsensitive error:&error];
+    
+    NSTextCheckingResult *result = [regex firstMatchInString:self options:NSRegularExpressionCaseInsensitive range:NSMakeRange(0, [self length])];
+    
+    //Make sure index isn't out of range
+    if (index <= [result numberOfRanges]-1)
+    {
+        return [self substringWithRange:[result rangeAtIndex:index]];
+    }
+    
+    NSLog(@"NSString+ABFramework: WARNING -> substringAtGroupIndex:forPattern: -> Index out of range!");
+    return nil;
+}
+
+-(BOOL) matchesPattern:(NSString*)regexPattern
+{
+    NSError *error = nil;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regexPattern options:NSRegularExpressionCaseInsensitive error:&error];
+    
+    NSUInteger numberOfMatches = [regex numberOfMatchesInString:self options:0 range:NSMakeRange(0, [self length])];
+    
+    if (numberOfMatches != 0)
+    {
+        return YES;
+    }
+    return NO;
 }
 
 @end

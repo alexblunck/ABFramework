@@ -10,14 +10,20 @@
 
 @interface NSString (ABFramework)
 
+//Utility
 +(NSString*) uniqueString;
 
+//Checking / Comparing
 -(BOOL) isEqualToStringU:(NSString *)aString; 
-
 -(BOOL) empty;
 
+//Encoding
 -(NSString*) encodedString:(NSStringEncoding)encoding;
 -(NSString*) asciiEncodedString;
 -(NSString*) utf8EncodedString;
+
+//Regular Expressions
+-(NSString*) substringAtGroupIndex:(NSUInteger)index forPattern:(NSString*)regexPattern;
+-(BOOL) matchesPattern:(NSString*)regexPattern;
 
 @end
