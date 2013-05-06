@@ -10,6 +10,17 @@
 
 @interface ABCommon : NSObject
 
+//NSNumber Fast Creation
+NSNumber* NSNumberInteger(NSInteger aInteger);
+NSNumber* NSNumberDouble(double aDouble);
+NSNumber* NSNumberFloat(CGFloat aFloat);
+NSNumber* NSNumberBOOL(BOOL aBoolean);
+
+//Type Checking
+BOOL isNSArray(id object);
+BOOL isNSDictionary(id object);
+BOOL isClassOfType(id object, Class aClass);
+
 //Networking
 +(BOOL) isOnWifiNetwork;
 

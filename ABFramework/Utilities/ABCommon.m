@@ -11,6 +11,49 @@
 
 @implementation ABCommon
 
+#pragma mark - NSNumber Fast Creation
+NSNumber* NSNumberInteger(NSInteger aInteger)
+{
+    return [NSNumber numberWithInteger:aInteger];
+}
+
+NSNumber* NSNumberDouble(double aDouble)
+{
+    return [NSNumber numberWithDouble:aDouble];
+}
+
+NSNumber* NSNumberFloat(CGFloat aFloat)
+{
+    return [NSNumber numberWithFloat:aFloat];
+}
+
+NSNumber* NSNumberBOOL(BOOL aBoolean)
+{
+    return [NSNumber numberWithBool:aBoolean];
+}
+
+
+#pragma mark - Type Checking
+BOOL isNSArray(id object)
+{
+    return isClassOfType(object, [NSArray class]);
+}
+
+BOOL isNSDictionary(id object)
+{
+    return isClassOfType(object, [NSDictionary class]);
+}
+
+BOOL isClassOfType(id object, Class aClass)
+{
+    if ([object isKindOfClass:aClass])
+    {
+        return YES;
+    }
+    return NO;
+}
+
+
 #pragma mark - Networking
 +(BOOL) isOnWifiNetwork
 {
