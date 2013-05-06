@@ -43,12 +43,6 @@ static ABDateWeekNumberingSystem	_weekNumberingSystem	= 1;
         keyName = [NSString stringWithFormat:@"%p", (void *) [NSThread currentThread]];
     }
     NSCalendar *calendar = [_calendars objectForKey:keyName];
-    
-    /*
-	dispatch_queue_t queue = dispatch_get_current_queue();
-	NSString *queueLabel = [NSString stringWithUTF8String:dispatch_queue_get_label(queue)];
-	NSCalendar *calendar = [_calendars objectForKey:queueLabel];
-    */
      
 	if (!calendar) {
 		calendar = [[NSCalendar currentCalendar] copy];
@@ -63,11 +57,6 @@ static ABDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 +(NSDateComponents*) components
 {
 	if (!_components) _components = [[NSMutableDictionary alloc] initWithCapacity:0];
-	
-    /*
-	dispatch_queue_t queue = dispatch_get_current_queue();
-	NSString *queueLabel = [NSString stringWithUTF8String:dispatch_queue_get_label(queue)];
-    */
     
     NSString *keyName = [[NSOperationQueue currentQueue] name];
     if (keyName == nil)
@@ -990,11 +979,17 @@ static ABDateWeekNumberingSystem	_weekNumberingSystem	= 1;
     return [NSDate dateFromYear:self.year month:self.monthOfYear day:self.dayOfMonth hour:0 minute:0 second:0];
 }
 
-+(NSDate*) localDateForDate:(NSDate*)date
+-(NSDate*) localDateAccountForDST:(BOOL)dst
 {
-    int localDateSecondOffset = [[NSTimeZone localTimeZone] secondsFromGMT];
-    NSDate *localDate = [date dateByAddingYears:0 months:0 weeks:0 days:0 hours:0 minutes:0 seconds:-localDateSecondOffset];
-    return localDate;
+    NSTimeInterval daylightOffset = [[NSTimeZone localTimeZone] daylightSavingTimeOffset];
+    NSTimeInterval gmtOffset = [[NSTimeZone localTimeZone] secondsFromGMT];
+    
+    if (dst)
+    {
+        gmtOffset -= daylightOffset;
+    }
+    
+    return [self dateByAddingTimeInterval:gmtOffset];
 }
 
 +(NSArray*) datesCollectionFromDate:(NSDate*)startDate untilDate:(NSDate*)endDate
