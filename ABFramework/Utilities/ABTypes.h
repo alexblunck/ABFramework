@@ -14,6 +14,7 @@ typedef void (^ABBlockObject) (id);
 typedef void (^ABBlockBool) (BOOL);
 typedef void (^ABBlockInteger) (NSInteger);
 typedef void (^ABBlockString) (NSString *);
+typedef void (^ABBlockConnection) (id responseObject, BOOL error, BOOL canceled);
 
 /*
  ENUMS
