@@ -47,132 +47,42 @@
 
 
 #pragma mark - Resize
--(UIImage*) resizedImageToSize:(CGSize)dstSize
+-(UIImage*) resizedImageWithMaxSize:(CGSize)maxSize
 {
-	CGImageRef imgRef = self.CGImage;
-	//The below values are regardless of orientation : for UIImages from Camera, width>height (landscape)
-    //Not equivalent to self.size (which is dependant on the imageOrientation)!
-	CGSize  srcSize = CGSizeMake(CGImageGetWidth(imgRef), CGImageGetHeight(imgRef)); 
-	
-	CGFloat scaleRatio = dstSize.width / srcSize.width;
-	UIImageOrientation orient = self.imageOrientation;
-	CGAffineTransform transform = CGAffineTransformIdentity;
-	switch(orient) {
-			
-		case UIImageOrientationUp: //EXIF = 1
-			transform = CGAffineTransformIdentity;
-			break;
-			
-		case UIImageOrientationUpMirrored: //EXIF = 2
-			transform = CGAffineTransformMakeTranslation(srcSize.width, 0.0);
-			transform = CGAffineTransformScale(transform, -1.0, 1.0);
-			break;
-			
-		case UIImageOrientationDown: //EXIF = 3
-			transform = CGAffineTransformMakeTranslation(srcSize.width, srcSize.height);
-			transform = CGAffineTransformRotate(transform, M_PI);
-			break;
-			
-		case UIImageOrientationDownMirrored: //EXIF = 4
-			transform = CGAffineTransformMakeTranslation(0.0, srcSize.height);
-			transform = CGAffineTransformScale(transform, 1.0, -1.0);
-			break;
-			
-		case UIImageOrientationLeftMirrored: //EXIF = 5
-			dstSize = CGSizeMake(dstSize.height, dstSize.width);
-			transform = CGAffineTransformMakeTranslation(srcSize.height, srcSize.width);
-			transform = CGAffineTransformScale(transform, -1.0, 1.0);
-			transform = CGAffineTransformRotate(transform, 3.0 * M_PI_2);
-			break;
-			
-		case UIImageOrientationLeft: //EXIF = 6
-			dstSize = CGSizeMake(dstSize.height, dstSize.width);
-			transform = CGAffineTransformMakeTranslation(0.0, srcSize.width);
-			transform = CGAffineTransformRotate(transform, 3.0 * M_PI_2);
-			break;
-			
-		case UIImageOrientationRightMirrored: //EXIF = 7
-			dstSize = CGSizeMake(dstSize.height, dstSize.width);
-			transform = CGAffineTransformMakeScale(-1.0, 1.0);
-			transform = CGAffineTransformRotate(transform, M_PI_2);
-			break;
-			
-		case UIImageOrientationRight: //EXIF = 8
-			dstSize = CGSizeMake(dstSize.height, dstSize.width);
-			transform = CGAffineTransformMakeTranslation(srcSize.height, 0.0);
-			transform = CGAffineTransformRotate(transform, M_PI_2);
-			break;
-			
-		default:
-			[NSException raise:NSInternalInconsistencyException format:@"Invalid image orientation"];
-			
-	}
-	
-	/////////////////////////////////////////////////////////////////////////////
-	// The actual resize: draw the image on a new context, applying a transform matrix
-	UIGraphicsBeginImageContextWithOptions(dstSize, NO, 0.0);
-	
-	CGContextRef context = UIGraphicsGetCurrentContext();
-	
-	if (orient == UIImageOrientationRight || orient == UIImageOrientationLeft) {
-		CGContextScaleCTM(context, -scaleRatio, scaleRatio);
-		CGContextTranslateCTM(context, -srcSize.height, 0);
-	} else {
-		CGContextScaleCTM(context, scaleRatio, -scaleRatio);
-		CGContextTranslateCTM(context, 0, -srcSize.height);
-	}
-	
-	CGContextConcatCTM(context, transform);
-	
-	//We use srcSize (and not dstSize) as the size to specify is in user space (and we use the CTM to apply a scaleRatio)
-	CGContextDrawImage(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, srcSize.width, srcSize.height), imgRef);
-	UIImage* resizedImage = UIGraphicsGetImageFromCurrentImageContext();
-	UIGraphicsEndImageContext();
-	
-	return resizedImage;
+    return [self resizedImageWithMaxSize:maxSize compression:1.0f];
 }
 
--(UIImage*) resizedImageToFitInSize:(CGSize)boundingSize scaleIfSmaller:(BOOL)scale
+-(UIImage*) resizedImageWithMaxSize:(CGSize)maxSize compression:(CGFloat)compression
 {
-	//Get the image size (independant of imageOrientation)
-	CGImageRef imgRef = self.CGImage;
-    //Not equivalent to self.size (which depends on the imageOrientation)!
-	CGSize srcSize = CGSizeMake(CGImageGetWidth(imgRef), CGImageGetHeight(imgRef)); 
-	
-	//Adjust boundingSize to make it independant on imageOrientation too for farther computations
-	UIImageOrientation orient = self.imageOrientation;
-	switch (orient) {
-		case UIImageOrientationLeft:
-		case UIImageOrientationRight:
-		case UIImageOrientationLeftMirrored:
-		case UIImageOrientationRightMirrored:
-			boundingSize = CGSizeMake(boundingSize.height, boundingSize.width);
-			break;
-        default:
-            // NOP
-            break;
-	}
+    float actualHeight = self.size.height;
+    float actualWidth = self.size.width;
+    float imgRatio = actualWidth/actualHeight;
+    float maxRatio = maxSize.width/maxSize.height;
     
-	//Compute the target CGRect in order to keep aspect-ratio
-	CGSize dstSize;
-	
-	if ( !scale && (srcSize.width < boundingSize.width) && (srcSize.height < boundingSize.height) ) {
-		//NSLog(@"Image is smaller, and we asked not to scale it in this case (scaleIfSmaller:NO)");
-		dstSize = srcSize; //No resize (we could directly return 'self' here, but we draw the image anyway to take image orientation into account)
-	} else {
-		CGFloat wRatio = boundingSize.width / srcSize.width;
-		CGFloat hRatio = boundingSize.height / srcSize.height;
-		
-		if (wRatio < hRatio) {
-			//NSLog(@"Width imposed, Height scaled ; ratio = %f",wRatio);
-			dstSize = CGSizeMake(boundingSize.width, floorf(srcSize.height * wRatio));
-		} else {
-			//NSLog(@"Height imposed, Width scaled ; ratio = %f",hRatio);
-			dstSize = CGSizeMake(floorf(srcSize.width * hRatio), boundingSize.height);
-		}
-	}
+    if(imgRatio!=maxRatio){
+        if(imgRatio < maxRatio){
+            imgRatio = maxSize.height / actualHeight;
+            actualWidth = imgRatio * actualWidth;
+            actualHeight = maxSize.height;
+        }
+        else{
+            imgRatio = maxSize.width / actualWidth;
+            actualHeight = imgRatio * actualHeight;
+            actualWidth = maxSize.width;
+        }
+    }
+    CGRect rect = CGRectMake(0.0, 0.0, actualWidth, actualHeight);
+    UIGraphicsBeginImageContext(rect.size);
+    [self drawInRect:rect];
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
     
-	return [self resizedImageToSize:dstSize];
+    if (compression > 1.0f)
+    {
+        compression = 1.0f;
+    }
+    
+    return [UIImage imageWithData:UIImageJPEGRepresentation(img, compression)];
 }
 
 @end

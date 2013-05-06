@@ -16,7 +16,7 @@
 +(void)removeImage:(NSString*)fileName;
 
 //Resize
--(UIImage*)resizedImageToSize:(CGSize)dstSize;
--(UIImage*)resizedImageToFitInSize:(CGSize)boundingSize scaleIfSmaller:(BOOL)scale;
+-(UIImage*) resizedImageWithMaxSize:(CGSize)maxSize;
+-(UIImage*) resizedImageWithMaxSize:(CGSize)maxSize compression:(CGFloat)compression;
 
 @end
