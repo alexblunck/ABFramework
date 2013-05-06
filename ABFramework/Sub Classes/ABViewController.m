@@ -51,11 +51,4 @@
     [super viewDidLoad];
 }
 
-#pragma mark - Orientation
-/*
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
-
 @end
