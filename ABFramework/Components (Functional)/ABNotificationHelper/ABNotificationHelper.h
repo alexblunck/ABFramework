@@ -12,6 +12,7 @@
 
 //Local Notifications
 +(void) scheduleLocalNotification:(NSString*)message date:(NSDate*)date identifier:(NSString*)identifier;
++(void) scheduleLocalNotification:(NSString*)message date:(NSDate*)date identifier:(NSString*)identifier timeZone:(NSTimeZone*)timeZone;
 +(void) unscheduleLocalNotification:(NSString*)identifier;
 +(void) unscheduleAllLocalNotifications;
 +(void) logAllLocalNotifications;

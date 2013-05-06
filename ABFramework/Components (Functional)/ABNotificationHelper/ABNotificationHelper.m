@@ -13,10 +13,15 @@
 #pragma mark - Local Notifications
 +(void) scheduleLocalNotification:(NSString*)message date:(NSDate*)date identifier:(NSString*)identifier
 {
+    [self scheduleLocalNotification:message date:date identifier:identifier timeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
+}
+
++(void) scheduleLocalNotification:(NSString*)message date:(NSDate*)date identifier:(NSString*)identifier timeZone:(NSTimeZone*)timeZone
+{
     UILocalNotification *notification = [UILocalNotification new];
     notification.alertBody = message;
-    notification.timeZone = [NSTimeZone systemTimeZone];
-    notification.fireDate = [NSDate localDateForDate:date];
+    notification.timeZone = timeZone;
+    notification.fireDate = date;
     notification.soundName = UILocalNotificationDefaultSoundName;
     
     //Mark notification with identifier
