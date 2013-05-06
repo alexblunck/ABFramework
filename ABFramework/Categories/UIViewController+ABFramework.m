@@ -12,11 +12,10 @@
 
 +(UIViewController*) topViewController
 {
-    //return [[[[UIApplication sharedApplication] windows] lastObject] rootViewController];
-    
     UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
     
-    while (topController.presentedViewController) {
+    while (topController.presentedViewController)
+    {
         topController = topController.presentedViewController;
     }
     
