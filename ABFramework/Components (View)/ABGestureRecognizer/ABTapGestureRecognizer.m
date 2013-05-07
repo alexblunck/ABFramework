@@ -23,6 +23,10 @@
     return [[self alloc] initWithTaps:1 view:view block:block];
 }
 
++(id) tapGestureWithTaps:(NSUInteger)taps onView:(UIView*)view block:(ABBlockVoid)block
+{
+    return [[self alloc] initWithTaps:taps view:view block:block];
+}
 
 
 #pragma mark - Initializer
