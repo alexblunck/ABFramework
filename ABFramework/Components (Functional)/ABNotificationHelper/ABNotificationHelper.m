@@ -13,10 +13,10 @@
 #pragma mark - Local Notifications
 +(void) scheduleLocalNotification:(NSString*)message date:(NSDate*)date identifier:(NSString*)identifier
 {
-    [self scheduleLocalNotification:message date:date identifier:identifier timeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
+    [self scheduleLocalNotification:message date:date identifier:identifier userInfo:nil timeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
 }
 
-+(void) scheduleLocalNotification:(NSString*)message date:(NSDate*)date identifier:(NSString*)identifier timeZone:(NSTimeZone*)timeZone
++(void) scheduleLocalNotification:(NSString*)message date:(NSDate*)date identifier:(NSString*)identifier userInfo:(NSDictionary*)userInfo timeZone:(NSTimeZone*)timeZone
 {
     UILocalNotification *notification = [UILocalNotification new];
     notification.alertBody = message;
@@ -24,8 +24,10 @@
     notification.fireDate = date;
     notification.soundName = UILocalNotificationDefaultSoundName;
     
-    //Mark notification with identifier
-    notification.userInfo = @{@"identifier" : identifier};
+    //User data & Mark notification with identifier
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:userInfo];
+    [dic setObject:identifier forKey:@"identifier"];
+    notification.userInfo = dic;
     
     //Schedule notification
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
