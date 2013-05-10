@@ -1,0 +1,10 @@
+//
+// Prefix header for all source files of the 'ABFramework-Examples-Mac' target in the 'ABFramework-Examples-Mac' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
+
+#define ABFRAMEWORK_LOGGING 1
+#import "ABFramework.h"
