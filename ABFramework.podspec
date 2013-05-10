@@ -7,13 +7,32 @@ Pod::Spec.new do |s|
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.source       = { :git => "https://github.com/ablfx/ABFramework.git", :tag => "v0.0.1" }
 
-  s.platform     = :ios, '5.1'
-  s.source_files = 'ABFramework/**/*.{h,m}'
-  s.resource = 'ABFramework/ABFramework.bundle'
   s.requires_arc = true
-  s.weak_frameworks = 'Social'
-  s.frameworks = 'QuartzCore', 'NewsstandKit', 'StoreKit', 'Twitter', 'SystemConfiguration'
+  s.resource = 'ABFramework/ABFramework.bundle'
 
-  s.prefix_header_contents =
-    '#import "ABFramework.h"'
+  #iOS
+  s.subspec "iOS" do |sp|
+    sp.platform = :ios, "5.1"
+
+    sp.source_files = 'ABFramework/**/*.{h,m}'
+    sp.exclude_files = 'ABFramework/OSX'
+
+    sp.weak_frameworks = 'Social'
+    sp.frameworks = 'QuartzCore', 'NewsstandKit', 'StoreKit', 'Twitter', 'SystemConfiguration'
+
+    sp.prefix_header_contents = '#import "ABFramework.h"'
+  end
+
+  #Mac
+  s.subspec "OSX" do |sp|
+    sp.platform = :osx, "10.8"
+
+    sp.source_files = 'ABFramework/**/*.{h,m}'
+    sp.exclude_files = 'ABFramework/iOS'
+
+    sp.prefix_header_contents = '#import "ABFramework.h"'
+  end
+
+  s.default_subspec = 'iOS'
+
 end
