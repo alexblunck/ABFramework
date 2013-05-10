@@ -16,21 +16,7 @@
 
 #pragma mark - LifeCycle
 -(void) viewDidLoad
-{
-    if (IS_MIN_IOS6)
-    {
-        if ([self.presentingViewController.modalViewController isEqual:self])
-        {
-            self.wasPresented = YES;
-            self.wasPushed = NO;
-        }
-        else
-        {
-            self.wasPresented = NO;
-            self.wasPushed = YES;
-        }
-    }
-    
+{    
     //Remove height of ABTabBar from own view if this viewController is a direct tab or it's
     //ABNavigationController is a tab of a ABTabBarController
     if (self.abTabBarController)

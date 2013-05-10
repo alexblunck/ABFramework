@@ -69,12 +69,12 @@
 
 - (NSData*) encryptedWithKey:(NSData*) key
 {
-	return [self makeCryptedVersionWithKeyData:[key bytes] ofLength:[key length] decrypt:NO];
+	return [self makeCryptedVersionWithKeyData:[key bytes] ofLength:(unsigned int)[key length] decrypt:NO];
 }
 
 - (NSData*) decryptedWithKey:(NSData*) key
 {
-	return [self makeCryptedVersionWithKeyData:[key bytes] ofLength:[key length] decrypt:YES];
+	return [self makeCryptedVersionWithKeyData:[key bytes] ofLength:(unsigned int)[key length] decrypt:YES];
 }
 
 @end

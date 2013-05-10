@@ -286,7 +286,9 @@
     }
     else
     {
+        #if __IPHONE_OS_VERSION_MIN_REQUIRED < 60000
         _label.minimumFontSize = minimumFontSize;
+        #endif
     }
     
     //Doesn't seem to work on UITextField

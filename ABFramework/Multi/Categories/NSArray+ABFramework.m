@@ -22,7 +22,7 @@
     {
         return [self objectAtIndex:index];
     }
-    NSLog(@"NSArray+ABFramework: Warning -> Attempted to access on existent index[%i]", index);
+    NSLog(@"NSArray+ABFramework: Warning -> Attempted to access on existent index[%li]", (long)index);
     return nil;
 }
 

@@ -126,26 +126,21 @@
 
 -(void) twitterButtonSelected
 {
-    TWTweetComposeViewController *composeController = [[TWTweetComposeViewController alloc] init];
-    
     NSString *text = [self.twitterDef safeObjectForKey:@"text"];
     UIImage *image = [self.twitterDef safeObjectForKey:@"image"];
     NSURL *url = [self.twitterDef safeObjectForKey:@"url"];
     
-    if (text)
-    {
-        [composeController setInitialText:text];
-    }
-    if (image)
-    {
-        [composeController addImage:image];
-    }
-    if (url)
-    {
-        [composeController addURL:url];
-    }
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 60000
+    SLComposeViewController *viewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+#else                               
+    TWTweetComposeViewController *viewController = [[TWTweetComposeViewController alloc] init];
+#endif    
+    
+    if (text) [viewController setInitialText:text];
+    if (image) [viewController addImage:image];
+    if (url) [viewController addURL:url];
         
-    [_presentingViewController presentViewController:composeController animated:YES completion:nil];
+    [_presentingViewController presentViewController:viewController animated:YES completion:nil];
     
     [self dismissView];
 }
