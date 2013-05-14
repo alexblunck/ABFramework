@@ -23,6 +23,7 @@
  * Color
  */
 @property (nonatomic, strong) UIColor *color;
+@property (nonatomic, strong) UIColor *selectedColor;
 
 /**
  * Shadow

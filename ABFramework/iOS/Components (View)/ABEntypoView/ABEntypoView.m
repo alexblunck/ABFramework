@@ -33,7 +33,9 @@
     self = [super init];
     if (self)
     {
+        //Config
         self.frame = cgr(0, 0, size, size);
+        self.userInteractionEnabled = NO;
         
         _label = [ABLabel new];
         _label.frame = self.bounds;
@@ -43,9 +45,16 @@
         _label.fontName = @"Entypo";
         _label.textSize = size*1.7;
         _label.minimumFontSize = 20.0f;
-        [self addSubview:_label];
     }
     return self;
+}
+
+
+
+#pragma mark - LifeCycle
+-(void) willMoveToSuperview:(UIView *)newSuperview
+{
+    [self addSubview:_label];
 }
 
 
@@ -312,7 +321,13 @@
 -(void) setColor:(UIColor *)color
 {
     _color = color;
-    _label.textColor = color;
+    _label.textColor = _color;
+}
+
+-(void) setSelectedColor:(UIColor *)selectedColor
+{
+    _selectedColor = selectedColor;
+    _label.selectedTextColor = _selectedColor;
 }
 
 #pragma mark - shadow
