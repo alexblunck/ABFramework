@@ -17,6 +17,42 @@
             location = "group:Categories"
             name = "Categories">
             <FileRef
+               location = "group:NSDate+ABFramework.h">
+            </FileRef>
+            <FileRef
+               location = "group:NSDate+ABFramework.m">
+            </FileRef>
+            <FileRef
+               location = "group:NSDateComponents+ABFramework.h">
+            </FileRef>
+            <FileRef
+               location = "group:NSDateComponents+ABFramework.m">
+            </FileRef>
+            <FileRef
+               location = "group:NSDictionary+ABFramework.h">
+            </FileRef>
+            <FileRef
+               location = "group:NSDictionary+ABFramework.m">
+            </FileRef>
+            <FileRef
+               location = "group:NSMutableDictionary+ABFramework.h">
+            </FileRef>
+            <FileRef
+               location = "group:NSMutableDictionary+ABFramework.m">
+            </FileRef>
+            <FileRef
+               location = "group:NSObject+ABFramework.h">
+            </FileRef>
+            <FileRef
+               location = "group:NSObject+ABFramework.m">
+            </FileRef>
+            <FileRef
+               location = "group:NSString+ABFramework.h">
+            </FileRef>
+            <FileRef
+               location = "group:NSString+ABFramework.m">
+            </FileRef>
+            <FileRef
                location = "group:NSData+ABFramework.h">
             </FileRef>
             <FileRef
@@ -64,6 +100,12 @@
          <Group
             location = "group:Model"
             name = "Model">
+            <FileRef
+               location = "group:ABDateDescriptor.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABDateDescriptor.m">
+            </FileRef>
          </Group>
          <Group
             location = "group:Protocols"
@@ -87,42 +129,6 @@
          <Group
             location = "group:Categories"
             name = "Categories">
-            <FileRef
-               location = "group:NSDate+ABFramework.h">
-            </FileRef>
-            <FileRef
-               location = "group:NSDate+ABFramework.m">
-            </FileRef>
-            <FileRef
-               location = "group:NSDateComponents+ABFramework.h">
-            </FileRef>
-            <FileRef
-               location = "group:NSDateComponents+ABFramework.m">
-            </FileRef>
-            <FileRef
-               location = "group:NSDictionary+ABFramework.h">
-            </FileRef>
-            <FileRef
-               location = "group:NSDictionary+ABFramework.m">
-            </FileRef>
-            <FileRef
-               location = "group:NSMutableDictionary+ABFramework.h">
-            </FileRef>
-            <FileRef
-               location = "group:NSMutableDictionary+ABFramework.m">
-            </FileRef>
-            <FileRef
-               location = "group:NSObject+ABFramework.h">
-            </FileRef>
-            <FileRef
-               location = "group:NSObject+ABFramework.m">
-            </FileRef>
-            <FileRef
-               location = "group:NSString+ABFramework.h">
-            </FileRef>
-            <FileRef
-               location = "group:NSString+ABFramework.m">
-            </FileRef>
             <FileRef
                location = "group:UIColor+ABFramework.h">
             </FileRef>
@@ -223,6 +229,16 @@
          <Group
             location = "group:Components (View)"
             name = "Components (View)">
+            <Group
+               location = "group:ABQuadMenu"
+               name = "ABQuadMenu">
+               <FileRef
+                  location = "group:ABQuadMenu.h">
+               </FileRef>
+               <FileRef
+                  location = "group:ABQuadMenu.m">
+               </FileRef>
+            </Group>
             <Group
                location = "group:ABActivityView"
                name = "ABActivityView">
@@ -469,12 +485,6 @@
          <Group
             location = "group:Model"
             name = "Model">
-            <FileRef
-               location = "group:ABDateDescriptor.h">
-            </FileRef>
-            <FileRef
-               location = "group:ABDateDescriptor.m">
-            </FileRef>
          </Group>
          <Group
             location = "group:Protocols"
