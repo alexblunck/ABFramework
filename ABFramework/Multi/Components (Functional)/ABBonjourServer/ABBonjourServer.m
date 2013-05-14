@@ -13,8 +13,18 @@
 
 #define NETSERVICE_DOMAIN @"local."
 
+#define INTERNAL_CLIENT_DID_CONNECT @"ABBonjourServer.clientDidConnect"
+
+typedef enum {
+    ABBonjourServerModeNone,
+    ABBonjourServerModeServer,
+    ABBonjourServerModeClient
+} ABBonjourServerMode;
+
 @interface ABBonjourServer () <NSNetServiceDelegate, NSNetServiceBrowserDelegate, NSStreamDelegate>
 {
+    ABBonjourServerMode _mode;
+    
     //Server
     NSNetService *_serverNetService;
     
@@ -25,10 +35,6 @@
     NSNetService *_connectedNetService;
     ABBonjourServerSearchBlock _searchBlock;
     
-    //Data
-    NSMutableData *_tempData;
-    NSNumber *_bytesRead;
-    
     //Socket / Streams
     NSInputStream *_inputStream;
     NSOutputStream *_outputStream;
@@ -38,6 +44,15 @@
 @end
 
 @implementation ABBonjourServer
+
+#pragma mark - Initializer
+-(id) init
+{
+    NSLog(@"ABBonjourServer: ERROR -> Either start Server or Client with dedicated initializers!");
+    return nil;
+}
+
+
 
 #pragma mark - Server
 +(id) startServerWithName:(NSString*)name
@@ -50,6 +65,8 @@
     self = [super init];
     if (self)
     {
+        _mode = ABBonjourServerModeServer;
+        
         //Setup Socket
         in_port_t port = [self setupSocket];
         
@@ -86,20 +103,39 @@
     self = [super init];
     if (self)
     {
-        _searchBlock = [block copy];
+        _mode = ABBonjourServerModeClient;
         
         _foundServices = [NSMutableArray new];
         _resolvedServices = [NSMutableArray new];
         
-        NSString *netServiceType = [NSString stringWithFormat:@"_%@._tcp.", [name lowercaseString]];
-        
-        //Search for broadcasting NSNetService & wait for delegate response
-        _netServiceBrowser = [NSNetServiceBrowser new];
-        _netServiceBrowser.delegate = self;
-        [_netServiceBrowser scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
-        [_netServiceBrowser searchForServicesOfType:netServiceType inDomain:NETSERVICE_DOMAIN];
+        [self searchForServerWithName:name foundServers:block];
     }
     return self;
+}
+
+-(void) searchForServerWithName:(NSString*)name foundServers:(ABBonjourServerSearchBlock)block
+{
+    if (_searchBlock)
+    {
+        _searchBlock(nil);
+        _searchBlock = nil;
+    }
+    
+    _searchBlock = [block copy];
+    
+    NSString *netServiceType = [NSString stringWithFormat:@"_%@._tcp.", [name lowercaseString]];
+    
+    if (_netServiceBrowser)
+    {
+        [_netServiceBrowser stop];
+        _netServiceBrowser = nil;
+    }
+    
+    //Search for broadcasting NSNetService & wait for delegate response
+    _netServiceBrowser = [NSNetServiceBrowser new];
+    _netServiceBrowser.delegate = self;
+    [_netServiceBrowser scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+    [_netServiceBrowser searchForServicesOfType:netServiceType inDomain:NETSERVICE_DOMAIN];
 }
 
 -(void) connectToService:(NSNetService*)aNetService completion:(ABBonjourServerConnectBlock)block
@@ -134,7 +170,7 @@
         }
         
         //Inform server of this client
-        //TO DO
+        [self sendInternalMessage:INTERNAL_CLIENT_DID_CONNECT];
         
         NSLog(@"ABBonjourClient -> Established Connection (%@)", _connectedNetService.hostName);
     }
@@ -149,31 +185,102 @@
     }
 }
 
+-(void) closeClientConnection
+{
+    if (!_connectedNetService) return;
+    
+    NSLog(@"ABBonjourClient -> Disconnecting from %@.", _connectedNetService.hostName);
+    
+    //Inform delegate
+    if ([self.delegate respondsToSelector:@selector(bonjourServerClientWillDisconnect)])
+    {
+        [self.delegate bonjourServerClientWillDisconnect];
+    }
+    
+    [_inputStream close];
+    [_outputStream close];
+    
+    _inputStream = nil;
+    _outputStream = nil;
+    
+    
+}
+
 
 
 #pragma mark - Exchange Data
--(void) sendData:(NSData*)data
-{
-    [_outputStream write:[data bytes] maxLength:[data length]];
-}
-
 -(void) sendDictionary:(NSDictionary*)dic
 {
     NSMutableDictionary *sendDic = [NSMutableDictionary dictionaryWithDictionary:dic];
-#ifdef ABFRAMEWORK_IOS
+    #ifdef ABFRAMEWORK_IOS
     [sendDic setObject:[[UIDevice currentDevice] name] forKey:@"senderDeviceName"];
-#endif
-#ifdef ABFRAMEWORK_MAC
+    #endif
+    #ifdef ABFRAMEWORK_MAC
     [sendDic setObject:[[NSHost currentHost] localizedName] forKey:@"senderDeviceName"];
-#endif
+    #endif
+    
     [sendDic setObject:[[NSProcessInfo processInfo] hostName] forKey:@"senderHostName"];
+    
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:sendDic];
-    [self sendData:data];
+    
+    [_outputStream write:[data bytes] maxLength:[data length]];
 }
 
--(void) sendString:(NSString*)string
+-(void) sendInternalMessage:(NSString*)message
 {
-    [self sendDictionary:@{@"content": string}];
+    [self sendDictionary:@{@"internalMessage": message}];
+}
+
+
+
+#pragma mark - Process Data
+-(void) inputStreamHasData:(NSInputStream*)inputStream
+{
+    int bytesRead = 0;
+    NSMutableData *data = [NSMutableData new];
+    uint8_t buf[1024];
+    NSInteger len = 0;
+    len = [inputStream read:buf maxLength:1024];
+    if(len)
+    {
+        [data appendBytes:(const void *)buf length:len];
+        bytesRead += len;
+        
+        NSDictionary *dic = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        
+        if ([self processInternalMessage:dic])
+        {
+            //
+        }
+        
+        //Inform delegate
+        else if ([self.delegate respondsToSelector:@selector(bonjourServerDidRecieveData:)])
+        {
+            [self.delegate bonjourServerDidRecieveData:dic];
+        }
+    }
+    else
+    {
+        NSLog(@"ABBonjourServer WARNING -> inputStreamHasData: -> No Buffer.");
+    }
+}
+
+-(BOOL) processInternalMessage:(NSDictionary*)dic
+{
+    NSString *message = [dic safeObjectForKey:@"internalMessage"];
+    
+    //Client Did Connect
+    if (message && [message isEqualToString:INTERNAL_CLIENT_DID_CONNECT])
+    {
+        //Change state & inform delegate
+        _lastConnectedDeviceName = [dic safeObjectForKey:@"senderDeviceName"];
+        if ([self.delegate respondsToSelector:@selector(bonjourServerDidChangeLastConnectedDeviceName:)])
+        {
+            [self.delegate bonjourServerDidChangeLastConnectedDeviceName:self.lastConnectedDeviceName];
+        }
+        return YES;
+    }
+    return NO;
 }
 
 
@@ -183,51 +290,34 @@
 {
     switch (eventCode) {
         case NSStreamEventNone:
-            NSLog(@"ABBonjourServer (NSStreamDelegate) -> NSStreamEventNone");
+            if(ABBONJOURSERVER_LOGGING) NSLog(@"ABBonjourServer (NSStreamDelegate) -> NSStreamEventNone");
             break;
         case NSStreamEventOpenCompleted:
-            NSLog(@"ABBonjourServer (NSStreamDelegate) -> NSStreamEventOpenCompleted");
+            if(ABBONJOURSERVER_LOGGING) NSLog(@"ABBonjourServer (NSStreamDelegate) -> NSStreamEventOpenCompleted");
             break;
         case NSStreamEventHasBytesAvailable:
         {
-            NSLog(@"ABBonjourServer (NSStreamDelegate) -> NSStreamEventHasBytesAvailable");
+            if(ABBONJOURSERVER_LOGGING) NSLog(@"ABBonjourServer (NSStreamDelegate) -> NSStreamEventHasBytesAvailable");
             
-            if(!_tempData)
-            {
-                _tempData = [NSMutableData new];
-            }
-            uint8_t buf[1024];
-            NSInteger len = 0;
-            len = [(NSInputStream *)aStream read:buf maxLength:1024];
-            if(len) {
-                
-                [_tempData appendBytes:(const void *)buf length:len];
-                NSInteger bytesReadInt = [_bytesRead integerValue]+len;
-                _bytesRead = [NSNumber numberWithInteger:bytesReadInt];
-            }
-            else
-            {
-                NSLog(@"ABBonjourServer (NSStreamDelegate) -> NSStreamEventHasBytesAvailable: ERROR -> No Buffer.");
-            }
-            
-            //Inform delegate
-            if ([self.delegate respondsToSelector:@selector(bonjourServerDidRecieveData:)])
-            {
-                [self.delegate bonjourServerDidRecieveData:[NSData dataWithData:_tempData]];
-            }
-            
-            _tempData = nil;
+            //Process data
+            [self inputStreamHasData:(NSInputStream*)aStream];
             
             break;
         }
         case NSStreamEventHasSpaceAvailable:
-            NSLog(@"ABBonjourServer (NSStreamDelegate) -> NSStreamEventHasSpaceAvailable");
+            if(ABBONJOURSERVER_LOGGING) NSLog(@"ABBonjourServer (NSStreamDelegate) -> NSStreamEventHasSpaceAvailable");
             break;
         case NSStreamEventErrorOccurred:
-            NSLog(@"ABBonjourServer (NSStreamDelegate) -> NSStreamEventErrorOccurred -> %@", aStream.streamError);
+            if(ABBONJOURSERVER_LOGGING) NSLog(@"ABBonjourServer (NSStreamDelegate) -> NSStreamEventErrorOccurred -> %@", aStream.streamError);
             break;
         case NSStreamEventEndEncountered:
-            NSLog(@"ABBonjourClient (NSStreamDelegate) -> NSStreamEventEndEncountered");
+            if(ABBONJOURSERVER_LOGGING) NSLog(@"ABBonjourClient (NSStreamDelegate) -> NSStreamEventEndEncountered");
+            
+            if (_mode == ABBonjourServerModeClient)
+            {
+                [self closeClientConnection];
+            }
+            
             break;
         default:
             break;
@@ -265,6 +355,22 @@
 -(void) netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveService:(NSNetService *)aNetService moreComing:(BOOL)moreComing
 {
     NSLog(@"%s", __PRETTY_FUNCTION__);
+    
+    if ([_foundServices containsObject:aNetService])
+    {
+        [_foundServices removeObject:aNetService];
+    }
+    
+    if ([_resolvedServices containsObject:aNetService])
+    {
+        [_resolvedServices removeObject:aNetService];
+    }
+    
+    //Execute block
+    if (_searchBlock)
+    {
+        _searchBlock(_resolvedServices);
+    }
 }
 
 -(void) netServiceBrowserDidStopSearch:(NSNetServiceBrowser *)aNetServiceBrowser

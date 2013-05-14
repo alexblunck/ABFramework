@@ -8,16 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
+#ifndef ABBONJOURSERVER_LOGGING
+#define ABBONJOURSERVER_LOGGING 0
+#endif
+
 typedef void (^ABBonjourServerSearchBlock) (NSArray *foundServices);
 typedef void (^ABBonjourServerConnectBlock) (BOOL success);
-
 
 /**
  * ABBonjourServerDelegate
  */
 @protocol ABBonjourServerDelegate <NSObject>
 @optional
--(void) bonjourServerDidRecieveData:(NSData*)data;
+-(void) bonjourServerDidRecieveData:(NSDictionary*)dic;
+-(void) bonjourServerDidChangeLastConnectedDeviceName:(NSString*)deviceName;
+-(void) bonjourServerClientWillDisconnect;
 @end
 
 
@@ -39,18 +44,26 @@ typedef void (^ABBonjourServerConnectBlock) (BOOL success);
 //Start client and search for published servers (services) with a specific name
 +(id) startClientForServerWithName:(NSString*)name foundServers:(ABBonjourServerSearchBlock)block;
 
+-(void) searchForServerWithName:(NSString*)name foundServers:(ABBonjourServerSearchBlock)block;
+
 //Connect to a NSNetService provided by the "startClientForServerWithName:foundServers:" method
 -(void) connectToService:(NSNetService*)aNetService completion:(ABBonjourServerConnectBlock)block;
+
+-(void) closeClientConnection;
+
+
 
 
 /**
  * Exchanging Data
  */
--(void) sendData:(NSData*)data;
+//-(void) sendData:(NSData*)data;
 -(void) sendDictionary:(NSDictionary*)dic;
--(void) sendString:(NSString*)string;
+//-(void) sendString:(NSString*)string;
 
 
 @property (nonatomic, weak) id <ABBonjourServerDelegate> delegate;
+
+@property (nonatomic, copy, readonly) NSString *lastConnectedDeviceName;
 
 @end
