@@ -372,23 +372,22 @@ static ABDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 +(ABDateDescriptor*) smallestDateDescriptorUntil:(NSDate*)date
 {
     NSDate *currentDate = [NSDate date];
-    //date = [NSDate dateFromYear:date.year month:date.monthOfYear day:date.dayOfMonth hour:0 minute:0];
     
     ABDateDescriptor *returnDescriptor = [ABDateDescriptor new];
     NSMutableString *dateUnitName = [NSMutableString new];
     
     //Check if Date is in under 60 Seconds
-    if (abs([currentDate secondsUntilDate:date]) <= 60) {
+    if (abs((int)[currentDate secondsUntilDate:date]) <= 60) {
         returnDescriptor.dateUnits = [currentDate secondsUntilDate:date];
         [dateUnitName appendString:@"second"];
     }
     //Check if Date is under 60 Minutes
-    else if (abs([currentDate minutesUntilDate:date]) <= 60) {
+    else if (abs((int)[currentDate minutesUntilDate:date]) <= 60) {
         returnDescriptor.dateUnits = [currentDate minutesUntilDate:date];
         [dateUnitName appendString:@"minute"];
     }
     //Check if Date is under 24 Hours
-    else if (abs([currentDate hoursUntilDate:date]) <= 24) {
+    else if (abs((int)[currentDate hoursUntilDate:date]) <= 24) {
         returnDescriptor.dateUnits = [currentDate hoursUntilDate:date];
         [dateUnitName appendString:@"hour"];
     }
@@ -399,7 +398,7 @@ static ABDateWeekNumberingSystem	_weekNumberingSystem	= 1;
     }
     
     //Add 's' after dateUnitName if dateUnit is more than 1
-    if (abs(returnDescriptor.dateUnits) > 1 || abs(returnDescriptor.dateUnits) == 0) {
+    if (abs((int)returnDescriptor.dateUnits) > 1 || abs((int)returnDescriptor.dateUnits) == 0) {
         [dateUnitName appendString:@"s"];
     }
     

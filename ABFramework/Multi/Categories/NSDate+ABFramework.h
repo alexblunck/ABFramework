@@ -23,7 +23,6 @@ typedef enum {
 	ABDateHourFormat12Hour
 } ABDateHourFormat;
 
-
 @interface NSDate (ABFramework)
 
 //Global Config

@@ -59,7 +59,7 @@
     NSError *error = nil;
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regexPattern options:NSRegularExpressionCaseInsensitive error:&error];
     
-    NSTextCheckingResult *result = [regex firstMatchInString:self options:NSRegularExpressionCaseInsensitive range:NSMakeRange(0, [self length])];
+    NSTextCheckingResult *result = [regex firstMatchInString:self options:0 range:NSMakeRange(0, [self length])];
     
     //Make sure index isn't out of range
     if (index <= [result numberOfRanges]-1)

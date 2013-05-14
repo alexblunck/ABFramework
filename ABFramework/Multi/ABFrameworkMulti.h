@@ -24,13 +24,20 @@
 /**
  * Model
  */
-
+#import "ABDateDescriptor.h"
 
 /**
  * Categories
  */
 #import "NSArray+ABFramework.h"
 #import "NSData+ABFramework.h"
+#import "NSDateComponents+ABFramework.h"
+#import "NSDate+ABFramework.h"
+#import "NSDictionary+ABFramework.h"
+#import "NSMutableDictionary+ABFramework.h"
+#import "NSString+ABFramework.h"
+#import "NSObject+ABFramework.h"
+
 
 /**
  * Sub Classes
