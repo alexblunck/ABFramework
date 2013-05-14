@@ -14,4 +14,6 @@
 
 -(id) safeObjectAtIndex:(NSUInteger)index;
 
+-(NSArray*) arrayByAddingObject:(id)object;
+
 @end

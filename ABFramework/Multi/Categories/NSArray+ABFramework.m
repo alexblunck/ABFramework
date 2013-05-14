@@ -22,8 +22,15 @@
     {
         return [self objectAtIndex:index];
     }
-    NSLog(@"NSArray+ABFramework: Warning -> Attempted to access on existent index[%li]", (long)index);
+    NSLog(@"NSArray+ABFramework: Warning -> Attempted to access non existent index[%li]", (long)index);
     return nil;
+}
+
+-(NSArray*) arrayByAddingObject:(id)object
+{
+    NSMutableArray *array = [NSMutableArray arrayWithArray:self];
+    [array addObject:object];
+    return [NSArray arrayWithArray:array];
 }
 
 @end
