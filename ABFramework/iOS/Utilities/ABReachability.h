@@ -66,6 +66,8 @@ typedef void (^NetworkUnreachable)(ABReachability * reachability);
 
 @property (nonatomic, assign) BOOL reachableOnWWAN;
 
++(BOOL) isOnWifiNetwork;
+
 +(ABReachability*)reachabilityWithHostname:(NSString*)hostname;
 +(ABReachability*)reachabilityForInternetConnection;
 +(ABReachability*)reachabilityWithAddress:(const struct sockaddr_in*)hostAddress;

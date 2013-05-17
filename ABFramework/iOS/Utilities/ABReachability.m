@@ -72,6 +72,19 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 
 @synthesize reachabilityObject;
 
+#pragma mark - Utility
++(BOOL) isOnWifiNetwork
+{
+    ABReachability *reachability = [ABReachability reachabilityForInternetConnection];
+    [reachability startNotifier];
+    NetworkStatus status = [reachability currentReachabilityStatus];
+    if (status == ReachableViaWiFi) {
+        return YES;
+    }
+    return NO;
+    [reachability stopNotifier];
+}
+
 #pragma mark - class constructor methods
 +(ABReachability*)reachabilityWithHostname:(NSString*)hostname
 {
