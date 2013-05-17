@@ -118,6 +118,27 @@
          <Group
             location = "group:Utilities"
             name = "Utilities">
+            <FileRef
+               location = "group:ABUtilities.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABCommon.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABCommon.m">
+            </FileRef>
+            <FileRef
+               location = "group:ABMacros.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABMath.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABMath.m">
+            </FileRef>
+            <FileRef
+               location = "group:ABTypes.h">
+            </FileRef>
          </Group>
       </Group>
       <Group
@@ -438,12 +459,6 @@
                <FileRef
                   location = "group:ABTabBarItem.m">
                </FileRef>
-               <FileRef
-                  location = "group:ABTabButton.h">
-               </FileRef>
-               <FileRef
-                  location = "group:ABTabButton.m">
-               </FileRef>
             </Group>
             <Group
                location = "group:ABTableStackController"
@@ -519,37 +534,16 @@
             location = "group:Utilities"
             name = "Utilities">
             <FileRef
-               location = "group:ABCommon.h">
-            </FileRef>
-            <FileRef
-               location = "group:ABCommon.m">
-            </FileRef>
-            <FileRef
                location = "group:ABFrame.h">
             </FileRef>
             <FileRef
                location = "group:ABFrame.m">
             </FileRef>
             <FileRef
-               location = "group:ABMacros.h">
-            </FileRef>
-            <FileRef
-               location = "group:ABMath.h">
-            </FileRef>
-            <FileRef
-               location = "group:ABMath.m">
-            </FileRef>
-            <FileRef
                location = "group:ABReachability.h">
             </FileRef>
             <FileRef
                location = "group:ABReachability.m">
-            </FileRef>
-            <FileRef
-               location = "group:ABTypes.h">
-            </FileRef>
-            <FileRef
-               location = "group:ABUtilities.h">
             </FileRef>
          </Group>
       </Group>

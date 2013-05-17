@@ -15,6 +15,11 @@
 #endif
 
 /**
+ * Multi
+ */
+#import "ABFrameworkMulti.h"
+
+/**
  * iOS
  */
 #if TARGET_OS_IPHONE
@@ -29,10 +34,7 @@
 #import "ABFrameworkMac.h"
 #endif
 
-/**
- * Multi
- */
-#import "ABFrameworkMulti.h"
+
 
 
 
