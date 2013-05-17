@@ -29,7 +29,7 @@
     }
     
     //Remove height of UINavigationBar from own view if this viewController has a UINavigationController
-    if (self.navigationController)
+    if (self.navigationController && !self.navigationController.navigationBarHidden)
     {
         self.view.frame = CGRectOffsetSizeHeight(self.view.frame, -self.navigationController.navigationBar.height);
     }
