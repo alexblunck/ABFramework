@@ -7,12 +7,12 @@ Pod::Spec.new do |s|
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.source       = { :git => "https://github.com/ablfx/ABFramework.git", :tag => "v0.0.1" }
 
-  s.requires_arc = true
-  s.resource = 'ABFramework/ABFramework.bundle'
-
   #iOS
   s.subspec "iOS" do |sp|
     sp.platform = :ios, "5.1"
+
+    sp.requires_arc = true
+    sp.resource = 'ABFramework/ABFramework.bundle'
 
     sp.source_files = 'ABFramework/**/*.{h,m}'
     sp.exclude_files = 'ABFramework/OSX'
@@ -26,6 +26,9 @@ Pod::Spec.new do |s|
   #Mac
   s.subspec "OSX" do |sp|
     sp.platform = :osx, "10.8"
+
+    sp.requires_arc = true
+    sp.resource = 'ABFramework/ABFramework.bundle'
 
     sp.source_files = 'ABFramework/**/*.{h,m}'
     sp.exclude_files = 'ABFramework/iOS'
