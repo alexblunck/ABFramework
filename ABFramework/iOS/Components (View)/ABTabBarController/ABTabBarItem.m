@@ -11,30 +11,23 @@
 @implementation ABTabBarItem
 
 #pragma mark - Utility
-+(id) itemWithImageName:(NSString*)imageName selectedImageName:(NSString*)selectedImageName
++(id) itemWithImageName:(NSString*)imageName viewController:(UIViewController*)viewController
 {
-    UIImage *image = [UIImage imageNamed:imageName];
-    UIImage *selectedImage = [UIImage imageNamed:selectedImageName];
-    return [self itemWithImage:image selectedImage:selectedImage];
-}
-
-+(id) itemWithImage:(UIImage*)image selectedImage:(UIImage*)selectedImage
-{
-    return [[self alloc] initWithImage:image selectedImage:selectedImage];
+    return [[self alloc] initWithImageName:imageName viewController:viewController];
 }
 
 
 
 #pragma mark - Intitializer
--(id) initWithImage:(UIImage*)image selectedImage:(UIImage*)selectedImage
+-(id) initWithImageName:(NSString*)imageName viewController:(UIViewController*)viewController
 {
     self = [super init];
-    if (self) {
-        
-        self.image = image;
-        self.selectedImage = selectedImage;
-        
-    } return self;
+    if (self)
+    {
+        self.viewController = viewController;
+        self.imageName = imageName;
+    }
+    return self;
 }
 
 @end

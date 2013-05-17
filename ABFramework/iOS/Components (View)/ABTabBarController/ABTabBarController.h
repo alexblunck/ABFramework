@@ -11,29 +11,28 @@
 @interface ABTabBarController : UIViewController
 
 //Initializer
--(id) initWithViewControllers:(NSArray*)viewControllers;
+-(id) initWithTabBarItems:(NSArray*)tabBarItems;
 
 //Helper
--(void) forceSwitchToTabIndex:(int)tabIndex;
+-(void) forceSwitchToTabIndex:(NSInteger)tabIndex;
 
 //Array that holds all ViewControllers available from the TabBar
-@property(nonatomic, strong) NSArray *viewControllers;
+@property (nonatomic, strong) NSArray *tabBarItems;
 
-//The ViewController that is shown initially by the Tab Controller
-@property(nonatomic, weak) id defaultViewController;
-
-@property(nonatomic, weak) id activeViewController;
+@property (nonatomic, strong) ABTabBarItem *activeTabBarItem;
 
 //Height of the TabBar View
-@property(nonatomic, assign) int tabBarHeight;
+@property (nonatomic, assign) CGFloat tabBarHeight;
 
 //Spacing between Tabs
-@property(nonatomic, assign) int tabSpacing;
+@property (nonatomic, assign) CGFloat tabSpacing;
 
 //TabBar Background Image
-@property(nonatomic, strong) UIImage *tabBarBackgroundImage;
+@property (nonatomic, copy) NSString *tabBarBackgroundImageName;
 
 //TabBar View
-@property(nonatomic, strong) ABTabBar *tabBar;
+@property (nonatomic, strong) ABTabBar *tabBar;
+
+@property (nonatomic, strong) id activeViewController;
 
 @end

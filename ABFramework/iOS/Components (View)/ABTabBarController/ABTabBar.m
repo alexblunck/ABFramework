@@ -8,8 +8,10 @@
 
 #import "ABTabBar.h"
 
-@interface ABTabBar () {
-    NSMutableArray *_tabButtonArray;
+@interface ABTabBar () <ABViewDelegate>
+{
+    NSMutableArray *_tabViewArray;
+    UIView *_backgroundView;
 }
 @end
 
@@ -19,8 +21,10 @@
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    if (self) {
-        
+    if (self)
+    {
+        //Allocation
+        _tabViewArray = [NSMutableArray new];
     }
     return self;
 }
@@ -32,17 +36,15 @@
 {
     [super willMoveToSuperview:newSuperview];
     
-    //Allocation
-    _tabButtonArray = [NSMutableArray new];
-    
     //Set Background Image
-    if (self.backgroundImage) {
-        UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:self.backgroundImage];
-        backgroundImageView.frame = CGRectMake(0, 0, self.backgroundImage.size.width, self.backgroundImage.size.height);
-        [self addSubview:backgroundImageView];
+    if (self.backgroundImageName)
+    {
+        _backgroundView = [[ABView alloc] initWithBackgroundImageName:self.backgroundImageName];
+        [self addSubview:_backgroundView];
     }
     //If none has been specified use a UIToolBar View
-    else {
+    else
+    {
         UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, newSuperview.bounds.size.width, self.height)];
         [self addSubview:toolBar];
     }
@@ -58,101 +60,85 @@
 {
     //Retrieve Screen Dimensions
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    int screenWidth = screenSize.width;
+    CGFloat screenWidth = screenSize.width;
     
-    int tabCount = self.viewControllers.count;
+    NSInteger tabCount = self.tabBarItems.count;
     
-    //Get width of all tabs combined
-    int tabsWidth = 0;
-    for (ABViewController *viewController in self.viewControllers) {
-        tabsWidth += viewController.abTabBarItem.image.size.width;
+    //Calculate width of all tabs combined
+    CGFloat tabsWidth = 0;
+    for (ABTabBarItem *item in self.tabBarItems)
+    {
+        UIImage *tabImage = [UIImage imageNamed:item.imageName];
+        tabsWidth += tabImage.size.width;
     }
     
     //Width Of all tabs + spacing
-    //int tabsWidthWithSpacing = tabsWidth + ((tabCount - 1) * self.tabSpacing);
-    int tabsWidthWithSpacing = tabsWidth + ((tabCount -1) * self.tabSpacing);
+    CGFloat tabsWidthWithSpacing = tabsWidth + ((tabCount -1) * self.tabSpacing);
     
     //Keep track of Origin
     //Computer first tab 's origin to center all tabs (don't add the actual tabSpacing before the first tab)
-    int currentOrigin = (screenWidth - tabsWidthWithSpacing) / 2;
+    CGFloat currentOrigin = (screenWidth - tabsWidthWithSpacing) / 2;
     
-    //Loop through ViewControllers and create tabs
-    for (ABViewController *viewController in self.viewControllers) {
-        
+    //Loop through ABTabBarItem 's and create tabs
+    for (ABTabBarItem *item in self.tabBarItems)
+    {
         //Retrieve ABTabBarItem For Controller
-        ABTabBarItem *tabBarItem = viewController.abTabBarItem;
+        ABView *view = [[ABView alloc] initWithBackgroundImageName:item.imageName];
+        view.selectedBackgroundImageName = [item.imageName stringByAppendingString:@"-sel"];
+        view.frame = CGRectChangingOriginX(view.frame, currentOrigin);
         
-        //Create Button
-        ABTabButton *tabButton = [ABTabButton buttonWithType:UIButtonTypeCustom];
-        //Set Custom ImageView on Button
-        tabButton.tabImageView = [[UIImageView alloc] initWithImage:tabBarItem.image highlightedImage:tabBarItem.selectedImage];
-        //Button frame.size = Size of Image
-        tabButton.frame = CGRectMake(currentOrigin, 0, tabBarItem.image.size.width, tabBarItem.image.size.height);
+        view.userData = @{@"itemIndex": NSNumberInteger([self.tabBarItems indexOfObject:item])};
+        view.delegate = self;
         
-        //Set ViewController's array index
-        tabButton.viewControllerIndex = [self.viewControllers indexOfObject:viewController];
+        //[ABAlertView showAlertWithMessage:item.imageName];
         
-        //Set image highlighted on Touch Down
-        [tabButton addTarget:self action:@selector(highlight:) forControlEvents:UIControlEventTouchDown];
-        //Set image unHighlighted on Touch Up Outside / Drag Outside
-        [tabButton addTarget:self action:@selector(unHighlight:) forControlEvents:UIControlEventTouchUpOutside|UIControlEventTouchDragOutside];
-        //Perform action on Touch Up Inside
-        [tabButton addTarget:self action:@selector(tabTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
-        
-        //Add to tabButtonArray
-        [_tabButtonArray addObject:tabButton];
-        [self addSubview:_tabButtonArray.lastObject];
+        [_tabViewArray addObject:view];
+
+        [_backgroundView addSubview:[_tabViewArray lastObject]];
         
         //Compute Origin for next Tab Button
-        currentOrigin = tabButton.frame.origin.x + tabBarItem.image.size.width + self.tabSpacing;
+        currentOrigin = view.frame.origin.x + view.width + self.tabSpacing;
     }
     
     //Set Initial selected Tab
-    ABTabButton *selectedButton = [_tabButtonArray safeObjectAtIndex:self.selectedIndex];
-    [self highlight:selectedButton];
+    ABView *selectedTabView = [_tabViewArray safeObjectAtIndex:self.selectedIndex];
+    selectedTabView.selected = YES;
 }
 
 
 
-#pragma mark - Buttons
--(void) tabTouchUpInside:(id)sender
+#pragma mark - ABViewDelegate
+-(void) abViewDidTouchUpInside:(ABView *)selectedView
 {
-    ABTabButton *tabButton = sender;
-    ABViewController *viewController = [self.viewControllers safeObjectAtIndex:tabButton.viewControllerIndex];
+    ABTabBarItem *item = [self.tabBarItems safeObjectAtIndex:[[selectedView.userData safeObjectForKey:@"itemIndex"] integerValue]];
     
     //Unhightlight all other tabs / highlight selected one
-    for (ABTabButton *button in _tabButtonArray) {
-        if (button != tabButton) {
-            [self unHighlight:button];
+    for (ABView *view in _tabViewArray)
+    {
+        if (view != selectedView)
+        {
+            view.selected = NO;
+        }
+        else
+        {
+            view.selected = YES;
         }
     }
     
-    [self.delegate tabBarTabSelected:viewController];
+    [self.delegate tabBarItemSelected:item];
 }
 
 
 
 #pragma mark - Helper
--(void) forceSwitchToTabIndex:(int)tabIndex
+-(void) forceSwitchToTabIndex:(NSInteger)tabIndex
 {
     //Highlight Correct Tab
-    ABTabButton *tabButton = [_tabButtonArray safeObjectAtIndex:tabIndex];
-    [self highlight:tabButton];
+    ABView *tabView = [_tabViewArray safeObjectAtIndex:tabIndex];
+    //tabView.selected = YES;
     
     //Simulate touchUpInside
-    [self tabTouchUpInside:tabButton];
-}
-
--(void) highlight:(id)sender
-{
-    ABTabButton *tabButton = sender;
-    tabButton.tabImageView.highlighted = YES;
-}
-
--(void) unHighlight:(id)sender
-{
-    ABTabButton *tabButton = sender;
-    tabButton.tabImageView.highlighted = NO;
+    [self abViewDidTouchUpInside:tabView];
 }
 
 @end

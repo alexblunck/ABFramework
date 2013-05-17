@@ -19,12 +19,13 @@
 @implementation ABTabBarController
 
 #pragma mark - Initializer
--(id) initWithViewControllers:(NSArray*)viewControllers {
+-(id) initWithTabBarItems:(NSArray*)tabBarItems
+{
     self = [super init];
     if (self) {
 
         //Set viewControllers property
-        self.viewControllers = [NSArray arrayWithArray:viewControllers];
+        self.tabBarItems = [NSArray arrayWithArray:tabBarItems];
         
     } return self;
 }
@@ -44,11 +45,13 @@
     CGFloat statusBarHeight = 20;
     
     //If no tabBarHeight is set, use default height of 49
-    if (!self.tabBarHeight) {
+    if (!self.tabBarHeight)
+    {
         self.tabBarHeight = 49;
     }
     //If no tabSpacing is set, use default of 0
-    if (!self.tabSpacing) {
+    if (!self.tabSpacing)
+    {
         self.tabSpacing = 0;
     }
     
@@ -57,27 +60,30 @@
     CGRect tabBarRect = CGRectMake(0, screenHeight-statusBarHeight-self.tabBarHeight, screenWidth, self.tabBarHeight);
     self.tabBar = [[ABTabBar alloc] initWithFrame:tabBarRect];
     self.tabBar.delegate = self;
-    self.tabBar.backgroundImage = self.tabBarBackgroundImage;
+    self.tabBar.backgroundImageName = self.tabBarBackgroundImageName;
     self.tabBar.height = self.tabBarHeight;
     self.tabBar.tabSpacing = self.tabSpacing;
-    self.tabBar.viewControllers = self.viewControllers;
+    self.tabBar.tabBarItems = self.tabBarItems;
     
     //Show default ViewController - Highlight correct Tab
-    //Loop through viewControllers and check if one is marked as defaultViewController
     //else use first in Array
     BOOL defaultSet = NO;
-    for (ABViewController *vc in self.viewControllers) {
-        if (vc.abTabBarItem.isDefaultTab) {
+    for (ABTabBarItem *item in self.tabBarItems)
+    {
+        if (item.isDefaultTab)
+        {
             defaultSet = YES;
-            self.tabBar.selectedIndex = [self.viewControllers indexOfObject:vc];
+            self.tabBar.selectedIndex = [self.tabBarItems indexOfObject:item];
         }
     }
-    if (!defaultSet) {
+    
+    if (!defaultSet)
+    {
         self.tabBar.selectedIndex = 0;
     }
     
     //Do the actual View switching
-    [self switchToViewController:[self.viewControllers safeObjectAtIndex:self.tabBar.selectedIndex]];
+    [self switchToTabBarItem:[self.tabBarItems safeObjectAtIndex:self.tabBar.selectedIndex]];
     
     //Add tabBar as SubView
     [self.view addSubview:self.tabBar];
@@ -86,14 +92,14 @@
 
 
 #pragma mark - Helper
--(void) forceSwitchToTabIndex:(int)tabIndex
+-(void) forceSwitchToTabIndex:(NSInteger)tabIndex
 {
     [self.tabBar forceSwitchToTabIndex:tabIndex];
 }
 
--(void) switchToViewController:(id)viewController
+-(void) switchToTabBarItem:(ABTabBarItem*)item
 {
-    if ([viewController isEqual:self.activeViewController])
+    if ([item isEqual:self.activeTabBarItem])
     {
         return;
     }
@@ -102,15 +108,15 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ABTabBarController.TabSwitched" object:nil];
     
     //Switch activeViewController
-    self.activeViewController = nil;
-    self.activeViewController = viewController;
+    self.activeTabBarItem = nil;
+    self.activeTabBarItem = item;
     
     //Remove current active view
     [_activeView removeFromSuperview];
     _activeView = nil;
     
     //Show new view
-    _activeView = [(ABViewController*)viewController view];
+    _activeView = item.viewController.view;
     
     //Restrict frame of activeView to space above tabBar View
     _activeView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-self.tabBarHeight);
@@ -121,31 +127,29 @@
 
 
 #pragma mark - ABTabBarDelegate
--(void) tabBarTabSelected:(id)viewController {
-    ABViewController *vc = viewController;
-    //ABTabBarItem *tabBarItem = vc.abTabBarItem;
-    
-    [self switchToViewController:vc];
+-(void) tabBarItemSelected:(ABTabBarItem*)item
+{
+    [self switchToTabBarItem:item];
 }
 
 
 
 #pragma mark - Accessors
--(void) setViewControllers:(NSArray *)viewControllers
+-(void) setTabBarItems:(NSArray *)tabBarItems
 {
-    _viewControllers = viewControllers;
+    _tabBarItems = tabBarItems;
     
     //Loop through added ViewController
-    for (id viewController in _viewControllers)
+    for (ABTabBarItem *item in _tabBarItems)
     {
         //If ViewController is ABViewController set it's abTabBarController property
-        if ([viewController respondsToSelector:@selector(setAbTabBarController:)])
+        if ([item.viewController respondsToSelector:@selector(setAbTabBarController:)])
         {
-            [(ABViewController*)viewController setAbTabBarController:self];
+            [(ABViewController*)item.viewController setAbTabBarController:self];
             
-            if ([viewController respondsToSelector:@selector(viewControllers)])
+            if ([item.viewController respondsToSelector:@selector(viewControllers)])
             {
-                for (id subViewController in [(ABNavigationController*)viewController viewControllers])
+                for (id subViewController in [(ABNavigationController*)item.viewController viewControllers])
                 {
                     if ([subViewController respondsToSelector:@selector(setAbTabBarController:)])
                     {
@@ -155,7 +159,14 @@
             }
         }
     }
-    
+}
+
+
+
+#pragma mark - Accessors
+-(id) activeViewController
+{
+    return self.activeTabBarItem.viewController;
 }
 
 
@@ -164,23 +175,23 @@
 //iOS 6 (Ask the activeViewController)
 -(BOOL) shouldAutorotate
 {
-    return [self.activeViewController shouldAutorotate];
+    return [self.activeTabBarItem.viewController shouldAutorotate];
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    return [self.activeViewController supportedInterfaceOrientations];
+    return [self.activeTabBarItem.viewController supportedInterfaceOrientations];
 }
 
 -(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    [self.activeViewController willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+    [self.activeTabBarItem.viewController willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
 }
 
 //iOS 5 (Ask the activeViewController)
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return [self.activeViewController shouldAutorotateToInterfaceOrientation:interfaceOrientation];
+    return [self.activeTabBarItem.viewController shouldAutorotateToInterfaceOrientation:interfaceOrientation];
 }
 
 @end
