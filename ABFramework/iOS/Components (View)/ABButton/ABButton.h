@@ -22,7 +22,10 @@
 //Conversion
 -(UIBarButtonItem*) barButtonItem;
 
-@property(nonatomic, copy) NSDictionary *userData;
+@property (nonatomic, copy) NSDictionary *userData;
+
+//Button image
+@property (nonatomic, copy) NSString *imageName;
 
 //Use custom selected image
 @property (nonatomic, copy) NSString *selectedImageName;

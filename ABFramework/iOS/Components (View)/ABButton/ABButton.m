@@ -195,6 +195,18 @@
 
 
 #pragma mark - Accessors
+#pragma mark - imageNamr
+-(void) setImageName:(NSString *)imageName
+{
+    _imageName = imageName;
+    
+    UIImage *image = [UIImage imageNamed:_imageName];
+    if (image)
+    {
+        [self setImage:image forState:UIControlStateNormal];
+    }
+}
+
 #pragma mark - selectedImageName
 -(void) setSelectedImageName:(NSString *)selectedImageName
 {
@@ -203,7 +215,7 @@
     UIImage *imageSel = [UIImage imageNamed:selectedImageName];
     if (imageSel)
     {
-        [self setImage:imageSel forState:UIControlStateSelected];
+        [self setImage:imageSel forState:UIControlStateHighlighted];
     }
 }
 
