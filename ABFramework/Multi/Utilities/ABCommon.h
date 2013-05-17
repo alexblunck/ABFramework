@@ -21,10 +21,11 @@ BOOL isNSArray(id object);
 BOOL isNSDictionary(id object);
 BOOL isClassOfType(id object, Class aClass);
 
-//Networking
-+(BOOL) isOnWifiNetwork;
-
 //Toggle
-+(BOOL) toggleBoolean:(BOOL)boolean;
+/**
+ * Pass in the memory address of a boolean to change said boolean
+ * E.g. toggleBoolean(&myBool);
+ */
+BOOL toggledBoolean(BOOL aBoolean);
 
 @end

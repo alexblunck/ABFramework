@@ -7,7 +7,6 @@
 //
 
 #import "ABCommon.h"
-#import "ABReachability.h"
 
 @implementation ABCommon
 
@@ -54,25 +53,11 @@ BOOL isClassOfType(id object, Class aClass)
 }
 
 
-#pragma mark - Networking
-+(BOOL) isOnWifiNetwork
-{
-    ABReachability *reachability = [ABReachability reachabilityForInternetConnection];
-    [reachability startNotifier];
-    NetworkStatus status = [reachability currentReachabilityStatus];
-    if (status == ReachableViaWiFi) {
-        return YES;
-    }
-    return NO;
-    [reachability stopNotifier];
-}
-
-
 
 #pragma mark - Toggle
-+(BOOL) toggleBoolean:(BOOL)boolean
+BOOL toggledBoolean(BOOL aBoolean)
 {
-    return (boolean) ? NO : YES;
+    return (aBoolean) ? NO : YES;
 }
 
 @end
