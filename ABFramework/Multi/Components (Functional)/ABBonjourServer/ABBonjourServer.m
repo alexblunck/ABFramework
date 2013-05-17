@@ -211,6 +211,10 @@ typedef enum {
 #pragma mark - Exchange Data
 -(void) sendDictionary:(NSDictionary*)dic
 {
+    if (!_outputStream) {
+        return;
+    }
+    
     NSMutableDictionary *sendDic = [NSMutableDictionary dictionaryWithDictionary:dic];
     #ifdef ABFRAMEWORK_IOS
     [sendDic setObject:[[UIDevice currentDevice] name] forKey:@"senderDeviceName"];
@@ -246,17 +250,31 @@ typedef enum {
         [data appendBytes:(const void *)buf length:len];
         bytesRead += len;
         
-        NSDictionary *dic = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        NSDictionary *dic = nil;
         
-        if ([self processInternalMessage:dic])
+        @try
         {
-            //
+            dic = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+            
+            //Cehck for internal message
+            if ([self processInternalMessage:dic])
+            {
+                //
+            }
+            
+            //Inform delegate
+            else if ([self.delegate respondsToSelector:@selector(bonjourServerDidRecieveData:)])
+            {
+                [self.delegate bonjourServerDidRecieveData:dic];
+            }
         }
-        
-        //Inform delegate
-        else if ([self.delegate respondsToSelector:@selector(bonjourServerDidRecieveData:)])
+        @catch (NSException *exception)
         {
-            [self.delegate bonjourServerDidRecieveData:dic];
+            NSLog(@"ABBonjourServer: ERROR: Couldn't recognize send data (NSKeyedUnarchiver failed).");
+        }
+        @finally
+        {
+            
         }
     }
     else

@@ -57,9 +57,7 @@ typedef void (^ABBonjourServerConnectBlock) (BOOL success);
 /**
  * Exchanging Data
  */
-//-(void) sendData:(NSData*)data;
 -(void) sendDictionary:(NSDictionary*)dic;
-//-(void) sendString:(NSString*)string;
 
 
 @property (nonatomic, weak) id <ABBonjourServerDelegate> delegate;
