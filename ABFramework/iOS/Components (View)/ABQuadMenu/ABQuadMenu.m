@@ -72,11 +72,11 @@
     self = [super init];
     if (self)
     {
-        if (items.count != 3)
-        {
-            NSLog(@"ABQuadMenu: ERROR -> You need to supply exactly 3 ABQuadMenuItem 's.");
-            return nil;
-        }
+//        if (items.count != 3)
+//        {
+//            NSLog(@"ABQuadMenu: ERROR -> You need to supply exactly 3 ABQuadMenuItem 's.");
+//            return nil;
+//        }
         
         //Add "close" item
         ABQuadMenuItem *closeItem = [ABQuadMenuItem itemWithIconName:@"circled-cross" title:@"Close" action:nil];
@@ -161,7 +161,19 @@
 {
     [_intialRegions enumerateRectsUsingBlock:^(CGRect rect, NSUInteger idx) {
         
+        //Don't add more views than there are items
+        if (idx > _items.count-1)
+        {
+            return;
+        }
+        
         ABQuadMenuItem *item = [_items safeObjectAtIndex:idx];
+        
+        BOOL lastItem = NO;
+        if ([_items indexOfObject:item] == _items.count-1)
+        {
+            lastItem = YES;
+        }
         
         //Containment view
         ABView *view = [[ABView alloc] initWithFrame:rect];
@@ -174,7 +186,7 @@
         UIColor *selectedColor = [self themeSelectedIconColor];
         
         //Close item
-        if (idx == 3)
+        if (lastItem)
         {
             color = [self themeCloseIconColor];
             selectedColor = [self themeSelectedCloseIconColor];
