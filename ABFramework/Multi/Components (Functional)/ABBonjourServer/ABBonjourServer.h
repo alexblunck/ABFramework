@@ -44,11 +44,13 @@ typedef void (^ABBonjourServerConnectBlock) (BOOL success);
 //Start client and search for published servers (services) with a specific name
 +(id) startClientForServerWithName:(NSString*)name foundServers:(ABBonjourServerSearchBlock)block;
 
+//Perform search for a service with an initialised client
 -(void) searchForServerWithName:(NSString*)name foundServers:(ABBonjourServerSearchBlock)block;
 
 //Connect to a NSNetService provided by the "startClientForServerWithName:foundServers:" method
 -(void) connectToService:(NSNetService*)aNetService completion:(ABBonjourServerConnectBlock)block;
 
+//Close current connection
 -(void) closeClientConnection;
 
 
