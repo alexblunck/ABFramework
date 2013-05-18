@@ -73,7 +73,18 @@ typedef enum {
         //Setup NSNetService
         NSString *netServiceType = [NSString stringWithFormat:@"_%@._tcp.", [name lowercaseString]];
         
-        _serverNetService = [[NSNetService alloc] initWithDomain:@"local." type:netServiceType name:name port:ntohs(port)];
+        NSString *netServiceName = nil;
+        #ifdef ABFRAMEWORK_IOS
+        netServiceName = [[UIDevice currentDevice] name];
+        #endif
+        #ifdef ABFRAMEWORK_MAC
+        netServiceName = [[NSHost currentHost] localizedName];
+        #endif
+        
+        _serverNetService = [[NSNetService alloc] initWithDomain:@"local."
+                                                            type:netServiceType
+                                                            name:netServiceName
+                                                            port:ntohs(port)];
         _serverNetService.delegate = self;
         
         if(_serverNetService)
@@ -406,7 +417,7 @@ typedef enum {
 #pragma mark - NSNetServiceDelegate
 -(void) netService:(NSNetService *)sender didNotPublish:(NSDictionary *)errorDict
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    NSLog(@"%s ERROR -> %@", __PRETTY_FUNCTION__, errorDict);
 }
 
 -(void) netService:(NSNetService *)sender didNotResolve:(NSDictionary *)errorDict
@@ -458,7 +469,7 @@ typedef enum {
 
 
 
-#pragma mark - Socket / Stream Setup
+#pragma mark - Port / Socket / Stream Setup
 -(in_port_t) setupSocket
 {
     // Setup Sockets
@@ -499,21 +510,6 @@ typedef enum {
     return sin.sin_port;
 }
 
-- (NSStream *) setupAndOpenStream:(NSStream *)stream
-{
-    stream.delegate = self;
-    [stream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
-    [stream open];
-    return stream;
-}
-
-- (void) connectSocket:(int)socket toInputStream:(NSInputStream *)inStream outputStream:(NSOutputStream *)outStream;
-{
-    _socketDescriptor = socket;
-    _inputStream = (NSInputStream *)[self setupAndOpenStream:inStream];
-    _outputStream = (NSOutputStream *)[self setupAndOpenStream:outStream];
-}
-
 static void ListeningSocketCallBack(CFSocketRef s, CFSocketCallBackType type, CFDataRef address, const void *data, void *info)
 {
     int fd = *(const int *)data;
@@ -536,5 +532,18 @@ static void ListeningSocketCallBack(CFSocketRef s, CFSocketCallBackType type, CF
     [server connectSocket:fd toInputStream:inputStream outputStream:outputStream];
 }
 
+- (void) connectSocket:(int)socket toInputStream:(NSInputStream *)inStream outputStream:(NSOutputStream *)outStream;
+{
+    _socketDescriptor = socket;
+    _inputStream = (NSInputStream *)[self setupAndOpenStream:inStream];
+    _outputStream = (NSOutputStream *)[self setupAndOpenStream:outStream];
+}
 
+- (NSStream *) setupAndOpenStream:(NSStream *)stream
+{
+    stream.delegate = self;
+    [stream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+    [stream open];
+    return stream;
+}
 @end
