@@ -108,7 +108,7 @@
         UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         
         //Adjust button frame to fit text + padding
-        CGSize buttonSize = CGSizeForTextInLabel(text, button.titleLabel);
+        CGSize buttonSize = [button.titleLabel sizeForText:text];
         buttonSize = CGSizeOffset(buttonSize, 20, 20);
         button.frame = CGRectChangingCGSize(button.frame, buttonSize);
         
