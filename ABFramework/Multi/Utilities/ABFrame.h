@@ -45,12 +45,15 @@ CGSize CGSizeOffsetWidth(CGSize size, CGFloat sizeWidthBy);
 CGSize CGSizeOffsetHeight(CGSize size, CGFloat sizeHeightBy);
 
 
-#pragma mark - CGSize Misc
-//CGSize For Image
-CGSize CGSizeForImageName(NSString* imageName);
 
-//CGSize For Text In UILabel
-CGSize CGSizeForTextInLabel(NSString *text, UILabel *label);
+/**
+ * NSRect
+ */
+#ifdef ABFRAMEWORK_MAC
+#pragma mark - NSRect Make
+NSRect nsr(CGFloat x, CGFloat y, CGFloat width, CGFloat height);
+NSRect NSRectMake(CGFloat x, CGFloat y, CGFloat width, CGFloat height);
+#endif
 
 
 
