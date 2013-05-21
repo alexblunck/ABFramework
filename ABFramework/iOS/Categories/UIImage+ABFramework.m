@@ -85,4 +85,14 @@
     return [UIImage imageWithData:UIImageJPEGRepresentation(img, compression)];
 }
 
+
+#pragma mark - Info
++(CGSize) sizeForImageName:(NSString*)imageName
+{
+    UIImage *image = [UIImage imageNamed:imageName];
+    CGSize size = image.size;
+    image = nil;
+    return size;
+}
+
 @end

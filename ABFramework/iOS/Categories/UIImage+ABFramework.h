@@ -19,4 +19,7 @@
 -(UIImage*) resizedImageWithMaxSize:(CGSize)maxSize;
 -(UIImage*) resizedImageWithMaxSize:(CGSize)maxSize compression:(CGFloat)compression;
 
+//Info
++(CGSize) sizeForImageName:(NSString*)imageName;
+
 @end
