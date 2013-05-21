@@ -29,7 +29,7 @@
 /**
  * Categories
  */
-
+#import "NSApplication+ABFramework.h"
 
 /**
  * Sub Classes

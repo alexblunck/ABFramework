@@ -78,7 +78,7 @@ typedef enum {
         netServiceName = [[UIDevice currentDevice] name];
         #endif
         #ifdef ABFRAMEWORK_MAC
-        netServiceName = [[NSHost currentHost] localizedName];
+        netServiceName = [NSApplication deviceName];
         #endif
         
         _serverNetService = [[NSNetService alloc] initWithDomain:@"local."
