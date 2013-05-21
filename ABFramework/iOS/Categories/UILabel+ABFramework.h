@@ -13,4 +13,7 @@
 //Returns exact copy of UILabel
 -(UILabel*) abCopy;
 
+//Info
+-(CGSize) sizeForText:(NSString*)text;
+
 @end

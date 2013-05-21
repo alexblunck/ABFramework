@@ -40,4 +40,16 @@
     return label;
 }
 
+
+
+#pragma mark - Info
+-(CGSize) sizeForText:(NSString*) text
+{
+    UILabel *l = [self abCopy];
+    l.text = text;
+    [l sizeToFit];
+    
+    return l.bounds.size;
+}
+
 @end
