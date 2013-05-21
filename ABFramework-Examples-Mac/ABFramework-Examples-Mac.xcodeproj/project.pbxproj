@@ -15,6 +15,7 @@
 		D22AB495173D610300A25B32 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D22AB493173D610300A25B32 /* MainMenu.xib */; };
 		D2762B471743965D002444EA /* ABCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D2762B421743965D002444EA /* ABCommon.m */; };
 		D2762B481743965D002444EA /* ABMath.m in Sources */ = {isa = PBXBuildFile; fileRef = D2762B451743965D002444EA /* ABMath.m */; };
+		D28A23BF1748387700EE1B7B /* NSApplication+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A23BE1748387700EE1B7B /* NSApplication+ABFramework.m */; };
 		D2A102DE173E4B4500E95692 /* NSDate+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A102D3173E4B4500E95692 /* NSDate+ABFramework.m */; };
 		D2A102DF173E4B4500E95692 /* NSDateComponents+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A102D5173E4B4500E95692 /* NSDateComponents+ABFramework.m */; };
 		D2A102E0173E4B4500E95692 /* NSDictionary+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A102D7173E4B4500E95692 /* NSDictionary+ABFramework.m */; };
@@ -28,6 +29,7 @@
 		D2C6DF92173D73B700C157E3 /* ABBonjourServer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DF45173D73B700C157E3 /* ABBonjourServer.m */; };
 		D2C6DF93173D73B700C157E3 /* ABSaveSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DF48173D73B700C157E3 /* ABSaveSystem.m */; };
 		D2C6DF94173D73B700C157E3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D2C6DF59173D73B700C157E3 /* README.md */; };
+		D2F5C0BE174B8701002D4D0F /* ABFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5C0BD174B8701002D4D0F /* ABFrame.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		D2762B441743965D002444EA /* ABMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABMath.h; sourceTree = "<group>"; };
 		D2762B451743965D002444EA /* ABMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABMath.m; sourceTree = "<group>"; };
 		D2762B461743965D002444EA /* ABTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTypes.h; sourceTree = "<group>"; };
+		D28A23BD1748387700EE1B7B /* NSApplication+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSApplication+ABFramework.h"; sourceTree = "<group>"; };
+		D28A23BE1748387700EE1B7B /* NSApplication+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSApplication+ABFramework.m"; sourceTree = "<group>"; };
 		D2A102D2173E4B4500E95692 /* NSDate+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ABFramework.h"; sourceTree = "<group>"; };
 		D2A102D3173E4B4500E95692 /* NSDate+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ABFramework.m"; sourceTree = "<group>"; };
 		D2A102D4173E4B4500E95692 /* NSDateComponents+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateComponents+ABFramework.h"; sourceTree = "<group>"; };
@@ -78,6 +82,8 @@
 		D2C6DF48173D73B700C157E3 /* ABSaveSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSaveSystem.m; sourceTree = "<group>"; };
 		D2C6DF50173D73B700C157E3 /* ABFrameworkMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFrameworkMac.h; sourceTree = "<group>"; };
 		D2C6DF59173D73B700C157E3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		D2F5C0BC174B8701002D4D0F /* ABFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFrame.h; sourceTree = "<group>"; };
+		D2F5C0BD174B8701002D4D0F /* ABFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABFrame.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +285,8 @@
 		D2C6DF4E173D73B700C157E3 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				D2F5C0BC174B8701002D4D0F /* ABFrame.h */,
+				D2F5C0BD174B8701002D4D0F /* ABFrame.m */,
 				D2B6CD2B1743970200CAB44A /* ABUtilities.h */,
 				D2762B411743965D002444EA /* ABCommon.h */,
 				D2762B421743965D002444EA /* ABCommon.m */,
@@ -309,6 +317,8 @@
 		D2C6DF51173D73B700C157E3 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				D28A23BD1748387700EE1B7B /* NSApplication+ABFramework.h */,
+				D28A23BE1748387700EE1B7B /* NSApplication+ABFramework.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -443,6 +453,8 @@
 				D2A102E9173E4C1700E95692 /* ABDateDescriptor.m in Sources */,
 				D2762B471743965D002444EA /* ABCommon.m in Sources */,
 				D2762B481743965D002444EA /* ABMath.m in Sources */,
+				D28A23BF1748387700EE1B7B /* NSApplication+ABFramework.m in Sources */,
+				D2F5C0BE174B8701002D4D0F /* ABFrame.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

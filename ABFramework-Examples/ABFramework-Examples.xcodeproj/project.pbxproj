@@ -92,13 +92,13 @@
 		D2C6DE9C173D739800C157E3 /* ABNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE3D173D739800C157E3 /* ABNavigationController.m */; };
 		D2C6DE9D173D739800C157E3 /* ABView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE3F173D739800C157E3 /* ABView.m */; };
 		D2C6DE9E173D739800C157E3 /* ABViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE41173D739800C157E3 /* ABViewController.m */; };
-		D2C6DEA0173D739800C157E3 /* ABFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE46173D739800C157E3 /* ABFrame.m */; };
 		D2C6DEA2173D739800C157E3 /* ABReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE4B173D739800C157E3 /* ABReachability.m */; };
 		D2C6DEA3173D739800C157E3 /* NSArray+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE52173D739800C157E3 /* NSArray+ABFramework.m */; };
 		D2C6DEA4173D739800C157E3 /* NSData+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE54173D739800C157E3 /* NSData+ABFramework.m */; };
 		D2C6DEA5173D739800C157E3 /* ABBonjourServer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE58173D739800C157E3 /* ABBonjourServer.m */; };
 		D2C6DEA6173D739800C157E3 /* ABSaveSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE5B173D739800C157E3 /* ABSaveSystem.m */; };
 		D2C6DEA7173D739800C157E3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D2C6DE6C173D739800C157E3 /* README.md */; };
+		D2F5C0C1174B8717002D4D0F /* ABFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5C0C0174B8717002D4D0F /* ABFrame.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -259,8 +259,6 @@
 		D2C6DE3F173D739800C157E3 /* ABView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABView.m; sourceTree = "<group>"; };
 		D2C6DE40173D739800C157E3 /* ABViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABViewController.h; sourceTree = "<group>"; };
 		D2C6DE41173D739800C157E3 /* ABViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABViewController.m; sourceTree = "<group>"; };
-		D2C6DE45173D739800C157E3 /* ABFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFrame.h; sourceTree = "<group>"; };
-		D2C6DE46173D739800C157E3 /* ABFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABFrame.m; sourceTree = "<group>"; };
 		D2C6DE4A173D739800C157E3 /* ABReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABReachability.h; sourceTree = "<group>"; };
 		D2C6DE4B173D739800C157E3 /* ABReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABReachability.m; sourceTree = "<group>"; };
 		D2C6DE4F173D739800C157E3 /* ABFrameworkMulti.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFrameworkMulti.h; sourceTree = "<group>"; };
@@ -273,6 +271,8 @@
 		D2C6DE5A173D739800C157E3 /* ABSaveSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSaveSystem.h; sourceTree = "<group>"; };
 		D2C6DE5B173D739800C157E3 /* ABSaveSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSaveSystem.m; sourceTree = "<group>"; };
 		D2C6DE6C173D739800C157E3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		D2F5C0BF174B8717002D4D0F /* ABFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFrame.h; sourceTree = "<group>"; };
+		D2F5C0C0174B8717002D4D0F /* ABFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABFrame.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -803,8 +803,6 @@
 		D2C6DE42173D739800C157E3 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				D2C6DE45173D739800C157E3 /* ABFrame.h */,
-				D2C6DE46173D739800C157E3 /* ABFrame.m */,
 				D2C6DE4A173D739800C157E3 /* ABReachability.h */,
 				D2C6DE4B173D739800C157E3 /* ABReachability.m */,
 			);
@@ -917,6 +915,8 @@
 		D2C6DE61173D739800C157E3 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				D2F5C0BF174B8717002D4D0F /* ABFrame.h */,
+				D2F5C0C0174B8717002D4D0F /* ABFrame.m */,
 				D2B6CD2C1743971B00CAB44A /* ABUtilities.h */,
 				D2762B3917439650002444EA /* ABCommon.h */,
 				D2762B3A17439650002444EA /* ABCommon.m */,
@@ -1056,7 +1056,6 @@
 				D2C6DE9C173D739800C157E3 /* ABNavigationController.m in Sources */,
 				D2C6DE9D173D739800C157E3 /* ABView.m in Sources */,
 				D2C6DE9E173D739800C157E3 /* ABViewController.m in Sources */,
-				D2C6DEA0173D739800C157E3 /* ABFrame.m in Sources */,
 				D2C6DEA2173D739800C157E3 /* ABReachability.m in Sources */,
 				D2C6DEA3173D739800C157E3 /* NSArray+ABFramework.m in Sources */,
 				D2C6DEA4173D739800C157E3 /* NSData+ABFramework.m in Sources */,
@@ -1073,6 +1072,7 @@
 				D24A32651742597C00EFFF53 /* ABQuadMenuExample.m in Sources */,
 				D2762B3F17439650002444EA /* ABCommon.m in Sources */,
 				D2762B4017439650002444EA /* ABMath.m in Sources */,
+				D2F5C0C1174B8717002D4D0F /* ABFrame.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

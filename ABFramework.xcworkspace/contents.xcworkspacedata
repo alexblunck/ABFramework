@@ -137,6 +137,12 @@
                location = "group:ABMath.m">
             </FileRef>
             <FileRef
+               location = "group:ABFrame.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABFrame.m">
+            </FileRef>
+            <FileRef
                location = "group:ABTypes.h">
             </FileRef>
          </Group>
@@ -534,12 +540,6 @@
             location = "group:Utilities"
             name = "Utilities">
             <FileRef
-               location = "group:ABFrame.h">
-            </FileRef>
-            <FileRef
-               location = "group:ABFrame.m">
-            </FileRef>
-            <FileRef
                location = "group:ABReachability.h">
             </FileRef>
             <FileRef
@@ -556,6 +556,12 @@
          <Group
             location = "group:Categories"
             name = "Categories">
+            <FileRef
+               location = "group:NSApplication+ABFramework.h">
+            </FileRef>
+            <FileRef
+               location = "group:NSApplication+ABFramework.m">
+            </FileRef>
          </Group>
          <Group
             location = "group:Components (Functional)"
