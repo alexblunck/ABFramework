@@ -42,7 +42,7 @@
         _label.text = [self unicodeFromIconName:iconName];
         _label.centeredHorizontally = YES;
         _label.centeredVertically = YES;
-        _label.fontName = @"Entypo";
+        _label.customFont = [UIFont customFontWithName:@"Entypo" fontPath:@"ABFramework.bundle/ABEntypoView/Entypo" extension:@"otf" size:1.0f];        
         _label.textSize = size*1.7;
         _label.minimumFontSize = 20.0f;
     }
