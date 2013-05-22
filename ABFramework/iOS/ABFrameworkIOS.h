@@ -40,6 +40,7 @@
 #import "UIImageView+ABFramework.h"
 #import "UIViewController+ABFramework.h"
 #import "UITableView+ABFramework.h"
+#import "UIFont+ABFramework.h"
 
 
 /**
