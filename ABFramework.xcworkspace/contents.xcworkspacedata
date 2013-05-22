@@ -157,6 +157,12 @@
             location = "group:Categories"
             name = "Categories">
             <FileRef
+               location = "group:UIFont+ABFramework.h">
+            </FileRef>
+            <FileRef
+               location = "group:UIFont+ABFramework.m">
+            </FileRef>
+            <FileRef
                location = "group:UIColor+ABFramework.h">
             </FileRef>
             <FileRef
