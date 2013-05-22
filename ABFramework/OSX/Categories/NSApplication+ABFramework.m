@@ -48,6 +48,8 @@
 {
     BOOL itemFound = NO;
     
+    NSString *appPath = [[self applicationURL] absoluteString];
+    
     LSSharedFileListItemRef loginItem = nil;
     
     //Iterate through login items
@@ -64,12 +66,14 @@
         
         if (error == noErr)
         {
-            itemFound = CFEqual(url, (__bridge CFTypeRef)([self applicationURL]));
+            NSString *currentAppPath = [(__bridge NSString *)(url) description];
             CFRelease(url);
             
-            if (itemFound)
+            if ([appPath isEqualToString:currentAppPath])
             {
+                itemFound = YES;
                 loginItem = (__bridge LSSharedFileListItemRef)(loginItemObject);
+                break;
             }
         }
     }
