@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
     sp.exclude_files = 'ABFramework/OSX'
 
     sp.weak_frameworks = 'Social'
-    sp.frameworks = 'QuartzCore', 'NewsstandKit', 'StoreKit', 'Twitter', 'SystemConfiguration'
+    sp.frameworks = 'UIKit', 'QuartzCore', 'NewsstandKit', 'StoreKit', 'Twitter', 'SystemConfiguration', 'CoreText'
 
     sp.prefix_header_contents = '#import "ABFramework.h"'
   end
