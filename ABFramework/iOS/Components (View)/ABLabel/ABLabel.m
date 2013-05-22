@@ -44,7 +44,6 @@
         [self addSubview:_label];
         
         //Configuration
-        
         self.trimAutomatically = NO;
         self.fontName = @"HelveticaNeue";
         self.textSize = 15.0f;
@@ -155,6 +154,16 @@
     _label.font = [UIFont fontWithName:_fontName size:self.textSize];
     
     if (self.trimAutomatically) [self trim];
+}
+
+//customFont
+-(void) setCustomFont:(UIFont *)customFont
+{
+    _customFont = customFont;
+    
+    //UIFont catgory loads custom font, which can now be used throughout the app
+    //...set fontName property to change label
+    self.fontName = _customFont.fontName;
 }
 
 //textSize
