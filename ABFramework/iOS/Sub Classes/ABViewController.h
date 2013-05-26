@@ -15,4 +15,6 @@
 @property (nonatomic, weak) ABTabBarItem *abTabBarItem;
 @property (nonatomic, weak) ABTabBarController *abTabBarController;
 
+@property (nonatomic, copy) ABBlockVoid dismissBlock;
+
 @end

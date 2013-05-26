@@ -37,4 +37,14 @@
     [super viewDidLoad];
 }
 
+-(void) dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion
+{
+    if (self.dismissBlock)
+    {
+        self.dismissBlock();
+    }
+    
+    [super dismissViewControllerAnimated:flag completion:completion];
+}
+
 @end
