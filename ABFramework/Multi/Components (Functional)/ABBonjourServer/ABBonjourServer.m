@@ -358,12 +358,12 @@ typedef enum {
 #pragma mark - NSNetServiceBrowserDelegate
 -(void) netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindDomain:(NSString *)domainString moreComing:(BOOL)moreComing
 {
-    NSLog(@"%s ----> %@", __PRETTY_FUNCTION__, domainString);
+    if(ABBONJOURSERVER_LOGGING) NSLog(@"%s ----> %@", __PRETTY_FUNCTION__, domainString);
 }
 
 -(void) netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindService:(NSNetService *)aNetService moreComing:(BOOL)moreComing
 {
-    NSLog(@"ABBonjourClient (NSNetServiceBrowser) -> didFindService: %@", aNetService.name);
+    if(ABBONJOURSERVER_LOGGING) NSLog(@"ABBonjourClient (NSNetServiceBrowser) -> didFindService: %@", aNetService.name);
     
     [_foundServices addObject:aNetService];
     
@@ -373,17 +373,17 @@ typedef enum {
 
 -(void) netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didNotSearch:(NSDictionary *)errorDict
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    if(ABBONJOURSERVER_LOGGING) NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 -(void) netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveDomain:(NSString *)domainString moreComing:(BOOL)moreComing
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    if(ABBONJOURSERVER_LOGGING) NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 -(void) netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveService:(NSNetService *)aNetService moreComing:(BOOL)moreComing
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    if(ABBONJOURSERVER_LOGGING) NSLog(@"%s", __PRETTY_FUNCTION__);
     
     if ([_foundServices containsObject:aNetService])
     {
@@ -404,12 +404,12 @@ typedef enum {
 
 -(void) netServiceBrowserDidStopSearch:(NSNetServiceBrowser *)aNetServiceBrowser
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    if(ABBONJOURSERVER_LOGGING) NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 -(void) netServiceBrowserWillSearch:(NSNetServiceBrowser *)aNetServiceBrowser
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    if(ABBONJOURSERVER_LOGGING) NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 
@@ -417,27 +417,27 @@ typedef enum {
 #pragma mark - NSNetServiceDelegate
 -(void) netService:(NSNetService *)sender didNotPublish:(NSDictionary *)errorDict
 {
-    NSLog(@"%s ERROR -> %@", __PRETTY_FUNCTION__, errorDict);
+    if(ABBONJOURSERVER_LOGGING) NSLog(@"%s ERROR -> %@", __PRETTY_FUNCTION__, errorDict);
 }
 
 -(void) netService:(NSNetService *)sender didNotResolve:(NSDictionary *)errorDict
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    NSLog(@"ABBonjourClient: ERROR -> Failed to Start Server.");
 }
 
 -(void) netService:(NSNetService *)sender didUpdateTXTRecordData:(NSData *)data
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    if(ABBONJOURSERVER_LOGGING) NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 -(void) netServiceDidPublish:(NSNetService *)sender
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    NSLog(@"ABBonjourClient: Started Server.");
 }
 
 -(void) netServiceDidResolveAddress:(NSNetService *)sender
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    if(ABBONJOURSERVER_LOGGING) NSLog(@"%s", __PRETTY_FUNCTION__);
     
     [_foundServices removeObject:sender];
     if (![_resolvedServices containsObject:sender])
@@ -454,17 +454,17 @@ typedef enum {
 
 -(void) netServiceDidStop:(NSNetService *)sender
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    if(ABBONJOURSERVER_LOGGING) NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 -(void) netServiceWillPublish:(NSNetService *)sender
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    if(ABBONJOURSERVER_LOGGING) NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 -(void) netServiceWillResolve:(NSNetService *)sender
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    if(ABBONJOURSERVER_LOGGING) NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 
