@@ -31,11 +31,11 @@ typedef enum {
  * Init menu with array of ABQuadMenuItem 's (exactly 3) and show
  */
 +(id) showMenuWithItems:(NSArray*)items;
-
++(id) showMenuWithItems:(NSArray*)items completion:(ABBlockVoid)block;
 
 //Initializer
 /**
- * Init menu with array of ABQuadMenuItem 's (mexactly 3)
+ * Init menu with array of ABQuadMenuItem 's (exactly 3)
  */
 -(id) initWithItems:(NSArray*)items;
 
@@ -50,5 +50,9 @@ typedef enum {
  * Set menu theme, default is "ABQuadMenuThemeLight"
  */
 @property (nonatomic, assign) ABQuadMenuTheme theme;
+
+@property (nonatomic, copy) NSString *dismissTitle;
+@property (nonatomic, copy) NSString *dismissIconName;
+@property (nonatomic, copy) UIColor *dismissIconColor;
 
 @end

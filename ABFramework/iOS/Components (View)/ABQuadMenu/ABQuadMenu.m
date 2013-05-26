@@ -48,6 +48,7 @@
     UIView *_backgroundView;
     ABPrimitiveArray *_intialRegions;
     ABPrimitiveArray *_finalRegions;
+    ABBlockVoid _completionBlock;
 }
 @end
 
@@ -56,38 +57,41 @@
 #pragma mark - Utility
 +(id) showMenuWithItems:(NSArray*)items
 {
-    return [[self alloc] initWithItems:items andShow:YES];
+    return [self showMenuWithItems:items completion:nil];
 }
 
++(id) showMenuWithItems:(NSArray*)items completion:(ABBlockVoid)block
+{
+    return [[self alloc] initWithItems:items completion:block andShow:YES];
+}
 
 
 #pragma mark - Initializer
 -(id) initWithItems:(NSArray*)items
 {
-    return [self initWithItems:items andShow:NO];
+    return [self initWithItems:items completion:nil andShow:NO];
 }
 
--(id) initWithItems:(NSArray*)items andShow:(BOOL)show
+-(id) initWithItems:(NSArray*)items completion:(ABBlockVoid)block andShow:(BOOL)show
 {
     self = [super init];
     if (self)
     {
-//        if (items.count != 3)
-//        {
-//            NSLog(@"ABQuadMenu: ERROR -> You need to supply exactly 3 ABQuadMenuItem 's.");
-//            return nil;
-//        }
-        
-        //Add "close" item
-        ABQuadMenuItem *closeItem = [ABQuadMenuItem itemWithIconName:@"circled-cross" title:@"Close" action:nil];
-        
-        _items = [items arrayByAddingObject:closeItem];
+        //Config
+        self.theme = ABQuadMenuThemeLight;
+        self.dismissTitle = @"Close";
+        self.dismissIconName = @"circled-cross";
+        self.dismissIconColor = nil;
         
         //Allocation
         _viewArray = [NSMutableArray new];
         
-        //Config
-        self.theme = ABQuadMenuThemeLight;
+        if (block)
+        {
+            _completionBlock = [block copy];
+        }
+        
+        _items = items;
         
         if (show)
         {
@@ -106,6 +110,10 @@
     {
         return;
     }
+    
+    //Add dismiss item
+    ABQuadMenuItem *dismissItem = [ABQuadMenuItem itemWithIconName:self.dismissIconName title:self.dismissTitle action:nil];
+    _items = [_items arrayByAddingObject:dismissItem];
     
     //Frame (full screen)
     self.frame = [[UIScreen mainScreen] bounds];
@@ -231,6 +239,11 @@
 {
     [self animateIn:NO completion:^{
         [self removeFromSuperview];
+        
+        if (_completionBlock) {
+            _completionBlock();
+        }
+        
     }];
 }
 
@@ -334,6 +347,11 @@
 
 -(UIColor*) themeSelectedCloseIconColor
 {
+    //Custom
+    if (self.dismissIconColor) {
+        return self.dismissIconColor;
+    }
+    
     //ABQuadMenuThemeLight
     if (self.theme == ABQuadMenuThemeLight)
     {
