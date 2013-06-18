@@ -53,6 +53,11 @@ typedef void (^ABViewTouchHandler) (ABView *);
 @property (nonatomic, assign, getter=isSelected) BOOL selected;
 
 /**
+ * Respond to touches when selected property is set to YES
+ */
+@property (nonatomic, assign) BOOL permitTouchWhileSelected;
+
+/**
  * Recursively propegate selected state to all subviews and their subviews and so on, default is NO
  */
 @property (nonatomic, assign) BOOL selectRecursively;
