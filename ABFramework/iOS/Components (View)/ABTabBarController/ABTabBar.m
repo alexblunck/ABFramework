@@ -128,6 +128,12 @@
     [self.delegate tabBarItemSelected:item];
 }
 
+-(void) abViewDidDoubleTouchUpInside:(ABView *)selectedView
+{
+    ABTabBarItem *item = [self.tabBarItems safeObjectAtIndex:[[selectedView.userData safeObjectForKey:@"itemIndex"] integerValue]];
+    [self.delegate tabBarItemSelected:item];
+}
+
 
 
 #pragma mark - Helper
