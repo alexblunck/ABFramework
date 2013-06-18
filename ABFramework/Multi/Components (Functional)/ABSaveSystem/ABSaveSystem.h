@@ -12,8 +12,17 @@
     #define ABSAVESYSTEM_LOGGING 1
 #endif
 
-#define ENCRYPTION_ENABLED NO
-#define AESKEY @"aVt7G67Dgjit2"
+#ifndef ABSAVESYSTEM_VERBOSE_LOGGING
+    #define ABSAVESYSTEM_VERBOSE_LOGGING 0
+#endif
+
+#ifndef ABSAVESYSTEM_ENCRYPTION_ENABLED
+    #define ABSAVESYSTEM_ENCRYPTION_ENABLED NO
+#endif
+
+#ifndef ABSAVESYSTEM_AESKEY
+    #define ABSAVESYSTEM_AESKEY @"aVt7G67Dgjit2"
+#endif
 
 typedef enum {
     ABSaveSystemOSNone,
@@ -73,7 +82,8 @@ typedef enum {
 //
 //Misc
 //
-
++(BOOL) exists:(NSString*)key;
++(BOOL) exists:(NSString*)key encryption:(BOOL)encryption;
 +(void) logSavedValues:(BOOL)encrypted;
 +(void) truncate; //Deletes everything
 
