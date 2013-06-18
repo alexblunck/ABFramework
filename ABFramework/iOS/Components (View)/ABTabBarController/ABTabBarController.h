@@ -35,4 +35,6 @@
 
 @property (nonatomic, strong) id activeViewController;
 
+@property (nonatomic, copy) ABBlockInteger doubleTouchHandler;
+
 @end

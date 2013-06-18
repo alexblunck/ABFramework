@@ -37,12 +37,14 @@
 {
     [super viewDidLoad];
     
+    self.view.frame = CGRectChangingOriginY(self.view.frame, 0);
+    
     //Retrieve Screen Dimensions
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     CGFloat screenWidth = screenSize.width;
     CGFloat screenHeight = screenSize.height;
     
-    CGFloat statusBarHeight = 20;
+    CGFloat statusBarHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
     
     //If no tabBarHeight is set, use default height of 49
     if (!self.tabBarHeight)
@@ -101,6 +103,7 @@
 {
     if ([item isEqual:self.activeTabBarItem])
     {
+        if (self.doubleTouchHandler) self.doubleTouchHandler([_tabBarItems indexOfObject:item]);
         return;
     }
     
@@ -119,9 +122,10 @@
     _activeView = item.viewController.view;
     
     //Restrict frame of activeView to space above tabBar View
-    _activeView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-self.tabBarHeight);
+    //_activeView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-self.tabBarHeight);
+    _activeView.frame = CGRectChangingSizeHeight(_activeView.frame, self.view.height - self.tabBarHeight);
     
-    [self.view addSubview:_activeView];
+    [self.view insertSubview:_activeView belowSubview:self.tabBar];
 }
 
 
