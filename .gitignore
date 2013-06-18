@@ -37,3 +37,5 @@ Backup[ ]of[ ]*.numbers/"
 xcuserdata
 project.xcworkspace
 ABFramework-Examples/ABFramework-Examples.xcodeproj/xcuserdata/blunckalex.xcuserdatad/xcschemes/xcschememanagement.plist
+
+*.xccheckout

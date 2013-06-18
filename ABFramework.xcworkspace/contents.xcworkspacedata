@@ -17,6 +17,12 @@
             location = "group:Categories"
             name = "Categories">
             <FileRef
+               location = "group:NSMutableArray+ABFramework.h">
+            </FileRef>
+            <FileRef
+               location = "group:NSMutableArray+ABFramework.m">
+            </FileRef>
+            <FileRef
                location = "group:NSDate+ABFramework.h">
             </FileRef>
             <FileRef
@@ -262,6 +268,16 @@
          <Group
             location = "group:Components (View)"
             name = "Components (View)">
+            <Group
+               location = "group:ABRevealController"
+               name = "ABRevealController">
+               <FileRef
+                  location = "group:ABRevealController.h">
+               </FileRef>
+               <FileRef
+                  location = "group:ABRevealController.m">
+               </FileRef>
+            </Group>
             <Group
                location = "group:ABQuadMenu"
                name = "ABQuadMenu">

@@ -38,6 +38,7 @@
 		D24A32651742597C00EFFF53 /* ABQuadMenuExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D24A32641742597C00EFFF53 /* ABQuadMenuExample.m */; };
 		D255AD9E1723D61B00E71590 /* ABViewExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D255AD9D1723D61B00E71590 /* ABViewExample.m */; };
 		D255ADA7172430A000E71590 /* ABInfiniteViewExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D255ADA6172430A000E71590 /* ABInfiniteViewExample.m */; };
+		D259C2EF176FA9F0009315E6 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D259C2EE176FA9F0009315E6 /* Accelerate.framework */; };
 		D2762B3F17439650002444EA /* ABCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D2762B3A17439650002444EA /* ABCommon.m */; };
 		D2762B4017439650002444EA /* ABMath.m in Sources */ = {isa = PBXBuildFile; fileRef = D2762B3D17439650002444EA /* ABMath.m */; };
 		D29B385C174CC54000ABE69A /* UIFont+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D29B385B174CC54000ABE69A /* UIFont+ABFramework.m */; };
@@ -100,6 +101,9 @@
 		D2C6DEA5173D739800C157E3 /* ABBonjourServer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE58173D739800C157E3 /* ABBonjourServer.m */; };
 		D2C6DEA6173D739800C157E3 /* ABSaveSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE5B173D739800C157E3 /* ABSaveSystem.m */; };
 		D2C6DEA7173D739800C157E3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D2C6DE6C173D739800C157E3 /* README.md */; };
+		D2E4E36E1768B8C9007C1F47 /* ABRevealController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E4E36D1768B8C9007C1F47 /* ABRevealController.m */; };
+		D2ED7476176F18F3008C3BD9 /* NSMutableArray+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2ED7475176F18F3008C3BD9 /* NSMutableArray+ABFramework.m */; };
+		D2ED747C176F37E4008C3BD9 /* ABRevealControllerExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D2ED747B176F37E4008C3BD9 /* ABRevealControllerExample.m */; };
 		D2F5C0C1174B8717002D4D0F /* ABFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5C0C0174B8717002D4D0F /* ABFrame.m */; };
 /* End PBXBuildFile section */
 
@@ -150,6 +154,7 @@
 		D255AD9D1723D61B00E71590 /* ABViewExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABViewExample.m; sourceTree = "<group>"; };
 		D255ADA5172430A000E71590 /* ABInfiniteViewExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABInfiniteViewExample.h; sourceTree = "<group>"; };
 		D255ADA6172430A000E71590 /* ABInfiniteViewExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABInfiniteViewExample.m; sourceTree = "<group>"; };
+		D259C2EE176FA9F0009315E6 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		D2762B3917439650002444EA /* ABCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABCommon.h; sourceTree = "<group>"; };
 		D2762B3A17439650002444EA /* ABCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABCommon.m; sourceTree = "<group>"; };
 		D2762B3B17439650002444EA /* ABMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABMacros.h; sourceTree = "<group>"; };
@@ -276,6 +281,12 @@
 		D2C6DE5A173D739800C157E3 /* ABSaveSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSaveSystem.h; sourceTree = "<group>"; };
 		D2C6DE5B173D739800C157E3 /* ABSaveSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSaveSystem.m; sourceTree = "<group>"; };
 		D2C6DE6C173D739800C157E3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		D2E4E36C1768B8C9007C1F47 /* ABRevealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABRevealController.h; sourceTree = "<group>"; };
+		D2E4E36D1768B8C9007C1F47 /* ABRevealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABRevealController.m; sourceTree = "<group>"; };
+		D2ED7474176F18F3008C3BD9 /* NSMutableArray+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+ABFramework.h"; sourceTree = "<group>"; };
+		D2ED7475176F18F3008C3BD9 /* NSMutableArray+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+ABFramework.m"; sourceTree = "<group>"; };
+		D2ED747A176F37E4008C3BD9 /* ABRevealControllerExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABRevealControllerExample.h; sourceTree = "<group>"; };
+		D2ED747B176F37E4008C3BD9 /* ABRevealControllerExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABRevealControllerExample.m; sourceTree = "<group>"; };
 		D2F5C0BF174B8717002D4D0F /* ABFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFrame.h; sourceTree = "<group>"; };
 		D2F5C0C0174B8717002D4D0F /* ABFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABFrame.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -285,6 +296,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D259C2EF176FA9F0009315E6 /* Accelerate.framework in Frameworks */,
 				D29B385E174CC7A600ABE69A /* CoreText.framework in Frameworks */,
 				D2ADFF17171ED85A002D723B /* Twitter.framework in Frameworks */,
 				D2ADFF15171ED856002D723B /* Social.framework in Frameworks */,
@@ -330,6 +342,8 @@
 				D255ADA6172430A000E71590 /* ABInfiniteViewExample.m */,
 				D24A32631742597C00EFFF53 /* ABQuadMenuExample.h */,
 				D24A32641742597C00EFFF53 /* ABQuadMenuExample.m */,
+				D2ED747A176F37E4008C3BD9 /* ABRevealControllerExample.h */,
+				D2ED747B176F37E4008C3BD9 /* ABRevealControllerExample.m */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -399,6 +413,7 @@
 		3CE5667F16B6966D00915391 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D259C2EE176FA9F0009315E6 /* Accelerate.framework */,
 				D29B385D174CC7A600ABE69A /* CoreText.framework */,
 				D2ADFF16171ED85A002D723B /* Twitter.framework */,
 				D2ADFF14171ED856002D723B /* Social.framework */,
@@ -565,6 +580,7 @@
 		D2C6DDEB173D739800C157E3 /* Components (View) */ = {
 			isa = PBXGroup;
 			children = (
+				D2E4E36B1768B8C9007C1F47 /* ABRevealController */,
 				D24A325F1742592D00EFFF53 /* ABQuadMenu */,
 				D2C6DDEC173D739800C157E3 /* ABActivityView */,
 				D2C6DDEF173D739800C157E3 /* ABAlertView */,
@@ -853,6 +869,8 @@
 				D2C6DE52173D739800C157E3 /* NSArray+ABFramework.m */,
 				D2C6DE53173D739800C157E3 /* NSData+ABFramework.h */,
 				D2C6DE54173D739800C157E3 /* NSData+ABFramework.m */,
+				D2ED7474176F18F3008C3BD9 /* NSMutableArray+ABFramework.h */,
+				D2ED7475176F18F3008C3BD9 /* NSMutableArray+ABFramework.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -935,6 +953,15 @@
 				D2762B3E17439650002444EA /* ABTypes.h */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		D2E4E36B1768B8C9007C1F47 /* ABRevealController */ = {
+			isa = PBXGroup;
+			children = (
+				D2E4E36C1768B8C9007C1F47 /* ABRevealController.h */,
+				D2E4E36D1768B8C9007C1F47 /* ABRevealController.m */,
+			);
+			path = ABRevealController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1037,6 +1064,7 @@
 				D2C6DE7E173D739800C157E3 /* ABNotificationHelper.m in Sources */,
 				D2C6DE7F173D739800C157E3 /* ABStoreKitHelper.m in Sources */,
 				D2C6DE80173D739800C157E3 /* ABActivityView.m in Sources */,
+				D2ED7476176F18F3008C3BD9 /* NSMutableArray+ABFramework.m in Sources */,
 				D2C6DE81173D739800C157E3 /* ABAlertView.m in Sources */,
 				D2C6DE82173D739800C157E3 /* ABButton.m in Sources */,
 				D2C6DE83173D739800C157E3 /* ABDatePickerView.m in Sources */,
@@ -1049,6 +1077,7 @@
 				D2C6DE8A173D739800C157E3 /* ABImageView.m in Sources */,
 				D2C6DE8B173D739800C157E3 /* ABInfiniteView.m in Sources */,
 				D2C6DE8C173D739800C157E3 /* ABLabel.m in Sources */,
+				D2E4E36E1768B8C9007C1F47 /* ABRevealController.m in Sources */,
 				D2C6DE8D173D739800C157E3 /* ABSelectView.m in Sources */,
 				D2C6DE8E173D739800C157E3 /* ABSelectViewItem.m in Sources */,
 				D2C6DE8F173D739800C157E3 /* ABSelectViewTheme.m in Sources */,
@@ -1058,6 +1087,7 @@
 				D2C6DE93173D739800C157E3 /* ABTabBar.m in Sources */,
 				D2C6DE94173D739800C157E3 /* ABTabBarController.m in Sources */,
 				D2C6DE95173D739800C157E3 /* ABTabBarItem.m in Sources */,
+				D2ED747C176F37E4008C3BD9 /* ABRevealControllerExample.m in Sources */,
 				D2C6DE97173D739800C157E3 /* ABTableStackController.m in Sources */,
 				D2C6DE98173D739800C157E3 /* ABTextField.m in Sources */,
 				D2C6DE99173D739800C157E3 /* ABPair.m in Sources */,

@@ -29,6 +29,7 @@
 		D2C6DF92173D73B700C157E3 /* ABBonjourServer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DF45173D73B700C157E3 /* ABBonjourServer.m */; };
 		D2C6DF93173D73B700C157E3 /* ABSaveSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DF48173D73B700C157E3 /* ABSaveSystem.m */; };
 		D2C6DF94173D73B700C157E3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D2C6DF59173D73B700C157E3 /* README.md */; };
+		D2ED7479176F1903008C3BD9 /* NSMutableArray+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2ED7478176F1903008C3BD9 /* NSMutableArray+ABFramework.m */; };
 		D2F5C0BE174B8701002D4D0F /* ABFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5C0BD174B8701002D4D0F /* ABFrame.m */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,8 @@
 		D2C6DF48173D73B700C157E3 /* ABSaveSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSaveSystem.m; sourceTree = "<group>"; };
 		D2C6DF50173D73B700C157E3 /* ABFrameworkMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFrameworkMac.h; sourceTree = "<group>"; };
 		D2C6DF59173D73B700C157E3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		D2ED7477176F1903008C3BD9 /* NSMutableArray+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+ABFramework.h"; sourceTree = "<group>"; };
+		D2ED7478176F1903008C3BD9 /* NSMutableArray+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+ABFramework.m"; sourceTree = "<group>"; };
 		D2F5C0BC174B8701002D4D0F /* ABFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFrame.h; sourceTree = "<group>"; };
 		D2F5C0BD174B8701002D4D0F /* ABFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABFrame.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -198,6 +201,8 @@
 		D2C6DF3D173D73B700C157E3 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				D2ED7477176F1903008C3BD9 /* NSMutableArray+ABFramework.h */,
+				D2ED7478176F1903008C3BD9 /* NSMutableArray+ABFramework.m */,
 				D2A102D2173E4B4500E95692 /* NSDate+ABFramework.h */,
 				D2A102D3173E4B4500E95692 /* NSDate+ABFramework.m */,
 				D2A102D4173E4B4500E95692 /* NSDateComponents+ABFramework.h */,
@@ -455,6 +460,7 @@
 				D2762B481743965D002444EA /* ABMath.m in Sources */,
 				D28A23BF1748387700EE1B7B /* NSApplication+ABFramework.m in Sources */,
 				D2F5C0BE174B8701002D4D0F /* ABFrame.m in Sources */,
+				D2ED7479176F1903008C3BD9 /* NSMutableArray+ABFramework.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

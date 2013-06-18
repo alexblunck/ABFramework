@@ -111,7 +111,7 @@
 -(void) abViewDidTouchUpInside:(ABView *)selectedView
 {
     ABTabBarItem *item = [self.tabBarItems safeObjectAtIndex:[[selectedView.userData safeObjectForKey:@"itemIndex"] integerValue]];
-    
+
     //Unhightlight all other tabs / highlight selected one
     for (ABView *view in _tabViewArray)
     {
