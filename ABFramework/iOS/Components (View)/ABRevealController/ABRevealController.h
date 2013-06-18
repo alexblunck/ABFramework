@@ -35,6 +35,9 @@
 //Actions
 -(void) toggleReveal;
 
+@property (nonatomic, strong) UIViewController *frontViewController;
+@property (nonatomic, strong) UIViewController *backgroundViewController;
+
 //Config
 /**
  * revealWidth
@@ -97,6 +100,14 @@
 @property (nonatomic, assign) CGFloat shadowOpactiy;    //Default: 0.8f
 @property (nonatomic, assign) CGFloat shadowRadius;     //Default: 5.0f
 @property (nonatomic, copy) UIColor *shadowColor;       //Default: blackColor
+
+/**
+ * disablePanGesture
+ * 
+ * Disable slide gesture recognizer on front view
+ * Default: NO
+ */
+@property (nonatomic, assign) BOOL disablePanGesture;
 
 
 //State

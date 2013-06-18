@@ -18,11 +18,10 @@ typedef enum {
 
 @interface ABRevealController ()
 {
-    UIViewController *_frontViewController;
-    UIViewController *_backgroundViewController;
     UIView *_frontView;
     UIView *_backgroundView;
     
+    UIPanGestureRecognizer *_panGesture;
     UITapGestureRecognizer *_tapGesture;
     
     //State
@@ -54,6 +53,7 @@ typedef enum {
         self.shadowOpactiy = 0.8f;
         self.shadowRadius = 5.0f;
         self.shadowColor = [UIColor blackColor];
+        self.disablePanGesture = YES;
         
         //View controllers
         _frontViewController = frontVc;
@@ -106,8 +106,9 @@ typedef enum {
     if (self.parallaxRevealEnabled) _backgroundView.frame = [self backgroundViewFrameAligned];
     
     //Pan gesture
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
-    [_frontView addGestureRecognizer:pan];
+    _panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
+    _panGesture.enabled = !self.disablePanGesture;
+    [_frontView addGestureRecognizer:_panGesture];
 }
 
 
@@ -340,6 +341,15 @@ typedef enum {
     return UIInterfaceOrientationIsPortrait(toInterfaceOrientation);
 }
 
+
+
+#pragma mark - Accessors
+-(void) setDisablePanGesture:(BOOL)disablePanGesture
+{
+    _disablePanGesture = disablePanGesture;
+    
+    _panGesture.enabled = (!disablePanGesture);
+}
 
 @end
 
