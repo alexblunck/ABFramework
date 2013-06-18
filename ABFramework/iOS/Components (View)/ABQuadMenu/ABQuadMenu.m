@@ -46,9 +46,14 @@
     NSArray *_items;
     NSMutableArray *_viewArray;
     UIView *_backgroundView;
+    UIImageView *_blurredView;
     ABPrimitiveArray *_intialRegions;
     ABPrimitiveArray *_finalRegions;
     ABBlockVoid _completionBlock;
+    
+    //Config
+    BOOL _showShadows;
+    BOOL _translucent;
 }
 @end
 
@@ -118,8 +123,8 @@
     //Frame (full screen)
     self.frame = [[UIScreen mainScreen] bounds];
     CGSize statusBarSize = [[UIApplication sharedApplication] statusBarFrame].size;
-    self.frame = CGRectOffsetSizeHeight(self.frame, -statusBarSize.height);
-    self.frame = CGRectChangingOriginY(self.frame, statusBarSize.height);
+    if (IS_MAX_IOS6X) self.frame = CGRectOffsetSizeHeight(self.frame, -statusBarSize.height);
+    if (IS_MAX_IOS6X) self.frame = CGRectChangingOriginY(self.frame, statusBarSize.height);
     
     //Compute screen regions for placing elements later
     CGSize quarterScreenSize = CGSizeMake(self.width/2, self.height/2);
@@ -206,8 +211,9 @@
         icon.frame = CGRectOffsetOriginY(icon.frame, -25);
         icon.color = color;
         icon.selectedColor = selectedColor;
-        icon.shadow = ABShadowTypeLetterpress;
+        if (_showShadows) icon.shadow = ABShadowTypeLetterpress;
         icon.shadowColor = [UIColor whiteColor];
+        //if (_translucent) icon.alpha = 0.5f;
         [view addSubview:icon];
         
         //Label
@@ -232,15 +238,29 @@
 #pragma mark - Show / Hide
 -(void) show
 {
+    if (_translucent)
+    {
+        UIImage *snap = [[UIView topView] renderCGRect:[[UIScreen mainScreen] bounds]];
+        snap = [snap applyBlurWithRadius:5.0f tintColor:nil saturationDeltaFactor:1.0f maskImage:nil];
+        _blurredView = [[UIImageView alloc] initWithImage:snap];
+        _blurredView.alpha = 0.0f;
+        [[UIView topView] addSubview:_blurredView];
+    }
+    
+    
     [[UIView topView] addSubview:self];
 }
 
 -(void) hide
 {
     [self animateIn:NO completion:^{
+        
+        [_blurredView removeFromSuperview];
+        _blurredView = nil;
         [self removeFromSuperview];
         
-        if (_completionBlock) {
+        if (_completionBlock)
+        {
             _completionBlock();
         }
         
@@ -256,7 +276,8 @@
     
     [UIView animateWithDuration:ABQUADMENU_ANIMATION_DURATION delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
         //
-        _backgroundView.alpha = (animateIn) ? 1.0f : 0.0f;
+        _backgroundView.alpha = (animateIn) ? 0.7f : 0.0f;
+        _blurredView.alpha = (animateIn) ? 1.0f : 0.0f;
         
         for (UIView *view in _viewArray)
         {
@@ -264,7 +285,8 @@
         }
     } completion:^(BOOL finished) {
         //
-        if (block) {
+        if (block)
+        {
             block();
         }
     }];
@@ -292,56 +314,55 @@
 #pragma mark - Theme
 -(UIColor*) themeBackgroundColor
 {
-    //ABQuadMenuThemeLight
-    if (self.theme == ABQuadMenuThemeLight)
-    {
-        return [UIColor colorWithHexString:@"#eeeeee"];
+    switch (self.theme) {
+        case ABQuadMenuThemeLight:              
+        case ABQuadMenuThemeLightTranslucent: return [UIColor colorWithHexString:@"#eeeeee"];
     }
-    
     return nil;
 }
 
 -(UIColor*) themeTitleColor
 {
-    //ABQuadMenuThemeLight
-    if (self.theme == ABQuadMenuThemeLight)
-    {
-        return [UIColor colorWithHexString:@"#82807a"];
+    switch (self.theme) {
+        case ABQuadMenuThemeLight:              return [UIColor colorWithHexString:@"#82807a"];
+        case ABQuadMenuThemeLightTranslucent:   return [UIColor darkGrayColor];
     }
-    
+    return nil;
+}
+
+-(NSString*) themeTitleFontName
+{
+    switch (self.theme) {
+        case ABQuadMenuThemeLight:              return ABFRAMEWORK_FONT_DEFAULT_REGULAR;
+        case ABQuadMenuThemeLightTranslucent:   return nil;
+    }
     return nil;
 }
 
 -(UIColor*) themeIconColor
 {
-    //ABQuadMenuThemeLight
-    if (self.theme == ABQuadMenuThemeLight)
-    {
-        return [UIColor colorWithHexString:@"#dedcd6"];
+    switch (self.theme) {
+        case ABQuadMenuThemeLight:              return [UIColor colorWithHexString:@"#dedcd6"];
+        case ABQuadMenuThemeLightTranslucent:   return [self themeTitleColor];
     }
-    
     return nil;
 }
 
 -(UIColor*) themeSelectedIconColor
 {
-    //ABQuadMenuThemeLight
-    if (self.theme == ABQuadMenuThemeLight)
-    {
-        return [UIColor colorWithWhite:0.722 alpha:1.000];
+    switch (self.theme) {
+        case ABQuadMenuThemeLight:              return [UIColor colorWithWhite:0.722 alpha:1.000];
+        case ABQuadMenuThemeLightTranslucent:   return [UIColor darkGrayColor];
     }
-    
     return nil;
 }
 
 -(UIColor*) themeCloseIconColor
 {
-    //ABQuadMenuThemeLight
-    if (self.theme == ABQuadMenuThemeLight)
-    {
-        return [UIColor colorWithHexString:@"#f64d4d"];
+    switch (self.theme) {
+        case ABQuadMenuThemeLight:              
+        case ABQuadMenuThemeLightTranslucent:   return [UIColor colorWithHexString:@"#f64d4d"];
     }
-    
     return nil;
 }
 
@@ -352,35 +373,48 @@
         return self.dismissIconColor;
     }
     
-    //ABQuadMenuThemeLight
-    if (self.theme == ABQuadMenuThemeLight)
-    {
-        return [UIColor colorWithHexString:@"#c23d3d"];
+    switch (self.theme) {
+        case ABQuadMenuThemeLight:
+        case ABQuadMenuThemeLightTranslucent:   return [UIColor colorWithHexString:@"#c23d3d"];
     }
-    
     return nil;
 }
 
 -(UIColor*) themeTopSeperaterColor
 {
-    //ABQuadMenuThemeLight
-    if (self.theme == ABQuadMenuThemeLight)
-    {
-        return [UIColor colorWithHexString:@"#d6d5d1"];
+    switch (self.theme) {
+        case ABQuadMenuThemeLight:              return [UIColor colorWithHexString:@"#c23d3d"];
+        case ABQuadMenuThemeLightTranslucent:   return nil;
     }
-    
     return nil;
 }
 
 -(UIColor*) themeBottomSeperaterColor
 {
-    //ABQuadMenuThemeLight
+    switch (self.theme) {
+        case ABQuadMenuThemeLight:              return [UIColor colorWithHexString:@"#ffffff"];
+        case ABQuadMenuThemeLightTranslucent:   return nil;
+    }
+    return nil;
+}
+
+
+
+#pragma mark - Accessors
+-(void) setTheme:(ABQuadMenuTheme)theme
+{
+    _theme = theme;
+    
     if (self.theme == ABQuadMenuThemeLight)
     {
-        return [UIColor colorWithHexString:@"#ffffff"];
+        _translucent = NO;
+        _showShadows = YES;
     }
-    
-    return nil;
+    else if (self.theme == ABQuadMenuThemeLightTranslucent)
+    {
+        _translucent = YES;
+        _showShadows = NO;
+    }
 }
 
 @end

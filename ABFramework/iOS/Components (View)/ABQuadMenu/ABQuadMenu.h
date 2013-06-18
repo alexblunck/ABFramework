@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 typedef enum {
-    ABQuadMenuThemeNone,
-    ABQuadMenuThemeLight
+    ABQuadMenuThemeLight,
+    ABQuadMenuThemeLightTranslucent
 } ABQuadMenuTheme;
 
 //ABQuadMenuItem
