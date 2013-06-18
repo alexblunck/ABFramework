@@ -87,3 +87,4 @@
     #import "ABSwipeGestureRecognizer.h"
     #import "ABInfiniteView.h"
     #import "ABQuadMenu.h"
+    #import "ABRevealController.h"

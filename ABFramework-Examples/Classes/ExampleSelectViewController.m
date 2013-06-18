@@ -21,6 +21,7 @@
 #import "ABViewExample.h"
 #import "ABInfiniteViewExample.h"
 #import "ABQuadMenuExample.h"
+#import "ABRevealControllerExample.h"
 
 @interface ExampleSelectViewController () <UITableViewDataSource, UITableViewDelegate>
 {
@@ -62,6 +63,7 @@
                                   [ExampleObject objectWithName:@"ABHud" viewControllerClass:[ABHudExample class]],
                                   [ExampleObject objectWithName:@"ABInfiniteView" viewControllerClass:[ABInfiniteViewExample class]],
                                   [ExampleObject objectWithName:@"ABQuadMenu" viewControllerClass:[ABQuadMenuExample class]],
+                                  [ExampleObject objectWithName:@"ABRevealController" viewControllerClass:[ABRevealControllerExample class]]
                                   ];
     ExampleSection *componentsViewSection = [ExampleSection sectionWithName:@"Components (Views)" exampleObjectArray:componentsViewObjects];
     [_sectionArray addObject:componentsViewSection];
