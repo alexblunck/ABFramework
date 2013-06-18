@@ -45,7 +45,7 @@
         
         //Configuration
         self.trimAutomatically = NO;
-        self.fontName = @"HelveticaNeue";
+        if (!IS_MIN_IOS7) self.fontName = @"HelveticaNeue";
         self.textSize = 15.0f;
         self.textColor = [UIColor blackColor];
         self.lineBreakEnabled = NO;
