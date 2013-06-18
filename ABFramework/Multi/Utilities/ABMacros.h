@@ -13,12 +13,15 @@
 #define IS_RETINA_DISPLAY [[UIScreen mainScreen] respondsToSelector:@selector(scale)] && [[UIScreen mainScreen] scale] == 2.0f
 //Returns YES on 4 inch display
 #define IS_4_INCH ([[UIScreen mainScreen] applicationFrame].size.height > 480)
-//Returns YES on device running iOS 6.0+
-#define IS_MIN_IOS6 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0f)
+//Returns YES on device running at least / max iOS x
+#define AB_SYSTEM_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
+#define IS_MIN_IOS6 (AB_SYSTEM_VERSION >= 6.0f)
+#define IS_MAX_IOS6X (AB_SYSTEM_VERSION < 7.0f)
+#define IS_MIN_IOS7 (AB_SYSTEM_VERSION >= 7.0f)
+//Returns YES on a device running a a specific major iOS version
+#define IS_IOS6X (AB_SYSTEM_VERSION >= 6.0f && AB_SYSTEM_VERSION < 7.0f)
 //Returns YES on iPad
 #define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-
-
 
 /*
  * LOGGING
