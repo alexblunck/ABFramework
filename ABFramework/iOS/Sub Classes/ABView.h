@@ -11,11 +11,13 @@
 @class ABView;
 
 typedef void (^ABViewTouchHandler) (ABView *);
+typedef void (^ABViewDoubleTouchHandler) (ABView *);
 
 //ABViewDelegate
 @protocol ABViewDelegate <NSObject>
 @optional
 -(void) abViewDidTouchUpInside:(ABView*)view;
+-(void) abViewDidDoubleTouchUpInside:(ABView*)view;
 @end
 
 //ABView
@@ -66,5 +68,6 @@ typedef void (^ABViewTouchHandler) (ABView *);
  * Block based touch handler when a touch on view has ended aka "TouchUpInside" (Alternative to delegate pattern)
  */
 @property (nonatomic, copy) ABViewTouchHandler touchHandler;
+@property (nonatomic, copy) ABViewDoubleTouchHandler doubleTouchHandler;
 
 @end

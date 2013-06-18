@@ -22,6 +22,7 @@ typedef enum {
     
     ABViewState _state;
     ABTouchState _touchState;
+    BOOL _waitingForDoubleTouchUp;
     
     UIImageView *_backgroundImageView;
     
@@ -101,10 +102,14 @@ typedef enum {
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {    
     //Only "allow" touch if "selected" property is NO
-    if (self.permitTouchWhileSelected || !self.isSelected)
+    if (!self.isSelected)
     {
         self.selected = YES;
         _touchState = ABTouchStateTouchesBegan;
+    }
+    else
+    {
+        _waitingForDoubleTouchUp = YES;
     }
 }
 
@@ -132,6 +137,24 @@ typedef enum {
         if (_target && _selector)
         {
             [_target performSelector:_selector withObject:self afterDelay:0];
+        }
+    }
+    
+    //Touch up on a selected view
+    if (_waitingForDoubleTouchUp)
+    {
+        _waitingForDoubleTouchUp = NO;
+        
+        //Touch handler
+        if (self.doubleTouchHandler)
+        {
+            self.doubleTouchHandler(self);
+        }
+        
+        //Inform delegate
+        if ([self.delegate respondsToSelector:@selector(abViewDidDoubleTouchUpInside:)])
+        {
+            [self.delegate abViewDidDoubleTouchUpInside:self];
         }
     }
 }
