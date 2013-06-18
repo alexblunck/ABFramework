@@ -10,4 +10,27 @@
 
 @implementation NSObject (ABFramework)
 
+#pragma mark - Subscript Support
+#pragma mark - Dictionary Style
+-(id) objectForKeyedSubscript:(id)key
+{
+    return nil;
+}
+
+-(void) setObject:(id)obj forKeyedSubscript:(id <NSCopying>)key
+{
+    
+}
+
+#pragma mark - Array Style
+-(id) objectAtIndexedSubscript:(NSUInteger)index
+{
+    return nil;
+}
+
+-(void) setObject:(id)obj atIndexedSubscript:(NSUInteger)idx
+{
+    
+}
+
 @end

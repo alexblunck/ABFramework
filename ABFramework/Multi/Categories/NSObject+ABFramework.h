@@ -10,4 +10,20 @@
 
 @interface NSObject (ABFramework)
 
+/**
+ * Subscript support (Dictionary Style)
+ * Override following methods for subscript support on custom objects e.g. :
+ * myObject[@"string"]
+ */
+-(id) objectForKeyedSubscript:(id)key;
+-(void) setObject:(id)obj forKeyedSubscript:(id <NSCopying>)key;
+
+/**
+ * Subscript support (Array Style)
+ * Override following methods for subscript support on custom objects e.g. :
+ * myObject[4]
+ */
+-(id) objectAtIndexedSubscript:(NSUInteger)index;
+-(void) setObject:(id)obj atIndexedSubscript:(NSUInteger)idx;
+
 @end
