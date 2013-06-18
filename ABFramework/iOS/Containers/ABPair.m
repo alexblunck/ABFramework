@@ -37,4 +37,38 @@
     return self;
 }
 
+
+
+#pragma mark - Subscript Support
+-(id) objectAtIndexedSubscript:(NSUInteger)index
+{
+    if (index == 0)
+    {
+        return self.a;
+    }
+    else if (index == 1)
+    {
+        return self.b;
+    }
+    
+    NSLog(@"ABPair: WARNING -> ABPair only contains 2 objects, use myPair[0] or myPair[1]");
+    return nil;
+}
+
+-(void) setObject:(id)obj atIndexedSubscript:(NSUInteger)idx
+{
+    if (idx == 0)
+    {
+        self.a = obj;
+    }
+    else if (idx == 1)
+    {
+        self.b = obj;
+    }
+    else
+    {
+        NSLog(@"ABPair: WARNING -> ABPair only contains 2 objects, use myPair[0] or myPair[1]");
+    }
+}
+
 @end
