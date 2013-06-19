@@ -23,7 +23,7 @@
 {
     self = [super init];
     if (self) {
-
+        
         //Set viewControllers property
         self.tabBarItems = [NSArray arrayWithArray:tabBarItems];
         
@@ -85,7 +85,7 @@
     }
     
     //Do the actual View switching
-    [self switchToTabBarItem:[self.tabBarItems safeObjectAtIndex:self.tabBar.selectedIndex]];
+    [self switchToTabBarItem:[self.tabBarItems safeObjectAtIndex:self.tabBar.selectedIndex] forced:NO];
     
     //Add tabBar as SubView
     [self.view addSubview:self.tabBar];
@@ -99,9 +99,9 @@
     [self.tabBar forceSwitchToTabIndex:tabIndex];
 }
 
--(void) switchToTabBarItem:(ABTabBarItem*)item
+-(void) switchToTabBarItem:(ABTabBarItem*)item forced:(BOOL)forced
 {
-    if ([item isEqual:self.activeTabBarItem])
+    if (!forced && [item isEqual:self.activeTabBarItem])
     {
         if (self.doubleTouchHandler) self.doubleTouchHandler([_tabBarItems indexOfObject:item]);
         return;
@@ -131,9 +131,9 @@
 
 
 #pragma mark - ABTabBarDelegate
--(void) tabBarItemSelected:(ABTabBarItem*)item
+-(void) tabBarItemSelected:(ABTabBarItem*)item forced:(BOOL)forced
 {
-    [self switchToTabBarItem:item];
+    [self switchToTabBarItem:item forced:forced];
 }
 
 

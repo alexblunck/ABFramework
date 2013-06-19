@@ -10,7 +10,7 @@
 
 @protocol ABTabBarDelegate <NSObject>
 @optional
--(void) tabBarItemSelected:(ABTabBarItem*)item;
+-(void) tabBarItemSelected:(ABTabBarItem*)item forced:(BOOL)forced;
 @end
 
 @interface ABTabBar : UIView

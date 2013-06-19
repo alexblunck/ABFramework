@@ -12,6 +12,7 @@
 {
     NSMutableArray *_tabViewArray;
     UIView *_backgroundView;
+    BOOL _forced;
 }
 @end
 
@@ -93,7 +94,7 @@
         //[ABAlertView showAlertWithMessage:item.imageName];
         
         [_tabViewArray addObject:view];
-
+        
         [_backgroundView addSubview:[_tabViewArray lastObject]];
         
         //Compute Origin for next Tab Button
@@ -111,7 +112,7 @@
 -(void) abViewDidTouchUpInside:(ABView *)selectedView
 {
     ABTabBarItem *item = [self.tabBarItems safeObjectAtIndex:[[selectedView.userData safeObjectForKey:@"itemIndex"] integerValue]];
-
+    
     //Unhightlight all other tabs / highlight selected one
     for (ABView *view in _tabViewArray)
     {
@@ -125,13 +126,16 @@
         }
     }
     
-    [self.delegate tabBarItemSelected:item];
+    [self.delegate tabBarItemSelected:item forced:_forced];
+    
+    //Reset forced state
+    if (_forced) _forced = NO;
 }
 
 -(void) abViewDidDoubleTouchUpInside:(ABView *)selectedView
 {
     ABTabBarItem *item = [self.tabBarItems safeObjectAtIndex:[[selectedView.userData safeObjectForKey:@"itemIndex"] integerValue]];
-    [self.delegate tabBarItemSelected:item];
+    [self.delegate tabBarItemSelected:item forced:NO];
 }
 
 
@@ -142,6 +146,8 @@
     //Highlight Correct Tab
     ABView *tabView = [_tabViewArray safeObjectAtIndex:tabIndex];
     //tabView.selected = YES;
+    
+    _forced = YES;
     
     //Simulate touchUpInside
     [self abViewDidTouchUpInside:tabView];
