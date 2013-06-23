@@ -9,7 +9,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "ABTextField.h"
 
-@interface ABTextField () <UITextFieldDelegate> {
+@interface ABTextField () <UITextFieldDelegate>
+{
     UITextField *_textField;
     BOOL _hasAlreadyReturned;
 }
@@ -130,6 +131,19 @@
     
     return YES;
 }
+
+-(BOOL) textFieldShouldClear:(UITextField *)textField
+{
+    //Inform delegate
+    if ([self.delegate respondsToSelector:@selector(abTextFieldDidChangeText:string:)])
+    {
+        [self.delegate abTextFieldDidChangeText:self string:@""];
+    }
+    
+    return YES;
+}
+
+
 
 #pragma mark - Superclass
 -(BOOL) becomeFirstResponder
