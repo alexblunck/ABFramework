@@ -53,7 +53,7 @@ typedef enum {
         self.shadowOpactiy = 0.8f;
         self.shadowRadius = 5.0f;
         self.shadowColor = [UIColor blackColor];
-        self.disablePanGesture = YES;
+        self.disablePanGesture = NO;
         
         //View controllers
         _frontViewController = frontVc;
