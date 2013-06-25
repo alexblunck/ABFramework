@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ABQuadMenuExample : ABViewController
+@interface ABQuadMenuExample : UIViewController
 
 @end

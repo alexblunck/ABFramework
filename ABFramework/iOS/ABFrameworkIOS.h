@@ -41,15 +41,7 @@
 #import "UIViewController+ABFramework.h"
 #import "UITableView+ABFramework.h"
 #import "UIFont+ABFramework.h"
-
-
-/**
- * Sub Classes
- */
-#import "ABView.h"
-#import "ABViewController.h"
-#import "ABNavigationController.h"
-
+#import "UINavigationController+ComingUp.h"
 
 
 /**
@@ -62,6 +54,7 @@
     #import "ABNetworking.h"
     #import "ABNotificationHelper.h"
     //View
+    #import "ABView.h"
     #import "ABAlertView.h"
     #import "ABDatePickerView.h"
     #import "ABImagePickerViewController.h"

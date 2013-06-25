@@ -163,6 +163,12 @@
             location = "group:Categories"
             name = "Categories">
             <FileRef
+               location = "group:UINavigationController+ComingUp.h">
+            </FileRef>
+            <FileRef
+               location = "group:UINavigationController+ComingUp.m">
+            </FileRef>
+            <FileRef
                location = "group:UIFont+ABFramework.h">
             </FileRef>
             <FileRef
@@ -268,6 +274,16 @@
          <Group
             location = "group:Components (View)"
             name = "Components (View)">
+            <Group
+               location = "group:ABView"
+               name = "ABView">
+               <FileRef
+                  location = "group:ABView.h">
+               </FileRef>
+               <FileRef
+                  location = "group:ABView.m">
+               </FileRef>
+            </Group>
             <Group
                location = "group:ABRevealController"
                name = "ABRevealController">
@@ -534,28 +550,6 @@
             name = "Protocols">
             <FileRef
                location = "group:ABViewSelectionProtocol.h">
-            </FileRef>
-         </Group>
-         <Group
-            location = "group:Sub Classes"
-            name = "Sub Classes">
-            <FileRef
-               location = "group:ABNavigationController.h">
-            </FileRef>
-            <FileRef
-               location = "group:ABNavigationController.m">
-            </FileRef>
-            <FileRef
-               location = "group:ABView.h">
-            </FileRef>
-            <FileRef
-               location = "group:ABView.m">
-            </FileRef>
-            <FileRef
-               location = "group:ABViewController.h">
-            </FileRef>
-            <FileRef
-               location = "group:ABViewController.m">
             </FileRef>
          </Group>
          <Group

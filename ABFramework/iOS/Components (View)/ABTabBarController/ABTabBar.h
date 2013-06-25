@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class ABTabBarItem;
+
 @protocol ABTabBarDelegate <NSObject>
 @optional
 -(void) tabBarItemSelected:(ABTabBarItem*)item forced:(BOOL)forced;
