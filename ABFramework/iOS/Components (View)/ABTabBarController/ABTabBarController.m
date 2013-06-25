@@ -39,33 +39,22 @@
     
     self.view.frame = CGRectChangingOriginY(self.view.frame, 0);
     
-    //Retrieve Screen Dimensions
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     CGFloat screenWidth = screenSize.width;
-    CGFloat screenHeight = screenSize.height;
     
-    CGFloat statusBarHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
+    //Config
+    if (!self.tabBarHeight) self.tabBarHeight = 49;
+    if (!self.tabSpacing) self.tabSpacing = 0;
     
-    //If no tabBarHeight is set, use default height of 49
-    if (!self.tabBarHeight)
-    {
-        self.tabBarHeight = 49;
-    }
-    //If no tabSpacing is set, use default of 0
-    if (!self.tabSpacing)
-    {
-        self.tabSpacing = 0;
-    }
-    
-    //Create the actual TabBar View
-    //Position it at the bottom of the screen with the set Height
-    CGRect tabBarRect = CGRectMake(0, screenHeight-statusBarHeight-self.tabBarHeight, screenWidth, self.tabBarHeight);
-    self.tabBar = [[ABTabBar alloc] initWithFrame:tabBarRect];
+    //Create the actual tabbar
+    self.tabBar = [[ABTabBar alloc] initWithFrame:cgr(0, 0, screenWidth, self.tabBarHeight)];
+    self.tabBar.frame = CGRectInsideBottomCenter(self.tabBar.frame, self.view.bounds, 0);
     self.tabBar.delegate = self;
     self.tabBar.backgroundImageName = self.tabBarBackgroundImageName;
     self.tabBar.height = self.tabBarHeight;
     self.tabBar.tabSpacing = self.tabSpacing;
     self.tabBar.tabBarItems = self.tabBarItems;
+    [self.view addSubview:self.tabBar];
     
     //Show default ViewController - Highlight correct Tab
     //else use first in Array
@@ -86,9 +75,6 @@
     
     //Do the actual View switching
     [self switchToTabBarItem:[self.tabBarItems safeObjectAtIndex:self.tabBar.selectedIndex] forced:NO];
-    
-    //Add tabBar as SubView
-    [self.view addSubview:self.tabBar];
 }
 
 
@@ -111,18 +97,14 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ABTabBarController.TabSwitched" object:nil];
     
     //Switch activeViewController
-    self.activeTabBarItem = nil;
     self.activeTabBarItem = item;
     
-    //Remove current active view
+    //Switch out views
     [_activeView removeFromSuperview];
     _activeView = nil;
-    
-    //Show new view
     _activeView = item.viewController.view;
     
     //Restrict frame of activeView to space above tabBar View
-    //_activeView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-self.tabBarHeight);
     _activeView.frame = CGRectChangingSizeHeight(_activeView.frame, self.view.height - self.tabBarHeight);
     
     [self.view insertSubview:_activeView belowSubview:self.tabBar];
@@ -143,24 +125,11 @@
 {
     _tabBarItems = tabBarItems;
     
-    //Loop through added ViewController
     for (ABTabBarItem *item in _tabBarItems)
     {
-        //If ViewController is ABViewController set it's abTabBarController property
         if ([item.viewController respondsToSelector:@selector(setAbTabBarController:)])
         {
-            [(ABViewController*)item.viewController setAbTabBarController:self];
-            
-            if ([item.viewController respondsToSelector:@selector(viewControllers)])
-            {
-                for (id subViewController in [(ABNavigationController*)item.viewController viewControllers])
-                {
-                    if ([subViewController respondsToSelector:@selector(setAbTabBarController:)])
-                    {
-                        [(ABViewController*)subViewController setAbTabBarController:self];
-                    }
-                }
-            }
+            [item.viewController setAbTabBarController:self];
         }
     }
 }
@@ -192,7 +161,7 @@
     [self.activeTabBarItem.viewController willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
 }
 
-//iOS 5 (Ask the activeViewController)
+//iOS 5
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return [self.activeTabBarItem.viewController shouldAutorotateToInterfaceOrientation:interfaceOrientation];
