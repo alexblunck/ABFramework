@@ -8,7 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class ABTabBarController;
+
 @interface UIViewController (ABFramework)
 
+//Access
 +(UIViewController*) topViewController;
+
+//Frame
+-(void) subtractNavigationBarHeight;
+-(void) subtractStatusBarHeight;
+
+@property (nonatomic, weak) ABTabBarController *abTabBarController;
+
 @end
