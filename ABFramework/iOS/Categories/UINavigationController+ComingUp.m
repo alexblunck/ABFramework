@@ -1,21 +1,20 @@
 //
-//  ABNavigationController.m
+//  UINavigationController+ComingUp.m
 //  ABFramework
 //
-//  Created by Alexander Blunck on 9/7/12.
-//  Copyright (c) 2012 Ablfx. All rights reserved.
+//  Created by Alexander Blunck on 6/26/13.
+//  Copyright (c) 2013 Ablfx. All rights reserved.
 //
 
-#import "ABNavigationController.h"
+#import "UINavigationController+ComingUp.h"
 
-@interface ABNavigationController ()
+@implementation UINavigationController (ComingUp)
 
-@end
-
-@implementation ABNavigationController
-
+//
+//Delegate orientation to top view controller (visible view controller)
+//
 #pragma mark - Orientation
-//iOS 6 (Ask the visible viewController)
+//iOS 6+
 -(BOOL) shouldAutorotate
 {
     return [[self topViewController] shouldAutorotate];
@@ -26,7 +25,7 @@
     return [[self topViewController] supportedInterfaceOrientations];
 }
 
-//iOS 5 (Ask the visible viewController)
+//iOS 5
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return [[self topViewController] shouldAutorotateToInterfaceOrientation:interfaceOrientation];
