@@ -11,21 +11,21 @@
 @implementation ABTabBarItem
 
 #pragma mark - Utility
-+(id) itemWithImageName:(NSString*)imageName viewController:(UIViewController*)viewController
++(id) itemWithViewController:(UIViewController *)viewController tabImageName:(NSString *)tabImageName
 {
-    return [[self alloc] initWithImageName:imageName viewController:viewController];
+    return [[self alloc] initWithViewController:viewController tabImageName:tabImageName];
 }
 
 
 
 #pragma mark - Intitializer
--(id) initWithImageName:(NSString*)imageName viewController:(UIViewController*)viewController
+-(id) initWithViewController:(UIViewController *)viewController tabImageName:(NSString *)tabImageName
 {
     self = [super init];
     if (self)
     {
         self.viewController = viewController;
-        self.imageName = imageName;
+        self.tabImageName = tabImageName;
     }
     return self;
 }

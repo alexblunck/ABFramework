@@ -10,20 +10,36 @@
 
 @interface ABTabBar () <ABViewDelegate>
 {
+    NSArray *_tabBarItems;
+    CGFloat _taBarHeight;
+    NSString *_backgroundImageName;
+    CGFloat _tabSpacing;
+    
     NSMutableArray *_tabViewArray;
     UIView *_backgroundView;
-    BOOL _forced;
+    
+    __weak id<ABTabBarDelegate> _delegate;
 }
 @end
 
 @implementation ABTabBar
 
 #pragma mark - Initializer
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithTabBarItems:(NSArray*)tabBarItems
+             tabBarHeight:(CGFloat)tabBarHeight
+      backgroundImageName:(NSString*)backgroundImageName
+               tabSpacing:(CGFloat)tabSpacing
+                 delegate:(id<ABTabBarDelegate>)delegate
 {
-    self = [super initWithFrame:frame];
+    self = [super init];
     if (self)
     {
+        _tabBarItems = tabBarItems;
+        _taBarHeight = tabBarHeight;
+        _backgroundImageName = backgroundImageName;
+        _tabSpacing = tabSpacing;
+        _delegate = delegate;
+        
         //Allocation
         _tabViewArray = [NSMutableArray new];
     }
@@ -37,20 +53,20 @@
 {
     [super willMoveToSuperview:newSuperview];
     
-    //Set Background Image
-    if (self.backgroundImageName)
+    //Background image
+    if (_backgroundImageName)
     {
-        _backgroundView = [[ABView alloc] initWithBackgroundImageName:self.backgroundImageName];
+        _backgroundView = [[ABView alloc] initWithBackgroundImageName:_backgroundImageName];
         [self addSubview:_backgroundView];
     }
-    //If none has been specified use a UIToolBar View
+    //If none is set use UIToolbar appearance
     else
     {
         UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, newSuperview.bounds.size.width, self.height)];
         [self addSubview:toolBar];
     }
     
-    //Layout Tabs
+    //Layout tabs
     [self layoutTabs];
 }
 
@@ -59,51 +75,43 @@
 #pragma mark - Layout
 -(void) layoutTabs
 {
-    //Retrieve Screen Dimensions
-    CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    CGFloat screenWidth = screenSize.width;
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
     
-    NSInteger tabCount = self.tabBarItems.count;
+    NSInteger tabCount = _tabBarItems.count;
     
     //Calculate width of all tabs combined
     CGFloat tabsWidth = 0;
-    for (ABTabBarItem *item in self.tabBarItems)
+    for (ABTabBarItem *item in _tabBarItems)
     {
-        UIImage *tabImage = [UIImage imageNamed:item.imageName];
+        UIImage *tabImage = [UIImage imageNamed:item.tabImageName];
         tabsWidth += tabImage.size.width;
     }
     
     //Width Of all tabs + spacing
-    CGFloat tabsWidthWithSpacing = tabsWidth + ((tabCount -1) * self.tabSpacing);
+    CGFloat tabsWidthWithSpacing = tabsWidth + ((tabCount -1) * _tabSpacing);
     
-    //Keep track of Origin
+    //Keep track of Y origin
     //Computer first tab 's origin to center all tabs (don't add the actual tabSpacing before the first tab)
     CGFloat currentOrigin = (screenWidth - tabsWidthWithSpacing) / 2;
     
     //Loop through ABTabBarItem 's and create tabs
-    for (ABTabBarItem *item in self.tabBarItems)
+    for (ABTabBarItem *item in _tabBarItems)
     {
-        //Retrieve ABTabBarItem For Controller
-        ABView *view = [[ABView alloc] initWithBackgroundImageName:item.imageName];
-        view.selectedBackgroundImageName = [item.imageName stringByAppendingString:@"-sel"];
+        //Retrieve ABTabBarItem for controller
+        ABView *view = [[ABView alloc] initWithBackgroundImageName:item.tabImageName];
+        view.selectedBackgroundImageName = [item.tabImageName stringByAppendingString:@"-sel"];
         view.frame = CGRectChangingOriginX(view.frame, currentOrigin);
         
-        view.userData = @{@"itemIndex": NSNumberInteger([self.tabBarItems indexOfObject:item])};
+        view.userData = @{@"itemIndex": NSNumberInteger([_tabBarItems indexOfObject:item])};
         view.delegate = self;
-        
-        //[ABAlertView showAlertWithMessage:item.imageName];
         
         [_tabViewArray addObject:view];
         
         [_backgroundView addSubview:[_tabViewArray lastObject]];
         
-        //Compute Origin for next Tab Button
-        currentOrigin = view.frame.origin.x + view.width + self.tabSpacing;
+        //Compute Origin for next tab view
+        currentOrigin = view.frame.origin.x + view.width + _tabSpacing;
     }
-    
-    //Set Initial selected Tab
-    ABView *selectedTabView = [_tabViewArray safeObjectAtIndex:self.selectedIndex];
-    selectedTabView.selected = YES;
 }
 
 
@@ -111,7 +119,7 @@
 #pragma mark - ABViewDelegate
 -(void) abViewDidTouchUpInside:(ABView *)selectedView
 {
-    ABTabBarItem *item = [self.tabBarItems safeObjectAtIndex:[[selectedView.userData safeObjectForKey:@"itemIndex"] integerValue]];
+    ABTabBarItem *item = [_tabBarItems safeObjectAtIndex:[[selectedView.userData safeObjectForKey:@"itemIndex"] integerValue]];
     
     //Unhightlight all other tabs / highlight selected one
     for (ABView *view in _tabViewArray)
@@ -126,31 +134,27 @@
         }
     }
     
-    [self.delegate tabBarItemSelected:item forced:_forced];
-    
-    //Reset forced state
-    if (_forced) _forced = NO;
+    [_delegate tabBarItemSelected:item];
 }
 
 -(void) abViewDidDoubleTouchUpInside:(ABView *)selectedView
 {
-    ABTabBarItem *item = [self.tabBarItems safeObjectAtIndex:[[selectedView.userData safeObjectForKey:@"itemIndex"] integerValue]];
-    [self.delegate tabBarItemSelected:item forced:NO];
+    ABTabBarItem *item = [_tabBarItems safeObjectAtIndex:[[selectedView.userData safeObjectForKey:@"itemIndex"] integerValue]];
+    [_delegate tabBarItemSelectedDouble:item];
 }
 
 
 
-#pragma mark - Helper
--(void) forceSwitchToTabIndex:(NSInteger)tabIndex
+#pragma mark - Accessors
+-(void) setSelectedIndex:(NSUInteger)selectedIndex
 {
-    //Highlight Correct Tab
-    ABView *tabView = [_tabViewArray safeObjectAtIndex:tabIndex];
-    //tabView.selected = YES;
+    _selectedIndex = selectedIndex;
     
-    _forced = YES;
-    
-    //Simulate touchUpInside
-    [self abViewDidTouchUpInside:tabView];
+    for (ABView *tabView in _tabViewArray)
+    {
+        NSUInteger index = [_tabViewArray indexOfObject:tabView];
+        tabView.selected = (index == selectedIndex);
+    }
 }
 
 @end

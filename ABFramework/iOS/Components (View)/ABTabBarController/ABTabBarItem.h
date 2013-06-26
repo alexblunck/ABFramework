@@ -11,10 +11,9 @@
 @interface ABTabBarItem : NSObject
 
 //Utility
-+(id) itemWithImageName:(NSString*)imageName viewController:(UIViewController*)viewController;
++(id) itemWithViewController:(UIViewController*)viewController tabImageName:(NSString*)tabImageName;
 
 @property (nonatomic, strong) UIViewController *viewController;
-@property (nonatomic, copy) NSString *imageName;
-@property (nonatomic, assign) BOOL isDefaultTab;
+@property (nonatomic, copy) NSString *tabImageName;
 
 @end

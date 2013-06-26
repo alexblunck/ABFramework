@@ -486,16 +486,16 @@
                location = "group:ABTabBarController"
                name = "ABTabBarController">
                <FileRef
-                  location = "group:ABTabBar.h">
-               </FileRef>
-               <FileRef
-                  location = "group:ABTabBar.m">
-               </FileRef>
-               <FileRef
                   location = "group:ABTabBarController.h">
                </FileRef>
                <FileRef
                   location = "group:ABTabBarController.m">
+               </FileRef>
+               <FileRef
+                  location = "group:ABTabBar.h">
+               </FileRef>
+               <FileRef
+                  location = "group:ABTabBar.m">
                </FileRef>
                <FileRef
                   location = "group:ABTabBarItem.h">

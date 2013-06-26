@@ -11,9 +11,7 @@
 @interface ABTabBarController () <ABTabBarDelegate>
 {
     UIView *_activeView;
-    UIView *_newView;
 }
-
 @end
 
 @implementation ABTabBarController
@@ -22,12 +20,11 @@
 -(id) initWithTabBarItems:(NSArray*)tabBarItems
 {
     self = [super init];
-    if (self) {
-        
-        //Set viewControllers property
-        self.tabBarItems = [NSArray arrayWithArray:tabBarItems];
-        
-    } return self;
+    if (self)
+    {
+        [self setTabBarItems:tabBarItems];
+    }
+    return self;
 }
 
 
@@ -37,85 +34,73 @@
 {
     [super viewDidLoad];
     
-    self.view.frame = CGRectChangingOriginY(self.view.frame, 0);
-    
-    CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    CGFloat screenWidth = screenSize.width;
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
     
     //Config
-    if (!self.tabBarHeight) self.tabBarHeight = 49;
-    if (!self.tabSpacing) self.tabSpacing = 0;
+    if (!self.tabBarHeight) self.tabBarHeight = 49.0f;
+    if (!self.tabSpacing) self.tabSpacing = 0.0f;
     
     //Create the actual tabbar
-    self.tabBar = [[ABTabBar alloc] initWithFrame:cgr(0, 0, screenWidth, self.tabBarHeight)];
-    self.tabBar.frame = CGRectInsideBottomCenter(self.tabBar.frame, self.view.bounds, 0);
-    self.tabBar.delegate = self;
-    self.tabBar.backgroundImageName = self.tabBarBackgroundImageName;
-    self.tabBar.height = self.tabBarHeight;
-    self.tabBar.tabSpacing = self.tabSpacing;
-    self.tabBar.tabBarItems = self.tabBarItems;
-    [self.view addSubview:self.tabBar];
+    _tabBar = [[ABTabBar alloc] initWithTabBarItems:self.tabBarItems
+                                       tabBarHeight:self.tabBarHeight
+                                backgroundImageName:self.backgroundImageName
+                                         tabSpacing:self.tabSpacing
+                                           delegate:self];
     
-    //Show default ViewController - Highlight correct Tab
-    //else use first in Array
-    BOOL defaultSet = NO;
-    for (ABTabBarItem *item in self.tabBarItems)
-    {
-        if (item.isDefaultTab)
-        {
-            defaultSet = YES;
-            self.tabBar.selectedIndex = [self.tabBarItems indexOfObject:item];
-        }
-    }
+    _tabBar.frame = cgr(0, 0, screenWidth, self.tabBarHeight);
+    _tabBar.frame = CGRectInsideBottomCenter(self.tabBar.frame, self.view.bounds, 0);
+    [self.view addSubview:_tabBar];
     
-    if (!defaultSet)
-    {
-        self.tabBar.selectedIndex = 0;
-    }
-    
-    //Do the actual View switching
-    [self switchToTabBarItem:[self.tabBarItems safeObjectAtIndex:self.tabBar.selectedIndex] forced:NO];
+    //Use first tab as selected one
+    self.selectedIndex = 0;
 }
 
 
 
-#pragma mark - Helper
--(void) forceSwitchToTabIndex:(NSInteger)tabIndex
+#pragma mark - Accessors
+-(void) setSelectedIndex:(NSUInteger)selectedIndex
 {
-    [self.tabBar forceSwitchToTabIndex:tabIndex];
-}
-
--(void) switchToTabBarItem:(ABTabBarItem*)item forced:(BOOL)forced
-{
-    if (!forced && [item isEqual:self.activeTabBarItem])
+    //Make sure index exists
+    ABTabBarItem *item = [_tabBarItems safeObjectAtIndex:selectedIndex];
+    if (!item)
     {
-        if (self.doubleTouchHandler) self.doubleTouchHandler([_tabBarItems indexOfObject:item]);
+        NSLog(@"ABTabBarController: WARNING -> Index does not exist!");
         return;
     }
     
-    //Inform Application of Tab switch
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ABTabBarController.TabSwitched" object:nil];
+    _selectedIndex = selectedIndex;
     
-    //Switch activeViewController
-    self.activeTabBarItem = item;
+    //Inform application
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ABTabBarController.tabSwitched" object:@(selectedIndex)];
     
-    //Switch out views
+    //Inform tabbar
+    _tabBar.selectedIndex = _selectedIndex;
+    
+    //Switch
+    _activeTabBarItem = item;
+    _activeViewController = item.viewController;
     [_activeView removeFromSuperview];
-    _activeView = nil;
     _activeView = item.viewController.view;
-    
-    //Restrict frame of activeView to space above tabBar View
     _activeView.frame = CGRectChangingSizeHeight(_activeView.frame, self.view.height - self.tabBarHeight);
-    
     [self.view insertSubview:_activeView belowSubview:self.tabBar];
 }
 
 
 
 #pragma mark - ABTabBarDelegate
--(void) tabBarItemSelected:(ABTabBarItem*)item forced:(BOOL)forced
+-(void) tabBarItemSelected:(ABTabBarItem*)item
 {
-    [self switchToTabBarItem:item forced:forced];
+    NSUInteger index = [_tabBarItems indexOfObject:item];
+    self.selectedIndex = index;
+}
+
+-(void) tabBarItemSelectedDouble:(ABTabBarItem *)item
+{
+    if (self.doubleTouchHandler)
+    {
+        NSUInteger index = [_tabBarItems indexOfObject:item];
+        self.doubleTouchHandler(index);
+    }
 }
 
 
@@ -136,16 +121,8 @@
 
 
 
-#pragma mark - Accessors
--(id) activeViewController
-{
-    return self.activeTabBarItem.viewController;
-}
-
-
-
 #pragma mark - Orientation
-//iOS 6 (Ask the activeViewController)
+#pragma mark - iOS 6 +
 -(BOOL) shouldAutorotate
 {
     return [self.activeTabBarItem.viewController shouldAutorotate];
@@ -161,7 +138,8 @@
     [self.activeTabBarItem.viewController willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
 }
 
-//iOS 5
+
+#pragma mark - iOS 5
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return [self.activeTabBarItem.viewController shouldAutorotateToInterfaceOrientation:interfaceOrientation];

@@ -12,30 +12,19 @@
 
 @protocol ABTabBarDelegate <NSObject>
 @optional
--(void) tabBarItemSelected:(ABTabBarItem*)item forced:(BOOL)forced;
+-(void) tabBarItemSelected:(ABTabBarItem*)item;
+-(void) tabBarItemSelectedDouble:(ABTabBarItem*)item;
 @end
 
 @interface ABTabBar : UIView
 
-//Helper
--(void) forceSwitchToTabIndex:(NSInteger)tabIndex;
+//Initializer
+- (id)initWithTabBarItems:(NSArray*)tabBarItems
+             tabBarHeight:(CGFloat)tabBarHeight
+      backgroundImageName:(NSString*)backgroundImageName
+               tabSpacing:(CGFloat)tabSpacing
+                 delegate:(id<ABTabBarDelegate>)delegate;
 
-//Array that holds all ViewControllers available from the TabBar
-@property (nonatomic, strong) NSArray *tabBarItems;
-
-//Height of the TabBar View
-@property (nonatomic, assign) CGFloat height;
-
-//Spacing between Tabs
-@property (nonatomic, assign) CGFloat tabSpacing;
-
-//TabBar Background Image
-@property (nonatomic, copy) NSString *backgroundImageName;
-
-//Current Selected ViewController
-@property (nonatomic, assign) NSInteger selectedIndex;
-
-//Delegate Property
-@property (nonatomic, weak) id <ABTabBarDelegate> delegate;
+@property (nonatomic, assign) NSUInteger selectedIndex;
 
 @end

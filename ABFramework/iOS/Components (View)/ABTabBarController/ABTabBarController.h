@@ -10,31 +10,70 @@
 
 @interface ABTabBarController : UIViewController
 
-//Initializer
+/**
+ * Initializer
+ *
+ * tabBarItems: Array of ABTabBarItems
+ */
 -(id) initWithTabBarItems:(NSArray*)tabBarItems;
 
-//Helper
--(void) forceSwitchToTabIndex:(NSInteger)tabIndex;
 
-//Array that holds all ViewControllers available from the TabBar
-@property (nonatomic, strong) NSArray *tabBarItems;
 
-@property (nonatomic, strong) ABTabBarItem *activeTabBarItem;
+/**
+ * tabBar
+ * Underlying ABTabBar view
+ */
+@property (nonatomic, strong, readonly) ABTabBar *tabBar;
 
-//Height of the TabBar View
+/**
+ * tabBarItems
+ * ABTabBarItem 's
+ */
+@property (nonatomic, strong, readonly) NSArray *tabBarItems;
+
+/**
+ * selectedIndex
+ * Current selected tab index, change to switch tabs / views
+ */
+@property (nonatomic, assign) NSUInteger selectedIndex;
+
+/**
+ * activeTabBarItem
+ * Currently active ABTabBarItem
+ */
+@property (nonatomic, weak, readonly) ABTabBarItem *activeTabBarItem;
+
+/**
+ * activeViewController
+ * Currently active view controller
+ */
+@property (nonatomic, weak, readonly) id activeViewController;
+
+
+
+//Config
+/**
+ * tabBarHeight
+ * Height of the tabbar, Default: 49.0f
+ */
 @property (nonatomic, assign) CGFloat tabBarHeight;
 
-//Spacing between Tabs
+/**
+ * tabSpacing
+ * Spacing between tab view, Default: 0.0f
+ */
 @property (nonatomic, assign) CGFloat tabSpacing;
 
-//TabBar Background Image
-@property (nonatomic, copy) NSString *tabBarBackgroundImageName;
+/**
+ * backgroundImageName
+ * Image name of tabbar background, otherwise it will use default UIToolbar appearance
+ */
+@property (nonatomic, copy) NSString *backgroundImageName;
 
-//TabBar View
-@property (nonatomic, strong) ABTabBar *tabBar;
-
-@property (nonatomic, strong) id activeViewController;
-
+/**
+ * doubleTouchHandler
+ * Block is executed when a tab selected while already selected
+ */
 @property (nonatomic, copy) ABBlockInteger doubleTouchHandler;
 
 @end
