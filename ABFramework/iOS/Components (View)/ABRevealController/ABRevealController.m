@@ -73,11 +73,9 @@ typedef enum {
 {
     [super viewDidLoad];
     
-    self.view.frame = CGRectChangingOriginY(self.view.frame, 0);
+    //self.view.frame = CGRectChangingOriginY(self.view.frame, 0);
     
     //Add views
-    [self addChildViewController:_frontViewController];
-    [self addChildViewController:_backgroundViewController];
     _frontView = _frontViewController.view;
     _backgroundView = _backgroundViewController.view;
     [self.view addSubview:_backgroundView];
@@ -288,7 +286,12 @@ typedef enum {
 #pragma mark - Default Reveal
 -(void) toggleReveal
 {
-    [self completeReveal:!self.isRevealed animated:YES];
+    [self toggleRevealAnimated:YES];
+}
+
+-(void) toggleRevealAnimated:(BOOL)animated
+{
+    [self completeReveal:!self.isRevealed animated:animated];
 }
 
 

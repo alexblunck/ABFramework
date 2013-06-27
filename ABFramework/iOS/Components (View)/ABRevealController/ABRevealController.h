@@ -34,6 +34,7 @@
 
 //Actions
 -(void) toggleReveal;
+-(void) toggleRevealAnimated:(BOOL)animated;
 
 @property (nonatomic, strong) UIViewController *frontViewController;
 @property (nonatomic, strong) UIViewController *backgroundViewController;
