@@ -23,6 +23,8 @@ typedef enum {
 	ABDateHourFormat12Hour
 } ABDateHourFormat;
 
+@class ABPair;
+
 @interface NSDate (ABFramework)
 
 //Global Config
@@ -105,8 +107,8 @@ typedef enum {
 -(NSDateComponents*) components;
 
 
-//Relatives
-+(ABDateDescriptor*) smallestDateDescriptorUntil:(NSDate*)date;
+//Relative
++(ABPair*) relativeDatePair:(NSDate*)date;
 
 
 //Years

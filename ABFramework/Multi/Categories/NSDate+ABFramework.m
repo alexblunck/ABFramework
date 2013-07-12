@@ -369,50 +369,53 @@ static ABDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 
 
 #pragma mark - Relatives
-+(ABDateDescriptor*) smallestDateDescriptorUntil:(NSDate*)date
++(ABPair*) relativeDatePair:(NSDate*)date
 {
     NSDate *currentDate = [NSDate date];
     
-    ABDateDescriptor *returnDescriptor = [ABDateDescriptor new];
+    NSInteger dateUnits = 0;
     NSMutableString *dateUnitName = [NSMutableString new];
     
     //Check if Date is in under 60 Seconds
-    if (abs((int)[currentDate secondsUntilDate:date]) <= 60) {
-        returnDescriptor.dateUnits = [currentDate secondsUntilDate:date];
+    if (abs((int)[currentDate secondsUntilDate:date]) <= 60)
+    {
+        dateUnits = [currentDate secondsUntilDate:date];
         [dateUnitName appendString:@"second"];
     }
     //Check if Date is under 60 Minutes
-    else if (abs((int)[currentDate minutesUntilDate:date]) <= 60) {
-        returnDescriptor.dateUnits = [currentDate minutesUntilDate:date];
+    else if (abs((int)[currentDate minutesUntilDate:date]) <= 60)
+    {
+        dateUnits = [currentDate minutesUntilDate:date];
         [dateUnitName appendString:@"minute"];
     }
     //Check if Date is under 24 Hours
-    else if (abs((int)[currentDate hoursUntilDate:date]) <= 24) {
-        returnDescriptor.dateUnits = [currentDate hoursUntilDate:date];
+    else if (abs((int)[currentDate hoursUntilDate:date]) <= 24)
+    {
+        dateUnits = [currentDate hoursUntilDate:date];
         [dateUnitName appendString:@"hour"];
     }
     //Days until Date
-    else {
-        returnDescriptor.dateUnits = [currentDate daysUntilDate:date];
+    else
+    {
+        dateUnits = [currentDate daysUntilDate:date];
         [dateUnitName appendString:@"day"];
     }
     
     //Add 's' after dateUnitName if dateUnit is more than 1
-    if (abs((int)returnDescriptor.dateUnits) > 1 || abs((int)returnDescriptor.dateUnits) == 0) {
+    if (abs((int)dateUnits) > 1 || abs((int)dateUnits) == 0)
+    {
         [dateUnitName appendString:@"s"];
     }
     
     //Add 'ago' if date is before current date
-    if (returnDescriptor.dateUnits < 0) {
+    if (dateUnits < 0)
+    {
         [dateUnitName appendString:@" ago"];
     }
     
-    //Make sure dateUnits Value is always positive
-    returnDescriptor.dateUnits = abs(returnDescriptor.dateUnits);
-    
-    returnDescriptor.dateUnitName = dateUnitName;
-    
-    return returnDescriptor;
+    NSInteger units = abs(dateUnits);
+    NSNumber *unitsObject = [NSNumber numberWithInteger:units];
+    return [ABPair pairWithObjectA:dateUnitName andObjectB:unitsObject];
 }
 
 
