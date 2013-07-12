@@ -9,234 +9,285 @@
 #import <QuartzCore/QuartzCore.h>
 #import "ABSelectView.h"
 
-@interface ABSelectView () <ABSelectViewItemDelegate>
+@interface ABSelectView () <ABViewDelegate>
 {
-    UIView *_selectionTable;
-    UIView *_shadowMask;
+    UIView *_presentingView;
+    NSArray *_stringArray;
+    NSInteger _initialIndex;
+    ABSelectViewTheme _theme;
     ABBlockInteger _completionBlock;
+    
+    UIImageView *_blurredView;
+    UIView *_backgroundView;
+    ABStackController *_stack;
+    NSMutableArray *_labelArray;
+    UIView *_stackContainmentView;
 }
-
 @end
 
 @implementation ABSelectView
 
 #pragma mark - Utility
-+(id) showWithStringArray:(NSArray*)stringArray
-          completionBlock:(ABBlockInteger)block
++(id) showWithPresentingView:(UIView*)view
+                 stringArray:(NSArray*)stringArray
+               selectedIndex:(NSInteger)index
+                       theme:(ABSelectViewTheme)theme
+                  completion:(ABBlockInteger)block
 {
-    return [self showWithStringArray:stringArray defaultIndex:stringArray.count completionBlock:block];
-}
-
-+(id) showWithStringArray:(NSArray*)stringArray
-             defaultIndex:(int)defaultIndex
-          completionBlock:(ABBlockInteger)block
-{
-    return [self showInView:nil WithStringArray:stringArray defaultIndex:defaultIndex theme:[ABSelectViewTheme themeWithTag:ABSELECTVIEW_THEME_DEFAULT] completionBlock:block];
-}
-
-+(id) showWithStringArray:(NSArray*)stringArray
-             defaultIndex:(int)defaultIndex
-                    theme:(ABSelectViewTheme*)theme
-          completionBlock:(ABBlockInteger)block
-{
-    return [self showInView:nil WithStringArray:stringArray defaultIndex:defaultIndex theme:theme completionBlock:block];
-}
-
-+(id) showInView:(UIView*)view
- WithStringArray:(NSArray*)stringArray
-    defaultIndex:(int)defaultIndex
-           theme:(ABSelectViewTheme*)theme
- completionBlock:(ABBlockInteger)block
-{
-    return [[self alloc] initWithView:view StringArray:stringArray defaultIndex:defaultIndex theme:theme completionBlock:block];
+    ABSelectView *selectView = [[self alloc] initWithPresentingView:view stringArray:stringArray selectedIndex:index theme:theme completion:block];
+    [selectView show];
+    return selectView;
 }
 
 
 
 #pragma mark - Initializer
--(id) initWithView:(UIView*)view
-       StringArray:(NSArray*)stringArray
-      defaultIndex:(int)defaultIndex
-             theme:(ABSelectViewTheme*)theme
-   completionBlock:(ABBlockInteger)block
+-(id) initWithPresentingView:(UIView*)view
+                 stringArray:(NSArray*)stringArray
+               selectedIndex:(NSInteger)index
+                       theme:(ABSelectViewTheme)theme
+                  completion:(ABBlockInteger)block
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
+        //Config
+        self.tableWidth = 230.0f;
         
-        _completionBlock = block;
+        _presentingView = (view) ? view : [UIView topView];
+        _stringArray = stringArray;
+        _initialIndex = index;
+        _theme = theme;
+        _completionBlock = [block copy];
         
-        CGRect applicationFrame = [UIView topView].bounds;
-        
-        if (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]))
-        {
-            applicationFrame = CGRectMake(applicationFrame.origin.x, applicationFrame.origin.y, applicationFrame.size.height, applicationFrame.size.width);
-        }
-        
-        //Fill out Screen with View
-        self.frame = CGRectMake(0, 0, applicationFrame.size.width, applicationFrame.size.height);
-        self.backgroundColor = [UIColor clearColor];
-        
-        //Add Tap Gesture Recognizer On Background
-        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideWithoutIndex)];
-        [self addGestureRecognizer:tapGesture];
-        
-        //View to hold all Cells
-        _selectionTable = [UIView new];
-        [self addSubview:_selectionTable];
-        
-        //Load images for selected theme
-        UIImage *topImage = [UIImage imageNamed:theme.topRowImageName];
-        UIImage *middleImage = [UIImage imageNamed:theme.middleRowImageName];
-        UIImage *bottomImage = [UIImage imageNamed:theme.bottomRowImageName];
-        
-        //calculate selectionTable frame
-        float tableHeight = topImage.size.height + bottomImage.size.height + ((stringArray.count-2)*middleImage.size.height);
-        float tableWidth = middleImage.size.width;
-        _selectionTable.frame = CGRectMake((self.bounds.size.width-tableWidth)/2, (self.bounds.size.height-tableHeight)/2, tableWidth, tableHeight);
-        
-        //Loop Through stringArray and create Cells
-        int itr = 1;
-        float currentYPosition = 0;
-        for (NSString *string in stringArray) {
-            //Choose correct cell image
-            UIImage *cellImage;
-            //TOP
-            if (itr == 1) {
-                cellImage = topImage;
-            }
-            //Bottom
-            else if (itr == stringArray.count) {
-                cellImage = bottomImage;
-            }
-            //Middle
-            else {
-                cellImage = middleImage;
-            }
-            
-            //Increment current array iteration
-            itr += 1;
-            
-            //Select Item (Cell)
-            ABSelectViewItem *cell = [ABSelectViewItem itemWithString:string image:cellImage index:[stringArray indexOfObject:string]];
-            cell.frame = CGRectMake(0, currentYPosition, cellImage.size.width, cellImage.size.height);
-            cell.delegate = self;
-            [_selectionTable addSubview:cell];
-            
-            //If current string is default index, highlight it
-            if (defaultIndex == [stringArray indexOfObject:string]) {
-                [cell labelWhite];
-            }
-            
-            //Update Y posiiton for next Cell Background
-            currentYPosition += cellImage.size.height;
-        }
-        
-        //Shadow
-        _shadowMask = [[UIView alloc] initWithFrame:_selectionTable.frame];
-        _shadowMask.backgroundColor = [UIColor clearColor];
-        
-        _shadowMask.layer.shadowColor = [[UIColor blackColor] CGColor];
-        _shadowMask.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
-        _shadowMask.layer.shadowOpacity = 0.6f;
-        _shadowMask.layer.shadowRadius = 7.0f;
-        _shadowMask.layer.shadowPath = [[UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, tableWidth, tableHeight) cornerRadius:4.0f] CGPath];
-        _shadowMask.layer.shouldRasterize = YES;
-        _shadowMask.layer.rasterizationScale = [[UIScreen mainScreen] scale];
-        
-        [self insertSubview:_shadowMask belowSubview:_selectionTable];
-        
-        //Set Scale to 0 to allow animation
-        _shadowMask.alpha = 0.0f;
-        _shadowMask.transform = CGAffineTransformMakeScale(0.1f, 0.1f);
-        _selectionTable.alpha = 0.0f;
-        _selectionTable.transform = CGAffineTransformMakeScale(0.1f, 0.1f);
-        
-        [self showInView:view];
+        _labelArray = [NSMutableArray new];
     }
     return self;
 }
 
 
 
-#pragma mark - Helper
--(void) showInView:(UIView*)view
+#pragma mark - LifeCycle
+-(void) willMoveToSuperview:(UIView *)newSuperview
 {
-    if (view)
+    [super willMoveToSuperview:newSuperview];
+    
+    self.frame = _presentingView.bounds;
+    
+    [self layout];
+    
+    [self setSelectedIndex:_initialIndex];
+    
+    [ABTapGestureRecognizer tapGestureWithTaps:1 onView:_backgroundView block:^{
+        [self hide];
+    }];
+}
+
+
+
+#pragma mark - Layout
+-(void) layout
+{
+    //Background
+    if (_theme == ABSelectViewThemeTranslucent)
     {
-        [view addSubview:self];
-    } else
-    {
-        [[UIView topView] addSubview:self];
+        UIImage *screenImage = [_presentingView renderCGRect:_presentingView.bounds];
+        screenImage = [screenImage applyBlurWithRadius:5.0f tintColor:nil saturationDeltaFactor:1.0f maskImage:nil];
+        _blurredView = [[UIImageView alloc] initWithImage:screenImage];
+        _blurredView.alpha = 0.0f;
+        [self addSubview:_blurredView];
     }
     
-    [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        self.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0.400];
-        _selectionTable.alpha = 1.0f;
-        _selectionTable.transform = CGAffineTransformMakeScale(1.1f, 1.1f);
+    _backgroundView = [[UIView alloc] initWithFrame:self.bounds];
+    _backgroundView.backgroundColor = [UIColor blackColor];
+    _backgroundView.alpha = 0.0f;
+    [self addSubview:_backgroundView];
+    
+    //Stack
+    _stackContainmentView = [UIView new];
+    _stackContainmentView.clipsToBounds = YES;
+    _stackContainmentView.layer.cornerRadius = 6.0f;
+    [self addSubview:_stackContainmentView];
+    
+    _stack = [[ABStackController alloc] initWithWidth:self.tableWidth fixedHeight:0.0f];
+    _stack.backgroundColor = [UIColor clearColor];
+    [_stackContainmentView addSubview:_stack];
+    
+    for (NSString *string in _stringArray)
+    {
+        ABView *view = [[ABView alloc] initWithFrame:cgr(0, 0, _stack.width, 50.0f)];
+        view.delegate = self;
+        view.selectRecursively = YES;
+        view.backgroundColor = [self colorRow];
+        view.selectedBackgroundColor = [self colorRowSelected];
         
-        _shadowMask.alpha = 1.0f;
-        _shadowMask.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+        if ([self seperator] && [_stringArray indexOfObject:string] != _stringArray.count-1)
+        {
+            UIView *sep = [[UIView alloc] initWithFrame:cgr(0, 0, view.width - 80.0f, 0.5f)];
+            sep.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.2f];
+            sep.frame = CGRectInsideBottomCenter(sep.frame, view.bounds, 0);
+            [view addSubview:sep];
+        }
+        
+        ABLabel *label = [ABLabel new];
+        label.centeredHorizontally = YES;
+        label.frame = view.bounds;
+        label.text = string;
+        label.textColor = [self colorLabel];
+        label.selectedTextColor = [self colorLabelHighlighted];
+        [view addSubview:label];
+        
+        [_labelArray addObject:label];
+        
+        [_stack addView:view];
+    }
+    
+    _stackContainmentView.frame = _stack.bounds;
+    _stackContainmentView.frame = CGRectCenteredWithCGRect(_stackContainmentView.frame, self.bounds);
+    _stackContainmentView.alpha = 0.0f;
+    _stackContainmentView.transform = CGAffineTransformMakeScale(0.1f, 0.1f);
+}
+
+
+
+#pragma mark - Show / Hide
+-(void) show
+{
+    [_presentingView addSubview:self];
+    
+    [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        
+        _backgroundView.alpha = [self alphaBackgroundView];
+        if (_theme == ABSelectViewThemeTranslucent) _blurredView.alpha = 1.0f;
+        
+        _stackContainmentView.alpha = 1.0f;
+        _stackContainmentView.transform = CGAffineTransformMakeScale(1.1f, 1.1f);
         
     } completion:^(BOOL finished) {
+        
         [UIView animateWithDuration:0.1f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            _selectionTable.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+            
+            _stackContainmentView.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+            
         } completion:nil];
+        
     }];
 }
 
--(void) hideWithIndex:(NSInteger)index
+-(void) hide
 {
-    if (index >= 0) {
-        _completionBlock(index);
-    }
-    
-    [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
-        self.backgroundColor = [UIColor clearColor];
-        _selectionTable.transform = CGAffineTransformMakeScale(0.1f, 0.1f);
-        _selectionTable.alpha = 0.0f;
+    [self hideWithSelectedIndex:nil];
+}
+
+-(void) hideWithSelectedIndex:(NSNumber*)index
+{
+    [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         
-        _shadowMask.alpha = 0.0f;
-        _shadowMask.transform = CGAffineTransformMakeScale(0.1f, 0.1f);
+        _backgroundView.alpha = 0.0f;
+        if (_theme == ABSelectViewThemeTranslucent) _blurredView.alpha = 0.0f;
+        
+        _stackContainmentView.alpha = 0.0f;
+        _stackContainmentView.transform = CGAffineTransformMakeScale(0.1f, 0.1f);
         
     } completion:^(BOOL finished) {
+        
+        if (index && _completionBlock)
+        {
+            _completionBlock(index.integerValue);
+        }
+        
         [self removeFromSuperview];
+        
     }];
 }
 
--(void) hideWithoutIndex
+
+
+#pragma mark - Selection
+-(void) setSelectedIndex:(NSInteger)index
 {
-    [self hideWithIndex:-1];
+    for (ABLabel *label in _labelArray)
+    {
+        NSInteger currentIndex = [_labelArray indexOfObject:label];
+        label.selected = (currentIndex == index);
+    }
 }
 
 
 
-#pragma mark - ABSelectViewItemDelegate
--(void) selectedIndex:(int)index
+#pragma mark - ABViewDelegate
+-(void) abViewDidTouchUpInside:(ABView *)view
 {
-    [self hideWithIndex:index];
+    NSInteger index = [_stack.stackViews indexOfObject:view];
+    if (index != _initialIndex)
+    {
+        [self hideWithSelectedIndex:@(index)];
+        return;
+    }
+    [self hide];
 }
 
 
 
-#pragma mark - Accessors
--(void) setLandscape:(BOOL)landscape
+#pragma mark - Theme
+-(CGFloat) alphaBackgroundView
 {
-    _landscape = landscape;
-    
-    CGRect applicationFrame = applicationFrame = [[UIScreen mainScreen] applicationFrame];
-    
-    //Landscape
-    if (_landscape) {
-        applicationFrame = CGRectMake(applicationFrame.origin.x, applicationFrame.origin.y, applicationFrame.size.height, applicationFrame.size.width);
-        self.frame = CGRectMake(0, 0, applicationFrame.size.width+20, applicationFrame.size.height);
+    switch (_theme) {
+        case ABSelectViewThemeDark:         return 0.5f;
+        case ABSelectViewThemeTranslucent:  return 0.3f;
+        case ABSelectViewThemeNone:         return 1.0f;
     }
-    //Portrait
-    else {
-        self.frame = CGRectMake(0, 0, applicationFrame.size.width+20, applicationFrame.size.height);
+    return 1.0f;
+}
+
+-(UIColor*) colorRow
+{
+    switch (_theme) {
+        case ABSelectViewThemeDark:         return nil;
+        case ABSelectViewThemeTranslucent:  return [UIColor colorWithWhite:0.0f alpha:0.9f];
+        case ABSelectViewThemeNone:         return nil;
     }
-    
-    _selectionTable.center = self.center;
-    _shadowMask.center = self.center;
+    return nil;
+}
+
+-(UIColor*) colorRowSelected
+{
+    switch (_theme) {
+        case ABSelectViewThemeDark:         return nil;
+        case ABSelectViewThemeTranslucent:  return [UIColor colorWithWhite:0.1f alpha:0.9f];
+        case ABSelectViewThemeNone:         return nil;
+    }
+    return nil;
+}
+
+-(UIColor*) colorLabel
+{
+    switch (_theme) {
+        case ABSelectViewThemeDark:         return [UIColor colorWithWhite:0.1f alpha:1.0f];
+        case ABSelectViewThemeTranslucent:  return [UIColor whiteColor];
+        case ABSelectViewThemeNone:         return nil;
+    }
+    return nil;
+}
+
+-(UIColor*) colorLabelHighlighted
+{
+    switch (_theme) {
+        case ABSelectViewThemeDark:         return [UIColor whiteColor];
+        case ABSelectViewThemeTranslucent:  return [UIColor colorWithRed:0.561 green:0.913 blue:0.921 alpha:1.000];
+        case ABSelectViewThemeNone:         return nil;
+    }
+    return nil;
+}
+
+-(BOOL) seperator
+{
+    switch (_theme) {
+        case ABSelectViewThemeDark:         return NO;
+        case ABSelectViewThemeTranslucent:  return YES;
+        case ABSelectViewThemeNone:         return NO;
+    }
+    return NO;
 }
 
 @end

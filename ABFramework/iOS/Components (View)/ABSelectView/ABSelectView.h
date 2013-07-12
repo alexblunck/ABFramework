@@ -7,32 +7,38 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ABSelectViewTheme.h"
-#import "ABSelectViewItem.h"
 
-#define ABSELECTVIEW_THEME_DEFAULT ABSelectViewThemeTagDark
+typedef enum {
+    ABSelectViewThemeNone,
+    ABSelectViewThemeDark,
+    ABSelectViewThemeTranslucent
+} ABSelectViewTheme;
 
-@interface ABSelectView : ABView
+@interface ABSelectView : UIView
 
 //Utility
-+(id) showWithStringArray:(NSArray*)stringArray
-          completionBlock:(ABBlockInteger)block;
++(id) showWithPresentingView:(UIView*)view
+                 stringArray:(NSArray*)stringArray
+               selectedIndex:(NSInteger)index
+                       theme:(ABSelectViewTheme)theme
+                  completion:(ABBlockInteger)block;
 
-+(id) showWithStringArray:(NSArray*)stringArray
-             defaultIndex:(int)defaultIndex
-          completionBlock:(ABBlockInteger)block;
+//Initializer
+-(id) initWithPresentingView:(UIView*)view
+                 stringArray:(NSArray*)stringArray
+               selectedIndex:(NSInteger)index
+                       theme:(ABSelectViewTheme)theme
+                  completion:(ABBlockInteger)block;
 
-+(id) showWithStringArray:(NSArray*)stringArray
-             defaultIndex:(int)defaultIndex
-                    theme:(ABSelectViewTheme*)theme
-          completionBlock:(ABBlockInteger)block;
+//Show / Hide
+-(void) show;
 
-+(id) showInView:(UIView*)view
- WithStringArray:(NSArray*)stringArray
-    defaultIndex:(int)defaultIndex
-           theme:(ABSelectViewTheme*)theme
- completionBlock:(ABBlockInteger)block;
 
-@property (nonatomic, assign) BOOL landscape;
+//Config
+/**
+ * tableWidth
+ * Width of the select table, Default: 230.0f
+ */
+@property (nonatomic, assign) CGFloat tableWidth;
 
 @end
