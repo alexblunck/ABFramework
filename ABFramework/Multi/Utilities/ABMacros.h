@@ -23,6 +23,24 @@
 //Returns YES on iPad
 #define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 
+//iOS 6 max
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < 70000
+    #define DEF_IS_MAX_IOS6
+#endif
+
+//iOS 6.X
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < 70000 && __IPHONE_OS_VERSION_MIN_REQUIRED >= 6000
+    #define DEF_IS_IOS6X
+#endif
+
+//iOS 5 Max
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < 60000
+    #define DEF_IS_MAX_IOS5
+#endif
+
+
+
+
 /*
  * LOGGING
  */
