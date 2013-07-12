@@ -21,45 +21,81 @@
 @synthesize text = _text;
 
 #pragma mark - Initializer
--(id) initWithImage:(NSString*)imageName
+-(id) init
 {
-    self = [super init];
+    NSLog(@"ABTextField: Use initWithFrame or initWithBackgroundImageName to initialize!");
+    return nil;
+}
+
+-(id) initWithFrame:(CGRect)frame
+{
+    return [self initWithBackgroundImageName:nil frame:frame];
+}
+
+-(id) initWithBackgroundImageName:(NSString*)imageName
+{
+    return [self initWithBackgroundImageName:imageName frame:CGRectZero];
+}
+
+-(id) initWithBackgroundImageName:(NSString*)imageName frame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
     if (self)
     {
         //Default Config
         self.hideKeyboardOnReturn = YES;
+        self.shadowEnabled = NO;
+        self.shadowColor = [UIColor whiteColor];
+        _textColor = [UIColor blackColor];
         
-        //Background Image
-        UIImage *backgroundImage = [UIImage imageNamed:imageName];
-        UIImageView *backgroundImageView = [UIImageView new];
-        backgroundImageView.frame = CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height);
-        backgroundImageView.image = backgroundImage;
-        [self addSubview:backgroundImageView];
-        
-        //Assume frame of image
-        self.frame = CGRectChangingCGSize(CGRectZero, backgroundImage.size);
+        if (imageName)
+        {
+            //Background Image
+            UIImage *backgroundImage = [UIImage imageNamed:imageName];
+            UIImageView *backgroundImageView = [UIImageView new];
+            backgroundImageView.frame = CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height);
+            backgroundImageView.image = backgroundImage;
+            [self addSubview:backgroundImageView];
+            
+            //Assume frame of image
+            self.frame = CGRectChangingCGSize(CGRectZero, backgroundImage.size);
+        }
         
         //Text Field
         _textField = [UITextField new];
-        _textField.frame = CGRectOffsetSizeWidth(backgroundImageView.frame, -20);
-        _textField.center = backgroundImageView.center;
+        _textField.frame = CGRectOffsetSizeWidth(self.frame, -20.0f);
+        _textField.center = self.center;
         _textField.delegate = self;
         _textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         _textField.textAlignment = NSTextAlignmentCenter;
         _textField.returnKeyType = UIReturnKeyDone;
         _textField.clearButtonMode = UITextFieldViewModeWhileEditing;
         _textField.font = [UIFont fontWithName:ABFRAMEWORK_FONT_DEFAULT_REGULAR size:16.0f];
-        _textField.textColor = [UIColor colorWithWhite:0.283 alpha:1.000];
-        _textField.layer.shadowColor = [[UIColor whiteColor] CGColor];
+        _textField.textColor = self.textColor;
+        
+        [self addSubview:_textField];
+    }
+    return self;
+}
+
+
+
+#pragma mark - LifeCycle
+-(void) willMoveToSuperview:(UIView *)newSuperview
+{
+    [super willMoveToSuperview:newSuperview];
+    
+    if (self.shadowEnabled)
+    {
+        _textField.layer.shadowColor = [self.shadowColor CGColor];
         _textField.layer.shadowOffset = CGSizeMake(0.8f, 0.8f);
         _textField.layer.shadowRadius = 0.0f;
         _textField.layer.shadowOpacity = 0.6f;
         _textField.layer.shouldRasterize = YES;
         _textField.layer.rasterizationScale = [[UIScreen mainScreen] scale];
-        [self addSubview:_textField];
     }
-    return self;
 }
+
 
 
 #pragma mark - Helper
@@ -168,6 +204,13 @@
 -(NSString*) text
 {
     return _textField.text;
+}
+
+-(void) setTextColor:(UIColor *)textColor
+{
+    _textColor = textColor;
+    
+    _textField.textColor = _textColor;
 }
 
 -(BOOL) editing

@@ -21,7 +21,7 @@
 @interface ABTextField : UIView
 
 //Initializer
--(id) initWithImage:(NSString*)imageName;
+-(id) initWithBackgroundImageName:(NSString*)imageName;
 
 //Helper
 -(void) hideKeyboard;
@@ -31,8 +31,11 @@
 //Underlying UITextField for specific configuration
 @property (nonatomic, strong) UITextField *textField;
 
+@property (nonatomic, copy) UIColor *textColor;
 @property (nonatomic, copy) NSString *placeholder;
 @property (nonatomic, copy) NSString *text;
+@property (nonatomic, assign) BOOL shadowEnabled;
+@property (nonatomic, copy) UIColor *shadowColor;
 @property (nonatomic, assign) BOOL editing;
 
 //Keep keyboard from beeing hidden on return
