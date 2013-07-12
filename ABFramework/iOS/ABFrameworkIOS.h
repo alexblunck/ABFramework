@@ -61,8 +61,6 @@
     #import "ABDatePickerView.h"
     #import "ABImagePickerViewController.h"
     #import "ABSelectView.h"
-    #import "ABSelectViewItem.h"
-    #import "ABSelectViewTheme.h"
     #import "ABSwitch.h"
     #import "ABTabBar.h"
     #import "ABTabBarController.h"

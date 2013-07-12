@@ -106,12 +106,6 @@
          <Group
             location = "group:Model"
             name = "Model">
-            <FileRef
-               location = "group:ABDateDescriptor.h">
-            </FileRef>
-            <FileRef
-               location = "group:ABDateDescriptor.m">
-            </FileRef>
          </Group>
          <Group
             location = "group:Protocols"
@@ -162,6 +156,18 @@
          <Group
             location = "group:Categories"
             name = "Categories">
+            <FileRef
+               location = "group:UIBarButtonItem+ABFramework.h">
+            </FileRef>
+            <FileRef
+               location = "group:UIBarButtonItem+ABFramework.m">
+            </FileRef>
+            <FileRef
+               location = "group:UISearchBar+ABFramework.h">
+            </FileRef>
+            <FileRef
+               location = "group:UISearchBar+ABFramework.m">
+            </FileRef>
             <FileRef
                location = "group:UINavigationController+ComingUp.h">
             </FileRef>
@@ -438,18 +444,6 @@
                </FileRef>
                <FileRef
                   location = "group:ABSelectView.m">
-               </FileRef>
-               <FileRef
-                  location = "group:ABSelectViewItem.h">
-               </FileRef>
-               <FileRef
-                  location = "group:ABSelectViewItem.m">
-               </FileRef>
-               <FileRef
-                  location = "group:ABSelectViewTheme.h">
-               </FileRef>
-               <FileRef
-                  location = "group:ABSelectViewTheme.m">
                </FileRef>
             </Group>
             <Group

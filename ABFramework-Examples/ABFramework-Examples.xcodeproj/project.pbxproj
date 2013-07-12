@@ -35,6 +35,7 @@
 		D21695011704FBD7009000FC /* NewsstandKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21695001704FBD7009000FC /* NewsstandKit.framework */; };
 		D233D723177A53C200CE4E0E /* UINavigationController+ComingUp.m in Sources */ = {isa = PBXBuildFile; fileRef = D233D722177A53C200CE4E0E /* UINavigationController+ComingUp.m */; };
 		D233D727177A56E500CE4E0E /* ABView.m in Sources */ = {isa = PBXBuildFile; fileRef = D233D726177A56E500CE4E0E /* ABView.m */; };
+		D23F75A1177C718400365A24 /* UISearchBar+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D23F75A0177C718400365A24 /* UISearchBar+ABFramework.m */; };
 		D24A0D6716EE2E660093AE2A /* ABHudExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D24A0D6616EE2E660093AE2A /* ABHudExample.m */; };
 		D24A32621742593D00EFFF53 /* ABQuadMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = D24A32611742593D00EFFF53 /* ABQuadMenu.m */; };
 		D24A32651742597C00EFFF53 /* ABQuadMenuExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D24A32641742597C00EFFF53 /* ABQuadMenuExample.m */; };
@@ -51,9 +52,9 @@
 		D2A102CF173E4B2F00E95692 /* NSMutableDictionary+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A102C7173E4B2F00E95692 /* NSMutableDictionary+ABFramework.m */; };
 		D2A102D0173E4B2F00E95692 /* NSObject+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A102C9173E4B2F00E95692 /* NSObject+ABFramework.m */; };
 		D2A102D1173E4B2F00E95692 /* NSString+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A102CB173E4B2F00E95692 /* NSString+ABFramework.m */; };
-		D2A102E6173E4C0100E95692 /* ABDateDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A102E5173E4C0100E95692 /* ABDateDescriptor.m */; };
 		D2ADFF15171ED856002D723B /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2ADFF14171ED856002D723B /* Social.framework */; };
 		D2ADFF17171ED85A002D723B /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2ADFF16171ED85A002D723B /* Twitter.framework */; };
+		D2B27E00177D8BDA007485A4 /* UIBarButtonItem+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B27DFF177D8BDA007485A4 /* UIBarButtonItem+ABFramework.m */; };
 		D2B331B916EC9E5A00DED125 /* ABLabelExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B331B816EC9E5A00DED125 /* ABLabelExample.m */; };
 		D2C6DE6D173D739800C157E3 /* ABFramework.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D2C6DDBC173D739800C157E3 /* ABFramework.bundle */; };
 		D2C6DE74173D739800C157E3 /* UIColor+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DDCE173D739800C157E3 /* UIColor+ABFramework.m */; };
@@ -82,8 +83,6 @@
 		D2C6DE8B173D739800C157E3 /* ABInfiniteView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE0E173D739800C157E3 /* ABInfiniteView.m */; };
 		D2C6DE8C173D739800C157E3 /* ABLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE11173D739800C157E3 /* ABLabel.m */; };
 		D2C6DE8D173D739800C157E3 /* ABSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE14173D739800C157E3 /* ABSelectView.m */; };
-		D2C6DE8E173D739800C157E3 /* ABSelectViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE16173D739800C157E3 /* ABSelectViewItem.m */; };
-		D2C6DE8F173D739800C157E3 /* ABSelectViewTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE18173D739800C157E3 /* ABSelectViewTheme.m */; };
 		D2C6DE90173D739800C157E3 /* ABSeperator.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE1B173D739800C157E3 /* ABSeperator.m */; };
 		D2C6DE91173D739800C157E3 /* ABStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE1E173D739800C157E3 /* ABStackController.m */; };
 		D2C6DE92173D739800C157E3 /* ABSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE21173D739800C157E3 /* ABSwitch.m */; };
@@ -147,6 +146,8 @@
 		D233D722177A53C200CE4E0E /* UINavigationController+ComingUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+ComingUp.m"; sourceTree = "<group>"; };
 		D233D725177A56E500CE4E0E /* ABView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABView.h; sourceTree = "<group>"; };
 		D233D726177A56E500CE4E0E /* ABView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABView.m; sourceTree = "<group>"; };
+		D23F759F177C718400365A24 /* UISearchBar+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISearchBar+ABFramework.h"; sourceTree = "<group>"; };
+		D23F75A0177C718400365A24 /* UISearchBar+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISearchBar+ABFramework.m"; sourceTree = "<group>"; };
 		D24A0D6516EE2E660093AE2A /* ABHudExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABHudExample.h; sourceTree = "<group>"; };
 		D24A0D6616EE2E660093AE2A /* ABHudExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABHudExample.m; sourceTree = "<group>"; };
 		D24A32601742593D00EFFF53 /* ABQuadMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABQuadMenu.h; sourceTree = "<group>"; };
@@ -179,10 +180,10 @@
 		D2A102C9173E4B2F00E95692 /* NSObject+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ABFramework.m"; sourceTree = "<group>"; };
 		D2A102CA173E4B2F00E95692 /* NSString+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ABFramework.h"; sourceTree = "<group>"; };
 		D2A102CB173E4B2F00E95692 /* NSString+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ABFramework.m"; sourceTree = "<group>"; };
-		D2A102E4173E4C0100E95692 /* ABDateDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABDateDescriptor.h; sourceTree = "<group>"; };
-		D2A102E5173E4C0100E95692 /* ABDateDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABDateDescriptor.m; sourceTree = "<group>"; };
 		D2ADFF14171ED856002D723B /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		D2ADFF16171ED85A002D723B /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		D2B27DFE177D8BDA007485A4 /* UIBarButtonItem+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ABFramework.h"; sourceTree = "<group>"; };
+		D2B27DFF177D8BDA007485A4 /* UIBarButtonItem+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+ABFramework.m"; sourceTree = "<group>"; };
 		D2B331B716EC9E5A00DED125 /* ABLabelExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABLabelExample.h; sourceTree = "<group>"; };
 		D2B331B816EC9E5A00DED125 /* ABLabelExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABLabelExample.m; sourceTree = "<group>"; };
 		D2B6CD2C1743971B00CAB44A /* ABUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABUtilities.h; sourceTree = "<group>"; };
@@ -241,10 +242,6 @@
 		D2C6DE11173D739800C157E3 /* ABLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABLabel.m; sourceTree = "<group>"; };
 		D2C6DE13173D739800C157E3 /* ABSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSelectView.h; sourceTree = "<group>"; };
 		D2C6DE14173D739800C157E3 /* ABSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSelectView.m; sourceTree = "<group>"; };
-		D2C6DE15173D739800C157E3 /* ABSelectViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSelectViewItem.h; sourceTree = "<group>"; };
-		D2C6DE16173D739800C157E3 /* ABSelectViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSelectViewItem.m; sourceTree = "<group>"; };
-		D2C6DE17173D739800C157E3 /* ABSelectViewTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSelectViewTheme.h; sourceTree = "<group>"; };
-		D2C6DE18173D739800C157E3 /* ABSelectViewTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSelectViewTheme.m; sourceTree = "<group>"; };
 		D2C6DE1A173D739800C157E3 /* ABSeperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSeperator.h; sourceTree = "<group>"; };
 		D2C6DE1B173D739800C157E3 /* ABSeperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSeperator.m; sourceTree = "<group>"; };
 		D2C6DE1D173D739800C157E3 /* ABStackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABStackController.h; sourceTree = "<group>"; };
@@ -523,6 +520,10 @@
 				D29B385B174CC54000ABE69A /* UIFont+ABFramework.m */,
 				D233D721177A53C200CE4E0E /* UINavigationController+ComingUp.h */,
 				D233D722177A53C200CE4E0E /* UINavigationController+ComingUp.m */,
+				D23F759F177C718400365A24 /* UISearchBar+ABFramework.h */,
+				D23F75A0177C718400365A24 /* UISearchBar+ABFramework.m */,
+				D2B27DFE177D8BDA007485A4 /* UIBarButtonItem+ABFramework.h */,
+				D2B27DFF177D8BDA007485A4 /* UIBarButtonItem+ABFramework.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -728,10 +729,6 @@
 			children = (
 				D2C6DE13173D739800C157E3 /* ABSelectView.h */,
 				D2C6DE14173D739800C157E3 /* ABSelectView.m */,
-				D2C6DE15173D739800C157E3 /* ABSelectViewItem.h */,
-				D2C6DE16173D739800C157E3 /* ABSelectViewItem.m */,
-				D2C6DE17173D739800C157E3 /* ABSelectViewTheme.h */,
-				D2C6DE18173D739800C157E3 /* ABSelectViewTheme.m */,
 			);
 			path = ABSelectView;
 			sourceTree = "<group>";
@@ -914,8 +911,6 @@
 		D2C6DE5E173D739800C157E3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D2A102E4173E4C0100E95692 /* ABDateDescriptor.h */,
-				D2A102E5173E4C0100E95692 /* ABDateDescriptor.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1047,6 +1042,7 @@
 				D211D72B1709AEB500326B25 /* ABNetworkingExample.m in Sources */,
 				D255AD9E1723D61B00E71590 /* ABViewExample.m in Sources */,
 				D255ADA7172430A000E71590 /* ABInfiniteViewExample.m in Sources */,
+				D2B27E00177D8BDA007485A4 /* UIBarButtonItem+ABFramework.m in Sources */,
 				D2C6DE74173D739800C157E3 /* UIColor+ABFramework.m in Sources */,
 				D2C6DE75173D739800C157E3 /* UIImage+ABFramework.m in Sources */,
 				D2C6DE76173D739800C157E3 /* UIImageView+ABFramework.m in Sources */,
@@ -1065,6 +1061,7 @@
 				D2C6DE82173D739800C157E3 /* ABButton.m in Sources */,
 				D2C6DE83173D739800C157E3 /* ABDatePickerView.m in Sources */,
 				D2C6DE84173D739800C157E3 /* ABEntypoView.m in Sources */,
+				D23F75A1177C718400365A24 /* UISearchBar+ABFramework.m in Sources */,
 				D2C6DE85173D739800C157E3 /* ABFlexibleView.m in Sources */,
 				D2C6DE86173D739800C157E3 /* ABSwipeGestureRecognizer.m in Sources */,
 				D2C6DE87173D739800C157E3 /* ABTapGestureRecognizer.m in Sources */,
@@ -1075,8 +1072,6 @@
 				D2C6DE8C173D739800C157E3 /* ABLabel.m in Sources */,
 				D2E4E36E1768B8C9007C1F47 /* ABRevealController.m in Sources */,
 				D2C6DE8D173D739800C157E3 /* ABSelectView.m in Sources */,
-				D2C6DE8E173D739800C157E3 /* ABSelectViewItem.m in Sources */,
-				D2C6DE8F173D739800C157E3 /* ABSelectViewTheme.m in Sources */,
 				D2C6DE90173D739800C157E3 /* ABSeperator.m in Sources */,
 				D2C6DE91173D739800C157E3 /* ABStackController.m in Sources */,
 				D2C6DE92173D739800C157E3 /* ABSwitch.m in Sources */,
@@ -1100,7 +1095,6 @@
 				D2A102CF173E4B2F00E95692 /* NSMutableDictionary+ABFramework.m in Sources */,
 				D2A102D0173E4B2F00E95692 /* NSObject+ABFramework.m in Sources */,
 				D2A102D1173E4B2F00E95692 /* NSString+ABFramework.m in Sources */,
-				D2A102E6173E4C0100E95692 /* ABDateDescriptor.m in Sources */,
 				D24A32621742593D00EFFF53 /* ABQuadMenu.m in Sources */,
 				D24A32651742597C00EFFF53 /* ABQuadMenuExample.m in Sources */,
 				D2762B3F17439650002444EA /* ABCommon.m in Sources */,

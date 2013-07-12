@@ -22,7 +22,6 @@
 		D2A102E1173E4B4500E95692 /* NSMutableDictionary+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A102D9173E4B4500E95692 /* NSMutableDictionary+ABFramework.m */; };
 		D2A102E2173E4B4500E95692 /* NSObject+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A102DB173E4B4500E95692 /* NSObject+ABFramework.m */; };
 		D2A102E3173E4B4500E95692 /* NSString+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A102DD173E4B4500E95692 /* NSString+ABFramework.m */; };
-		D2A102E9173E4C1700E95692 /* ABDateDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A102E8173E4C1700E95692 /* ABDateDescriptor.m */; };
 		D2C6DF5A173D73B700C157E3 /* ABFramework.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D2C6DEA9173D73B700C157E3 /* ABFramework.bundle */; };
 		D2C6DF90173D73B700C157E3 /* NSArray+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DF3F173D73B700C157E3 /* NSArray+ABFramework.m */; };
 		D2C6DF91173D73B700C157E3 /* NSData+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DF41173D73B700C157E3 /* NSData+ABFramework.m */; };
@@ -67,8 +66,6 @@
 		D2A102DB173E4B4500E95692 /* NSObject+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ABFramework.m"; sourceTree = "<group>"; };
 		D2A102DC173E4B4500E95692 /* NSString+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ABFramework.h"; sourceTree = "<group>"; };
 		D2A102DD173E4B4500E95692 /* NSString+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ABFramework.m"; sourceTree = "<group>"; };
-		D2A102E7173E4C1700E95692 /* ABDateDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABDateDescriptor.h; sourceTree = "<group>"; };
-		D2A102E8173E4C1700E95692 /* ABDateDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABDateDescriptor.m; sourceTree = "<group>"; };
 		D2B6CD2B1743970200CAB44A /* ABUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABUtilities.h; sourceTree = "<group>"; };
 		D2C6DEA9173D73B700C157E3 /* ABFramework.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ABFramework.bundle; sourceTree = "<group>"; };
 		D2C6DEAA173D73B700C157E3 /* ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFramework.h; sourceTree = "<group>"; };
@@ -267,8 +264,6 @@
 		D2C6DF4B173D73B700C157E3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D2A102E7173E4C1700E95692 /* ABDateDescriptor.h */,
-				D2A102E8173E4C1700E95692 /* ABDateDescriptor.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -455,7 +450,6 @@
 				D2A102E1173E4B4500E95692 /* NSMutableDictionary+ABFramework.m in Sources */,
 				D2A102E2173E4B4500E95692 /* NSObject+ABFramework.m in Sources */,
 				D2A102E3173E4B4500E95692 /* NSString+ABFramework.m in Sources */,
-				D2A102E9173E4C1700E95692 /* ABDateDescriptor.m in Sources */,
 				D2762B471743965D002444EA /* ABCommon.m in Sources */,
 				D2762B481743965D002444EA /* ABMath.m in Sources */,
 				D28A23BF1748387700EE1B7B /* NSApplication+ABFramework.m in Sources */,
