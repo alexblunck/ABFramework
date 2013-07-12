@@ -290,14 +290,16 @@
     _label.adjustsFontSizeToFitWidth = YES;
     if (IS_MIN_IOS6)
     {
+#ifdef DEF_IS_MAX_IOS6
         _label.adjustsLetterSpacingToFitWidth = YES;
+#endif
         _label.minimumScaleFactor = minimumScaleFactor;
     }
     else
     {
-        #if __IPHONE_OS_VERSION_MIN_REQUIRED < 60000
+#ifdef DEF_IS_MAX_IOS5
         _label.minimumFontSize = minimumFontSize;
-        #endif
+#endif
     }
     
     //Doesn't seem to work on UITextField

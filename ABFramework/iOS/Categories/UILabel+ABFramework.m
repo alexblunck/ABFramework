@@ -33,7 +33,9 @@
     if (IS_MIN_IOS6)
     {
         label.attributedText = self.attributedText;
+#ifdef DEF_IS_MAX_IOS6
         label.adjustsLetterSpacingToFitWidth = self.adjustsLetterSpacingToFitWidth;
+#endif
         label.minimumScaleFactor = self.minimumScaleFactor;
     }
     
