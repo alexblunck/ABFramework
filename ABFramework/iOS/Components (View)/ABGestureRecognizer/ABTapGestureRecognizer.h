@@ -13,4 +13,6 @@
 +(id) singleTapGestureOnView:(UIView*)view block:(ABBlockVoid)block;
 +(id) tapGestureWithTaps:(NSUInteger)taps onView:(UIView*)view block:(ABBlockVoid)block;
 
+@property (nonatomic, strong) NSArray *allowedSimultaneousGestures;
+
 @end

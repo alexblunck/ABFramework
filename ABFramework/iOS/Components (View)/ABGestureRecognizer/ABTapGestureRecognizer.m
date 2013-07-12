@@ -36,7 +36,7 @@
     if (self)
     {
         self.numberOfTapsRequired = taps;
-        
+        self.cancelsTouchesInView = NO; //Don't interfere with other gesture recognizers
         self.delegate = self;
         
         _block = [block copy];
@@ -68,6 +68,11 @@
     }
     
     return YES;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    return ([self.allowedSimultaneousGestures containsObject:otherGestureRecognizer]);
 }
 
 @end
