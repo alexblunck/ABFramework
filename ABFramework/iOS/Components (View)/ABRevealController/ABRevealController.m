@@ -7,8 +7,8 @@
 //
 
 #import <objc/runtime.h>
-#import "ABRevealController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "ABRevealController.h"
 
 typedef enum {
     ABSwipeDirectionNone,
@@ -315,7 +315,7 @@ typedef enum {
     }
 }
 
-#pragma mark - iOS 6 +
+#pragma mark - Orientation - iOS 6 +
 -(BOOL) shouldAutorotate
 {
     if (self.orientationDelegate && [self.orientationDelegate respondsToSelector:@selector(abShouldAutorotate)])
@@ -334,7 +334,7 @@ typedef enum {
     return (UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown);
 }
 
-#pragma mark - iOS 5
+#pragma mark - Orientation - iOS 5
 -(BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
     if (self.orientationDelegate && [self.orientationDelegate respondsToSelector:@selector(abShouldAutorotateToInterfaceOrientation:)])
@@ -352,6 +352,11 @@ typedef enum {
     _disablePanGesture = disablePanGesture;
     
     _panGesture.enabled = (!disablePanGesture);
+}
+
+-(UITapGestureRecognizer*) tapGestureRecognizer
+{
+    return _tapGesture;
 }
 
 @end

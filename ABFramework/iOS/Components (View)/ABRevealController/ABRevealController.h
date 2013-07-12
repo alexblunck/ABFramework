@@ -16,16 +16,6 @@
 -(BOOL) abShouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation;
 @end
 
-@protocol ABRevealControllerFrontDelegate <NSObject>
-@optional
--(void) abRevealControllerDidRevealFront:(BOOL)revealFront;
-@end
-
-@protocol ABRevealControllerBackgroundDelegate <NSObject>
-@optional
--(void) abRevealControllerDidRevealBackground:(BOOL)revealBackground;
-@end
-
 @interface ABRevealController : UIViewController
 
 //Initializer
@@ -35,6 +25,9 @@
 //Actions
 -(void) toggleReveal;
 -(void) toggleRevealAnimated:(BOOL)animated;
+
+//Access
+-(UITapGestureRecognizer*) tapGestureRecognizer;
 
 @property (nonatomic, strong) UIViewController *frontViewController;
 @property (nonatomic, strong) UIViewController *backgroundViewController;
@@ -125,5 +118,4 @@
 #pragma mark - UIViewController+ABRevealController
 @interface UIViewController (ABRevealController)
 @property (nonatomic, weak) ABRevealController *revealController;
-//-(ABRevealController*) revealController;
 @end
