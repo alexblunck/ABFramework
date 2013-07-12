@@ -19,6 +19,9 @@
                  message:(NSString*) message
                    block:(ABBlockVoid) block;
 
++(id) showYesNoAlertWithMessage:(NSString *)message
+                          block:(ABBlockInteger)block;
+
 +(id) showAlertWithTitle:(NSString*) title
                  message:(NSString*) message
                    block:(ABBlockInteger) block

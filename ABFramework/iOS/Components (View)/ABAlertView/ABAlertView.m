@@ -44,6 +44,10 @@
     return [[self alloc] initAlertWithTitle:title message:message block:block voidBlock:nil cancelButtonTitle:cancelButtonTitle otherButtonTitles:otherButtonTitles];
 }
 
++(id) showYesNoAlertWithMessage:(NSString *)message block:(ABBlockInteger)block
+{
+    return [[self alloc] initAlertWithTitle:@"" message:message block:block voidBlock:nil cancelButtonTitle:@"No" otherButtonTitles:@[@"Yes"]];
+}
 
 
 #pragma mark - Initializer
@@ -83,7 +87,8 @@
         _completionBlock(buttonIndex);
     }
     
-    if (_voidCompletionBlock) {
+    if (_voidCompletionBlock)
+    {
         _voidCompletionBlock();
     }
 }
