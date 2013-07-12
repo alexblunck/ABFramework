@@ -48,7 +48,8 @@
     }
     else
     {
-        if (_timerScheduled) {
+        if (_timerScheduled)
+        {
             [self scrollWithTimeInterval:_timerInterval];
         }
     }
@@ -100,7 +101,7 @@
             [dic setObject:[NSNumber numberWithInteger:index] forKey:@"ABInfiniteView.index"];
             view.userData = dic;
             
-            //Touch handeling
+            //Touch handling
             [view setTarget:self selector:@selector(viewSelected:)];
             
             //Position view after last added view
