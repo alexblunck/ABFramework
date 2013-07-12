@@ -65,6 +65,12 @@
 @property (nonatomic, assign) CGFloat tabSpacing;
 
 /**
+ * restrictFrame
+ * Subtracts ABTabBar height from presented view when selectedIndex changes, Default: YES
+ */
+@property (nonatomic, assign) BOOL restrictFrame;
+
+/**
  * backgroundImageName
  * Image name of tabbar background, otherwise it will use default UIToolbar appearance
  */

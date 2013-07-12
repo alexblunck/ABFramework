@@ -22,7 +22,19 @@
     self = [super init];
     if (self)
     {
+        //Config
+        self.tabBarHeight = 49.0f;
+        self.tabSpacing = 0.0f;
+        self.restrictFrame = YES;
+        
         [self setTabBarItems:tabBarItems];
+        
+        //Create the actual tabbar
+        _tabBar = [[ABTabBar alloc] initWithTabBarItems:self.tabBarItems
+                                           tabBarHeight:self.tabBarHeight
+                                    backgroundImageName:self.backgroundImageName
+                                             tabSpacing:self.tabSpacing
+                                               delegate:self];
     }
     return self;
 }
@@ -36,20 +48,9 @@
     
     CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
     
-    //Config
-    if (!self.tabBarHeight) self.tabBarHeight = 49.0f;
-    if (!self.tabSpacing) self.tabSpacing = 0.0f;
-    
-    //Create the actual tabbar
-    _tabBar = [[ABTabBar alloc] initWithTabBarItems:self.tabBarItems
-                                       tabBarHeight:self.tabBarHeight
-                                backgroundImageName:self.backgroundImageName
-                                         tabSpacing:self.tabSpacing
-                                           delegate:self];
-    
     _tabBar.frame = cgr(0, 0, screenWidth, self.tabBarHeight);
     _tabBar.frame = CGRectInsideBottomCenter(self.tabBar.frame, self.view.bounds, 0);
-    [self.view addSubview:_tabBar];
+    [self.view addSubview:self.tabBar];
     
     //Use first tab as selected one
     self.selectedIndex = 0;
@@ -81,7 +82,7 @@
     _activeViewController = item.viewController;
     [_activeView removeFromSuperview];
     _activeView = item.viewController.view;
-    _activeView.frame = CGRectChangingSizeHeight(_activeView.frame, self.view.height - self.tabBarHeight);
+    if (self.restrictFrame) _activeView.frame = CGRectChangingSizeHeight(_activeView.frame, self.view.height - self.tabBarHeight);
     [self.view insertSubview:_activeView belowSubview:self.tabBar];
 }
 

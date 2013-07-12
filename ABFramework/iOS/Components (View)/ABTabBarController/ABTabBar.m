@@ -17,6 +17,7 @@
     
     NSMutableArray *_tabViewArray;
     UIView *_backgroundView;
+    UIToolbar *_toolBar;
     
     __weak id<ABTabBarDelegate> _delegate;
 }
@@ -42,6 +43,8 @@
         
         //Allocation
         _tabViewArray = [NSMutableArray new];
+        
+        _toolBar = [UIToolbar new];
     }
     return self;
 }
@@ -62,8 +65,13 @@
     //If none is set use UIToolbar appearance
     else
     {
-        UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, newSuperview.bounds.size.width, self.height)];
-        [self addSubview:toolBar];
+        _backgroundView = [ABView new];
+        _backgroundView.frame = cgr(0, 0, newSuperview.bounds.size.width, self.height);
+        
+        _toolBar.frame = _backgroundView.bounds;
+        [_backgroundView addSubview:_toolBar];
+        
+        [self addSubview:_backgroundView];
     }
     
     //Layout tabs
@@ -146,6 +154,20 @@
 
 
 #pragma mark - Accessors
+-(void) setBarStyle:(UIBarStyle)barStyle
+{
+    _barStyle = barStyle;
+    
+    _toolBar.barStyle = _barStyle;
+}
+
+-(void) setTranslucent:(BOOL)translucent
+{
+    _translucent = translucent;
+    
+    _toolBar.translucent = _translucent;
+}
+
 -(void) setSelectedIndex:(NSUInteger)selectedIndex
 {
     _selectedIndex = selectedIndex;

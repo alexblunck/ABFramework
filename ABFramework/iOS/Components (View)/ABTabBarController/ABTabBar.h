@@ -25,6 +25,10 @@
                tabSpacing:(CGFloat)tabSpacing
                  delegate:(id<ABTabBarDelegate>)delegate;
 
+//Styling
+@property (nonatomic, assign) UIBarStyle barStyle;
+@property (nonatomic, assign) BOOL translucent;
+
 @property (nonatomic, assign) NSUInteger selectedIndex;
 
 @end
