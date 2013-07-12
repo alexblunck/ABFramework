@@ -15,9 +15,12 @@
 //Access
 +(UIViewController*) topViewController;
 
-//Frame
--(void) subtractNavigationBarHeight;
--(void) subtractStatusBarHeight;
+//Helper
+-(UINavigationController*) wrapInNavigationController;
+
+//Type
+-(BOOL) wasPresented;
+-(BOOL) wasPushed;
 
 @property (nonatomic, weak) ABTabBarController *abTabBarController;
 
