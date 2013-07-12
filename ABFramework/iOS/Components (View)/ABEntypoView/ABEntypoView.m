@@ -41,12 +41,12 @@
         _label.frame = self.bounds;
         _label.centeredHorizontally = YES;
         _label.centeredVertically = YES;
-        _label.customFont = [UIFont customFontWithName:@"Entypo" fontPath:@"ABFramework.bundle/ABEntypoView/Entypo" extension:@"otf" size:1.0f];
+        _label.font = [UIFont customFontWithName:@"Entypo" fontPath:@"ABFramework.bundle/ABEntypoView/Entypo" extension:@"otf" size:1.0f];
         _label.textSize = size*1.7;
         _label.minimumFontSize = 20.0f;
         
         //Set text after font for iOS 7 support
-        _label.text = [self unicodeFromIconName:iconName];
+        _label.text = [self unicodeForIconName:iconName];
     }
     return self;
 }
@@ -62,7 +62,7 @@
 
 
 #pragma mark - Helper
--(NSString*) unicodeFromIconName:(NSString*)iconName
+-(NSString*) unicodeForIconName:(NSString*)iconName
 {
     NSString *string =  [[self unicodeDictionary] safeObjectForKey:iconName];
     if (string)
