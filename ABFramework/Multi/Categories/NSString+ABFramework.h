@@ -26,4 +26,8 @@
 -(NSString*) substringAtGroupIndex:(NSUInteger)index forPattern:(NSString*)regexPattern;
 -(BOOL) matchesPattern:(NSString*)regexPattern;
 
+//Conversion
+-(NSURL*) url;
+-(NSURLRequest*) urlRequest;
+
 @end

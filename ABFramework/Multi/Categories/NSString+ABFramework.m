@@ -85,4 +85,16 @@
     return NO;
 }
 
+
+#pragma mark - Conversion
+-(NSURL*) url
+{
+    return [NSURL URLWithString:self];
+}
+
+-(NSURLRequest*) urlRequest
+{
+    return [NSURLRequest requestWithURL:[self url]];
+}
+
 @end
