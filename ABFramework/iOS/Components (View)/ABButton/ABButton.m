@@ -28,6 +28,10 @@
     return [[self alloc] initWithImageName:imageName target:target selector:selector];
 }
 
++(id) buttonWithEntypoIconName:(NSString*)iconName size:(CGFloat)size target:(id)target action:(SEL)selector
+{
+    return [[self alloc] initWithEntypoIconName:iconName size:size target:target action:selector];
+}
 
 
 #pragma mark - Blocks
@@ -45,6 +49,12 @@
 {
     return [[self alloc] initBasicWithText:text actionBlock:actionBlock];
 }
+
++(id) buttonWithEntypoIconName:(NSString*)iconName size:(CGFloat)size actionBlock:(ABBlockVoid)actionBlock
+{
+    return [[self alloc] initWithEntypoIconName:iconName size:size actionBlock:actionBlock];
+}
+
 
 
 #pragma mark - Initializer
@@ -66,6 +76,23 @@
     if (self)
     {
         [self setupImages:imageName];
+        
+        [self setupTouchDown];
+        
+        [self addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
+    }
+    return self;
+}
+
+-(id) initWithEntypoIconName:(NSString*)iconName size:(CGFloat)size target:(id)target action:(SEL)selector
+{
+    self = [super init];
+    if (self)
+    {
+        ABEntypoView *iconView = [ABEntypoView viewWithIconName:iconName size:size];
+        iconView.userInteractionEnabled = NO;
+        self.frame = iconView.bounds;
+        [self addSubview:iconView];
         
         [self setupTouchDown];
         
@@ -118,6 +145,25 @@
         
         self.frame = button.bounds;
         [self addSubview:button];
+    }
+    return self;
+}
+
+-(id) initWithEntypoIconName:(NSString*)iconName size:(CGFloat)size actionBlock:(ABBlockVoid)actionBlock
+{
+    self = [super init];
+    if (self)
+    {
+        _actionBlock = [actionBlock copy];
+        
+        ABEntypoView *iconView = [ABEntypoView viewWithIconName:iconName size:size];
+        iconView.userInteractionEnabled = NO;
+        self.frame = iconView.bounds;
+        [self addSubview:iconView];
+        
+        [self setupTouchDown];
+        
+        [self addTarget:self action:@selector(selectedButton) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
 }

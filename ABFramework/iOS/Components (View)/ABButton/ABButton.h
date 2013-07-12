@@ -14,10 +14,12 @@
 //Selector
 +(id) buttonWithImageName:(NSString*)imageName target:(id)target selector:(SEL)selector;
 +(id) buttonWithTarget:(id)target selector:(SEL)selector;
++(id) buttonWithEntypoIconName:(NSString*)iconName size:(CGFloat)size target:(id)target action:(SEL)selector;
 //Block
 +(id) buttonWithImageName:(NSString*)imageName actionBlock:(ABBlockVoid)actionBlock;
 +(id) buttonWithActionBlock:(ABBlockVoid)actionBlock;
 +(id) buttonBasicWithText:(NSString*)text actionBlock:(ABBlockVoid)actionBlock; //ABButton with default UIButton styling
++(id) buttonWithEntypoIconName:(NSString*)iconName size:(CGFloat)size actionBlock:(ABBlockVoid)actionBlock;
 
 //Conversion
 -(UIBarButtonItem*) barButtonItem;
