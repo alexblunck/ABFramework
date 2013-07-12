@@ -46,6 +46,8 @@ typedef enum {
         self.selectRecursively = NO;
         self.userInteractionEnabled = YES;
         self.permitTouchWhileSelected = YES;
+        self.animateBackgroundColor = YES;
+        self.animationDuration = 0.2f;
     }
     return self;
 }
@@ -55,14 +57,7 @@ typedef enum {
     self = [self initWithFrame:CGRectZero];
     if (self)
     {
-        UIImage *image = [UIImage imageNamed:backgroundImageName];
-        
-        if (image)
-        {
-            _backgroundImageView = [[UIImageView alloc] initWithImage:image];
-            [self addSubview:_backgroundImageView];
-            self.frame = CGRectChangingCGSize(self.frame, image.size);
-        } 
+        self.backgroundImageName = backgroundImageName;
     }
     return self;
 }
@@ -77,7 +72,7 @@ typedef enum {
     //Setup default styles
     [self defaultStyle];
     
-    self.selected = self.selected;
+    self.selected = _selected;
     
     //Check if superview is an ABView to take over it's selected state, incase this view was added
     //after the superview set it's selected state
@@ -100,7 +95,7 @@ typedef enum {
 
 #pragma mark - Touch
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{    
+{
     //Only "allow" touch if "selected" property is NO
     if (!self.isSelected)
     {
@@ -183,11 +178,30 @@ typedef enum {
     //Background color
     if (_selected && self.selectedBackgroundColor)
     {
-        self.backgroundColor = self.selectedBackgroundColor;
+        if (self.animateBackgroundColor)
+        {
+            [UIView animateWithDuration:self.animationDuration animations:^{
+                self.backgroundColor = self.selectedBackgroundColor;
+            }];
+        }
+        else
+        {
+            self.backgroundColor = self.selectedBackgroundColor;
+        }
     }
     else
     {
-        self.backgroundColor = _originalBackgroundColor;
+        if (self.animateBackgroundColor)
+        {
+            [UIView animateWithDuration:self.animationDuration animations:^{
+                self.backgroundColor = _originalBackgroundColor;
+            }];
+        }
+        else
+        {
+            self.backgroundColor = _originalBackgroundColor;
+        }
+
     }
     
     //Background image
@@ -206,6 +220,7 @@ typedef enum {
 }
 
 
+#pragma mark - NSCoding
 -(void) encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeObject:self.userData forKey:@"userData"];
@@ -222,7 +237,22 @@ typedef enum {
 }
 
 
+
 #pragma mark - Accessors
+-(void) setBackgroundImageName:(NSString *)backgroundImageName
+{
+    _backgroundImageName = backgroundImageName;
+    
+    UIImage *image = [UIImage imageNamed:_backgroundImageName];
+    
+    if (image)
+    {
+        _backgroundImageView = [[UIImageView alloc] initWithImage:image];
+        [self addSubview:_backgroundImageView];
+        self.frame = CGRectChangingCGSize(self.frame, image.size);
+    }
+}
+
 -(void) setSelected:(BOOL)selected
 {
     _selected = selected;

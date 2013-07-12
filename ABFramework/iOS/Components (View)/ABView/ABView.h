@@ -24,6 +24,9 @@ typedef void (^ABViewDoubleTouchHandler) (ABView *);
 @interface ABView : UIView <ABViewSelectionProtocol>
 
 //Initializer
+/**
+ * Init view with background image, view will be resized to fit image
+ */
 -(id) initWithBackgroundImageName:(NSString*)backgroundImageName;
 
 //Target / Selector
@@ -43,6 +46,21 @@ typedef void (^ABViewDoubleTouchHandler) (ABView *);
  * Background color when view is selected (Either by touch or "selected" property)
  */
 @property (nonatomic, strong) UIColor *selectedBackgroundColor;
+
+/**
+ * Animate background color selection, default YES 
+ */
+@property (nonatomic, assign) BOOL *animateBackgroundColor;
+
+/**
+ * Background color animation duration, default 0.2f
+ */
+@property (nonatomic, assign) CGFloat animationDuration;
+
+/**
+ * Background image name, view is resized to fit image
+ */
+@property (nonatomic, copy) NSString *backgroundImageName;
 
 /**
  * Background image name when view is selected (Either by touch or "selected" property)
