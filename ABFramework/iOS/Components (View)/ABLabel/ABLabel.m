@@ -145,35 +145,34 @@
     }
 }
 
+//font
+-(void) setFont:(UIFont *)font
+{
+    _font = font;
+    _fontName = [font fontName];
+    _textSize = [font pointSize];
+    
+    _textField.font = font;
+    _label.font = font;
+    
+    if (self.trimAutomatically) [self trim];
+}
+
 //fontName
 -(void) setFontName:(NSString *)fontName
 {
     _fontName = fontName;
     
-    _textField.font = [UIFont fontWithName:_fontName size:self.textSize];
-    _label.font = [UIFont fontWithName:_fontName size:self.textSize];
-    
-    if (self.trimAutomatically) [self trim];
+    self.font = [UIFont fontWithName:_fontName size:self.textSize];
 }
 
-//customFont
--(void) setCustomFont:(UIFont *)customFont
-{
-    _customFont = customFont;
-    
-    //UIFont catgory loads custom font, which can now be used throughout the app
-    //...set fontName property to change label
-    self.fontName = _customFont.fontName;
-}
 
 //textSize
 -(void) setTextSize:(CGFloat)textSize
 {
     _textSize = textSize;
-    _textField.font = [UIFont fontWithName:self.fontName size:_textSize];
-    _label.font = [UIFont fontWithName:self.fontName size:_textSize];
     
-    if (self.trimAutomatically) [self trim];
+    self.font = [UIFont fontWithName:self.fontName size:_textSize];
 }
 
 //textColor

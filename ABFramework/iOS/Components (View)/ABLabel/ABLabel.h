@@ -20,8 +20,8 @@
 @property (nonatomic, copy) NSString *text;
 
 //Font name, default HelveticaNeue
+@property (nonatomic, copy) UIFont *font;
 @property (nonatomic, copy) NSString *fontName;
-@property (nonatomic, strong) UIFont *customFont;
 @property (nonatomic, copy) NSString *selectedFontName;
 
 //Label text size, default 15.0f
