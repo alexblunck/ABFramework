@@ -11,9 +11,15 @@
 @interface ABDatePickerView : ABView
 
 //Initializer
--(id) initWithDate:(NSDate*)date completionBlock:( void (^) (NSDate* selectedDate) )block;
+-(id) initWithDate:(NSDate*)date completion:(ABBlockObject)block;
 
-//Triggers
+//Show / Hide
 -(void) show;
+
+@property (nonatomic, strong) UIDatePicker *datePicker;
+
+
+//Config
+@property (nonatomic, assign) BOOL translucent;
 
 @end
