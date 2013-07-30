@@ -44,6 +44,34 @@
 
 
 
+#pragma mark - Visibility
+-(void) toggleVisible
+{
+    [self show:(self.alpha == 0.0f)];
+}
+
+-(void) hide
+{
+    [self hide:YES];
+}
+
+-(void) show
+{
+    [self show:YES];
+}
+
+-(void) hide:(BOOL)hide
+{
+    self.alpha = (hide) ? 0.0f : 1.0f;
+}
+
+-(void) show:(BOOL)show
+{
+    self.alpha = (show) ? 1.0f : 0.0f;
+}
+
+
+
 #pragma mark - Recursion
 -(void) enumerateAllSubviews:(void(^)(UIView *subview))block
 {

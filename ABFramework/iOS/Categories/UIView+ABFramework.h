@@ -18,6 +18,13 @@
 -(CGFloat) width;
 -(CGFloat) height;
 
+//Visibility
+-(void) toggleVisible;
+-(void) hide;
+-(void) show;
+-(void) hide:(BOOL)hide;
+-(void) show:(BOOL)show;
+
 //Recursion
 -(void) enumerateAllSubviews:(void(^)(UIView *subview))block;
 
