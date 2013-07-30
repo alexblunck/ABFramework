@@ -16,6 +16,9 @@ NSNumber* NSNumberDouble(double aDouble);
 NSNumber* NSNumberFloat(CGFloat aFloat);
 NSNumber* NSNumberBOOL(BOOL aBoolean);
 
+//NSIndexPath Fast Creation
+NSIndexPath* NSIndexPathMake(NSInteger section, NSInteger row);
+
 //Type Checking
 BOOL isNSArray(id object);
 BOOL isNSDictionary(id object);

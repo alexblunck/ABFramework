@@ -32,6 +32,15 @@ NSNumber* NSNumberBOOL(BOOL aBoolean)
 }
 
 
+
+#pragma mark - NSIndexPath Fast Creation
+NSIndexPath* NSIndexPathMake(NSInteger section, NSInteger row)
+{
+    return [NSIndexPath indexPathForRow:row inSection:section];
+}
+
+
+
 #pragma mark - Type Checking
 BOOL isNSArray(id object)
 {
