@@ -126,24 +126,24 @@
 #pragma mark - iOS 6 +
 -(BOOL) shouldAutorotate
 {
-    return [self.activeTabBarItem.viewController shouldAutorotate];
+    return [self.activeViewController shouldAutorotate];
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    return [self.activeTabBarItem.viewController supportedInterfaceOrientations];
+    return [self.activeViewController supportedInterfaceOrientations];
 }
 
 -(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    [self.activeTabBarItem.viewController willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+    [self.activeViewController willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
 }
 
 
 #pragma mark - iOS 5
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return [self.activeTabBarItem.viewController shouldAutorotateToInterfaceOrientation:interfaceOrientation];
+    return [self.activeViewController shouldAutorotateToInterfaceOrientation:interfaceOrientation];
 }
 
 @end
