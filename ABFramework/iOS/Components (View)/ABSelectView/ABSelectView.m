@@ -25,9 +25,23 @@
 }
 @end
 
+const ABSelectViewTheme ABSelectViewDefaultTheme = ABSelectViewThemeTranslucent;
+
 @implementation ABSelectView
 
 #pragma mark - Utility
++(id) showWithStringArray:(NSArray*)stringArray completion:(ABBlockInteger)block
+{
+    return [self showWithStringArray:stringArray selectedIndex:-1 completion:block];
+}
+
++(id) showWithStringArray:(NSArray*)stringArray
+            selectedIndex:(NSInteger)index
+               completion:(ABBlockInteger)block
+{
+    return [self showWithPresentingView:nil stringArray:stringArray selectedIndex:index theme:nil completion:block];
+}
+
 +(id) showWithPresentingView:(UIView*)view
                  stringArray:(NSArray*)stringArray
                selectedIndex:(NSInteger)index
@@ -53,11 +67,12 @@
     {
         //Config
         self.tableWidth = 230.0f;
+        self.callCompletionBlockAfterHideAnimation = NO;
         
         _presentingView = (view) ? view : [UIView topView];
         _stringArray = stringArray;
         _initialIndex = index;
-        _theme = theme;
+        _theme = (theme) ? theme : ABSelectViewDefaultTheme;
         _completionBlock = [block copy];
         
         _labelArray = [NSMutableArray new];
@@ -92,7 +107,7 @@
     if (_theme == ABSelectViewThemeTranslucent)
     {
         UIImage *screenImage = [_presentingView renderCGRect:_presentingView.bounds];
-        screenImage = [screenImage applyBlurWithRadius:5.0f tintColor:nil saturationDeltaFactor:1.0f maskImage:nil];
+        screenImage = [screenImage applyBlurWithRadius:4.0f tintColor:nil saturationDeltaFactor:1.0f maskImage:nil];
         _blurredView = [[UIImageView alloc] initWithImage:screenImage];
         _blurredView.alpha = 0.0f;
         [self addSubview:_blurredView];
@@ -131,7 +146,8 @@
         
         ABLabel *label = [ABLabel new];
         label.centeredHorizontally = YES;
-        label.frame = view.bounds;
+        label.frame = CGRectOffsetSizeWidth(view.bounds, -20.0f);
+        label.frame = CGRectCenteredHorizontallyS(label.frame, view.bounds);
         label.text = string;
         label.textColor = [self colorLabel];
         label.selectedTextColor = [self colorLabelHighlighted];
@@ -181,6 +197,11 @@
 
 -(void) hideWithSelectedIndex:(NSNumber*)index
 {
+    if (!self.callCompletionBlockAfterHideAnimation && index && _completionBlock)
+    {
+        _completionBlock(index.integerValue);
+    }
+    
     [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         
         _backgroundView.alpha = 0.0f;
@@ -191,7 +212,7 @@
         
     } completion:^(BOOL finished) {
         
-        if (index && _completionBlock)
+        if (self.callCompletionBlockAfterHideAnimation && index && _completionBlock)
         {
             _completionBlock(index.integerValue);
         }

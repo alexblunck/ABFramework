@@ -17,6 +17,12 @@ typedef enum {
 @interface ABSelectView : UIView
 
 //Utility
++(id) showWithStringArray:(NSArray*)stringArray completion:(ABBlockInteger)block;
+
++(id) showWithStringArray:(NSArray*)stringArray
+            selectedIndex:(NSInteger)index
+               completion:(ABBlockInteger)block;
+
 +(id) showWithPresentingView:(UIView*)view
                  stringArray:(NSArray*)stringArray
                selectedIndex:(NSInteger)index
@@ -40,5 +46,11 @@ typedef enum {
  * Width of the select table, Default: 230.0f
  */
 @property (nonatomic, assign) CGFloat tableWidth;
+
+/**
+ * callCompletionBlockAfterHideAnimation
+ * Completion block can be called once the hide naimtion has finsihed, Default: NO
+ */
+@property (nonatomic, assign) BOOL callCompletionBlockAfterHideAnimation;
 
 @end
