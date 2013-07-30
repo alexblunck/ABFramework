@@ -28,6 +28,8 @@ typedef void (^ABViewDoubleTouchHandler) (ABView *);
  * Init view with background image, view will be resized to fit image
  */
 -(id) initWithBackgroundImageName:(NSString*)backgroundImageName;
+-(id) initWithBackgroundImage:(UIImage*)backgroundImage;
+-(id) initWithBackgroundImage:(UIImage*)backgroundImage resize:(BOOL)resize;
 
 //Target / Selector
 -(void) setTarget:(id)target selector:(SEL)selector;
@@ -61,11 +63,17 @@ typedef void (^ABViewDoubleTouchHandler) (ABView *);
  * Background image name, view is resized to fit image
  */
 @property (nonatomic, copy) NSString *backgroundImageName;
+@property (nonatomic, copy) UIImage *backgroundImage;
 
 /**
  * Background image name when view is selected (Either by touch or "selected" property)
  */
 @property (nonatomic, copy) NSString *selectedBackgroundImageName;
+
+/**
+ * 
+ */
+@property (nonatomic, assign) BOOL dimBackgroundImageOnSelect;
 
 /**
  * Set selected state, if "selectedBackgroundColor" is set it will be used

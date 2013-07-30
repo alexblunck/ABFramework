@@ -48,6 +48,7 @@ typedef enum {
         self.permitTouchWhileSelected = YES;
         self.animateBackgroundColor = YES;
         self.animationDuration = 0.2f;
+        self.dimBackgroundImageOnSelect = NO;
     }
     return self;
 }
@@ -58,6 +59,21 @@ typedef enum {
     if (self)
     {
         self.backgroundImageName = backgroundImageName;
+    }
+    return self;
+}
+
+-(id) initWithBackgroundImage:(UIImage*)backgroundImage
+{
+    return [self initWithBackgroundImage:backgroundImage resize:YES];
+}
+
+-(id) initWithBackgroundImage:(UIImage*)backgroundImage resize:(BOOL)resize
+{
+    self = [self initWithFrame:CGRectZero];
+    if (self)
+    {
+        [self setBackgroundImage:backgroundImage resize:resize];
     }
     return self;
 }
@@ -213,11 +229,17 @@ typedef enum {
         }
         _backgroundImageView.image = _selectedBackgroundImage;
     }
-    else
+    else if (_selected && !self.selectedBackgroundImageName)
     {
+        if (self.dimBackgroundImageOnSelect) self.alpha = 0.6f;
+    }
+    else if (!_selected)
+    {
+        self.alpha = 1.0f;
         _backgroundImageView.image = _originalBackgroundImage;
     }
 }
+
 
 
 #pragma mark - NSCoding
@@ -245,11 +267,24 @@ typedef enum {
     
     UIImage *image = [UIImage imageNamed:_backgroundImageName];
     
-    if (image)
+    self.backgroundImage = image;
+}
+
+-(void) setBackgroundImage:(UIImage*)backgroundImage
+{
+    [self setBackgroundImage:backgroundImage resize:YES];
+}
+
+-(void) setBackgroundImage:(UIImage *)backgroundImage resize:(BOOL)resize
+{
+    _backgroundImage = backgroundImage;
+    
+    if (_backgroundImage)
     {
-        _backgroundImageView = [[UIImageView alloc] initWithImage:image];
+        _backgroundImageView = [[UIImageView alloc] initWithImage:_backgroundImage];
+        _backgroundImageView.contentMode = self.contentMode;
         [self addSubview:_backgroundImageView];
-        self.frame = CGRectChangingCGSize(self.frame, image.size);
+        if (resize) self.frame = CGRectChangingCGSize(self.frame, _backgroundImage.size);
     }
 }
 
@@ -274,6 +309,20 @@ typedef enum {
             }
         }];
     }
+}
+
+-(void) setFrame:(CGRect)frame
+{
+    [super setFrame:frame];
+    
+    _backgroundImageView.frame = self.bounds;
+}
+
+-(void) setContentMode:(UIViewContentMode)contentMode
+{
+    [super setContentMode:contentMode];
+    
+    _backgroundImageView.contentMode = contentMode;
 }
 
 @end
