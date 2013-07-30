@@ -33,4 +33,29 @@
     return hexComponent / 255.0;
 }
 
+//Source: https://gist.github.com/iwill/957471
+-(UIColor*) colorInverted
+{
+    CGColorRef oldCGColor = self.CGColor;
+    int numberOfComponents = CGColorGetNumberOfComponents(oldCGColor);
+    
+    if (numberOfComponents <= 1) {
+        return [UIColor colorWithCGColor:oldCGColor];
+    }
+    
+    const CGFloat *oldComponentColors = CGColorGetComponents(oldCGColor);
+    CGFloat newComponentColors[numberOfComponents];
+    int i = - 1;
+    while (++i < numberOfComponents - 1) {
+        newComponentColors[i] = 1 - oldComponentColors[i];
+    }
+    newComponentColors[i] = oldComponentColors[i]; // alpha
+    
+    CGColorRef newCGColor = CGColorCreate(CGColorGetColorSpace(oldCGColor), newComponentColors);
+    UIColor *newColor = [UIColor colorWithCGColor:newCGColor];
+    CGColorRelease(newCGColor);
+    
+    return newColor;
+}
+
 @end

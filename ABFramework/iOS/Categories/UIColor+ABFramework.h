@@ -13,4 +13,6 @@
 //Expects a hex string: #e2e2e2
 +(UIColor*) colorWithHexString:(NSString*)hexString;
 
+-(UIColor*) colorInverted;
+
 @end
