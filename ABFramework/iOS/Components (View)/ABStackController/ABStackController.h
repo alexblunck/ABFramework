@@ -18,11 +18,15 @@
 
 //Add Views
 -(void) addView:(UIView*)newView;
+-(void) addViewIgnoringRowBackgroundColor:(UIView*)newView;
 -(void) addView:(UIView*)newView centered:(BOOL)centered;
+-(void) addView:(UIView*)newView centered:(BOOL)centered backgroundColor:(UIColor*)backgroundColor;
 -(void) addViews:(NSArray*)newViews;
 
 //Add Padding
 -(void) addPadding:(CGFloat)padding;
+-(void) addPaddingIgnoringRowBackgroundColor:(CGFloat)padding;
+-(void) addPadding:(CGFloat)padding backgroundColor:(UIColor*)backgroundColor;
 
 //Interaction
 -(void) scrollToTop; //Only available when a fixed height is set
@@ -32,10 +36,22 @@
 -(UIScrollView*) uiScrollView;
 
 //Config
-//Delay touches on scrollView (Only available when a fixed height is set), default is NO
+/**
+ * delayTouch
+ * Delay touches on scrollView (Only available when a fixed height is set)
+ * Default: NO
+ */
 @property (nonatomic, assign) BOOL delayTouch;
 
+/**
+ * rowBackgroundColor
+ * Set this property to automatically add a background color behind each added view / padding
+ * Default: nil
+ */
+@property (nonatomic, copy) UIColor *rowBackgroundColor;
+
+
 //Access
-@property (nonatomic, strong) NSArray *stackViews;
+@property (nonatomic, strong, readonly) NSArray *stackViews;
 
 @end

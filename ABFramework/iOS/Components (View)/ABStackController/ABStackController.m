@@ -104,10 +104,28 @@
     [self addView:newView centered:YES];
 }
 
+-(void) addViewIgnoringRowBackgroundColor:(UIView*)newView
+{
+    [self addView:newView centered:YES backgroundColor:nil];
+}
+
 -(void) addView:(UIView*)newView centered:(BOOL)centered
+{
+    [self addView:newView centered:centered backgroundColor:self.rowBackgroundColor];
+}
+
+-(void) addView:(UIView*)newView centered:(BOOL)centered backgroundColor:(UIColor*)backgroundColor
 {
     //Containment View
     UIView *containmentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, newView.bounds.size.width, newView.bounds.size.height)];
+    
+    if (backgroundColor)
+    {
+        containmentView.frame = CGRectChangingSize(containmentView.frame, self.width, newView.height);
+        containmentView.backgroundColor = backgroundColor;
+        newView.frame = CGRectCenteredHorizontallyS(newView.frame, containmentView.bounds);
+    }
+    
     [containmentView addSubview:newView];
     
     //Adjust containment view frame to be placed beneath last view
@@ -158,6 +176,31 @@
 #pragma mark - Add Padding
 -(void) addPadding:(CGFloat)padding
 {
+    [self addPadding:padding backgroundColor:self.rowBackgroundColor];
+}
+
+-(void) addPaddingIgnoringRowBackgroundColor:(CGFloat)padding
+{
+    [self addPadding:padding backgroundColor:nil];
+}
+
+-(void) addPadding:(CGFloat)padding backgroundColor:(UIColor*)backgroundColor
+{
+    if (backgroundColor)
+    {
+        UIView *paddingBackgroundView = [[UIView alloc] initWithFrame:cgr(0, _nextOriginY, self.width, padding)];
+        paddingBackgroundView.backgroundColor = backgroundColor;
+        
+        if (_isFixedHeight)
+        {
+            [_scrollView addSubview:paddingBackgroundView];
+        }
+        else
+        {
+            [self addSubview:paddingBackgroundView];
+        }
+    }
+    
     //Iterate nextOriginY by desired value
     _nextOriginY += padding;
     
