@@ -8,7 +8,9 @@
 
 #import "ABImagePickerViewController.h"
 
-@interface ABImagePickerViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
+@interface ABImagePickerViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+{
+    UIStatusBarStyle _previousStatusBarStyle;
     void (^_completionBlock) (UIImage *selectedImage);
 }
 @end
@@ -27,14 +29,15 @@
 -(id) initWithPhotoLibraryPickerWithCompletionBlock:( void (^) (UIImage *selectedImage) )block
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
+        _previousStatusBarStyle = [[UIApplication sharedApplication] statusBarStyle];
         
         _completionBlock = block;
         
         self.delegate = self;
         
         self.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        
     }
     return self;
 }
@@ -44,7 +47,11 @@
 #pragma mark - Trigger
 -(void) show
 {
-    [[UIViewController topViewController] presentViewController:self animated:YES completion:nil];
+    [[UIViewController topViewController] presentViewController:self animated:YES completion:^{
+        
+        
+        
+    }];
 }
 
 
@@ -56,7 +63,11 @@
     
     _completionBlock(selectedImage);
     
-    [picker dismissViewControllerAnimated:YES completion:nil];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+        [[UIApplication sharedApplication] setStatusBarStyle:_previousStatusBarStyle animated:YES];
+        
+    }];
 }
 
 @end
