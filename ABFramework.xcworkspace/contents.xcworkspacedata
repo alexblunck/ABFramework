@@ -106,6 +106,12 @@
          <Group
             location = "group:Model"
             name = "Model">
+            <FileRef
+               location = "group:ABSection.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABSection.m">
+            </FileRef>
          </Group>
          <Group
             location = "group:Protocols"
@@ -156,6 +162,18 @@
          <Group
             location = "group:Categories"
             name = "Categories">
+            <FileRef
+               location = "group:NSString+ABFrameworkIOS.h">
+            </FileRef>
+            <FileRef
+               location = "group:NSString+ABFrameworkIOS.m">
+            </FileRef>
+            <FileRef
+               location = "group:UIScreen+ABFramework.h">
+            </FileRef>
+            <FileRef
+               location = "group:UIScreen+ABFramework.m">
+            </FileRef>
             <FileRef
                location = "group:UIBarButtonItem+ABFramework.h">
             </FileRef>
@@ -281,6 +299,32 @@
             location = "group:Components (View)"
             name = "Components (View)">
             <Group
+               location = "group:ABWebController"
+               name = "ABWebController">
+               <FileRef
+                  location = "group:ABWebController.h">
+               </FileRef>
+               <FileRef
+                  location = "group:ABWebController.m">
+               </FileRef>
+               <FileRef
+                  location = "group:ABWebViewController.h">
+               </FileRef>
+               <FileRef
+                  location = "group:ABWebViewController.m">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:ABTableViewCell"
+               name = "ABTableViewCell">
+               <FileRef
+                  location = "group:ABTableViewCell.h">
+               </FileRef>
+               <FileRef
+                  location = "group:ABTableViewCell.m">
+               </FileRef>
+            </Group>
+            <Group
                location = "group:ABView"
                name = "ABView">
                <FileRef
@@ -353,6 +397,12 @@
             <Group
                location = "group:ABEntypoView"
                name = "ABEntypoView">
+               <FileRef
+                  location = "group:ABEntypoButton.h">
+               </FileRef>
+               <FileRef
+                  location = "group:ABEntypoButton.m">
+               </FileRef>
                <FileRef
                   location = "group:ABEntypoView.h">
                </FileRef>

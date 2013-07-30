@@ -13,6 +13,7 @@
 		D22AB48F173D610300A25B32 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D22AB48D173D610300A25B32 /* Credits.rtf */; };
 		D22AB492173D610300A25B32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D22AB491173D610300A25B32 /* AppDelegate.m */; };
 		D22AB495173D610300A25B32 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D22AB493173D610300A25B32 /* MainMenu.xib */; };
+		D22F88EE17A159710072CF72 /* ABSection.m in Sources */ = {isa = PBXBuildFile; fileRef = D22F88ED17A159710072CF72 /* ABSection.m */; };
 		D2762B471743965D002444EA /* ABCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D2762B421743965D002444EA /* ABCommon.m */; };
 		D2762B481743965D002444EA /* ABMath.m in Sources */ = {isa = PBXBuildFile; fileRef = D2762B451743965D002444EA /* ABMath.m */; };
 		D28A23BF1748387700EE1B7B /* NSApplication+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A23BE1748387700EE1B7B /* NSApplication+ABFramework.m */; };
@@ -46,6 +47,8 @@
 		D22AB490173D610300A25B32 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D22AB491173D610300A25B32 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D22AB494173D610300A25B32 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		D22F88EC17A159710072CF72 /* ABSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSection.h; sourceTree = "<group>"; };
+		D22F88ED17A159710072CF72 /* ABSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSection.m; sourceTree = "<group>"; };
 		D2762B411743965D002444EA /* ABCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABCommon.h; sourceTree = "<group>"; };
 		D2762B421743965D002444EA /* ABCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABCommon.m; sourceTree = "<group>"; };
 		D2762B431743965D002444EA /* ABMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABMacros.h; sourceTree = "<group>"; };
@@ -158,6 +161,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D22F88EB17A159710072CF72 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D22F88EC17A159710072CF72 /* ABSection.h */,
+				D22F88ED17A159710072CF72 /* ABSection.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		D2C6DC98173D616E00C157E3 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,7 +199,7 @@
 				D2C6DF42173D73B700C157E3 /* Components (Functional) */,
 				D2C6DF49173D73B700C157E3 /* Components (View) */,
 				D2C6DF4A173D73B700C157E3 /* Containers */,
-				D2C6DF4B173D73B700C157E3 /* Model */,
+				D22F88EB17A159710072CF72 /* Model */,
 				D2C6DF4C173D73B700C157E3 /* Protocols */,
 				D2C6DF4D173D73B700C157E3 /* Sub Classes */,
 				D2C6DF4E173D73B700C157E3 /* Utilities */,
@@ -259,13 +271,6 @@
 			children = (
 			);
 			path = Containers;
-			sourceTree = "<group>";
-		};
-		D2C6DF4B173D73B700C157E3 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		D2C6DF4C173D73B700C157E3 /* Protocols */ = {
@@ -450,6 +455,7 @@
 				D2A102E1173E4B4500E95692 /* NSMutableDictionary+ABFramework.m in Sources */,
 				D2A102E2173E4B4500E95692 /* NSObject+ABFramework.m in Sources */,
 				D2A102E3173E4B4500E95692 /* NSString+ABFramework.m in Sources */,
+				D22F88EE17A159710072CF72 /* ABSection.m in Sources */,
 				D2762B471743965D002444EA /* ABCommon.m in Sources */,
 				D2762B481743965D002444EA /* ABMath.m in Sources */,
 				D28A23BF1748387700EE1B7B /* NSApplication+ABFramework.m in Sources */,

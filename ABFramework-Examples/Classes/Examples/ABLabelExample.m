@@ -19,6 +19,8 @@
 {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     /*
      * Label with fixed frame
      */

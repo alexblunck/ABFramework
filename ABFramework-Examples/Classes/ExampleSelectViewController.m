@@ -44,7 +44,7 @@
     [self compileData];
     
     //TableView
-    CGRect tableViewFrame = CGRectOffsetSizeHeight(self.view.bounds, -44);
+    CGRect tableViewFrame = CGRectOffsetSizeHeight(self.view.bounds, (IS_MIN_IOS7) ? 0 : -44.0f);
     _tableView = [[UITableView alloc] initWithFrame:tableViewFrame style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;

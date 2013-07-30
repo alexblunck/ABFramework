@@ -19,18 +19,30 @@
 {
     [super viewDidLoad];
 	
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     ABButton *button1 = [ABButton buttonBasicWithText:@"Simple" actionBlock:^{
         
         //Customize ABHud behaviour
-        //[ABHud setAnimationType:ABHudAnimationTypeBounce];
-        //[ABHud setCornerRadius:10.0f];
+        //[ABHud setAnimationType:ABHudAnimationTypeBounce]; //Default: ABHudAnimationTypePop
+        //[ABHud setCornerRadius:20.0f]; //Default: Circle
         
-        [ABHud showActivityAndHide];
+        [ABHud showActivity];
+        
+        [self performSelector:@selector(hide) withObject:nil afterDelay:2.0f];
         
     }];
-    button1.frame = CGRectCenteredHorizontally(button1.frame, self.view.bounds, 50);
+    button1.frame = CGRectCenteredHorizontally(button1.frame, self.view.bounds, 150.0f);
     [self.view addSubview:button1];
 
+}
+
+-(void) hide
+{
+    //[ABHud dismissWithIconName:@"airplane" message:@"Fly Awaaaaay"];
+    //[ABHud dismissWithError:@"Failed"];
+    [ABHud dismissWithSuccess:@"Weeee!"];
+    //[ABHud dismiss];
 }
 
 @end
