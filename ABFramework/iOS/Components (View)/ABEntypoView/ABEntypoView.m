@@ -46,7 +46,7 @@
         _label.minimumFontSize = 20.0f;
         
         //Set text after font for iOS 7 support
-        _label.text = [self unicodeForIconName:iconName];
+        self.iconName = iconName;
     }
     return self;
 }
@@ -319,6 +319,14 @@
 
 
 #pragma mark - Accessors
+#pragma mark - iconName
+-(void) setIconName:(NSString *)iconName
+{
+    _iconName = iconName;
+    
+    _label.text = [self unicodeForIconName:iconName];
+}
+
 #pragma mark - color
 -(void) setColor:(UIColor *)color
 {

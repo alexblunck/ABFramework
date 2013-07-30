@@ -16,14 +16,15 @@
 //Initializer
 -(id) initWithIconName:(NSString*)iconName size:(CGFloat)size;
 
+@property (nonatomic, copy) NSString *iconName;
 
 //Config
 
 /**
  * Color
  */
-@property (nonatomic, strong) UIColor *color;
-@property (nonatomic, strong) UIColor *selectedColor;
+@property (nonatomic, copy) UIColor *color;
+@property (nonatomic, copy) UIColor *selectedColor;
 
 /**
  * Shadow
@@ -33,6 +34,6 @@
 /**
  * Shadow Color
  */
-@property (nonatomic, strong) UIColor *shadowColor;
+@property (nonatomic, copy) UIColor *shadowColor;
 
 @end
