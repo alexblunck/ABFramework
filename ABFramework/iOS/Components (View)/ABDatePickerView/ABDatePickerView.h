@@ -22,4 +22,10 @@
 //Config
 @property (nonatomic, assign) BOOL translucent;
 
+/**
+ * callCompletionBlockAfterHideAnimation
+ * Completion block can be called once the hide naimtion has finsihed, Default: NO
+ */
+@property (nonatomic, assign) BOOL callCompletionBlockAfterHideAnimation;
+
 @end

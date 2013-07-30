@@ -31,6 +31,7 @@
     {
         //Config
         self.translucent = NO;
+        self.callCompletionBlockAfterHideAnimation = NO;
         
         _presentingView = [UIView topView];
         _completionBlock = [block copy];
@@ -126,6 +127,11 @@
 
 -(void) hideWithSelectedDate:(NSDate*)date
 {
+    if (!self.callCompletionBlockAfterHideAnimation && date && _completionBlock)
+    {
+        _completionBlock(date);
+    }
+    
     [UIView animateWithDuration:0.2f delay:0 options:0 animations:^{
         
         _backgroundView.alpha = 0.0f;
@@ -134,7 +140,7 @@
         
     } completion:^(BOOL finished) {
         
-        if (date && _completionBlock)
+        if (self.callCompletionBlockAfterHideAnimation && date && _completionBlock)
         {
             _completionBlock(date);
         }
