@@ -11,9 +11,9 @@
 @interface UIImage (ABFramework)
 
 //Save / Load / Delete
--(void)saveImage:(NSString*)imageName;
-+(UIImage*)loadImage:(NSString*)imageName;
-+(void)removeImage:(NSString*)fileName;
+-(void) saveImage:(NSString*)imageName;
++(UIImage*) loadImage:(NSString*)fileName;
++(void) removeImage:(NSString*)fileName;
 
 //Resize
 -(UIImage*) resizedImageWithMaxSize:(CGSize)maxSize;
@@ -27,5 +27,8 @@
                       tintColor:(UIColor*)tintColor
           saturationDeltaFactor:(CGFloat)saturationDeltaFactor
                       maskImage:(UIImage*)maskImage;
+
+//Color
++(instancetype) imageWithColor:(UIColor*)color size:(CGSize)size;
 
 @end

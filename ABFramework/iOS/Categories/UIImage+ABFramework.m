@@ -18,7 +18,7 @@
 -(void) saveImage:(NSString*)imageName
 {
     //Convert image into .png format
-    NSData *imageData = UIImagePNGRepresentation(self);
+    NSData *imageData = UIImageJPEGRepresentation(self, 1.0f);
     //Create instance of NSFileManager
     NSFileManager *fileManager = [NSFileManager defaultManager];
     //Create an array and store result of our search for the documents directory in it
@@ -40,11 +40,11 @@
     [fileManager removeItemAtPath: fullPath error:NULL];
 }
 
-+(UIImage*) loadImage:(NSString*)imageName
++(UIImage*) loadImage:(NSString*)fileName
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths safeObjectAtIndex:0];
-    NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", imageName]];
+    NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", fileName]];
     return [UIImage imageWithContentsOfFile:fullPath];
 }
 
@@ -88,6 +88,7 @@
     
     return [UIImage imageWithData:UIImageJPEGRepresentation(img, compression)];
 }
+
 
 
 #pragma mark - Info
@@ -237,6 +238,20 @@
     UIGraphicsEndImageContext();
     
     return outputImage;
+}
+
+
+
+#pragma mark - Color
++(instancetype) imageWithColor:(UIColor*)color size:(CGSize)size
+{
+    UIGraphicsBeginImageContext(size);
+    UIBezierPath* rPath = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, size.width, size.height)];
+    [color setFill];
+    [rPath fill];
+    UIImage* image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
 }
 
 @end
