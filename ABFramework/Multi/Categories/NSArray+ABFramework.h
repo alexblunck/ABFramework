@@ -10,10 +10,14 @@
 
 @interface NSArray (ABFramework)
 
+//Conversion
 -(NSString*) jsonString;
 
+//Safe Access
 -(id) safeObjectAtIndex:(NSUInteger)index;
+-(id) safeObjectAtIndex:(NSUInteger)index verbose:(BOOL)verbose; //Be careful with this one
 
+//Add
 -(NSArray*) arrayByAddingObject:(id)object;
 
 @end
