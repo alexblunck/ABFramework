@@ -35,6 +35,14 @@
 
 
 
+#pragma mark - Replace
+-(NSString*) stringByTrimmingWhiteSpace:(NSString*)string
+{
+    return [self stringByReplacingOccurrencesOfString:@" " withString:@""];
+}
+
+
+
 #pragma mark - Encoding
 -(NSString*) encodedString:(NSStringEncoding)encoding
 {

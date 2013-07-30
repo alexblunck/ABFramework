@@ -17,6 +17,9 @@
 -(BOOL) isEqualToStringU:(NSString *)aString; 
 -(BOOL) empty;
 
+//Replace
+-(NSString*) stringByTrimmingWhiteSpace:(NSString*)string;
+
 //Encoding
 -(NSString*) encodedString:(NSStringEncoding)encoding;
 -(NSString*) asciiEncodedString;
