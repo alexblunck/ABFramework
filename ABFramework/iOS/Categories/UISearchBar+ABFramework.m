@@ -12,13 +12,14 @@
 
 -(void) setKeyboardAppearance:(UIKeyboardAppearance)keyBoardApperance
 {
-    for(id subView in self.subviews)
-    {
-        if([subView isKindOfClass:[UITextField class]])
+    [self enumerateAllSubviews:^(UIView *subview) {
+        
+        if([subview isKindOfClass:[UITextField class]])
         {
-            [(UITextField*)subView setKeyboardAppearance:keyBoardApperance];
+            [(UITextField*)subview setKeyboardAppearance:keyBoardApperance];
         }
-    }
+        
+    }];
 }
 
 @end
