@@ -12,6 +12,10 @@
 
 @interface UIViewController (ABFramework)
 
+//Storyboard
++(id) instantiateWithStoryboardName:(NSString*)name;
++(id) instantiateWithStoryboardName:(NSString*)name identifier:(NSString*)identifier;
+
 //Access
 +(UIViewController*) topViewController;
 

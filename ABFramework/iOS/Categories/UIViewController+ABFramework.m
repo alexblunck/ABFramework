@@ -13,6 +13,28 @@
 
 @dynamic abTabBarController;
 
+#pragma mark - Storyboard
++(id) instantiateWithStoryboardName:(NSString*)name
+{
+    return [self instantiateWithStoryboardName:name identifier:nil];
+}
+
++(id) instantiateWithStoryboardName:(NSString*)name identifier:(NSString*)identifier
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:name bundle:nil];
+    if (identifier)
+    {
+        return [storyboard instantiateViewControllerWithIdentifier:identifier];
+    }
+    else
+    {
+        return [storyboard instantiateInitialViewController];
+    }
+    return nil;
+}
+
+
+
 #pragma mark - Access
 +(UIViewController*) topViewController
 {
