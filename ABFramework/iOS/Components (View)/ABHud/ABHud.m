@@ -10,23 +10,27 @@
 #import "ABHud.h"
 
 @interface ABHud ()
-{
-    BOOL _hideScheduled;
-    
-    NSTimer *_hideTimer;
-    UIView *_backgroundView;
-    UIView *_circleView;
-    ABLabel *_label;
-    
-    //Config
-    ABHudAnimationType _configAnimationType;
-}
+
+@property (nonatomic, strong) NSTimer *hideTimer;
+
+@property (nonatomic, strong) UIView *backgroundView;
+@property (nonatomic, strong) UIView *circleView;
+@property (nonatomic, strong) UIActivityIndicatorView *activityView;
+@property (nonatomic, strong) ABEntypoView *iconView;
+@property (nonatomic, strong) ABLabel *label;
+
+@property (nonatomic, copy) NSString *message;
+@property (nonatomic, assign) BOOL hideScheduled;
+
+@property (nonatomic, assign) ABHudAnimationType animationType;
+@property (nonatomic, assign) CGFloat cornerRadius;
+
 @end
 
 @implementation ABHud
 
 #pragma mark - Singleton
-+(id) sharedClass
++(instancetype) sharedClass
 {
     static ABHud *sharedClass = nil;
     static dispatch_once_t once = 0;
@@ -47,7 +51,11 @@
         self.backgroundColor = [UIColor clearColor];
         
         //Config
-        _hideScheduled = NO;
+        CGFloat circleRadius = 100.0f;
+        _cornerRadius = (ABHUD_CORNER_RADIUS == -1) ? circleRadius / 2 : ABHUD_CORNER_RADIUS;
+        self.hideScheduled = NO;
+        self.animationType = ABHUD_ANIMATION_TYPE;
+        
         
         //Background view
         _backgroundView = [[UIView alloc] initWithFrame:self.bounds];
@@ -61,23 +69,32 @@
         _circleView.backgroundColor = [UIColor blackColor];
         _circleView.alpha = ABHUD_OPACITY;
         [self addSubview:_circleView];
-        
+
         //Activity View
-        UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        activityView.frame = CGRectCenteredWithCGRect(activityView.frame, _circleView.bounds);
-        [activityView startAnimating];
-        [_circleView addSubview:activityView];
+        _activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        _activityView.frame = CGRectCenteredWithCGRect(_activityView.frame, _circleView.bounds);
+        [_activityView startAnimating];
+        [_circleView addSubview:_activityView];
         
         //Label
         _label = [ABLabel new];
         _label.frame = CGRectMake(0, 0, 200, 50);
-        _label.frame = CGRectCenteredWithCGRect(_label.frame, self.bounds);
-        _label.backgroundColor = [UIColor greenColor];
-        //[self addSubview:_label];
+        _label.frame = CGRectOutsideBottomCenter(_label.frame, _circleView.frame, 2.0f);
+        _label.centeredHorizontally = YES;
+        _label.font = [UIFont systemFontOfSize:20.0f];
+        _label.textColor = [UIColor colorWithWhite:1.0f alpha:0.7f];
+        _label.alpha = 0.0f;
+        [self addSubview:_label];
         
-        //Config
-        [self setSharedAnimationType:ABHUD_ANIMATION_TYPE];
-        [self setSharedCornerRadius:(ABHUD_CORNER_RADIUS == -1) ? _circleView.bounds.size.width / 2 : ABHUD_CORNER_RADIUS];
+        //Icon View
+        _iconView = [[ABEntypoView alloc] initWithIconName:nil size:40.0f];
+        _iconView.frame = CGRectCenteredWithCGRect(_iconView.frame, _circleView.bounds);
+        _iconView.color = [UIColor whiteColor];
+        _iconView.alpha = 0.0f;
+        [_circleView addSubview:_iconView];
+        
+        //Set circleView corner radius
+        self.cornerRadius = self.cornerRadius;
     }
     return self;
 }
@@ -88,30 +105,67 @@
 #pragma mark - Show
 +(void) showActivity
 {
+    [ABHud showActivity:nil];
+}
+
++(void) showActivity:(NSString*)message
+{
+    [ABHud sharedClass].message = message;
     [[ABHud sharedClass] show:YES];
 }
 
 +(void) showActivityAndHide
 {
-    [ABHud showActivityAndHide:nil];
+    [ABHud showActivity:nil];
+    [[ABHud sharedClass] scheduleHide:2.0f];
 }
 
-+(void) showActivityAndHide:(NSString*)text
-{
-    [[ABHud sharedClass] show:YES];
-    [[ABHud sharedClass] scheduleHide:2];
-}
 
 
 #pragma mark - Dismiss
 +(void) dismiss
 {
-    [[ABHud sharedClass] hide];
+    [ABHud dismissWithIconName:nil message:nil];
+}
+
++(void) dismissWithSuccess:(NSString*)message
+{
+    [ABHud dismissWithIconName:@"check" message:message];
+}
+
++(void) dismissWithError:(NSString*)message
+{
+    [ABHud dismissWithIconName:@"cross" message:message];
+}
+
++(void) dismissWithIconName:(NSString*)iconName message:(NSString*)message
+{
+    [ABHud sharedClass].message = message;
+    [[ABHud sharedClass] fadeLabelIn:YES];
+    
+    if (iconName) [[ABHud sharedClass] fadeActivityIn:NO animated:NO];
+    
+    [ABHud sharedClass].iconView.iconName = iconName;
+    [[ABHud sharedClass] fadeIconIn:YES];
+    
+    if (message)
+    {
+        [[ABHud sharedClass] scheduleHide:1.0f];
+    }
+    else
+    {
+        [[ABHud sharedClass] hide];
+    }
 }
 
 
 
 #pragma mark - Logic
+-(void) show
+{
+    [self show:YES];
+}
+
 -(void) show:(BOOL)show
 {
     if (show)
@@ -120,18 +174,20 @@
     }
     
     //Choose correct animation
-    if (_configAnimationType == ABHudAnimationTypeBounce)
+    if (self.animationType == ABHudAnimationTypeBounce)
     {
         [self bounceCircleViewIn:show];
     }
-    else if (_configAnimationType == ABHudAnimationTypePop)
+    else if (self.animationType == ABHudAnimationTypePop)
     {
         [self popCircleViewIn:show];
     }
-    else if (_configAnimationType == ABHudAnimationTypeFade)
+    else if (self.animationType == ABHudAnimationTypeFade)
     {
         [self fadeCircleViewIn:show];
     }
+    
+    [self fadeLabelIn:NO];
 }
 
 -(void) hide
@@ -154,6 +210,40 @@
 
 
 #pragma mark - Animation
+-(void) fadeLabelIn:(BOOL)fadeIn
+{
+    [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        
+        self.label.alpha = (fadeIn) ? 1.0f : 0.0f;
+        
+    } completion:nil];
+}
+
+-(void) fadeIconIn:(BOOL)fadeIn
+{
+    [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        
+        self.iconView.alpha = (fadeIn) ? 1.0f : 0.0f;
+        
+    } completion:nil];
+}
+
+-(void) fadeActivityIn:(BOOL)fadeIn animated:(BOOL)animated
+{
+    if (animated)
+    {
+        [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            
+            self.activityView.alpha = (fadeIn) ? 1.0f : 0.0f;
+            
+        } completion:nil];
+    }
+    else
+    {
+        self.activityView.alpha = (fadeIn) ? 1.0f : 0.0f;
+    }
+}
+
 -(void) bounceCircleViewIn:(BOOL)bounceIn
 {
     CGRect centerRect = CGRectCenteredWithCGRect(_circleView.frame, self.bounds);
@@ -161,38 +251,53 @@
     CGRect outsideTopRect = CGRectChangingOriginY(_circleView.frame, 0 - _circleView.frame.size.height);
     
     [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        
         //Fade background
         _backgroundView.alpha = (bounceIn) ? 0.5f : 0.0f;
         //Move circle
         _circleView.frame = (bounceIn) ? centerRectOffset : outsideTopRect;
+        
     } completion:^(BOOL finished) {
+        
         //In
         if (bounceIn)
         {
             [UIView animateWithDuration:0.1f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                
                 _circleView.frame = centerRect;
+                
             } completion:^(BOOL finished) {
+                
                 //Perform post animation logic
                 [self animationDone:bounceIn];
+                
             }];
         }
+        
     }];
 }
 
 -(void) popCircleViewIn:(BOOL)popIn
 {
     [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        
         //Fade background
         _backgroundView.alpha = (popIn) ? 0.5f : 0.0f;
         //Scale circle
         _circleView.transform = CGAffineTransformMakeScale(1.2f, 1.2f);
+        
     } completion:^(BOOL finished) {
+        
         [UIView animateWithDuration:0.1f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            
             //Scale circle
             _circleView.transform = (popIn) ? CGAffineTransformMakeScale(1.0f, 1.0f) : CGAffineTransformMakeScale(0.01f, 0.01f);
+            
         } completion:^(BOOL finished) {
+            
             //Perform post animation logic
             [self animationDone:popIn];
+            
         }];
         
     }];
@@ -222,21 +327,40 @@
     //If exit animation is done hide ABHud
     if (!isIn)
     {
+        //Reset state
+        self.iconView.iconName = nil;
+        [self fadeActivityIn:YES animated:NO];
+        
         [self removeFromSuperview];
     }
 }
 
 
 
-#pragma mark - Accessors
-#pragma mark - AnimationType
-+(void) setAnimationType:(ABHudAnimationType)type
+#pragma mark - Config
++(void) setAnimationType:(ABHudAnimationType)animationType
 {
-    [[ABHud sharedClass] setSharedAnimationType:type];
+    [ABHud sharedClass].animationType = animationType;
 }
--(void) setSharedAnimationType:(ABHudAnimationType)type
+
++(void) setCornerRadius:(CGFloat)cornerRadius
 {
-    _configAnimationType = type;
+    [ABHud sharedClass].cornerRadius = cornerRadius;
+}
+
+
+
+#pragma mark - Accessors
+-(void) setMessage:(NSString *)message
+{
+    _message = message;
+    
+    self.label.text = _message;
+}
+
+-(void) setAnimationType:(ABHudAnimationType)animationType
+{
+    _animationType = animationType;
     
     //Default values for circle view
     _circleView.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
@@ -244,26 +368,21 @@
     _circleView.alpha = ABHUD_OPACITY;
     
     //Prepare circle view for animation type
-    if (_configAnimationType == ABHudAnimationTypeBounce)
+    if (_animationType == ABHudAnimationTypeBounce)
     {
         _circleView.frame = CGRectChangingOriginY(_circleView.frame, 0 - _circleView.frame.size.height);
     }
-    else if (_configAnimationType == ABHudAnimationTypePop)
+    else if (_animationType == ABHudAnimationTypePop)
     {
         _circleView.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
     }
-    else if (_configAnimationType == ABHudAnimationTypeFade)
+    else if (_animationType == ABHudAnimationTypeFade)
     {
         _circleView.alpha = 0.0f;
     }
 }
 
-#pragma mark - CornerRadius
-+(void) setCornerRadius:(CGFloat)cornerRadius
-{
-    [[ABHud sharedClass] setSharedCornerRadius:cornerRadius];
-}
--(void) setSharedCornerRadius:(CGFloat)cornerRadius
+-(void) setCornerRadius:(CGFloat)cornerRadius
 {
     _circleView.layer.cornerRadius = cornerRadius;
 }

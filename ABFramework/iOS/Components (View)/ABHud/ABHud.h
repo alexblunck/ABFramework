@@ -25,13 +25,16 @@ typedef enum {
 //Utility
 //Show
 +(void) showActivity;
++(void) showActivity:(NSString*)message;
 +(void) showActivityAndHide;
-+(void) showActivityAndHide:(NSString*)text; // TO DO
 //Dismiss
 +(void) dismiss;
++(void) dismissWithSuccess:(NSString*)message;
++(void) dismissWithError:(NSString*)message;
++(void) dismissWithIconName:(NSString*)iconName message:(NSString*)message;
 
-//Accessors
-+(void) setAnimationType:(ABHudAnimationType)type;
+//Config
++(void) setAnimationType:(ABHudAnimationType)animationType;
 +(void) setCornerRadius:(CGFloat)cornerRadius;
 
 @end
