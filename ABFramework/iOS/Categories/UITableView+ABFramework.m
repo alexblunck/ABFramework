@@ -10,6 +10,14 @@
 
 @implementation UITableView (ABFramework)
 
+-(void) scrollToTop
+{
+    if (self.visibleCells.count > 0)
+    {
+        [self scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
+}
+
 -(void) scrollToBottom
 {
     if (self.contentSize.height > self.bounds.size.height)

@@ -10,6 +10,7 @@
 
 @interface UITableView (ABFramework)
 
+-(void) scrollToTop;
 -(void) scrollToBottom;
 
 @end
