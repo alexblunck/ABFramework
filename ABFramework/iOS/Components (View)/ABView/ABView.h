@@ -35,11 +35,6 @@ typedef void (^ABViewDoubleTouchHandler) (ABView *);
 -(void) setTarget:(id)target selector:(SEL)selector;
 
 /**
- * NSDictionary to store any kind of information
- */
-@property(nonatomic, strong) NSDictionary *userData;
-
-/**
  * Delegate
  */
 @property (nonatomic, weak) id <ABViewDelegate> delegate;
@@ -52,7 +47,7 @@ typedef void (^ABViewDoubleTouchHandler) (ABView *);
 /**
  * Animate background color selection, default YES 
  */
-@property (nonatomic, assign) BOOL *animateBackgroundColor;
+@property (nonatomic, assign) BOOL animateBackgroundColor;
 
 /**
  * Background color animation duration, default 0.2f
@@ -71,7 +66,7 @@ typedef void (^ABViewDoubleTouchHandler) (ABView *);
 @property (nonatomic, copy) NSString *selectedBackgroundImageName;
 
 /**
- * 
+ * Set alpha of image to 0.6 on touch down, default is NO
  */
 @property (nonatomic, assign) BOOL dimBackgroundImageOnSelect;
 
@@ -84,6 +79,11 @@ typedef void (^ABViewDoubleTouchHandler) (ABView *);
  * Respond to touches when selected property is set to YES
  */
 @property (nonatomic, assign) BOOL permitTouchWhileSelected;
+
+/**
+ * Amount of points a touch can be moved before it's considered cancelled, default is 30.0f
+ */
+@property (nonatomic, assign) CGFloat touchMoveToleration;
 
 /**
  * Recursively propegate selected state to all subviews and their subviews and so on, default is NO

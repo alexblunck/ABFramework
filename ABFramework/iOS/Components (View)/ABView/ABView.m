@@ -14,7 +14,7 @@ typedef enum {
     ABViewStateVisible
 } ABViewState;
 
-@interface ABView () <NSCoding>
+@interface ABView ()
 {
     UIColor *_originalBackgroundColor;
     UIImage *_originalBackgroundImage;
@@ -23,6 +23,7 @@ typedef enum {
     ABViewState _state;
     ABTouchState _touchState;
     BOOL _waitingForDoubleTouchUp;
+    CGPoint _firstTouchLocation;
     
     UIImageView *_backgroundImageView;
     
@@ -46,9 +47,10 @@ typedef enum {
         self.selectRecursively = NO;
         self.userInteractionEnabled = YES;
         self.permitTouchWhileSelected = YES;
-        self.animateBackgroundColor = YES;
+        self.animateBackgroundColor = NO;
         self.animationDuration = 0.2f;
         self.dimBackgroundImageOnSelect = NO;
+        self.touchMoveToleration = 30.0f;
     }
     return self;
 }
@@ -112,6 +114,8 @@ typedef enum {
 #pragma mark - Touch
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    _firstTouchLocation = [[touches anyObject] locationInView:self];
+    
     //Only "allow" touch if "selected" property is NO
     if (!self.isSelected)
     {
@@ -179,6 +183,18 @@ typedef enum {
     }
 }
 
+-(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    CGPoint touchLocation = [[touches anyObject] locationInView:self];
+    CGFloat distance = ABMathDistance(_firstTouchLocation, touchLocation);
+    
+    if (_touchState == ABTouchStateTouchesBegan && distance > self.touchMoveToleration)
+    {
+        self.selected = NO;
+        _touchState = ABTouchStateTouchesCancelled;
+    }
+}
+
 
 
 #pragma mark - ABViewSelectionProtocol
@@ -238,24 +254,6 @@ typedef enum {
         self.alpha = 1.0f;
         _backgroundImageView.image = _originalBackgroundImage;
     }
-}
-
-
-
-#pragma mark - NSCoding
--(void) encodeWithCoder:(NSCoder *)aCoder
-{
-    [aCoder encodeObject:self.userData forKey:@"userData"];
-}
-
--(id) initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    if (self)
-    {
-        self.userData = [aDecoder decodeObjectForKey:@"userData"];
-    }
-    return self;
 }
 
 
