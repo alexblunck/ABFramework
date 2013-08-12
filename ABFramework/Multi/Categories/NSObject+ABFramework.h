@@ -26,4 +26,6 @@
 -(id) objectAtIndexedSubscript:(NSUInteger)index;
 -(void) setObject:(id)obj atIndexedSubscript:(NSUInteger)idx;
 
+@property (nonatomic, strong) NSDictionary *abUserData;
+
 @end
