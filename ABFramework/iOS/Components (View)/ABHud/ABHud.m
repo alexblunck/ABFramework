@@ -21,6 +21,7 @@
 
 @property (nonatomic, copy) NSString *message;
 @property (nonatomic, assign) BOOL hideScheduled;
+@property (nonatomic, copy) ABBlockVoid touchHandler;
 
 @property (nonatomic, assign) ABHudAnimationType animationType;
 @property (nonatomic, assign) CGFloat cornerRadius;
@@ -56,7 +57,6 @@
         self.hideScheduled = NO;
         self.animationType = ABHUD_ANIMATION_TYPE;
         
-        
         //Background view
         _backgroundView = [[UIView alloc] initWithFrame:self.bounds];
         _backgroundView.backgroundColor = [UIColor blackColor];
@@ -66,6 +66,7 @@
         //Circle view
         _circleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
         _circleView.frame = CGRectCenteredWithCGRect(_circleView.frame, self.bounds);
+        _circleView.userInteractionEnabled = NO;
         _circleView.backgroundColor = [UIColor blackColor];
         _circleView.alpha = ABHUD_OPACITY;
         [self addSubview:_circleView];
@@ -95,6 +96,9 @@
         
         //Set circleView corner radius
         self.cornerRadius = self.cornerRadius;
+        
+        //Tap gesture
+        [ABTapGestureRecognizer singleTapGestureOnView:_backgroundView target:self action:@selector(backgroundViewSelected)];
     }
     return self;
 }
@@ -108,9 +112,20 @@
     [ABHud showActivity:nil];
 }
 
++(void) showActivityWithTouchHandler:(ABBlockVoid)touchHandler
+{
+    [ABHud showActivity:nil touchHandler:touchHandler];
+}
+
 +(void) showActivity:(NSString*)message
 {
+    [ABHud showActivity:message touchHandler:nil];
+}
+
++(void) showActivity:(NSString*)message touchHandler:(ABBlockVoid)touchHandler
+{
     [ABHud sharedClass].message = message;
+    [ABHud sharedClass].touchHandler = [touchHandler copy];
     [[ABHud sharedClass] show:YES];
 }
 
@@ -205,6 +220,18 @@
     [_hideTimer invalidate];
     _hideTimer = nil;
     _hideTimer = [NSTimer scheduledTimerWithTimeInterval:seconds target:self selector:@selector(hide) userInfo:nil repeats:NO];
+}
+
+
+
+#pragma mark - Selection
+-(void) backgroundViewSelected
+{
+    if (self.touchHandler)
+    {
+        self.touchHandler();
+        self.touchHandler = nil;
+    }
 }
 
 

@@ -25,7 +25,9 @@ typedef enum {
 //Utility
 //Show
 +(void) showActivity;
++(void) showActivityWithTouchHandler:(ABBlockVoid)touchHandler;
 +(void) showActivity:(NSString*)message;
++(void) showActivity:(NSString*)message touchHandler:(ABBlockVoid)touchHandler;
 +(void) showActivityAndHide;
 //Dismiss
 +(void) dismiss;
