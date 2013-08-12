@@ -45,7 +45,6 @@
 #import "UISearchBar+ABFramework.h"
 #import "UIBarButtonItem+ABFramework.h"
 #import "UIScreen+ABFramework.h"
-#import "NSString+ABFrameworkIOS.h"
 
 
 /**
