@@ -105,4 +105,14 @@
     return [NSURLRequest requestWithURL:[self url]];
 }
 
+-(NSAttributedString*) attributedString
+{
+    return [[NSAttributedString alloc] initWithString:self];
+}
+
+-(NSAttributedString*) attributedStringWithAttributes:(NSDictionary*)attributes
+{
+    return [[NSAttributedString alloc] initWithString:self attributes:attributes];
+}
+
 @end

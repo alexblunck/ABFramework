@@ -32,5 +32,7 @@
 //Conversion
 -(NSURL*) url;
 -(NSURLRequest*) urlRequest;
+-(NSAttributedString*) attributedString;
+-(NSAttributedString*) attributedStringWithAttributes:(NSDictionary*)attributes;
 
 @end
