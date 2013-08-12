@@ -25,7 +25,7 @@
     _colorArray = @[[UIColor redColor], [UIColor greenColor], [UIColor blueColor]];
     
     //Init infinite view
-    ABInfiniteView *infiniteView = [[ABInfiniteView alloc] initWithFrame:cgr(0, 100, self.view.width, 200)];
+    ABInfiniteView *infiniteView = [[ABInfiniteView alloc] initWithFrame:cgr(0, 100.0f, self.view.width, 200.0f)];
     infiniteView.dataSource = self;
     infiniteView.delegate = self;
     [self.view addSubview:infiniteView];
@@ -42,7 +42,7 @@
     return _colorArray.count;
 }
 
--(UIView*) abInfiniteView:(ABInfiniteView *)infiniteView viewForIndex:(NSUInteger)index
+-(ABView*) abInfiniteView:(ABInfiniteView *)infiniteView viewForIndex:(NSUInteger)index
 {
     UIColor *color = [_colorArray objectAtIndex:index];
     

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ABInfiniteViewExample : UIViewController
+@interface ABInfiniteViewExample : ABExampleViewController
 
 @end

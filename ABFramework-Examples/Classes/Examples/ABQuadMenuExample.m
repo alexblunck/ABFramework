@@ -19,7 +19,7 @@
 {
     [super viewDidLoad];
 	
-    ABButton *button = [ABButton buttonBasicWithText:@"show" actionBlock:^{
+    ABButton *button = [ABButton buttonWithText:@"show" actionBlock:^{
         //
         [self showMenu];
     }];

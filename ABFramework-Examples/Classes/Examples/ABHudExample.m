@@ -21,7 +21,7 @@
 	
     self.view.backgroundColor = [UIColor whiteColor];
     
-    ABButton *button1 = [ABButton buttonBasicWithText:@"Simple" actionBlock:^{
+    ABButton *button1 = [ABButton buttonWithText:@"Simple" actionBlock:^{
         
         //Customize ABHud behaviour
         //[ABHud setAnimationType:ABHudAnimationTypeBounce]; //Default: ABHudAnimationTypePop
