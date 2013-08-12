@@ -190,7 +190,7 @@
         
         //Containment view
         ABView *view = [[ABView alloc] initWithFrame:rect];
-        view.userData = @{@"item": item};
+        view.abUserData = @{@"item": item};
         view.selectRecursively = YES;
         [view setTarget:self selector:@selector(itemSelected:)];
         [_viewArray addObject:view];
@@ -297,7 +297,7 @@
 #pragma mark - Selection
 -(void) itemSelected:(ABView*)view
 {
-    ABQuadMenuItem *item = [view.userData safeObjectForKey:@"item"];
+    ABQuadMenuItem *item = [view.abUserData safeObjectForKey:@"item"];
     
     //Execute action block
     if (item && item.actionBlock)

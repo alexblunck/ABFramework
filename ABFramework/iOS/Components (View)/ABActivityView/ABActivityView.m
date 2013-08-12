@@ -52,19 +52,19 @@
         //Cancel Button
         ABButton *cancelButton = [ABButton buttonWithImageName:@"ABFramework.bundle/ABActivityView/ABActivityView-button-cancel"
                                                         target:self
-                                                      selector:@selector(dismissView)];
+                                                      action:@selector(dismissView)];
         cancelButton.frame = CGRectCenteredHorizontally(cancelButton.frame, self.bounds, 145);
         [_slideView addSubview:cancelButton];
         
         //Twitter Button
         ABButton *twitterButton = [ABButton buttonWithImageName:@"ABFramework.bundle/ABActivityView/ABActivityView-button-twitter"
                                                         target:self
-                                                      selector:@selector(twitterButtonSelected)];
+                                                      action:@selector(twitterButtonSelected)];
         
         //Facebook Button
         ABButton *facebookButton = [ABButton buttonWithImageName:@"ABFramework.bundle/ABActivityView/ABActivityView-button-facebook"
                                                          target:self
-                                                       selector:@selector(facebookButtonSelected)];
+                                                       action:@selector(facebookButtonSelected)];
         
         //Button Containment View
         UIView *buttonContaimentView = [UIView new];

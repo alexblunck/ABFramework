@@ -97,9 +97,9 @@
             }
             
             //Keep track of index
-            NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithDictionary:view.userData];
+            NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithDictionary:view.abUserData];
             [dic setObject:[NSNumber numberWithInteger:index] forKey:@"ABInfiniteView.index"];
-            view.userData = dic;
+            view.abUserData = dic;
             
             //Touch handling
             [view setTarget:self selector:@selector(viewSelected:)];
@@ -172,7 +172,7 @@
 #pragma mark - Selection
 -(void) viewSelected:(ABView*)view
 {
-    id indexObject = [view.userData safeObjectForKey:@"ABInfiniteView.index"];
+    id indexObject = [view.abUserData safeObjectForKey:@"ABInfiniteView.index"];
     
     if (indexObject)
     {

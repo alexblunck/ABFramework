@@ -110,7 +110,7 @@
         view.selectedBackgroundImageName = [item.tabImageName stringByAppendingString:@"-sel"];
         view.frame = CGRectChangingOriginX(view.frame, currentOrigin);
         
-        view.userData = @{@"itemIndex": NSNumberInteger([_tabBarItems indexOfObject:item])};
+        view.abUserData = @{@"itemIndex": NSNumberInteger([_tabBarItems indexOfObject:item])};
         view.delegate = self;
         
         [_tabViewArray addObject:view];
@@ -127,7 +127,7 @@
 #pragma mark - ABViewDelegate
 -(void) abViewDidTouchUpInside:(ABView *)selectedView
 {
-    ABTabBarItem *item = [_tabBarItems safeObjectAtIndex:[[selectedView.userData safeObjectForKey:@"itemIndex"] integerValue]];
+    ABTabBarItem *item = [_tabBarItems safeObjectAtIndex:[[selectedView.abUserData safeObjectForKey:@"itemIndex"] integerValue]];
     
     //Unhightlight all other tabs / highlight selected one
     for (ABView *view in _tabViewArray)
@@ -147,7 +147,7 @@
 
 -(void) abViewDidDoubleTouchUpInside:(ABView *)selectedView
 {
-    ABTabBarItem *item = [_tabBarItems safeObjectAtIndex:[[selectedView.userData safeObjectForKey:@"itemIndex"] integerValue]];
+    ABTabBarItem *item = [_tabBarItems safeObjectAtIndex:[[selectedView.abUserData safeObjectForKey:@"itemIndex"] integerValue]];
     [_delegate tabBarItemSelectedDouble:item];
 }
 
