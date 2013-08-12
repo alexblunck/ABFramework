@@ -17,6 +17,10 @@
  */
 NSInteger ABMathPercent(long long part, long long total);
 
+/**
+ * Calculate the distance between two CGPoint's
+ */
+CGFloat ABMathDistance(CGPoint pointA, CGPoint pointB);
 
 
 //Radians / Degrees
