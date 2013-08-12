@@ -11,6 +11,7 @@
 @interface ABTapGestureRecognizer : UITapGestureRecognizer
 
 +(id) singleTapGestureOnView:(UIView*)view block:(ABBlockVoid)block;
++(id) singleTapGestureOnView:(UIView*)view target:(id)target action:(SEL)selector;
 +(id) tapGestureWithTaps:(NSUInteger)taps onView:(UIView*)view block:(ABBlockVoid)block;
 
 @property (nonatomic, strong) NSArray *allowedSimultaneousGestures;
