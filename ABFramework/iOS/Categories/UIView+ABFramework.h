@@ -19,11 +19,11 @@
 -(CGFloat) height;
 
 //Visibility
--(void) toggleVisible;
--(void) hide;
--(void) show;
--(void) hide:(BOOL)hide;
--(void) show:(BOOL)show;
+-(void) toggleVisibility;
+-(void) setVisible;
+-(void) setInvisible;
+-(void) setVisible:(BOOL)visible;
+-(void) setInvisible:(BOOL)invisible;
 
 //Recursion
 -(void) enumerateAllSubviews:(void(^)(UIView *subview))block;

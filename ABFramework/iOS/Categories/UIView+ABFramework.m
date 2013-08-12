@@ -45,29 +45,29 @@
 
 
 #pragma mark - Visibility
--(void) toggleVisible
+-(void) toggleVisibility
 {
-    [self show:(self.alpha == 0.0f)];
+    [self setVisible:(self.alpha == 0.0f)];
 }
 
--(void) hide
+-(void) setVisible
 {
-    [self hide:YES];
+    [self setVisible:YES];
 }
 
--(void) show
+-(void) setInvisible
 {
-    [self show:YES];
+    [self setVisible:NO];
 }
 
--(void) hide:(BOOL)hide
+-(void) setVisible:(BOOL)visible
 {
-    self.alpha = (hide) ? 0.0f : 1.0f;
+    self.alpha = (visible) ? 1.0f : 0.0f;
 }
 
--(void) show:(BOOL)show
+-(void) setInvisible:(BOOL)invisible
 {
-    self.alpha = (show) ? 1.0f : 0.0f;
+    self.alpha = (invisible) ? 0.0f : 1.0f;
 }
 
 
