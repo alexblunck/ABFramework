@@ -163,12 +163,6 @@
             location = "group:Categories"
             name = "Categories">
             <FileRef
-               location = "group:NSString+ABFrameworkIOS.h">
-            </FileRef>
-            <FileRef
-               location = "group:NSString+ABFrameworkIOS.m">
-            </FileRef>
-            <FileRef
                location = "group:UIScreen+ABFramework.h">
             </FileRef>
             <FileRef
@@ -299,6 +293,22 @@
             location = "group:Components (View)"
             name = "Components (View)">
             <Group
+               location = "group:ABEntypo"
+               name = "ABEntypo">
+               <FileRef
+                  location = "group:ABEntypoButton.h">
+               </FileRef>
+               <FileRef
+                  location = "group:ABEntypoButton.m">
+               </FileRef>
+               <FileRef
+                  location = "group:ABEntypoView.h">
+               </FileRef>
+               <FileRef
+                  location = "group:ABEntypoView.m">
+               </FileRef>
+            </Group>
+            <Group
                location = "group:ABWebController"
                name = "ABWebController">
                <FileRef
@@ -392,22 +402,6 @@
                </FileRef>
                <FileRef
                   location = "group:ABDatePickerView.m">
-               </FileRef>
-            </Group>
-            <Group
-               location = "group:ABEntypoView"
-               name = "ABEntypoView">
-               <FileRef
-                  location = "group:ABEntypoButton.h">
-               </FileRef>
-               <FileRef
-                  location = "group:ABEntypoButton.m">
-               </FileRef>
-               <FileRef
-                  location = "group:ABEntypoView.h">
-               </FileRef>
-               <FileRef
-                  location = "group:ABEntypoView.m">
                </FileRef>
             </Group>
             <Group
