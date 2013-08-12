@@ -18,6 +18,8 @@
 
 //Add Views
 -(void) addView:(UIView*)newView;
+-(void) addView:(UIView *)newView appendPadding:(CGFloat)padding;
+-(void) addView:(UIView *)newView prependPadding:(CGFloat)padding;
 -(void) addViewIgnoringRowBackgroundColor:(UIView*)newView;
 -(void) addView:(UIView*)newView centered:(BOOL)centered;
 -(void) addView:(UIView*)newView centered:(BOOL)centered backgroundColor:(UIColor*)backgroundColor;
@@ -27,6 +29,12 @@
 -(void) addPadding:(CGFloat)padding;
 -(void) addPaddingIgnoringRowBackgroundColor:(CGFloat)padding;
 -(void) addPadding:(CGFloat)padding backgroundColor:(UIColor*)backgroundColor;
+
+//Add Seperators
+-(void) addOnePointSeperator:(UIColor*)color;
+-(void) addOnePointSeperator:(UIColor*)color preAndAppendPadding:(CGFloat)padding;
+-(void) addSeperator:(UIColor*)color height:(CGFloat)height;
+-(void) addSeperator:(UIColor*)color height:(CGFloat)height preAndAppendPadding:(CGFloat)padding;
 
 //Interaction
 -(void) scrollToTop; //Only available when a fixed height is set

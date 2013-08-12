@@ -104,6 +104,18 @@
     [self addView:newView centered:YES];
 }
 
+-(void) addView:(UIView *)newView appendPadding:(CGFloat)padding
+{
+    [self addView:newView centered:YES];
+    [self addPadding:padding];
+}
+
+-(void) addView:(UIView *)newView prependPadding:(CGFloat)padding
+{
+    [self addPadding:padding];
+    [self addView:newView centered:YES];
+}
+
 -(void) addViewIgnoringRowBackgroundColor:(UIView*)newView
 {
     [self addView:newView centered:YES backgroundColor:nil];
@@ -214,6 +226,35 @@
         //Adjust own view frame to account for added padding
         self.frame = CGRectOffsetSizeHeight(self.frame, padding);
     }
+}
+
+
+
+#pragma mark - Seperators
+-(void) addOnePointSeperator:(UIColor*)color
+{
+    [self addOnePointSeperator:color preAndAppendPadding:0];
+}
+
+-(void) addOnePointSeperator:(UIColor*)color preAndAppendPadding:(CGFloat)padding
+{
+    [self addSeperator:color height:(IS_RETINA_DISPLAY) ? 0.5f : 1.0f preAndAppendPadding:padding];
+}
+
+-(void) addSeperator:(UIColor*)color height:(CGFloat)height
+{
+    [self addSeperator:color height:height preAndAppendPadding:0];
+}
+
+-(void) addSeperator:(UIColor*)color height:(CGFloat)height preAndAppendPadding:(CGFloat)padding
+{
+    if (padding > 0) [self addPadding:padding];
+    
+    UIView *sep = [[UIView alloc] initWithFrame:cgr(0, 0, self.width, height)];
+    sep.backgroundColor = color;
+    [self addView:sep];
+    
+    if (padding > 0) [self addPadding:padding];
 }
 
 
