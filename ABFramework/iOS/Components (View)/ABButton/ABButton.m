@@ -17,120 +17,73 @@
 @implementation ABButton
 
 #pragma mark - Utility
-#pragma mark - Selectors
-+(id) buttonWithTarget:(id)target selector:(SEL)selector
+#pragma mark - Utility - Simple
++(id) buttonWithTarget:(id)target action:(SEL)selector
 {
-    return [[self alloc] initWithImageName:nil target:target selector:selector];
+    return [[self alloc] initWithImageName:nil target:target action:selector block:nil];
 }
 
-+(id) buttonWithImageName:(NSString*)imageName target:(id)target selector:(SEL)selector
++(id) buttonWithActionBlock:(ABBlockVoid)block
 {
-    return [[self alloc] initWithImageName:imageName target:target selector:selector];
+    return [[self alloc] initWithImageName:nil target:nil action:nil block:block];
 }
 
-+(id) buttonWithEntypoIconName:(NSString*)iconName size:(CGFloat)size target:(id)target action:(SEL)selector
+#pragma mark - Utility - Image
++(id) buttonWithImageName:(NSString*)imageName target:(id)target action:(SEL)selector
 {
-    return [[self alloc] initWithEntypoIconName:iconName size:size target:target action:selector];
+    return [[self alloc] initWithImageName:imageName target:target action:selector block:nil];
 }
 
-
-#pragma mark - Blocks
-+(id) buttonWithActionBlock:(ABBlockVoid)actionBlock
++(id) buttonWithImageName:(NSString*)imageName actionBlock:(ABBlockVoid)block
 {
-    return [self buttonWithImageName:nil actionBlock:actionBlock];
+    return [[self alloc] initWithImageName:imageName target:nil action:nil block:block];
 }
 
-+(id) buttonWithImageName:(NSString*)imageName actionBlock:(ABBlockVoid)actionBlock
+#pragma mark - Utility - Text
++(id) buttonWithText:(NSString*)text target:(id)target action:(SEL)selector
 {
-    return [[self alloc] initWithImageName:imageName actionBlock:actionBlock];
+    return [[self alloc] initWithText:text target:target action:selector actionBlock:nil];
 }
 
-+(id) buttonBasicWithText:(NSString*)text actionBlock:(ABBlockVoid)actionBlock
++(id) buttonWithText:(NSString*)text actionBlock:(ABBlockVoid)block
 {
-    return [[self alloc] initBasicWithText:text actionBlock:actionBlock];
-}
-
-+(id) buttonWithEntypoIconName:(NSString*)iconName size:(CGFloat)size actionBlock:(ABBlockVoid)actionBlock
-{
-    return [[self alloc] initWithEntypoIconName:iconName size:size actionBlock:actionBlock];
+    return [[self alloc] initWithText:text target:nil action:nil actionBlock:block];
 }
 
 
 
 #pragma mark - Initializer
--(id) init
-{
-    self = [super init];
-    if (self)
-    {
-        //Config
-        self.dimSubViews = NO;
-    }
-    return self;
-}
-
-#pragma mark - Selectors
--(id) initWithImageName:(NSString*)imageName target:(id)target selector:(SEL)selector
+#pragma mark - Initializer - Image
+-(id) initWithImageName:(NSString*)imageName target:(id)target action:(SEL)selector block:(ABBlockVoid)block
 {
     self = [super init];
     if (self)
     {
         [self setupImages:imageName];
-        
         [self setupTouchDown];
         
-        [self addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
+        //Target / Selector Specific
+        if (target && selector)
+        {
+            [self addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
+        }
+        
+        //Block specific
+        if (block)
+        {
+            _actionBlock = [block copy];
+            [self addTarget:self action:@selector(selectedButton) forControlEvents:UIControlEventTouchUpInside];
+        }
     }
     return self;
 }
 
--(id) initWithEntypoIconName:(NSString*)iconName size:(CGFloat)size target:(id)target action:(SEL)selector
+#pragma mark - Initializer - Text
+-(id) initWithText:(NSString*)text target:(id)target action:(SEL)selector actionBlock:(ABBlockVoid)block
 {
     self = [super init];
     if (self)
     {
-        ABEntypoView *iconView = [ABEntypoView viewWithIconName:iconName size:size];
-        iconView.userInteractionEnabled = NO;
-        self.frame = iconView.bounds;
-        [self addSubview:iconView];
-        
-        [self setupTouchDown];
-        
-        [self addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
-    }
-    return self;
-}
-
-
-#pragma mark - Blocks
--(id) initWithActionBlock:(ABBlockVoid)actionBlock
-{
-    return [self initWithImageName:nil actionBlock:actionBlock];
-}
-
--(id) initWithImageName:(NSString*)imageName actionBlock:(ABBlockVoid)actionBlock
-{
-    self = [super init];
-    if (self)
-    {
-        _actionBlock = [actionBlock copy];
-        
-        [self setupImages:imageName];
-        
-        [self setupTouchDown];
-        
-        [self addTarget:self action:@selector(selectedButton) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return self;
-}
-
--(id) initBasicWithText:(NSString*)text actionBlock:(ABBlockVoid)actionBlock
-{
-    self = [super init];
-    if (self)
-    {
-        _actionBlock = [actionBlock copy];
-        
         //Create UIButton with default styling
         UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         
@@ -141,29 +94,21 @@
         
         [button setTitle:text forState:UIControlStateNormal];
         
-        [button addTarget:self action:@selector(selectedButton) forControlEvents:UIControlEventTouchUpInside];
+        //Target / Selector specific
+        if (target && selector)
+        {
+            [button addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
+        }
+        
+        //Block speicfic
+        if (block)
+        {
+            _actionBlock = [block copy];
+            [button addTarget:self action:@selector(selectedButton) forControlEvents:UIControlEventTouchUpInside];
+        }
         
         self.frame = button.bounds;
         [self addSubview:button];
-    }
-    return self;
-}
-
--(id) initWithEntypoIconName:(NSString*)iconName size:(CGFloat)size actionBlock:(ABBlockVoid)actionBlock
-{
-    self = [super init];
-    if (self)
-    {
-        _actionBlock = [actionBlock copy];
-        
-        ABEntypoView *iconView = [ABEntypoView viewWithIconName:iconName size:size];
-        iconView.userInteractionEnabled = NO;
-        self.frame = iconView.bounds;
-        [self addSubview:iconView];
-        
-        [self setupTouchDown];
-        
-        [self addTarget:self action:@selector(selectedButton) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
 }
@@ -206,7 +151,8 @@
 #pragma mark - Button
 -(void) selectedButton
 {
-    if (_actionBlock) {
+    if (_actionBlock)
+    {
         _actionBlock();
     }
 }
@@ -232,16 +178,8 @@
 
 
 
-#pragma mark - Conversion
--(UIBarButtonItem*) barButtonItem
-{
-    return [[UIBarButtonItem alloc] initWithCustomView:self];
-}
-
-
-
 #pragma mark - Accessors
-#pragma mark - imageNamr
+#pragma mark - imageName
 -(void) setImageName:(NSString *)imageName
 {
     _imageName = imageName;
