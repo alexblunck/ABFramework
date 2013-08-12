@@ -16,6 +16,8 @@
 //Initializer
 -(id) initWithIconName:(NSString*)iconName size:(CGFloat)size;
 
++(NSDictionary*) unicodeDictionary;
+
 @property (nonatomic, copy) NSString *iconName;
 
 //Config

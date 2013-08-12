@@ -35,14 +35,12 @@
     {
         //Config
         self.frame = cgr(0, 0, size, size);
-        self.userInteractionEnabled = NO;
         
         _label = [ABLabel new];
         _label.frame = self.bounds;
         _label.centeredHorizontally = YES;
         _label.centeredVertically = YES;
-        _label.font = [UIFont customFontWithName:@"Entypo" fontPath:@"ABFramework.bundle/ABEntypoView/Entypo" extension:@"otf" size:1.0f];
-        _label.textSize = size*1.7;
+        _label.font = [UIFont customFontWithName:@"Entypo" fontPath:@"ABFramework.bundle/ABEntypoView/Entypo" extension:@"otf" size:size*1.7f];
         _label.minimumFontSize = 20.0f;
         
         //Set text after font for iOS 7 support
@@ -64,7 +62,7 @@
 #pragma mark - Helper
 -(NSString*) unicodeForIconName:(NSString*)iconName
 {
-    NSString *string =  [[self unicodeDictionary] safeObjectForKey:iconName];
+    NSString *string =  [[ABEntypoView unicodeDictionary] safeObjectForKey:iconName];
     if (string)
     {
         return string;
@@ -72,7 +70,7 @@
     return nil;
 }
 
--(NSDictionary*) unicodeDictionary
++(NSDictionary*) unicodeDictionary
 {
     return @{
              @"phone" : @"\U0001F4DE",

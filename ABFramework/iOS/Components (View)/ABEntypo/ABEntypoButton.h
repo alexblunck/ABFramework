@@ -10,11 +10,12 @@
 
 @interface ABEntypoButton : UIButton
 
-//Initializer
--(id) initWithFrame:(CGRect)frame iconName:(NSString*)iconName iconSize:(CGFloat)iconSize;
+//Utility
++(id) buttonWithIconName:(NSString*)iconName size:(CGFloat)size;
++(id) buttonWithIconName:(NSString*)iconName size:(CGFloat)size frame:(CGRect)frame;
 
-//UIBarButtonItem
--(UIBarButtonItem*) barButtonItem;
+//Initializer
+-(id) initWithIconName:(NSString*)iconName size:(CGFloat)size frame:(CGRect)frame;
 
 //Action
 -(void) addTouchUpInsideTarget:(id)target action:(SEL)selector;

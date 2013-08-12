@@ -17,13 +17,25 @@
 
 @implementation ABEntypoButton
 
+#pragma mark - Utility
++(id) buttonWithIconName:(NSString*)iconName size:(CGFloat)size
+{
+    return [self buttonWithIconName:iconName size:size frame:cgr(0, 0, size, size)];
+}
+
++(id) buttonWithIconName:(NSString*)iconName size:(CGFloat)size frame:(CGRect)frame
+{
+    return [[self alloc] initWithIconName:iconName size:size frame:frame];
+}
+
 #pragma mark - Initializer
--(id) initWithFrame:(CGRect)frame iconName:(NSString*)iconName iconSize:(CGFloat)iconSize
+-(id) initWithIconName:(NSString*)iconName size:(CGFloat)size frame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self)
     {
-        _iconView = [ABEntypoView viewWithIconName:iconName size:iconSize];
+        _iconView = [ABEntypoView viewWithIconName:iconName size:size];
+        _iconView.userInteractionEnabled = NO;
     }
     return self;
 }
@@ -43,14 +55,6 @@
     
     UIControlEvents flags = UIControlEventTouchUpInside | UIControlEventTouchUpOutside | UIControlEventTouchDragOutside | UIControlEventTouchCancel;
     [self addTarget:self action:@selector(unHightlight) forControlEvents:flags];
-}
-
-
-
-#pragma mark - UIBarButtonItem
--(UIBarButtonItem*) barButtonItem
-{
-    return [[UIBarButtonItem alloc] initWithCustomView:self];
 }
 
 
