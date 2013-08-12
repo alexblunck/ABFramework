@@ -13,7 +13,23 @@
 
 @dynamic actionBlock, titleColor, titleDisabledColor;
 
-#pragma mark - Target / Selector
+#pragma mark - Convienience
++(UIBarButtonItem*) flexibleSpace
+{
+    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+}
+
++(UIBarButtonItem*) fixedSpace:(CGFloat)width
+{
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    item.width = width;
+    return item;
+}
+
+
+
+#pragma mark - Utility
+#pragma mark - Utility - Title
 +(UIBarButtonItem*) itemWithTitle:(NSString*)title target:(id)target action:(SEL)selector
 {
     return [self itemWithTitle:title color:nil target:target action:selector];
@@ -21,67 +37,98 @@
 
 +(UIBarButtonItem*) itemWithTitle:(NSString*)title color:(UIColor*)color target:(id)target action:(SEL)selector
 {
-    return [self itemWithTitle:title color:color fallbackImage:nil target:target action:selector];
+    UIBarButtonItem *barButtonItem = [self barButtonItemWithTitle:title color:color];
+    
+    [barButtonItem setTarget:target];
+    [barButtonItem setAction:selector];
+    
+    return barButtonItem;
 }
 
-+(UIBarButtonItem*) itemWithTitle:(NSString*)title fallbackImage:(NSString*)imageName target:(id)target action:(SEL)selector
++(UIBarButtonItem*) itemWithTitle:(NSString*)title actionBlock:(ABBlockVoid)block
 {
-    return [self itemWithTitle:title color:nil fallbackImage:imageName target:target action:selector];
+    return [self itemWithTitle:title color:nil actionBlock:block];
 }
 
-+(UIBarButtonItem*) itemWithTitle:(NSString*)title color:(UIColor*)color fallbackImage:(NSString*)imageName target:(id)target action:(SEL)selector
++(UIBarButtonItem*) itemWithTitle:(NSString*)title color:(UIColor*)color actionBlock:(ABBlockVoid)block
 {
-    if (IS_MAX_IOS6X && imageName)
+    UIBarButtonItem *barButtonItem = [self barButtonItemWithTitle:title color:color];
+    
+    [barButtonItem setTarget:barButtonItem];
+    [barButtonItem setAction:@selector(executeActionBlock)];
+    [barButtonItem setActionBlock:block];
+    
+    return barButtonItem;
+}
+
+#pragma mark - Utility - Icon
++(UIBarButtonItem*) itemWithIconName:(NSString*)iconName color:(UIColor*)color target:(id)target action:(SEL)selector
+{
+    ABEntypoButton *button = [ABEntypoButton buttonWithIconName:iconName size:32.0f];
+    button.iconColor = color;
+    UIBarButtonItem *item = [button barButtonItem];
+    
+    [item setTarget:target];
+    [item setAction:selector];
+    
+    return item;
+}
+
+#pragma mark - Utility - Image
++(UIBarButtonItem*) itemWithImageName:(NSString*)imageName target:(id)target action:(SEL)selector
+{
+    return [self itemWithImageName:imageName color:nil target:target action:selector block:nil];
+}
+
++(UIBarButtonItem*) itemWithImageName:(NSString*)imageName actionBlock:(ABBlockVoid)block
+{
+    return [self itemWithImageName:imageName color:nil target:nil action:nil block:block];
+}
+
++(UIBarButtonItem*) itemWithImageName:(NSString*)imageName color:(UIColor*)color target:(id)target action:(SEL)selector
+{
+    return [self itemWithImageName:imageName color:color target:target action:selector block:nil];
+}
+
++(UIBarButtonItem*) itemWithImageName:(NSString*)imageName color:(UIColor*)color actionBlock:(ABBlockVoid)block
+{
+    return [self itemWithImageName:imageName color:color target:nil action:nil block:block];
+}
+
++(UIBarButtonItem*) itemWithImageName:(NSString*)imageName color:(UIColor*)color target:(id)target action:(SEL)selector block:(ABBlockVoid)block
+{
+    UIImage *image = nil;
+    
+    if (color)
     {
-        return [[ABButton buttonWithImageName:imageName target:target selector:selector] barButtonItem];
+        image = [[UIImage imageNamed:imageName] imageWithRenderingMode:UIImageRenderingModeAutomatic];
     }
     else
     {
-        UIBarButtonItem *barButtonItem = [self barButtonItemWithTitle:title color:color];
-        
-        [barButtonItem setTarget:target];
-        [barButtonItem setAction:selector];
-        
-        return barButtonItem;
+        image = [UIImage imageNamed:imageName];
     }
-    return nil;
-}
-
-
-
-#pragma mark - Blocks
-+(UIBarButtonItem*) itemWithTitle:(NSString*)title actionBlock:(ABBlockVoid)actionBlock
-{
-    return [self itemWithTitle:title color:nil actionBlock:actionBlock];
-}
-
-+(UIBarButtonItem*) itemWithTitle:(NSString*)title color:(UIColor*)color actionBlock:(ABBlockVoid)actionBlock
-{
-    return [self itemWithTitle:title color:color fallbackImage:nil actionBlock:actionBlock];
-}
-
-+(UIBarButtonItem*) itemWithTitle:(NSString*)title fallbackImage:(NSString*)imageName actionBlock:(ABBlockVoid)actionBlock
-{
-    return [self itemWithTitle:title color:nil fallbackImage:imageName actionBlock:actionBlock];
-}
-
-+(UIBarButtonItem*) itemWithTitle:(NSString*)title color:(UIColor*)color fallbackImage:(NSString*)imageName actionBlock:(ABBlockVoid)actionBlock
-{
-    if (IS_MAX_IOS6X && imageName)
+    
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:image style:0 target:nil action:nil];
+    
+    if (color)
     {
-        return [[ABButton buttonWithImageName:imageName actionBlock:actionBlock] barButtonItem];
+        [item setTintColor:color];
     }
-    else
+    
+    if (target && selector)
     {
-        UIBarButtonItem *barButtonItem = [self barButtonItemWithTitle:title color:color];
-        
-        [barButtonItem setTarget:barButtonItem];
-        [barButtonItem setAction:@selector(executeActionBlock)];
-        [barButtonItem setActionBlock:actionBlock];
-        
-        return barButtonItem;
+        [item setTarget:target];
+        [item setAction:selector];
     }
-    return nil;
+    
+    if (block)
+    {
+        [item setTarget:item];
+        [item setAction:@selector(executeActionBlock)];
+        [item setActionBlock:block];
+    }
+    
+    return item;
 }
 
 
@@ -100,7 +147,6 @@
 #endif
     
     if (color) [barButtonItem setTitleTextAttributes:@{attributeTextColorKey: color} forState:UIControlStateNormal];
-
     
     [barButtonItem setStyle:0];
     
@@ -109,29 +155,10 @@
 
 
 
-#pragma mark - iOS 6 Fallbacks
--(void) setiOS6FallbackImageName:(NSString*)imageName
-{
-    if (!IS_MAX_IOS6X) return;
-    
-    ABBlockVoid actionBlock = [self actionBlock];
-    ABButton *button = nil;
-    
-    if (self.target && self.action)
-    {
-        button = [ABButton buttonWithImageName:imageName target:self.target selector:self.action];
-    }
-    else if (actionBlock)
-    {
-        button = [ABButton buttonWithImageName:imageName actionBlock:actionBlock];
-    }
-}
-
-
 #pragma mark - Action
 -(void) executeActionBlock
 {
-    if ([self action])
+    if ([self actionBlock])
     {
         ABBlockVoid actionBlock = [self actionBlock];
         actionBlock();
