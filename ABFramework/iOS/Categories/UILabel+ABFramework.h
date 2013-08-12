@@ -16,4 +16,8 @@
 //Info
 -(CGSize) sizeForText:(NSString*)text;
 
+//Size
+-(void) adjustHeightToFitAttributedText;
+-(void) adjustHeightToFitAttributedTextWithMaxHeight:(CGFloat)maxHeight;
+
 @end

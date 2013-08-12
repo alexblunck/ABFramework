@@ -54,4 +54,22 @@
     return l.bounds.size;
 }
 
+
+
+#pragma mark - Size
+-(void) adjustHeightToFitAttributedText
+{
+    [self adjustHeightToFitAttributedTextWithMaxHeight:FLT_MAX];
+}
+
+-(void) adjustHeightToFitAttributedTextWithMaxHeight:(CGFloat)maxHeight
+{
+    CGSize maxSize = cgs(self.width, maxHeight);
+    CGRect rect = [self.attributedText boundingRectWithSize:maxSize
+                                                    options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                                    context:nil];
+    
+    self.frame = CGRectChangingSizeHeight(self.frame, rect.size.height);
+}
+
 @end
