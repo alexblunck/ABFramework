@@ -5,7 +5,10 @@
 //  Created by Alexander Blunck on 3/4/13.
 //  Copyright (c) 2013 Ablfx. All rights reserved.
 //
-//  Source: http://stackoverflow.com/questions/1560081/how-can-i-create-a-uicolor-from-a-hex-string
+//  Sources:
+//  http://stackoverflow.com/questions/1560081/how-can-i-create-a-uicolor-from-a-hex-string
+//  https://gist.github.com/iwill/957471
+//  http://stackoverflow.com/questions/11598043/get-slightly-lighter-and-darker-color-from-uicolor
 //
 
 #import "UIColor+ABFramework.h"
@@ -33,7 +36,9 @@
     return hexComponent / 255.0;
 }
 
-//Source: https://gist.github.com/iwill/957471
+
+
+#pragma mark - Manipulation
 -(UIColor*) colorInverted
 {
     CGColorRef oldCGColor = self.CGColor;
@@ -56,6 +61,26 @@
     CGColorRelease(newCGColor);
     
     return newColor;
+}
+
+-(UIColor*) darkenColor:(CGFloat)value
+{
+    float h, s, b, a;
+    if ([self getHue:&h saturation:&s brightness:&b alpha:&a])
+    {
+        return [UIColor colorWithHue:h saturation:s brightness:b * value alpha:a];
+    }
+    return nil;
+}
+
+-(UIColor*) lightenColor:(CGFloat)value
+{
+    float h, s, b, a;
+    if ([self getHue:&h saturation:&s brightness:&b alpha:&a])
+    {
+        return [UIColor colorWithHue:h saturation:s brightness:MIN(b * value, 1.0) alpha:a];
+    }
+    return nil;
 }
 
 @end

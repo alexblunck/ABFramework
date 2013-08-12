@@ -10,9 +10,15 @@
 
 @interface UIColor (ABFramework)
 
-//Expects a hex string: #e2e2e2
+//Creation
+/**
+ * Expects a hex string: #e2e2e2
+ */
 +(UIColor*) colorWithHexString:(NSString*)hexString;
 
+//Manipulation
 -(UIColor*) colorInverted;
+-(UIColor*) darkenColor:(CGFloat)value;
+-(UIColor*) lightenColor:(CGFloat)value;
 
 @end
