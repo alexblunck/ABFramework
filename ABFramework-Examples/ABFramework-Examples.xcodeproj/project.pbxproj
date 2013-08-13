@@ -33,7 +33,6 @@
 		D211D72B1709AEB500326B25 /* ABNetworkingExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D211D72A1709AEB500326B25 /* ABNetworkingExample.m */; };
 		D21694FF1704FA73009000FC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21694FE1704FA73009000FC /* StoreKit.framework */; };
 		D21695011704FBD7009000FC /* NewsstandKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21695001704FBD7009000FC /* NewsstandKit.framework */; };
-		D22499F717A598F20097328A /* NSString+ABFrameworkIOS.m in Sources */ = {isa = PBXBuildFile; fileRef = D22499F617A598F20097328A /* NSString+ABFrameworkIOS.m */; };
 		D22F88EA17A159590072CF72 /* ABSection.m in Sources */ = {isa = PBXBuildFile; fileRef = D22F88E917A159590072CF72 /* ABSection.m */; };
 		D233D723177A53C200CE4E0E /* UINavigationController+ComingUp.m in Sources */ = {isa = PBXBuildFile; fileRef = D233D722177A53C200CE4E0E /* UINavigationController+ComingUp.m */; };
 		D233D727177A56E500CE4E0E /* ABView.m in Sources */ = {isa = PBXBuildFile; fileRef = D233D726177A56E500CE4E0E /* ABView.m */; };
@@ -153,8 +152,6 @@
 		D211D72A1709AEB500326B25 /* ABNetworkingExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABNetworkingExample.m; sourceTree = "<group>"; };
 		D21694FE1704FA73009000FC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D21695001704FBD7009000FC /* NewsstandKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NewsstandKit.framework; path = System/Library/Frameworks/NewsstandKit.framework; sourceTree = SDKROOT; };
-		D22499F517A598F20097328A /* NSString+ABFrameworkIOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ABFrameworkIOS.h"; sourceTree = "<group>"; };
-		D22499F617A598F20097328A /* NSString+ABFrameworkIOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ABFrameworkIOS.m"; sourceTree = "<group>"; };
 		D22F88E817A159590072CF72 /* ABSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSection.h; sourceTree = "<group>"; };
 		D22F88E917A159590072CF72 /* ABSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSection.m; sourceTree = "<group>"; };
 		D233D721177A53C200CE4E0E /* UINavigationController+ComingUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+ComingUp.h"; sourceTree = "<group>"; };
@@ -604,8 +601,6 @@
 				D2B27DFF177D8BDA007485A4 /* UIBarButtonItem+ABFramework.m */,
 				D2C2901B179E9F6E009EF2E2 /* UIScreen+ABFramework.h */,
 				D2C2901C179E9F6E009EF2E2 /* UIScreen+ABFramework.m */,
-				D22499F517A598F20097328A /* NSString+ABFrameworkIOS.h */,
-				D22499F617A598F20097328A /* NSString+ABFrameworkIOS.m */,
 				D25BA74E17B68DCC00384BC8 /* UIButton+ABFramework.h */,
 				D25BA74F17B68DCC00384BC8 /* UIButton+ABFramework.m */,
 			);
@@ -1169,7 +1164,6 @@
 				D2C6DE97173D739800C157E3 /* ABTableStackController.m in Sources */,
 				D2B31B6B179EF32600896762 /* ABWebController.m in Sources */,
 				D2C6DE98173D739800C157E3 /* ABTextField.m in Sources */,
-				D22499F717A598F20097328A /* NSString+ABFrameworkIOS.m in Sources */,
 				D2C6DE99173D739800C157E3 /* ABPair.m in Sources */,
 				D2C6DE9A173D739800C157E3 /* ABPrimitiveArray.m in Sources */,
 				D2C6DEA2173D739800C157E3 /* ABReachability.m in Sources */,
