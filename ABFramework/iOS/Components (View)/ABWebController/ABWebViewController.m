@@ -27,10 +27,18 @@
 #pragma mark - Initializer
 -(id) initWithUrlString:(NSString*)urlString
 {
+    return [self initWithUrl:[urlString url]];
+}
+
+-(id) initWithUrl:(NSURL*)url
+{
     self = [super init];
     if (self)
     {
-        _url = [urlString url];
+        _url = url;
+        
+        //Config
+        self.canRotate = NO;
     }
     return self;
 }
@@ -43,6 +51,11 @@
     [super viewDidLoad];
     
     if ([self wasPresented]) self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTitle:@"Close" target:self action:@selector(dismiss)];
+    
+    if (self.view.height == [UIScreen screenHeight] && !self.navigationController.navigationBar.translucent)
+    {
+        self.view.frame = CGRectOffsetSizeHeight(self.view.frame, -(44.0f + 20.0f));
+    }
     
     [self layout];
     
@@ -59,12 +72,12 @@
     
     _activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:style];
     _activityView.hidesWhenStopped = YES;
-    //_activityView.frame = CGRectInsideRightCenter(_activityView.frame, self.navigationController.navigationBar, <#CGFloat padding#>)
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_activityView];
     
     //WebView
     _webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
     _webView.delegate = self;
+    _webView.allowsInlineMediaPlayback = YES;
     [self.view addSubview:_webView];
     
     //Tabbar
@@ -112,6 +125,12 @@
 #pragma mark - Buttons
 -(void) dismiss
 {
+    if (self.wantsToDismissHandler)
+    {
+        self.wantsToDismissHandler();
+        return;
+    }
+    
     if ([self wasPresented])
     {
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -194,6 +213,41 @@
 {
     [_activityView stopAnimating];
     [self updateToolbarItems];
+}
+
+
+
+#pragma mark - Orientation
+-(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    CGRect newBounds = cgr(0, 0, self.view.height, self.view.width);
+    
+    _tabbar.frame = CGRectChangingSizeWidth(_tabbar.frame, newBounds.size.width);
+    _tabbar.frame = CGRectInsideBottomCenter(_tabbar.frame, newBounds, 0);
+    
+    _webView.frame = newBounds;
+    
+    //Portrait
+    if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation))
+    {
+        
+    }
+    
+    //Landscape
+    else
+    {
+        
+    }
+}
+
+-(BOOL) shouldAutorotate
+{
+    return (self.canRotate);
+}
+
+-(NSUInteger) supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAll;
 }
 
 

@@ -12,13 +12,17 @@
 
 //Initializer
 -(id) initWithUrlString:(NSString*)urlString;
+-(id) initWithUrl:(NSURL*)url;
 
 @property (nonatomic, copy) NSURL *url;
 
 @property (nonatomic, strong, readonly) UIToolbar *tabbar;
 
+@property (nonatomic, copy) ABBlockVoid wantsToDismissHandler;
+
 //Config
 @property (nonatomic, copy) NSString *navBarTitle;
 @property (nonatomic, copy) UIColor *iconColor;
+@property (nonatomic, assign) BOOL canRotate;
 
 @end
