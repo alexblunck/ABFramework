@@ -167,4 +167,14 @@
     [fileManager moveItemAtPath:filePath toPath:toPath error:nil];
 }
 
+
+
+#pragma mark - Exists
++(BOOL) fileExistsAtPath:(NSString*)filePath
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    return [fileManager fileExistsAtPath:filePath];
+}
+
+
 @end

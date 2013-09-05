@@ -81,4 +81,9 @@
 //Rename
 +(void) renameFileAtPath:(NSString*)filePath newName:(NSString*)newName;
 
+
+
+//Exists
++(BOOL) fileExistsAtPath:(NSString*)filePath;
+
 @end
