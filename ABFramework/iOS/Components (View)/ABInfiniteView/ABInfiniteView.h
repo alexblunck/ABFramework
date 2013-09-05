@@ -36,6 +36,9 @@
  */
 @interface ABInfiniteView : UIView
 
+//Reload
+-(void) reloadData;
+
 //Automatic Scrolling
 -(void) scrollWithTimeInterval:(NSTimeInterval)timeInterval;
 -(void) stopScrolling;

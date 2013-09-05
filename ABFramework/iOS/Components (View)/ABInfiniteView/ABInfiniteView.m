@@ -65,6 +65,21 @@
     
     _scrollView.backgroundColor = [UIColor blackColor];
     
+    [self reloadData];
+}
+
+
+
+#pragma mark - Reload
+-(void) reloadData
+{
+    for (UIView *subview in _scrollView.subviews)
+    {
+        [subview removeFromSuperview];
+    }
+    
+    [_viewArray removeAllObjects];
+    
     if (!self.dataSource)
     {
         NSLog(@"ABInfiniteScrollView: Error -> No data source set!");
