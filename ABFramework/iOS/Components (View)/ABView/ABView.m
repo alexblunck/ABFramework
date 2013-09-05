@@ -126,6 +126,11 @@ typedef enum {
     {
         _waitingForDoubleTouchUp = YES;
     }
+    
+    if ([self.delegate respondsToSelector:@selector(abViewDidStartTouch:)])
+    {
+        [self.delegate abViewDidStartTouch:self];
+    }
 }
 
 -(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
@@ -172,6 +177,11 @@ typedef enum {
             [self.delegate abViewDidDoubleTouchUpInside:self];
         }
     }
+    
+    if ([self.delegate respondsToSelector:@selector(abViewDidEndTouch:)])
+    {
+        [self.delegate abViewDidEndTouch:self];
+    }
 }
 
 -(void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
@@ -180,6 +190,11 @@ typedef enum {
     {
         self.selected = NO;
         _touchState = ABTouchStateTouchesCancelled;
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(abViewDidEndTouch:)])
+    {
+        [self.delegate abViewDidEndTouch:self];
     }
 }
 
@@ -190,8 +205,7 @@ typedef enum {
     
     if (_touchState == ABTouchStateTouchesBegan && distance > self.touchMoveToleration)
     {
-        self.selected = NO;
-        _touchState = ABTouchStateTouchesCancelled;
+        [self touchesCancelled:touches withEvent:event];
     }
 }
 
