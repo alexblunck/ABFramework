@@ -20,6 +20,7 @@
 //Action
 -(void) addTouchUpInsideTarget:(id)target action:(SEL)selector;
 
+@property (nonatomic, copy) NSString *iconName;
 @property (nonatomic, copy) UIColor *iconColor;
 @property (nonatomic, copy) UIColor *iconColorSelected;
 

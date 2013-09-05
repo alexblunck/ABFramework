@@ -92,47 +92,13 @@
 }
 
 
-//#pragma mark - Touch
-//-(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//    [super touchesBegan:touches withEvent:event];
-//    
-//    if (self.iconColorSelected)
-//    {
-//        _iconView.color = self.iconColorSelected;
-//    }
-//    else
-//    {
-//        self.alpha = 0.6f;
-//    }
-//}
-//
-//-(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//    [super touchesEnded:touches withEvent:event];
-//    
-//    if (self.iconColorSelected)
-//    {
-//        _iconView.color = self.iconColor;
-//    }
-//    else
-//    {
-//        self.alpha = 1.0f;
-//    }
-//}
-//
-//-(void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//    [super touchesCancelled:touches withEvent:event];
-//    
-//    if (self.iconColorSelected)
-//    {
-//        _iconView.color = self.iconColor;
-//    }
-//    else
-//    {
-//        self.alpha = 1.0f;
-//    }
-//}
+
+#pragma mark - Accessors
+-(void) setIconName:(NSString *)iconName
+{
+    _iconName = iconName;
+    
+    _iconView.iconName = _iconName;
+}
 
 @end
