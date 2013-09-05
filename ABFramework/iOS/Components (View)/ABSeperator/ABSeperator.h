@@ -19,5 +19,6 @@ typedef enum {
 //Utility
 +(id) seperatorWithType:(ABSeperatorType)type length:(CGFloat)length topHex:(NSString*)topColorHex bottomHex:(NSString*)bottomColorHex;
 +(id) seperatorWithType:(ABSeperatorType)type length:(CGFloat)length top:(UIColor*)topColor bottom:(UIColor*)bottomColor;
++(id) onePointSeperatorWithColor:(UIColor*)color;
 
 @end

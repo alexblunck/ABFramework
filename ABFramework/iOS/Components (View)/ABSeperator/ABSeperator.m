@@ -27,6 +27,13 @@
     return [[self alloc] initWithType:type length:length top:topColor bottom:bottomColor];
 }
 
++(id) onePointSeperatorWithColor:(UIColor*)color
+{
+    UIView *sep = [[UIView alloc] initWithFrame:cgr(0, 0, [UIScreen screenWidth], (IS_RETINA_DISPLAY) ? 0.5f : 1.0f)];
+    sep.backgroundColor = color;
+    return sep;
+}
+
 
 
 #pragma mark - Initializer
