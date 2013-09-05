@@ -26,6 +26,10 @@
 -(id) objectAtIndexedSubscript:(NSUInteger)index;
 -(void) setObject:(id)obj atIndexedSubscript:(NSUInteger)idx;
 
+//Perform Block
+-(void) performBlock:(ABBlockVoid)block afterDelay:(NSTimeInterval)delay;
+
 @property (nonatomic, strong) NSDictionary *abUserData;
+@property (nonatomic, strong) id abUserObject;
 
 @end
