@@ -31,7 +31,7 @@
     
     ABButton *button2 = [ABButton buttonWithText:@"Present WebController" actionBlock:^{
         
-        ABWebController *webController = [[ABWebController alloc] initWithUrlString:@"http://ablfx.com"];
+        ABWebController *webController = [ABWebController controllerWithUrlString:@"http://ablfx.com"];
         webController.navBarTitle = @"Ablfx";
         [self presentViewController:webController animated:YES completion:nil];
         

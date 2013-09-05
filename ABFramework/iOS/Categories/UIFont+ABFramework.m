@@ -11,6 +11,7 @@
 
 @implementation UIFont (ABFramework)
 
+#pragma mark - Custom Font
 +(BOOL) fontWithNameExists:(NSString*)name
 {
     NSArray *familyNames = [UIFont familyNames];

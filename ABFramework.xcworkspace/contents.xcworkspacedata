@@ -163,6 +163,18 @@
             location = "group:Categories"
             name = "Categories">
             <FileRef
+               location = "group:UIButton+ABFramework.h">
+            </FileRef>
+            <FileRef
+               location = "group:UIButton+ABFramework.m">
+            </FileRef>
+            <FileRef
+               location = "group:UIFont+ABFramework_FontNames.h">
+            </FileRef>
+            <FileRef
+               location = "group:UIFont+ABFramework_FontNames.m">
+            </FileRef>
+            <FileRef
                location = "group:UIScreen+ABFramework.h">
             </FileRef>
             <FileRef
@@ -392,16 +404,6 @@
                </FileRef>
                <FileRef
                   location = "group:ABButton.m">
-               </FileRef>
-            </Group>
-            <Group
-               location = "group:ABDatePickerView"
-               name = "ABDatePickerView">
-               <FileRef
-                  location = "group:ABDatePickerView.h">
-               </FileRef>
-               <FileRef
-                  location = "group:ABDatePickerView.m">
                </FileRef>
             </Group>
             <Group

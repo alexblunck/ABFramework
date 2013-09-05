@@ -10,8 +10,8 @@
 
 @interface UIFont (ABFramework)
 
+//Custom Font
 +(BOOL) fontWithNameExists:(NSString*)fontName;
-
 +(UIFont*) customFontWithName:(NSString*)fontName fontPath:(NSString*)fontPath extension:(NSString*)extension size:(CGFloat)size;
 
 @end

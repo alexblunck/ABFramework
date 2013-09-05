@@ -59,6 +59,7 @@
 		D2A102CF173E4B2F00E95692 /* NSMutableDictionary+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A102C7173E4B2F00E95692 /* NSMutableDictionary+ABFramework.m */; };
 		D2A102D0173E4B2F00E95692 /* NSObject+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A102C9173E4B2F00E95692 /* NSObject+ABFramework.m */; };
 		D2A102D1173E4B2F00E95692 /* NSString+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A102CB173E4B2F00E95692 /* NSString+ABFramework.m */; };
+		D2A22B3E17CB4D65004720A2 /* UIFont+ABFramework_FontNames.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A22B3D17CB4D65004720A2 /* UIFont+ABFramework_FontNames.m */; };
 		D2ADFF15171ED856002D723B /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2ADFF14171ED856002D723B /* Social.framework */; };
 		D2ADFF17171ED85A002D723B /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2ADFF16171ED85A002D723B /* Twitter.framework */; };
 		D2B27E00177D8BDA007485A4 /* UIBarButtonItem+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B27DFF177D8BDA007485A4 /* UIBarButtonItem+ABFramework.m */; };
@@ -82,7 +83,6 @@
 		D2C6DE80173D739800C157E3 /* ABActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DDEE173D739800C157E3 /* ABActivityView.m */; };
 		D2C6DE81173D739800C157E3 /* ABAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DDF1173D739800C157E3 /* ABAlertView.m */; };
 		D2C6DE82173D739800C157E3 /* ABButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DDF4173D739800C157E3 /* ABButton.m */; };
-		D2C6DE83173D739800C157E3 /* ABDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DDF7173D739800C157E3 /* ABDatePickerView.m */; };
 		D2C6DE85173D739800C157E3 /* ABFlexibleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DDFD173D739800C157E3 /* ABFlexibleView.m */; };
 		D2C6DE86173D739800C157E3 /* ABSwipeGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE00173D739800C157E3 /* ABSwipeGestureRecognizer.m */; };
 		D2C6DE87173D739800C157E3 /* ABTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE02173D739800C157E3 /* ABTapGestureRecognizer.m */; };
@@ -204,6 +204,8 @@
 		D2A102C9173E4B2F00E95692 /* NSObject+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ABFramework.m"; sourceTree = "<group>"; };
 		D2A102CA173E4B2F00E95692 /* NSString+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ABFramework.h"; sourceTree = "<group>"; };
 		D2A102CB173E4B2F00E95692 /* NSString+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ABFramework.m"; sourceTree = "<group>"; };
+		D2A22B3C17CB4D65004720A2 /* UIFont+ABFramework_FontNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+ABFramework_FontNames.h"; sourceTree = "<group>"; };
+		D2A22B3D17CB4D65004720A2 /* UIFont+ABFramework_FontNames.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+ABFramework_FontNames.m"; sourceTree = "<group>"; };
 		D2ADFF14171ED856002D723B /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		D2ADFF16171ED85A002D723B /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		D2B27DFE177D8BDA007485A4 /* UIBarButtonItem+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ABFramework.h"; sourceTree = "<group>"; };
@@ -250,8 +252,6 @@
 		D2C6DDF1173D739800C157E3 /* ABAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABAlertView.m; sourceTree = "<group>"; };
 		D2C6DDF3173D739800C157E3 /* ABButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABButton.h; sourceTree = "<group>"; };
 		D2C6DDF4173D739800C157E3 /* ABButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABButton.m; sourceTree = "<group>"; };
-		D2C6DDF6173D739800C157E3 /* ABDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABDatePickerView.h; sourceTree = "<group>"; };
-		D2C6DDF7173D739800C157E3 /* ABDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABDatePickerView.m; sourceTree = "<group>"; };
 		D2C6DDFC173D739800C157E3 /* ABFlexibleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFlexibleView.h; sourceTree = "<group>"; };
 		D2C6DDFD173D739800C157E3 /* ABFlexibleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABFlexibleView.m; sourceTree = "<group>"; };
 		D2C6DDFF173D739800C157E3 /* ABSwipeGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSwipeGestureRecognizer.h; sourceTree = "<group>"; };
@@ -603,6 +603,8 @@
 				D2C2901C179E9F6E009EF2E2 /* UIScreen+ABFramework.m */,
 				D25BA74E17B68DCC00384BC8 /* UIButton+ABFramework.h */,
 				D25BA74F17B68DCC00384BC8 /* UIButton+ABFramework.m */,
+				D2A22B3C17CB4D65004720A2 /* UIFont+ABFramework_FontNames.h */,
+				D2A22B3D17CB4D65004720A2 /* UIFont+ABFramework_FontNames.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -676,7 +678,6 @@
 				D2C6DDEC173D739800C157E3 /* ABActivityView */,
 				D2C6DDEF173D739800C157E3 /* ABAlertView */,
 				D2C6DDF2173D739800C157E3 /* ABButton */,
-				D2C6DDF5173D739800C157E3 /* ABDatePickerView */,
 				D2C6DDFB173D739800C157E3 /* ABFlexibleView */,
 				D2C6DDFE173D739800C157E3 /* ABGestureRecognizer */,
 				D2C6DE03173D739800C157E3 /* ABHud */,
@@ -720,15 +721,6 @@
 				D2C6DDF4173D739800C157E3 /* ABButton.m */,
 			);
 			path = ABButton;
-			sourceTree = "<group>";
-		};
-		D2C6DDF5173D739800C157E3 /* ABDatePickerView */ = {
-			isa = PBXGroup;
-			children = (
-				D2C6DDF6173D739800C157E3 /* ABDatePickerView.h */,
-				D2C6DDF7173D739800C157E3 /* ABDatePickerView.m */,
-			);
-			path = ABDatePickerView;
 			sourceTree = "<group>";
 		};
 		D2C6DDFB173D739800C157E3 /* ABFlexibleView */ = {
@@ -1139,7 +1131,6 @@
 				D25BA75717B68FE800384BC8 /* ABExampleViewController.m in Sources */,
 				D2C6DE81173D739800C157E3 /* ABAlertView.m in Sources */,
 				D2C6DE82173D739800C157E3 /* ABButton.m in Sources */,
-				D2C6DE83173D739800C157E3 /* ABDatePickerView.m in Sources */,
 				D25BA75317B68F2000384BC8 /* ABWebControllerExample.m in Sources */,
 				D23F75A1177C718400365A24 /* UISearchBar+ABFramework.m in Sources */,
 				D2C6DE85173D739800C157E3 /* ABFlexibleView.m in Sources */,
@@ -1168,6 +1159,7 @@
 				D2C6DE9A173D739800C157E3 /* ABPrimitiveArray.m in Sources */,
 				D2C6DEA2173D739800C157E3 /* ABReachability.m in Sources */,
 				D2C6DEA3173D739800C157E3 /* NSArray+ABFramework.m in Sources */,
+				D2A22B3E17CB4D65004720A2 /* UIFont+ABFramework_FontNames.m in Sources */,
 				D2C6DEA4173D739800C157E3 /* NSData+ABFramework.m in Sources */,
 				D2C6DEA5173D739800C157E3 /* ABBonjourServer.m in Sources */,
 				D2C6DEA6173D739800C157E3 /* ABSaveSystem.m in Sources */,
