@@ -63,11 +63,34 @@
     
     _completionBlock(selectedImage);
     
-    [picker dismissViewControllerAnimated:YES completion:^{
-        
-        [[UIApplication sharedApplication] setStatusBarStyle:_previousStatusBarStyle animated:YES];
-        
-    }];
+    if (self.wantsToDismissHandler)
+    {
+        self.wantsToDismissHandler();
+    }
+    else
+    {
+        [picker dismissViewControllerAnimated:YES completion:^{
+            
+            [[UIApplication sharedApplication] setStatusBarStyle:_previousStatusBarStyle animated:YES];
+            
+        }];
+    }
+}
+
+-(void) imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    if (self.wantsToDismissHandler)
+    {
+        self.wantsToDismissHandler();
+    }
+    else
+    {
+        [picker dismissViewControllerAnimated:YES completion:^{
+            
+            [[UIApplication sharedApplication] setStatusBarStyle:_previousStatusBarStyle animated:YES];
+            
+        }];
+    }
 }
 
 @end

@@ -16,4 +16,6 @@
 //Tigger
 -(void) show;
 
+@property (nonatomic, copy) ABBlockVoid wantsToDismissHandler;
+
 @end
