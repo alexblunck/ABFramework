@@ -161,19 +161,13 @@
 {
     if (!self.dimSubViews) return;
     
-    for (UIView* subView in self.subviews)
-    {
-        subView.alpha = 0.3f;
-    }
+    self.alpha = 0.5f;
 }
 -(void) unDimAllSubViews
 {
     if (!self.dimSubViews) return;
     
-    for (UIView* subView in self.subviews)
-    {
-        subView.alpha = 1.0f;
-    }
+    self.alpha = 1.0f;
 }
 
 
@@ -196,11 +190,18 @@
 {
     _selectedImageName = selectedImageName;
     
-    UIImage *imageSel = [UIImage imageNamed:selectedImageName];
+    UIImage *imageSel = [[UIImage imageNamed:selectedImageName] imageWithRenderingMode:UIImageRenderingModeAutomatic];
     if (imageSel)
     {
         [self setImage:imageSel forState:UIControlStateHighlighted];
     }
+}
+
+-(void) setSelectedImage:(UIImage *)selectedImage
+{
+    _selectedImage = selectedImage;
+    
+    [self setImage:_selectedImage forState:UIControlStateHighlighted];
 }
 
 @end

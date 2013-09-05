@@ -23,6 +23,7 @@
 
 @property (nonatomic, copy) NSString *imageName;
 @property (nonatomic, copy) NSString *selectedImageName;
+@property (nonatomic, copy) UIImage *selectedImage;
 
 //Config
 @property (nonatomic, assign) BOOL dimSubViews;
