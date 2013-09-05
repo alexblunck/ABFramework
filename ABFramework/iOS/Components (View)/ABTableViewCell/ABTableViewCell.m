@@ -22,6 +22,8 @@
 {
     [super willMoveToSuperview:newSuperview];
     
+    self.contentView.frame = self.bounds;
+    
     if (!_baseLayout) [self baseLayout];
 }
 
@@ -51,6 +53,9 @@
     if ([self.delegate respondsToSelector:@selector(cellDidRecieveLongTouch:)])
     {
         [self.delegate cellDidRecieveLongTouch:self];
+        
+        //Make sure background selection is reversed after
+        [self touchesEnded:nil withEvent:nil];
     }
 }
 
