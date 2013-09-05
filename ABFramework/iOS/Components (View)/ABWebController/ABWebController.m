@@ -19,15 +19,20 @@
 #pragma mark - Utility
 +(id) controllerWithUrlString:(NSString*)urlString
 {
-    return [[self alloc] initWithUrlString:urlString];
+    return [self controllerWithUrl:[urlString url]];
+}
+
++(id) controllerWithUrl:(NSURL*)url
+{
+    return [[self alloc] initWithUrl:url];
 }
 
 
 
 #pragma mark - Initializer
--(id) initWithUrlString:(NSString*)urlString
+-(id) initWithUrl:(NSURL*)url
 {
-    _webViewController = [[ABWebViewController alloc] initWithUrlString:urlString];
+    _webViewController = [[ABWebViewController alloc] initWithUrl:url];
     self = [super initWithRootViewController:_webViewController];
     if (self)
     {
@@ -52,6 +57,7 @@
     self.navigationBar.titleTextAttributes = navigationController.navigationBar.titleTextAttributes;
     self.navigationBar.barStyle = navigationController.navigationBar.barStyle;
     self.navigationBar.tintColor = navigationController.navigationBar.tintColor;
+    self.navigationBar.translucent = navigationController.navigationBar.translucent;
 }
 
 

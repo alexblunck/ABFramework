@@ -12,9 +12,7 @@
 
 //Utility
 +(id) controllerWithUrlString:(NSString*)urlString;
-
-//Initializer
--(id) initWithUrlString:(NSString*)urlString;
++(id) controllerWithUrl:(NSURL*)url;
 
 //Style
 -(void) imitateNavigationControllerStyle:(UINavigationController*)navigationController;
