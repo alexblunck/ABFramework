@@ -1,10 +1,34 @@
-//
-//  ABReachability.m
-//  ABFramework
-//
-//  Created by Alexander Blunck on 12/10/12.
-//  Copyright (c) 2012 Ablfx. All rights reserved.
-//
+/*
+ Source: https://github.com/tonymillion/Reachability
+ 
+ Copyright (c) 2011, Tony Million.
+ All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ 
+ 1. Redistributions of source code must retain the above copyright notice, this
+ list of conditions and the following disclaimer.
+ 
+ 2. Redistributions in binary form must reproduce the above copyright notice,
+ this list of conditions and the following disclaimer in the documentation
+ and/or other materials provided with the distribution.
+ 
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
+ 
+ Edited by Alexander Blunck
+ Copyright (c) 2013 Ablfx. All rights reserved.
+ */
 
 #import "ABReachability.h"
 
@@ -14,7 +38,11 @@ NSString *const kReachabilityChangedNotification = @"kReachabilityChangedNotific
 
 @property (nonatomic, assign) SCNetworkReachabilityRef  reachabilityRef;
 
+#if NEEDS_DISPATCH_RETAIN_RELEASE
 @property (nonatomic, assign) dispatch_queue_t          reachabilitySerialQueue;
+#else
+@property (nonatomic, strong) dispatch_queue_t          reachabilitySerialQueue;
+#endif
 
 @property (nonatomic, strong) id reachabilityObject;
 
@@ -78,7 +106,8 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
     ABReachability *reachability = [ABReachability reachabilityForInternetConnection];
     [reachability startNotifier];
     NetworkStatus status = [reachability currentReachabilityStatus];
-    if (status == ReachableViaWiFi) {
+    if (status == ReachableViaWiFi)
+    {
         return YES;
     }
     return NO;
