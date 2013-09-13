@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
     sp.platform = :ios, "7.0"
 
     sp.requires_arc = true
-    sp.resource = 'ABFramework/ABFramework.bundle'
+    sp.resources = ['ABFramework/**/*.{lproj}', 'ABFramework/**/*.bundle']
 
     sp.source_files = 'ABFramework/**/*.{h,m}'
     sp.exclude_files = 'ABFramework/OSX'
@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
     sp.platform = :osx, "10.8"
 
     sp.requires_arc = true
-    sp.resource = 'ABFramework/ABFramework.bundle'
+    sp.resources = ['ABFramework/**/*.{lproj}', 'ABFramework/**/*.bundle']
 
     sp.source_files = 'ABFramework/**/*.{h,m}'
     sp.exclude_files = 'ABFramework/iOS'
