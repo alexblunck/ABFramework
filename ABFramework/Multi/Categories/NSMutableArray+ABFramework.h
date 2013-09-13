@@ -12,4 +12,6 @@
 
 -(void) moveObjectAtIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex;
 
+-(void) safeAddObject:(id)object;
+
 @end
