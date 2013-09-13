@@ -37,10 +37,27 @@
     {
         _url = url;
         
-        //Config
-        self.canRotate = NO;
+        [self config];
     }
     return self;
+}
+
+-(id) initWithHTMLString:(NSString*)htmlString
+{
+    self = [super init];
+    if (self)
+    {
+        _htmlString = [htmlString copy];
+        
+        [self config];
+    }
+    return self;
+}
+
+-(void) config
+{
+    self.canRotate = NO;
+    self.hideToolbar = NO;
 }
 
 
@@ -50,7 +67,7 @@
 {
     [super viewDidLoad];
     
-    if ([self wasPresented]) self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTitle:@"Close" target:self action:@selector(dismiss)];
+    if ([self wasPresented]) self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTitle:NSLocalizedStringFromTable(@"Close", @"ABFrameworkLocalizable", nil) target:self action:@selector(dismiss)];
     
     if (self.view.height == [UIScreen screenHeight] && !self.navigationController.navigationBar.translucent)
     {
@@ -59,7 +76,8 @@
     
     [self layout];
     
-    self.url = self.url;
+    if (self.url) self.url = self.url;
+    if (self.htmlString) self.htmlString = self.htmlString;
 }
 
 
@@ -85,11 +103,15 @@
     _tabbar.frame = CGRectInsideBottomCenter(_tabbar.frame, self.view.bounds, 0);
     _tabbar.barStyle = self.navigationController.navigationBar.barStyle;
     _tabbar.translucent = YES;
-    [self.view addSubview:_tabbar];
     
-    //WebView Config
-    _webView.scrollView.contentInset = UIEdgeInsetsMake(0, 0, _tabbar.height, 0);
-    _webView.scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, _webView.scrollView.contentInset.bottom, 0);
+    if (!self.hideToolbar)
+    {
+        [self.view addSubview:_tabbar];
+        
+        //WebView Config
+        _webView.scrollView.contentInset = UIEdgeInsetsMake(0, 0, _tabbar.height, 0);
+        _webView.scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, _webView.scrollView.contentInset.bottom, 0);
+    }
     
     //Tabbar items
     UIColor *iconColor = (_tabbar.barStyle == UIBarStyleBlack || _tabbar.barStyle == UIBarStyleBlackTranslucent) ? [UIColor whiteColor] : [UIColor blackColor];
@@ -164,7 +186,14 @@
 
 -(void) moreButtonSelected
 {
-    
+    [ABAlertView showYesNoAlertWithMessage:NSLocalizedStringFromTable(@"Open In Safari?", @"ABFrameworkLocalizable", nil)  block:^(NSInteger index) {
+        
+        if (index == 1)
+        {
+            [[UIApplication sharedApplication] openURL:self.url];
+        }
+        
+    }];
 }
 
 
@@ -220,6 +249,8 @@
 #pragma mark - Orientation
 -(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
+    if (!self.canRotate) return;
+    
     CGRect newBounds = cgr(0, 0, self.view.height, self.view.width);
     
     _tabbar.frame = CGRectChangingSizeWidth(_tabbar.frame, newBounds.size.width);
@@ -258,6 +289,15 @@
     _url = url;
     
     [_webView loadRequest:[NSURLRequest requestWithURL:self.url]];
+}
+
+-(void) setHtmlString:(NSString *)htmlString
+{
+    _htmlString = htmlString;
+    
+    NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+    
+    [_webView loadHTMLString:_htmlString baseURL:baseURL];
 }
 
 -(void) setNavBarTitle:(NSString *)navBarTitle
