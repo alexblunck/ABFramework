@@ -17,6 +17,12 @@
             location = "group:Categories"
             name = "Categories">
             <FileRef
+               location = "group:NSLocale+ABFramework.h">
+            </FileRef>
+            <FileRef
+               location = "group:NSLocale+ABFramework.m">
+            </FileRef>
+            <FileRef
                location = "group:NSMutableArray+ABFramework.h">
             </FileRef>
             <FileRef
@@ -162,6 +168,12 @@
          <Group
             location = "group:Categories"
             name = "Categories">
+            <FileRef
+               location = "group:UIApplication+ABFramework.h">
+            </FileRef>
+            <FileRef
+               location = "group:UIApplication+ABFramework.m">
+            </FileRef>
             <FileRef
                location = "group:UIButton+ABFramework.h">
             </FileRef>
@@ -648,11 +660,29 @@
             name = "Utilities">
          </Group>
       </Group>
+      <Group
+         location = "group:Resources"
+         name = "Resources">
+         <FileRef
+            location = "group:ABFramework.bundle">
+         </FileRef>
+         <Group
+            location = "group:de.lproj"
+            name = "de.lproj">
+            <FileRef
+               location = "group:ABFrameworkLocalizable.strings">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:en.lproj"
+            name = "en.lproj">
+            <FileRef
+               location = "group:ABFrameworkLocalizable.strings">
+            </FileRef>
+         </Group>
+      </Group>
       <FileRef
          location = "group:README.md">
-      </FileRef>
-      <FileRef
-         location = "group:ABFramework.bundle">
       </FileRef>
    </Group>
    <FileRef

@@ -17,13 +17,15 @@
 		D2762B471743965D002444EA /* ABCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D2762B421743965D002444EA /* ABCommon.m */; };
 		D2762B481743965D002444EA /* ABMath.m in Sources */ = {isa = PBXBuildFile; fileRef = D2762B451743965D002444EA /* ABMath.m */; };
 		D28A23BF1748387700EE1B7B /* NSApplication+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A23BE1748387700EE1B7B /* NSApplication+ABFramework.m */; };
+		D28D1FF217E1085100137CA7 /* ABFramework.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D28D1FEE17E1085100137CA7 /* ABFramework.bundle */; };
+		D28D1FF317E1085100137CA7 /* ABFrameworkLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D28D1FEF17E1085100137CA7 /* ABFrameworkLocalizable.strings */; };
+		D29DE19D17E0F3C400B8F8C3 /* NSLocale+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D29DE19C17E0F3C400B8F8C3 /* NSLocale+ABFramework.m */; };
 		D2A102DE173E4B4500E95692 /* NSDate+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A102D3173E4B4500E95692 /* NSDate+ABFramework.m */; };
 		D2A102DF173E4B4500E95692 /* NSDateComponents+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A102D5173E4B4500E95692 /* NSDateComponents+ABFramework.m */; };
 		D2A102E0173E4B4500E95692 /* NSDictionary+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A102D7173E4B4500E95692 /* NSDictionary+ABFramework.m */; };
 		D2A102E1173E4B4500E95692 /* NSMutableDictionary+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A102D9173E4B4500E95692 /* NSMutableDictionary+ABFramework.m */; };
 		D2A102E2173E4B4500E95692 /* NSObject+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A102DB173E4B4500E95692 /* NSObject+ABFramework.m */; };
 		D2A102E3173E4B4500E95692 /* NSString+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A102DD173E4B4500E95692 /* NSString+ABFramework.m */; };
-		D2C6DF5A173D73B700C157E3 /* ABFramework.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D2C6DEA9173D73B700C157E3 /* ABFramework.bundle */; };
 		D2C6DF90173D73B700C157E3 /* NSArray+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DF3F173D73B700C157E3 /* NSArray+ABFramework.m */; };
 		D2C6DF91173D73B700C157E3 /* NSData+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DF41173D73B700C157E3 /* NSData+ABFramework.m */; };
 		D2C6DF92173D73B700C157E3 /* ABBonjourServer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DF45173D73B700C157E3 /* ABBonjourServer.m */; };
@@ -57,6 +59,11 @@
 		D2762B461743965D002444EA /* ABTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTypes.h; sourceTree = "<group>"; };
 		D28A23BD1748387700EE1B7B /* NSApplication+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSApplication+ABFramework.h"; sourceTree = "<group>"; };
 		D28A23BE1748387700EE1B7B /* NSApplication+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSApplication+ABFramework.m"; sourceTree = "<group>"; };
+		D28D1FEE17E1085100137CA7 /* ABFramework.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ABFramework.bundle; sourceTree = "<group>"; };
+		D28D1FF017E1085100137CA7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/ABFrameworkLocalizable.strings; sourceTree = "<group>"; };
+		D28D1FF117E1085100137CA7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ABFrameworkLocalizable.strings; sourceTree = "<group>"; };
+		D29DE19B17E0F3C400B8F8C3 /* NSLocale+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLocale+ABFramework.h"; sourceTree = "<group>"; };
+		D29DE19C17E0F3C400B8F8C3 /* NSLocale+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLocale+ABFramework.m"; sourceTree = "<group>"; };
 		D2A102D2173E4B4500E95692 /* NSDate+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ABFramework.h"; sourceTree = "<group>"; };
 		D2A102D3173E4B4500E95692 /* NSDate+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ABFramework.m"; sourceTree = "<group>"; };
 		D2A102D4173E4B4500E95692 /* NSDateComponents+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateComponents+ABFramework.h"; sourceTree = "<group>"; };
@@ -70,7 +77,6 @@
 		D2A102DC173E4B4500E95692 /* NSString+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ABFramework.h"; sourceTree = "<group>"; };
 		D2A102DD173E4B4500E95692 /* NSString+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ABFramework.m"; sourceTree = "<group>"; };
 		D2B6CD2B1743970200CAB44A /* ABUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABUtilities.h; sourceTree = "<group>"; };
-		D2C6DEA9173D73B700C157E3 /* ABFramework.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ABFramework.bundle; sourceTree = "<group>"; };
 		D2C6DEAA173D73B700C157E3 /* ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFramework.h; sourceTree = "<group>"; };
 		D2C6DF3C173D73B700C157E3 /* ABFrameworkMulti.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFrameworkMulti.h; sourceTree = "<group>"; };
 		D2C6DF3E173D73B700C157E3 /* NSArray+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ABFramework.h"; sourceTree = "<group>"; };
@@ -170,6 +176,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		D28D1FED17E1085100137CA7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D28D1FEE17E1085100137CA7 /* ABFramework.bundle */,
+				D28D1FEF17E1085100137CA7 /* ABFrameworkLocalizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		D2C6DC98173D616E00C157E3 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,10 +196,10 @@
 		D2C6DEA8173D73B700C157E3 /* ABFramework */ = {
 			isa = PBXGroup;
 			children = (
-				D2C6DEA9173D73B700C157E3 /* ABFramework.bundle */,
 				D2C6DEAA173D73B700C157E3 /* ABFramework.h */,
 				D2C6DF3B173D73B700C157E3 /* Multi */,
 				D2C6DF4F173D73B700C157E3 /* OSX */,
+				D28D1FED17E1085100137CA7 /* Resources */,
 				D2C6DF59173D73B700C157E3 /* README.md */,
 			);
 			name = ABFramework;
@@ -210,6 +225,8 @@
 		D2C6DF3D173D73B700C157E3 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				D29DE19B17E0F3C400B8F8C3 /* NSLocale+ABFramework.h */,
+				D29DE19C17E0F3C400B8F8C3 /* NSLocale+ABFramework.m */,
 				D2ED7477176F1903008C3BD9 /* NSMutableArray+ABFramework.h */,
 				D2ED7478176F1903008C3BD9 /* NSMutableArray+ABFramework.m */,
 				D2A102D2173E4B4500E95692 /* NSDate+ABFramework.h */,
@@ -412,6 +429,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				de,
 			);
 			mainGroup = D22AB472173D610300A25B32;
 			productRefGroup = D22AB47C173D610300A25B32 /* Products */;
@@ -431,7 +449,8 @@
 				D22AB489173D610300A25B32 /* InfoPlist.strings in Resources */,
 				D22AB48F173D610300A25B32 /* Credits.rtf in Resources */,
 				D22AB495173D610300A25B32 /* MainMenu.xib in Resources */,
-				D2C6DF5A173D73B700C157E3 /* ABFramework.bundle in Resources */,
+				D28D1FF317E1085100137CA7 /* ABFrameworkLocalizable.strings in Resources */,
+				D28D1FF217E1085100137CA7 /* ABFramework.bundle in Resources */,
 				D2C6DF94173D73B700C157E3 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,6 +467,7 @@
 				D2C6DF90173D73B700C157E3 /* NSArray+ABFramework.m in Sources */,
 				D2C6DF91173D73B700C157E3 /* NSData+ABFramework.m in Sources */,
 				D2C6DF92173D73B700C157E3 /* ABBonjourServer.m in Sources */,
+				D29DE19D17E0F3C400B8F8C3 /* NSLocale+ABFramework.m in Sources */,
 				D2C6DF93173D73B700C157E3 /* ABSaveSystem.m in Sources */,
 				D2A102DE173E4B4500E95692 /* NSDate+ABFramework.m in Sources */,
 				D2A102DF173E4B4500E95692 /* NSDateComponents+ABFramework.m in Sources */,
@@ -489,6 +509,15 @@
 				D22AB494173D610300A25B32 /* en */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		D28D1FEF17E1085100137CA7 /* ABFrameworkLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D28D1FF017E1085100137CA7 /* de */,
+				D28D1FF117E1085100137CA7 /* en */,
+			);
+			name = ABFrameworkLocalizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
