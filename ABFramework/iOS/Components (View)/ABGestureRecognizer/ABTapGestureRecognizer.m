@@ -11,7 +11,7 @@
 @interface ABTapGestureRecognizer () <UIGestureRecognizerDelegate>
 {
     ABBlockVoid _block;
-    id _target;
+    __weak id _target;
     SEL _selector;
 }
 
