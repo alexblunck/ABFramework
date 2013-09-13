@@ -86,6 +86,8 @@
 
 -(void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    
     [UIView animateWithDuration:0.2f animations:^{
         _selectedBackgroundView.alpha = 0.0f;
     } completion:nil];
