@@ -1,0 +1,26 @@
+/* 
+  ABFrameworkLocalizable.strings
+  ABFramework-Examples
+
+  Created by Alexander Blunck on 9/11/13.
+  Copyright (c) 2013 Ablfx. All rights reserved.
+*/
+
+//Dates
+"second" = "second";
+"seconds" = "seconds";
+"minute" = "minute";
+"minutes" = "minutes";
+"hour" = "hour";
+"hours" = "hours";
+"day" = "day";
+"days" = "days";
+"ago" = "ago";
+
+//Common
+"yes" = "yes";
+"no" = "no";
+"Close" = "Close";
+
+//ABWebController
+"Open In Safari?" = "In Safari Öffnen?";

@@ -374,43 +374,48 @@ static ABDateWeekNumberingSystem	_weekNumberingSystem	= 1;
     NSDate *currentDate = [NSDate date];
     
     NSInteger dateUnits = 0;
+    NSString *stringKey = nil;
     NSMutableString *dateUnitName = [NSMutableString new];
     
     //Check if Date is in under 60 Seconds
     if (abs((int)[currentDate secondsUntilDate:date]) <= 60)
     {
         dateUnits = [currentDate secondsUntilDate:date];
-        [dateUnitName appendString:@"second"];
+        stringKey = (abs((int)dateUnits) > 1 || abs((int)dateUnits) == 0) ? @"seconds" : @"second";
+        [dateUnitName appendString:NSLocalizedStringFromTable(stringKey, @"ABFrameworkLocalizable", nil)];
     }
     //Check if Date is under 60 Minutes
     else if (abs((int)[currentDate minutesUntilDate:date]) <= 60)
     {
         dateUnits = [currentDate minutesUntilDate:date];
-        [dateUnitName appendString:@"minute"];
+        stringKey = (abs((int)dateUnits) > 1 || abs((int)dateUnits) == 0) ? @"minutes" : @"minute";
+        [dateUnitName appendString:NSLocalizedStringFromTable(stringKey, @"ABFrameworkLocalizable", nil)];
     }
     //Check if Date is under 24 Hours
     else if (abs((int)[currentDate hoursUntilDate:date]) <= 24)
     {
         dateUnits = [currentDate hoursUntilDate:date];
-        [dateUnitName appendString:@"hour"];
+        stringKey = (abs((int)dateUnits) > 1 || abs((int)dateUnits) == 0) ? @"hours" : @"hour";
+        [dateUnitName appendString:NSLocalizedStringFromTable(stringKey, @"ABFrameworkLocalizable", nil)];
     }
     //Days until Date
     else
     {
         dateUnits = [currentDate daysUntilDate:date];
-        [dateUnitName appendString:@"day"];
+        stringKey = (abs((int)dateUnits) > 1 || abs((int)dateUnits) == 0) ? @"days" : @"day";
+        [dateUnitName appendString:NSLocalizedStringFromTable(stringKey, @"ABFrameworkLocalizable", nil)];
     }
     
     //Add 's' after dateUnitName if dateUnit is more than 1
-    if (abs((int)dateUnits) > 1 || abs((int)dateUnits) == 0)
-    {
-        [dateUnitName appendString:@"s"];
-    }
+//    if (abs((int)dateUnits) > 1 || abs((int)dateUnits) == 0)
+//    {
+//        [dateUnitName appendString:@"s"];
+//    }
     
     //Add 'ago' if date is before current date
     if (dateUnits < 0)
     {
-        [dateUnitName appendString:@" ago"];
+        [dateUnitName appendFormat:@" %@", NSLocalizedStringFromTable(@"ago", @"ABFrameworkLocalizable", nil)];
     }
     
     NSInteger units = abs(dateUnits);

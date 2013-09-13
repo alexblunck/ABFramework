@@ -46,7 +46,11 @@
 
 +(id) showYesNoAlertWithMessage:(NSString *)message block:(ABBlockInteger)block
 {
-    return [[self alloc] initAlertWithTitle:@"" message:message block:block voidBlock:nil cancelButtonTitle:@"No" otherButtonTitles:@[@"Yes"]];
+    return [[self alloc] initAlertWithTitle:@""
+                                    message:message block:block
+                                  voidBlock:nil
+                          cancelButtonTitle:[NSLocalizedStringFromTable(@"no", @"ABFrameworkLocalizable", nil) capitalizedString]
+                          otherButtonTitles:@[[NSLocalizedStringFromTable(@"yes", @"ABFrameworkLocalizable", nil) capitalizedString]]];
 }
 
 

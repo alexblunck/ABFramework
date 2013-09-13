@@ -8,8 +8,6 @@
 
 #import "ABCommon.h"
 
-@implementation ABCommon
-
 #pragma mark - NSNumber Fast Creation
 NSNumber* NSNumberInteger(NSInteger aInteger)
 {
@@ -39,7 +37,15 @@ NSIndexPath* NSIndexPathMake(NSInteger section, NSInteger row)
     return [NSIndexPath indexPathForRow:row inSection:section];
 }
 
+    
+    
+#pragma mark - Localizable Strings
+NSString* nsls(NSString *key)
+{
+    return NSLocalizedString(key, nil);
+}
 
+    
 
 #pragma mark - Type Checking
 BOOL isNSArray(id object)
@@ -68,5 +74,3 @@ BOOL toggledBoolean(BOOL aBoolean)
 {
     return (aBoolean) ? NO : YES;
 }
-
-@end

@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ABCommon : NSObject
-
 //NSNumber Fast Creation
 NSNumber* NSNumberInteger(NSInteger aInteger);
 NSNumber* NSNumberDouble(double aDouble);
@@ -19,6 +17,9 @@ NSNumber* NSNumberBOOL(BOOL aBoolean);
 //NSIndexPath Fast Creation
 NSIndexPath* NSIndexPathMake(NSInteger section, NSInteger row);
 
+//Localizable Strings
+NSString* nsls(NSString *key);
+    
 //Type Checking
 BOOL isNSArray(id object);
 BOOL isNSDictionary(id object);
@@ -31,4 +32,3 @@ BOOL isClassOfType(id object, Class aClass);
  */
 BOOL toggledBoolean(BOOL aBoolean);
 
-@end
