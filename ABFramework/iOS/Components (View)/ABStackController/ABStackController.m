@@ -50,6 +50,7 @@
             _scrollView.alwaysBounceVertical = YES;
             _scrollView.showsVerticalScrollIndicator = YES;
             _scrollView.delaysContentTouches = self.delayTouch;
+            _scrollView.clipsToBounds = NO;
             [self addSubview:_scrollView];
         }
         
@@ -135,6 +136,7 @@
     {
         containmentView.frame = CGRectChangingSize(containmentView.frame, self.width, newView.height);
         containmentView.backgroundColor = backgroundColor;
+        containmentView.clipsToBounds = self.clipsToBounds;
         newView.frame = CGRectCenteredHorizontallyS(newView.frame, containmentView.bounds);
     }
     
@@ -308,6 +310,14 @@
     }
     
     return stackViews;
+}
+
+#pragma mark - frame
+-(void) setFrame:(CGRect)frame
+{
+    [super setFrame:frame];
+    
+    _scrollView.frame = CGRectChangingCGSize(_scrollView.frame, frame.size);
 }
 
 @end
