@@ -388,4 +388,12 @@ CGRect CGRectAbovePointY(CGRect rect, CGFloat pointY)
     return CGRectChangingOriginY(rect, pointY - rect.size.height);
 }
 
+
+#pragma mark - CGRect Special
+//Switch Size
+CGRect CGRectSwitchSize(CGRect rect)
+{
+    return CGRectChangingSize(rect, rect.size.height, rect.size.width);
+}
+
 @end

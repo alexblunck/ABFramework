@@ -171,4 +171,9 @@ CGRect CGRectOutsideLeftCenter(CGRect rect, CGRect rectToLeftCenterWith, CGFloat
 //Above
 CGRect CGRectAbovePointY(CGRect rect, CGFloat pointY);
 
+
+#pragma mark - CGRect Special
+//Switch Size
+CGRect CGRectSwitchSize(CGRect rect);
+
 @end
