@@ -54,4 +54,5 @@
 #define ABLogFloat(float) NSLog(@"ABLogFloat -> %s = %f", #float, float)
 #define ABLogLong(long) NSLog(@"ABLogFloat -> %s = %lu", #long, long)
 #define ABLogLongLong(longLong) NSLog(@"ABLogFloat -> %s = %llu", #longLong, longLong)
-#define ABLogMethod() NSLog(@"%s", __PRETTY_FUNCTION__)
+#define ABLogMethod() NSLog(@"ABLogMethod -> %s", __PRETTY_FUNCTION__)
+#define ABLogClass(object) NSLog(@"ABLogBOOL -> %s = %@", #object, NSStringFromClass([object class]))
