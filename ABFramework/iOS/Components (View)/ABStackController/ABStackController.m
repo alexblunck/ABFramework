@@ -34,6 +34,7 @@
     if (self) {
         
         self.backgroundColor = [UIColor whiteColor];
+        self.clipsToBounds = YES;
         
         //Allocation
         _viewArray = [NSMutableArray new];
@@ -50,7 +51,6 @@
             _scrollView.alwaysBounceVertical = YES;
             _scrollView.showsVerticalScrollIndicator = YES;
             _scrollView.delaysContentTouches = self.delayTouch;
-            _scrollView.clipsToBounds = NO;
             [self addSubview:_scrollView];
         }
         
@@ -62,12 +62,6 @@
 {
     NSLog(@"ABStackController ERROR -> Please use custom initializer!");
     return nil;
-}
-
-#pragma mark - LifeCycle
--(void) willMoveToSuperview:(UIView *)newSuperview
-{
-    
 }
 
 
@@ -136,7 +130,6 @@
     {
         containmentView.frame = CGRectChangingSize(containmentView.frame, self.width, newView.height);
         containmentView.backgroundColor = backgroundColor;
-        containmentView.clipsToBounds = self.clipsToBounds;
         newView.frame = CGRectCenteredHorizontallyS(newView.frame, containmentView.bounds);
     }
     
@@ -290,6 +283,17 @@
 
 
 #pragma mark - Accessors
+#pragma mark - frame
+-(void) setFrame:(CGRect)frame
+{
+    [super setFrame:frame];
+    
+    if (_isFixedHeight)
+    {
+        _scrollView.frame = cgr(0, 0, frame.size.width, frame.size.height);
+    }
+}
+
 #pragma mark - delayTouch
 -(void) setDelayTouch:(BOOL)delayTouch
 {
@@ -310,14 +314,6 @@
     }
     
     return stackViews;
-}
-
-#pragma mark - frame
--(void) setFrame:(CGRect)frame
-{
-    [super setFrame:frame];
-    
-    _scrollView.frame = CGRectChangingCGSize(_scrollView.frame, frame.size);
 }
 
 @end
