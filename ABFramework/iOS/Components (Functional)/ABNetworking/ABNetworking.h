@@ -52,7 +52,7 @@ typedef void (^ABNetworkingCompletionBlock) (id response, NSInteger statusCode, 
 
 //Properties
 /**
- * If you're perforing requests to a server using self signed SSL certificates,
+ * If you're performing requests to a server using self signed SSL certificates,
  * add those hosts e.g. "api.ablfx.com" to the trustedHosts array
  */
 //@property (nonatomic, strong) NSMutableArray *trustedHosts;
