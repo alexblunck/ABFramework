@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.homepage     = "http://ablfx.com"
   s.author       = { "Alexander Blunck" => "alex@ablfx.com" }
   s.license      = { :type => "MIT", :file => "LICENSE" }
-  s.source       = { :git => "https://github.com/ablfx/ABFramework.git", :tag => "v0.2.0" }
+  s.source       = { :git => "https://github.com/ablfx/ABFramework.git", :tag => "v0.2.1" }
 
   #iOS
   s.subspec "iOS" do |sp|
