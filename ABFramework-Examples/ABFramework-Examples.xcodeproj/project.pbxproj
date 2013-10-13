@@ -51,6 +51,7 @@
 		D25BA75717B68FE800384BC8 /* ABExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D25BA75617B68FE800384BC8 /* ABExampleViewController.m */; };
 		D2762B3F17439650002444EA /* ABCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D2762B3A17439650002444EA /* ABCommon.m */; };
 		D2762B4017439650002444EA /* ABMath.m in Sources */ = {isa = PBXBuildFile; fileRef = D2762B3D17439650002444EA /* ABMath.m */; };
+		D2835DC71808016000BD007F /* ABFullWidthTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D2835DC61808016000BD007F /* ABFullWidthTextField.m */; };
 		D28D1FEB17E1083E00137CA7 /* ABFramework.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D28D1FE717E1083E00137CA7 /* ABFramework.bundle */; };
 		D28D1FEC17E1083E00137CA7 /* ABFrameworkLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D28D1FE817E1083E00137CA7 /* ABFrameworkLocalizable.strings */; };
 		D29B385C174CC54000ABE69A /* UIFont+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D29B385B174CC54000ABE69A /* UIFont+ABFramework.m */; };
@@ -192,6 +193,8 @@
 		D2762B3C17439650002444EA /* ABMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABMath.h; sourceTree = "<group>"; };
 		D2762B3D17439650002444EA /* ABMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABMath.m; sourceTree = "<group>"; };
 		D2762B3E17439650002444EA /* ABTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTypes.h; sourceTree = "<group>"; };
+		D2835DC51808016000BD007F /* ABFullWidthTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFullWidthTextField.h; sourceTree = "<group>"; };
+		D2835DC61808016000BD007F /* ABFullWidthTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABFullWidthTextField.m; sourceTree = "<group>"; };
 		D28D1FD917E1038200137CA7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D28D1FE717E1083E00137CA7 /* ABFramework.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ABFramework.bundle; sourceTree = "<group>"; };
 		D28D1FE917E1083E00137CA7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/ABFrameworkLocalizable.strings; sourceTree = "<group>"; };
@@ -545,6 +548,15 @@
 			name = Base;
 			sourceTree = "<group>";
 		};
+		D2835DC41808014900BD007F /* ABFullWidthTextField */ = {
+			isa = PBXGroup;
+			children = (
+				D2835DC51808016000BD007F /* ABFullWidthTextField.h */,
+				D2835DC61808016000BD007F /* ABFullWidthTextField.m */,
+			);
+			path = ABFullWidthTextField;
+			sourceTree = "<group>";
+		};
 		D28D1FE617E1083E00137CA7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -690,6 +702,7 @@
 		D2C6DDEB173D739800C157E3 /* Components (View) */ = {
 			isa = PBXGroup;
 			children = (
+				D2835DC41808014900BD007F /* ABFullWidthTextField */,
 				D25BA74117B6853500384BC8 /* ABEntypo */,
 				D2B31B68179EF32600896762 /* ABWebController */,
 				D2F18490179409A200808750 /* ABTableViewCell */,
@@ -1207,6 +1220,7 @@
 				D2762B3F17439650002444EA /* ABCommon.m in Sources */,
 				D2762B4017439650002444EA /* ABMath.m in Sources */,
 				D2F5C0C1174B8717002D4D0F /* ABFrame.m in Sources */,
+				D2835DC71808016000BD007F /* ABFullWidthTextField.m in Sources */,
 				D29B385C174CC54000ABE69A /* UIFont+ABFramework.m in Sources */,
 				D25BA75017B68DCC00384BC8 /* UIButton+ABFramework.m in Sources */,
 			);

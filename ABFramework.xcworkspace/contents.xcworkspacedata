@@ -317,6 +317,16 @@
             location = "group:Components (View)"
             name = "Components (View)">
             <Group
+               location = "group:ABFullWidthTextField"
+               name = "ABFullWidthTextField">
+               <FileRef
+                  location = "group:ABFullWidthTextField.h">
+               </FileRef>
+               <FileRef
+                  location = "group:ABFullWidthTextField.m">
+               </FileRef>
+            </Group>
+            <Group
                location = "group:ABEntypo"
                name = "ABEntypo">
                <FileRef
