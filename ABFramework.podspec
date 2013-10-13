@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "ABFramework"
-  s.version      = "0.2.0"
+  s.version      = "0.2.1"
   s.summary      = "A collection of custom components, helpers, categories for iOS."
   s.homepage     = "http://ablfx.com"
   s.author       = { "Alexander Blunck" => "alex@ablfx.com" }
