@@ -39,7 +39,7 @@ const ABSelectViewTheme ABSelectViewDefaultTheme = ABSelectViewThemeTranslucent;
             selectedIndex:(NSInteger)index
                completion:(ABBlockInteger)block
 {
-    return [self showWithPresentingView:nil stringArray:stringArray selectedIndex:index theme:nil completion:block];
+    return [self showWithPresentingView:nil stringArray:stringArray selectedIndex:index theme:0 completion:block];
 }
 
 +(id) showWithPresentingView:(UIView*)view
@@ -72,7 +72,7 @@ const ABSelectViewTheme ABSelectViewDefaultTheme = ABSelectViewThemeTranslucent;
         _presentingView = (view) ? view : [UIView topView];
         _stringArray = stringArray;
         _initialIndex = index;
-        _theme = (theme) ? theme : ABSelectViewDefaultTheme;
+        _theme = (theme != ABSelectViewThemeNone) ? theme : ABSelectViewDefaultTheme;
         _completionBlock = [block copy];
         
         _labelArray = [NSMutableArray new];

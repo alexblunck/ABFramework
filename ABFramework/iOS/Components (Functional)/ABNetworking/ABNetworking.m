@@ -21,7 +21,7 @@
     NSFileHandle *_fileHandle;
     
     long long _expectedTotalBytes;
-    NSInteger *_statusCode;
+    NSInteger _statusCode;
     NSDictionary *_responseHeader;
     
     NSMutableData *_data;
@@ -120,7 +120,7 @@
     //JSON
     else if (_requestType == ABNetworkingRequestTypeJSON)
     {
-        response = [NSJSONSerialization JSONObjectWithData:data options:nil error:nil];
+        response = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     }
     //DOWNLOAD
     else if (_requestType == ABNetworkingRequestTypeDownload)

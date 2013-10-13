@@ -93,7 +93,7 @@
         return;
     }
     
-    if (![fileManager fileExistsAtPath:[bPath stringByDeletingLastPathComponent] isDirectory:YES])
+    if (![fileManager fileExistsAtPath:[bPath stringByDeletingLastPathComponent] isDirectory:NULL])
     {
         [self createPath:[bPath stringByDeletingLastPathComponent]];
     }
