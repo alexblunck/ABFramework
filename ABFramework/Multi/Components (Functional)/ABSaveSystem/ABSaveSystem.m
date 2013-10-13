@@ -80,7 +80,6 @@
 }
 
 
-
 #pragma mark - Objects
 #pragma mark - NSData
 +(void) saveData:(NSData*)data key:(NSString*)key encryption:(BOOL)encryption
@@ -172,7 +171,6 @@
 {
     return [self objectForKey:key checkClass:nil];
 }
-
 
 #pragma mark - NSString
 +(void) saveString:(NSString*)string key:(NSString*)key
@@ -308,6 +306,31 @@
     NSData *dataKey = [ABSAVESYSTEM_AESKEY dataUsingEncoding:NSUTF8StringEncoding];
     NSData *encryptedData = [dicData encryptedWithKey:dataKey];
     [encryptedData writeToFile:[self filePathEncryption:YES] atomically:YES];
+}
+
++(void) removeValueForKey:(NSString*)key
+{
+    [self removeValueForKey:key encryption:ABSAVESYSTEM_ENCRYPTION_ENABLED];
+}
+
++(void) removeValueForKey:(NSString*)key encryption:(BOOL)encryption
+{
+    NSMutableDictionary *tempDic = [self loadDictionaryEncryption:encryption];
+    [tempDic removeObjectForKey:key];
+    
+    NSData *dicData = [NSKeyedArchiver archivedDataWithRootObject:tempDic];
+    
+    if (encryption)
+    {
+        NSData *dataKey = [ABSAVESYSTEM_AESKEY dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *encryptedData = [dicData encryptedWithKey:dataKey];
+        [encryptedData writeToFile:[self filePathEncryption:YES] atomically:YES];
+    }
+    else
+    {
+        NSData *dicData = [NSKeyedArchiver archivedDataWithRootObject:tempDic];
+        [dicData writeToFile:[self filePathEncryption:NO] atomically:YES];
+    }
 }
 
 @end

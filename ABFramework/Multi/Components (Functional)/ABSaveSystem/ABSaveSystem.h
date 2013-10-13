@@ -86,5 +86,7 @@ typedef enum {
 +(BOOL) exists:(NSString*)key encryption:(BOOL)encryption;
 +(void) logSavedValues:(BOOL)encrypted;
 +(void) truncate; //Deletes everything
++(void) removeValueForKey:(NSString*)key;
++(void) removeValueForKey:(NSString*)key encryption:(BOOL)encryption;
 
 @end
