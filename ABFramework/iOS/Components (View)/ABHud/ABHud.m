@@ -80,6 +80,7 @@
         //Label
         _label = [ABLabel new];
         _label.frame = CGRectMake(0, 0, 200, 50);
+        _label.lineBreakEnabled = YES;
         _label.frame = CGRectOutsideBottomCenter(_label.frame, _circleView.frame, 2.0f);
         _label.centeredHorizontally = YES;
         _label.font = [UIFont systemFontOfSize:20.0f];
@@ -202,7 +203,7 @@
         [self fadeCircleViewIn:show];
     }
     
-    [self fadeLabelIn:NO];
+    [self fadeLabelIn:(self.message != nil)];
 }
 
 -(void) hide
