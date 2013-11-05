@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name         = "ABFramework"
-  s.version      = "0.2.1"
+  s.version      = "0.2.2"
   s.summary      = "A collection of custom components, helpers, categories for iOS."
   s.homepage     = "http://ablfx.com"
   s.author       = { "Alexander Blunck" => "alex@ablfx.com" }
   s.license      = { :type => "MIT", :file => "LICENSE" }
-  s.source       = { :git => "https://github.com/ablfx/ABFramework.git", :tag => "v0.2.1" }
+  s.source       = { :git => "https://github.com/ablfx/ABFramework.git", :tag => "0.2.2" }
 
   #iOS
   s.subspec "iOS" do |sp|
