@@ -45,6 +45,14 @@ NSString* nsls(NSString *key)
     return NSLocalizedString(key, nil);
 }
 
+/**
+ * Capatilized String
+ */
+NSString* nslsCaps(NSString *key)
+{
+    return [nsls(key) capitalizedString];
+}
+
     
 
 #pragma mark - Type Checking

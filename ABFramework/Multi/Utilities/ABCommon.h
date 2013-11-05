@@ -19,7 +19,9 @@ NSIndexPath* NSIndexPathMake(NSInteger section, NSInteger row);
 
 //Localizable Strings
 NSString* nsls(NSString *key);
-    
+//Captalized Localizable String
+NSString* nslsCaps(NSString *key);
+
 //Type Checking
 BOOL isNSArray(id object);
 BOOL isNSDictionary(id object);

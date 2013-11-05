@@ -7,14 +7,14 @@
 */
 
 //Dates
-"second" = "sekunde";
-"seconds" = "sekunden";
-"minute" = "minute";
-"minutes" = "minuten";
-"hour" = "stunde";
-"hours" = "stunden";
-"day" = "tag";
-"days" = "tage";
+"second" = "Sekunde";
+"seconds" = "Sekunden";
+"minute" = "Minute";
+"minutes" = "Minuten";
+"hour" = "Stunde";
+"hours" = "Stunden";
+"day" = "Tag";
+"days" = "Tage";
 "ago" = "her";
 
 //Common
