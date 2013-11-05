@@ -32,11 +32,11 @@
 #pragma mark - Initializer
 -(id) initWithUrl:(NSURL*)url
 {
-    _webViewController = [[ABWebViewController alloc] initWithUrl:url];
-    self = [super initWithRootViewController:_webViewController];
+    ABWebViewController *webViewController = [[ABWebViewController alloc] initWithUrl:url];
+    self = [super initWithRootViewController:webViewController];
     if (self)
     {
-        
+        _webViewController = webViewController;
     }
     return self;
 }

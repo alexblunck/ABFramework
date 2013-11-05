@@ -46,7 +46,7 @@
 #pragma mark - Encoding
 -(NSString*) encodedString:(NSStringEncoding)encoding
 {
-    return (__bridge NSString *)(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)self, NULL, (CFStringRef)@"!*'\"();:@&=+$,/?%#[]% ", CFStringConvertNSStringEncodingToEncoding(encoding)));
+    return (__bridge_transfer NSString *)(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)self, NULL, (CFStringRef)@"!*'\"();:@&=+$,/?%#[]% ", CFStringConvertNSStringEncodingToEncoding(encoding)));
 }
 
 -(NSString*) asciiEncodedString
