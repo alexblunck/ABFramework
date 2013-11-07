@@ -20,4 +20,7 @@
 //Add
 -(NSArray*) arrayByAddingObject:(id)object;
 
+//Remove
+-(NSArray*) arrayByRemovingObject:(id)object;
+
 @end

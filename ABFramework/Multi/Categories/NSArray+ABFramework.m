@@ -45,4 +45,14 @@
     return [NSArray arrayWithArray:array];
 }
 
+
+
+#pragma mark - Remove
+-(NSArray*) arrayByRemovingObject:(id)object
+{
+    NSMutableArray *array = [NSMutableArray arrayWithArray:self];
+    [array removeObject:object];
+    return [NSArray arrayWithArray:array];
+}
+
 @end
