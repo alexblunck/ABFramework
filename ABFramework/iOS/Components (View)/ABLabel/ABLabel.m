@@ -240,8 +240,12 @@
     _textField.layer.shadowOffset = shadowOffset;
     _textField.layer.shadowRadius = shadowRadius;
     _textField.layer.shadowOpacity = shadowOpactiy;
-    _textField.layer.shouldRasterize = YES;
-    _textField.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+    
+    if (_shadow != ABShadowTypeNone)
+    {
+        _textField.layer.shouldRasterize = YES;
+        _textField.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+    }
     
     _label.shadowColor = shadowColor;
     _label.shadowOffset = shadowOffset;
