@@ -28,26 +28,33 @@ typedef enum {
 } ABNetworkingRequestType;
 
 typedef void (^ABNetworkingCompletionBlock) (id response, NSInteger statusCode, NSDictionary *header, ABNetworkingError error);
+typedef void (^ABNetworkingShortCallback) (id response);
 
 @interface ABNetworking : NSObject
 
-//Utility
-+(id) performHTTPRequestWithUrl:(NSString*)url
-                         postData:(NSDictionary*)postDic
-                       completion:(ABNetworkingCompletionBlock)cBlock;
+// Short
++(instancetype) get:(NSURL*)url completion:(ABNetworkingShortCallback)completion;
 
-+(id) performStringRequestWithUrl:(NSString*)url
-                         postData:(NSDictionary*)postDic
-                       completion:(ABNetworkingCompletionBlock)cBlock;
 
-+(id) performJSONRequestWithUrl:(NSString*)url
-                       postData:(NSDictionary*)postDic
-                     completion:(ABNetworkingCompletionBlock)cBlock;
 
-+(id) performDownloadRequestWithUrl:(NSString*)url
-                           postData:(NSDictionary*)postDic
-                           progress:(ABBlockInteger)pBlock
-                         completion:(ABNetworkingCompletionBlock)cBlock;
+// Utility
++(instancetype) httpRequestWithUrl:(NSURL*)url
+                              post:(NSDictionary*)post
+                        completion:(ABNetworkingCompletionBlock)completion;
+
++(instancetype) stringRequestWithUrl:(NSURL*)url
+                                post:(NSDictionary*)post
+                          completion:(ABNetworkingCompletionBlock)completion;
+
++(instancetype) jsonRequestWithUrl:(NSURL*)url
+                              post:(NSDictionary*)post
+                        completion:(ABNetworkingCompletionBlock)completion;
+
++(instancetype) downloadRequestWithUrl:(NSURL*)url
+                                  post:(NSDictionary*)post
+                              progress:(ABBlockInteger)progress
+                            completion:(ABNetworkingCompletionBlock)completion;
+
 
 
 //Properties

@@ -14,8 +14,8 @@
 {
     ABNetworkingRequestType _requestType;
     
-    ABBlockInteger _pBlock;
-    ABNetworkingCompletionBlock _cBlock;
+    ABBlockInteger _progress;
+    ABNetworkingCompletionBlock _completion;
     
     NSString *_filePath;
     NSFileHandle *_fileHandle;
@@ -30,40 +30,53 @@
 
 @implementation ABNetworking
 
+#pragma mark - Short
++(instancetype) get:(NSURL*)url completion:(ABNetworkingShortCallback)completion
+{
+    return [self jsonRequestWithUrl:url post:nil completion:^(id response, NSInteger statusCode, NSDictionary *header, ABNetworkingError error) {
+        if (completion)
+        {
+            completion(response);
+        }
+    }];
+}
+
+
+
 #pragma mark - Untility
-+(id) performHTTPRequestWithUrl:(NSString*)url
-                       postData:(NSDictionary*)postDic
-                     completion:(ABNetworkingCompletionBlock)cBlock
++(instancetype) httpRequestWithUrl:(NSURL*)url
+                              post:(NSDictionary*)post
+                        completion:(ABNetworkingCompletionBlock)completion
 {
-    return [[self alloc] initWithRequestUrl:url type:ABNetworkingRequestTypeHTTP postData:postDic progress:nil completion:cBlock];
+    return [[self alloc] initWithRequestUrl:url type:ABNetworkingRequestTypeHTTP postData:post progress:nil completion:completion];
 }
 
-+(id) performStringRequestWithUrl:(NSString*)url
-                         postData:(NSDictionary*)postDic
-                       completion:(ABNetworkingCompletionBlock)cBlock
++(instancetype) stringRequestWithUrl:(NSURL*)url
+                                post:(NSDictionary*)post
+                          completion:(ABNetworkingCompletionBlock)completion
 {
-    return [[self alloc] initWithRequestUrl:url type:ABNetworkingRequestTypeString postData:postDic progress:nil completion:cBlock];
+    return [[self alloc] initWithRequestUrl:url type:ABNetworkingRequestTypeString postData:post progress:nil completion:completion];
 }
 
-+(id) performJSONRequestWithUrl:(NSString*)url
-                       postData:(NSDictionary*)postDic
-                     completion:(ABNetworkingCompletionBlock)cBlock
++(instancetype) jsonRequestWithUrl:(NSURL*)url
+                              post:(NSDictionary*)post
+                        completion:(ABNetworkingCompletionBlock)completion
 {
-    return [[self alloc] initWithRequestUrl:url type:ABNetworkingRequestTypeJSON postData:postDic progress:nil completion:cBlock];
+    return [[self alloc] initWithRequestUrl:url type:ABNetworkingRequestTypeJSON postData:post progress:nil completion:completion];
 }
 
-+(id) performDownloadRequestWithUrl:(NSString*)url
-                           postData:(NSDictionary*)postDic
-                           progress:(ABBlockInteger)pBlock
-                         completion:(ABNetworkingCompletionBlock)cBlock
++(instancetype) downloadRequestWithUrl:(NSURL*)url
+                                  post:(NSDictionary*)post
+                              progress:(ABBlockInteger)progress
+                            completion:(ABNetworkingCompletionBlock)completion
 {
-    return [[self alloc] initWithRequestUrl:url type:ABNetworkingRequestTypeDownload postData:postDic progress:pBlock completion:cBlock];
+    return [[self alloc] initWithRequestUrl:url type:ABNetworkingRequestTypeDownload postData:post progress:progress completion:completion];
 }
 
 
 
 #pragma mark - Initializer
--(id) initWithRequestUrl:(NSString*)url
+-(id) initWithRequestUrl:(NSURL*)url
                     type:(ABNetworkingRequestType)type
                 postData:(NSDictionary*)postDic
                 progress:(ABBlockInteger)pBlock
@@ -73,14 +86,14 @@
     if (self)
     {
         _requestType = type;
-        _pBlock = [pBlock copy];
-        _cBlock = [cBlock copy];
+        _progress = [pBlock copy];
+        _completion = [cBlock copy];
         
         //Allocation
         _data = [[NSMutableData alloc] init];
         
         //Request
-        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
         request.timeoutInterval = 30.0f;
         request.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
         
@@ -128,9 +141,9 @@
         response = _filePath;
     }
     
-    if (_cBlock)
+    if (_completion)
     {
-        _cBlock(response, _statusCode, _responseHeader, ABNetworkingErrorNone);
+        _completion(response, _statusCode, _responseHeader, ABNetworkingErrorNone);
     }
 }
 
@@ -138,9 +151,9 @@
 {
     if (ABFRAMEWORK_LOGGING) NSLog(@"ABNetworking: Error -> %@", error);
     
-    if (_cBlock)
+    if (_completion)
     {
-        _cBlock(nil, 0, nil, ABNetworkingErrorConnection);
+        _completion(nil, 0, nil, ABNetworkingErrorConnection);
     }
 }
 
@@ -202,10 +215,10 @@
         [_data appendData:data];
     }
     
-    if (_pBlock)
+    if (_progress)
     {
         long long totalBytesWritten = [_data length];
-        _pBlock(ABMathPercent(totalBytesWritten, _expectedTotalBytes));
+        _progress(ABMathPercent(totalBytesWritten, _expectedTotalBytes));
     }
 }
 
