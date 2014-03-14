@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ABEntypoExample : UIViewController
+@interface ABEntypoExample : ABExampleViewController
 
 @end

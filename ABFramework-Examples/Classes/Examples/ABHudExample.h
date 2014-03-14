@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ABHudExample : UIViewController
+@interface ABHudExample : ABExampleViewController
 
 @end

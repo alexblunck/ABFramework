@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ABNetworkingExample : UIViewController
+@interface ABNetworkingExample : ABExampleViewController
 
 @end
