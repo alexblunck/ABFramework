@@ -10,6 +10,8 @@
 
 @implementation ABSaveSystem
 
+
+
 #pragma mark - Helper
 +(NSString*) appName
 {
@@ -26,11 +28,11 @@
 #endif
 }
 
-+(NSString*) filePathEncryption:(BOOL)encryption
++(NSString*) filepathEncrypted:(BOOL)encrypted
 {
     ABSaveSystemOS os = [self os];
     
-    NSString *fileExt = (encryption) ? @".abssen" : @".abss";
+    NSString *fileExt = (encrypted) ? @".abssen" : @".abss";
     NSString *fileName = [NSString stringWithFormat:@"%@%@", [[self appName] lowercaseString], fileExt];
     
     if (os == ABSaveSystemOSIOS)
@@ -55,9 +57,9 @@
     return nil;
 }
 
-+(NSMutableDictionary*) loadDictionaryEncryption:(BOOL)encryption
++(NSMutableDictionary*) loadEncryptedDictionary:(BOOL)encrypted
 {
-    NSData *binaryFile = [NSData dataWithContentsOfFile:[self filePathEncryption:encryption]];
+    NSData *binaryFile = [NSData dataWithContentsOfFile:[self filepathEncrypted:encrypted]];
     
     if (binaryFile == nil) {
         return nil;
@@ -65,7 +67,7 @@
     
     NSMutableDictionary *dictionary;
     //Either Decrypt saved data or just load it
-    if (encryption)
+    if (encrypted)
     {
         NSData *dataKey = [ABSAVESYSTEM_AESKEY dataUsingEncoding:NSUTF8StringEncoding];
         NSData *decryptedData = [binaryFile decryptedWithKey:dataKey];
@@ -80,17 +82,18 @@
 }
 
 
+
 #pragma mark - Objects
 #pragma mark - NSData
-+(void) saveData:(NSData*)data key:(NSString*)key encryption:(BOOL)encryption
++(void) saveData:(NSData*)data key:(NSString*)key encrypted:(BOOL)encrypted
 {
     //Check if file exits, if so init Dictionary with it's content, otherwise allocate new one
-    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:[self filePathEncryption:ABSAVESYSTEM_ENCRYPTION_ENABLED]];
+    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:[self filepathEncrypted:encrypted]];
     NSMutableDictionary *tempDic = nil;
     if (fileExists == NO) {
         tempDic = [[NSMutableDictionary alloc] init];
     } else {
-        tempDic = [self loadDictionaryEncryption:encryption];
+        tempDic = [self loadEncryptedDictionary:encrypted];
     }
     
     //Populate Dictionary with to save value/key and write to file
@@ -99,27 +102,27 @@
     NSData *dicData = [NSKeyedArchiver archivedDataWithRootObject:tempDic];
     
     //Either encrypt Data or just save
-    if (encryption)
+    if (encrypted)
     {
         NSData *dataKey = [ABSAVESYSTEM_AESKEY dataUsingEncoding:NSUTF8StringEncoding];
         NSData *encryptedData = [dicData encryptedWithKey:dataKey];
-        [encryptedData writeToFile:[self filePathEncryption:YES] atomically:YES];
+        [encryptedData writeToFile:[self filepathEncrypted:YES] atomically:YES];
     }
     else
     {
-        [dicData writeToFile:[self filePathEncryption:encryption] atomically:YES];
+        [dicData writeToFile:[self filepathEncrypted:encrypted] atomically:YES];
     }
     
 }
 
 +(void) saveData:(NSData*)data key:(NSString*)key
 {
-    [self saveData:data key:key encryption:ABSAVESYSTEM_ENCRYPTION_ENABLED];
+    [self saveData:data key:key encrypted:ABSAVESYSTEM_ENCRYPTION_ENABLED];
 }
 
-+(NSData*) dataForKey:(NSString*)key encryption:(BOOL)encryption
++(NSData*) dataForKey:(NSString*)key encrypted:(BOOL)encrypted
 {
-    NSMutableDictionary *tempDic = [self loadDictionaryEncryption:encryption];
+    NSMutableDictionary *tempDic = [self loadEncryptedDictionary:encrypted];
     
     //Retrieve NSData for specific key
     NSData *loadedData = [tempDic objectForKey:key];
@@ -138,8 +141,9 @@
 
 +(NSData*) dataForKey:(NSString*)key
 {
-    return [self dataForKey:key encryption:ABSAVESYSTEM_ENCRYPTION_ENABLED];
+    return [self dataForKey:key encrypted:ABSAVESYSTEM_ENCRYPTION_ENABLED];
 }
+
 
 #pragma mark - Object
 +(void) saveObject:(id<NSCoding>)object key:(NSString*)key
@@ -171,6 +175,7 @@
 {
     return [self objectForKey:key checkClass:nil];
 }
+
 
 #pragma mark - NSString
 +(void) saveString:(NSString*)string key:(NSString*)key
@@ -262,12 +267,12 @@
 #pragma mark - Misc
 +(BOOL) exists:(NSString*)key
 {
-    return [self exists:key encryption:ABSAVESYSTEM_ENCRYPTION_ENABLED];
+    return [self exists:key encrypted:ABSAVESYSTEM_ENCRYPTION_ENABLED];
 }
 
-+(BOOL) exists:(NSString*)key encryption:(BOOL)encryption
++(BOOL) exists:(NSString*)key encrypted:(BOOL)encrypted
 {
-    id data = [self dataForKey:key encryption:encryption];
+    id data = [self dataForKey:key encrypted:encrypted];
     return (data != nil);
 }
 
@@ -275,7 +280,7 @@
 {
     NSString *baseLogMessage = (encrypted) ? @"ABSaveSystem: logSavedValues (Encrypted)" : @"ABSaveSystem: logSavedValues";
     
-    NSMutableDictionary *tempDic= [self loadDictionaryEncryption:encrypted];
+    NSMutableDictionary *tempDic= [self loadEncryptedDictionary:encrypted];
     if (tempDic == nil)
     {
         NSLog(@"%@ -> NO DATA SAVED!", baseLogMessage);
@@ -296,40 +301,44 @@
 
 +(void) truncate
 {
-    NSMutableDictionary *tempDic = [self loadDictionaryEncryption:NO];
-    [tempDic removeAllObjects];
-    NSData *dicData = [NSKeyedArchiver archivedDataWithRootObject:tempDic];
-    [dicData writeToFile:[self filePathEncryption:NO] atomically:YES];
+    [self truncateEncrypted:NO];
+    [self truncateEncrypted:YES];
+}
+
++(void) truncateEncrypted:(BOOL)encrypted
+{
+    NSString *filepath = [self filepathEncrypted:encrypted];
     
-    NSMutableDictionary *tempDicEnc = [self loadDictionaryEncryption:YES];
-    [tempDicEnc removeAllObjects];
-    NSData *dataKey = [ABSAVESYSTEM_AESKEY dataUsingEncoding:NSUTF8StringEncoding];
-    NSData *encryptedData = [dicData encryptedWithKey:dataKey];
-    [encryptedData writeToFile:[self filePathEncryption:YES] atomically:YES];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if ([fileManager fileExistsAtPath:filepath])
+    {
+        [fileManager removeItemAtPath:filepath error:nil];
+    }
 }
 
 +(void) removeValueForKey:(NSString*)key
 {
-    [self removeValueForKey:key encryption:ABSAVESYSTEM_ENCRYPTION_ENABLED];
+    [self removeValueForKey:key encrypted:ABSAVESYSTEM_ENCRYPTION_ENABLED];
 }
 
-+(void) removeValueForKey:(NSString*)key encryption:(BOOL)encryption
++(void) removeValueForKey:(NSString*)key encrypted:(BOOL)encrypted
 {
-    NSMutableDictionary *tempDic = [self loadDictionaryEncryption:encryption];
+    NSMutableDictionary *tempDic = [self loadEncryptedDictionary:encrypted];
     [tempDic removeObjectForKey:key];
     
     NSData *dicData = [NSKeyedArchiver archivedDataWithRootObject:tempDic];
     
-    if (encryption)
+    if (encrypted)
     {
         NSData *dataKey = [ABSAVESYSTEM_AESKEY dataUsingEncoding:NSUTF8StringEncoding];
         NSData *encryptedData = [dicData encryptedWithKey:dataKey];
-        [encryptedData writeToFile:[self filePathEncryption:YES] atomically:YES];
+        [encryptedData writeToFile:[self filepathEncrypted:YES] atomically:YES];
     }
     else
     {
         NSData *dicData = [NSKeyedArchiver archivedDataWithRootObject:tempDic];
-        [dicData writeToFile:[self filePathEncryption:NO] atomically:YES];
+        [dicData writeToFile:[self filepathEncrypted:NO] atomically:YES];
     }
 }
 
