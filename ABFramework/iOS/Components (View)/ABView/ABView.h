@@ -47,12 +47,12 @@ typedef void (^ABViewDoubleTouchHandler) (ABView *);
 @property (nonatomic, strong) UIColor *selectedBackgroundColor;
 
 /**
- * Animate background color selection, default YES 
+ * Animate background selection, default YES
  */
-@property (nonatomic, assign) BOOL animateBackgroundColor;
+@property (nonatomic, assign) BOOL animateBackground;
 
 /**
- * Background color animation duration, default 0.2f
+ * Background animation duration, default 0.2f
  */
 @property (nonatomic, assign) CGFloat animationDuration;
 

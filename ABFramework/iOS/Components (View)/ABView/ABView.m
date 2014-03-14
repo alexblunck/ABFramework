@@ -47,7 +47,7 @@ typedef enum {
         self.selectRecursively = NO;
         self.userInteractionEnabled = YES;
         self.permitTouchWhileSelected = YES;
-        self.animateBackgroundColor = NO;
+        self.animateBackground = NO;
         self.animationDuration = 0.2f;
         self.dimBackgroundImageOnSelect = NO;
         self.touchMoveToleration = 30.0f;
@@ -224,7 +224,7 @@ typedef enum {
     //Background color
     if (_selected && self.selectedBackgroundColor)
     {
-        if (self.animateBackgroundColor)
+        if (self.animateBackground)
         {
             [UIView animateWithDuration:self.animationDuration animations:^{
                 self.backgroundColor = self.selectedBackgroundColor;
@@ -237,7 +237,7 @@ typedef enum {
     }
     else
     {
-        if (self.animateBackgroundColor)
+        if (self.animateBackground)
         {
             [UIView animateWithDuration:self.animationDuration animations:^{
                 self.backgroundColor = _originalBackgroundColor;
@@ -261,11 +261,32 @@ typedef enum {
     }
     else if (_selected && !self.selectedBackgroundImageName)
     {
-        if (self.dimBackgroundImageOnSelect) self.alpha = 0.6f;
+        if (self.dimBackgroundImageOnSelect)
+        {
+            if (self.animateBackground)
+            {
+                [UIView animateWithDuration:self.animationDuration animations:^{
+                    self.alpha = 0.6f;
+                }];
+            }
+            else
+            {
+                self.alpha = 0.6f;
+            }
+        }
     }
     else if (!_selected)
     {
-        self.alpha = 1.0f;
+        if (self.animateBackground)
+        {
+            [UIView animateWithDuration:self.animationDuration animations:^{
+                self.alpha = 1.0f;
+            }];
+        }
+        else
+        {
+            self.alpha = 1.0f;
+        }
         _backgroundImageView.image = _originalBackgroundImage;
     }
 }
