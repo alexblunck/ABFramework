@@ -586,13 +586,13 @@
     {
         [tempItemArray addObject:storeKitItem];
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:tempItemArray];
-        [ABSaveSystem saveData:data key:@"ABStorekitHelper.storeKitItemArray" encryption:YES];
+        [ABSaveSystem saveData:data key:@"ABStorekitHelper.storeKitItemArray" encrypted:YES];
     }
 }
 
 -(NSArray*) loadStoreKitItemArray
 {
-    NSData *data = [ABSaveSystem dataForKey:@"ABStorekitHelper.storeKitItemArray" encryption:YES];
+    NSData *data = [ABSaveSystem dataForKey:@"ABStorekitHelper.storeKitItemArray" encrypted:YES];
     if (data != nil)
     {
         NSArray *tempItemArray = [NSKeyedUnarchiver unarchiveObjectWithData:data];
@@ -618,7 +618,7 @@
         [tempItemArray removeObjectsInArray:removeItemArray];
         
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:tempItemArray];
-        [ABSaveSystem saveData:data key:@"ABStorekitHelper.storeKitItemArray" encryption:YES];
+        [ABSaveSystem saveData:data key:@"ABStorekitHelper.storeKitItemArray" encrypted:YES];
     }
 }
 
