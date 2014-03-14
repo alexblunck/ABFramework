@@ -48,4 +48,9 @@
     return 0;
 }
 
++(CGFloat) statusBarHeight
+{
+    return [[UIApplication sharedApplication] statusBarFrame].size.height;
+}
+
 @end

@@ -17,4 +17,6 @@
 
 +(CGFloat) keyboardHeight;
 
++(CGFloat) statusBarHeight;
+
 @end
