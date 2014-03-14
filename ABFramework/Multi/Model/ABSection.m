@@ -26,7 +26,7 @@
 #pragma mark - Accessors
 -(NSString*) description
 {
-    return [NSString stringWithFormat:@"ABSection: %@ (%i)", self.headerTitle, self.items.count];
+    return [NSString stringWithFormat:@"ABSection: %@ (%i)", self.headerTitle, (int)self.items.count];
 }
 
 @end

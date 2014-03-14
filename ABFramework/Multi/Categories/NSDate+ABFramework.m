@@ -418,7 +418,7 @@ static ABDateWeekNumberingSystem	_weekNumberingSystem	= 1;
         [dateUnitName appendFormat:@" %@", NSLocalizedStringFromTable(@"ago", @"ABFrameworkLocalizable", nil)];
     }
     
-    NSInteger units = abs(dateUnits);
+    NSInteger units = labs(dateUnits);
     NSNumber *unitsObject = [NSNumber numberWithInteger:units];
     return [ABPair pairWithObjectA:dateUnitName andObjectB:unitsObject];
 }

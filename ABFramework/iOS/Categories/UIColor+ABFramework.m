@@ -42,7 +42,7 @@
 -(UIColor*) colorInverted
 {
     CGColorRef oldCGColor = self.CGColor;
-    int numberOfComponents = CGColorGetNumberOfComponents(oldCGColor);
+    NSInteger numberOfComponents = CGColorGetNumberOfComponents(oldCGColor);
     
     if (numberOfComponents <= 1) {
         return [UIColor colorWithCGColor:oldCGColor];
@@ -65,7 +65,7 @@
 
 -(UIColor*) darkenColor:(CGFloat)value
 {
-    float h, s, b, a;
+    CGFloat h, s, b, a;
     if ([self getHue:&h saturation:&s brightness:&b alpha:&a])
     {
         return [UIColor colorWithHue:h saturation:s brightness:b * value alpha:a];
@@ -75,7 +75,7 @@
 
 -(UIColor*) lightenColor:(CGFloat)value
 {
-    float h, s, b, a;
+    CGFloat h, s, b, a;
     if ([self getHue:&h saturation:&s brightness:&b alpha:&a])
     {
         return [UIColor colorWithHue:h saturation:s brightness:MIN(b * value, 1.0) alpha:a];

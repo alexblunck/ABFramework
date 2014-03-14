@@ -55,7 +55,7 @@
     
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     
-    if (ABFRAMEWORK_LOGGING) NSLog(@"ABNotificationHelper: UNScheduled %i notifications", notifications.count);
+    if (ABFRAMEWORK_LOGGING) NSLog(@"ABNotificationHelper: UNScheduled %i notifications", (int)notifications.count);
 }
 
 +(void) logAllLocalNotifications

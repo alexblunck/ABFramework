@@ -16,7 +16,7 @@
 /**
  * Types
  */
-typedef enum {
+typedef NS_ENUM(NSInteger, ABStoreKitItemType) {
     ABStoreKitItemTypeNone,
     ABStoreKitItemTypeConsumable,
     ABStoreKitItemTypeNonConsumable,
@@ -24,20 +24,20 @@ typedef enum {
     ABStoreKitItemTypeNonRenewingSubscription,
     ABStoreKitItemTypeFreeSubscription,
     ABStoreKitItemTypeFake
-} ABStoreKitItemType;
+};
 
-typedef enum {
+typedef NS_ENUM(NSInteger, ABStoreKitTimeInterval) {
     ABStoreKitTimeIntervalNone,
     ABStoreKitTimeIntervalOneMonth,
     ABStoreKitTimeIntervalOneYear
-} ABStoreKitTimeInterval;
+};
 
-typedef enum {
+typedef NS_ENUM(NSInteger, ABStoreKitError) {
     ABStoreKitErrorNone,
     ABStoreKitErrorPurchaseNotAllowed,
     ABStoreKitErrorProductNotValidated,
     ABStoreKitErrorGeneral
-} ABStoreKitError;
+};
 
 typedef void (^ABStoreKitBlock) (NSString *productIdentifier, BOOL successful, ABStoreKitError error);
 typedef void (^ABStoreKitRestoreBlock) (NSArray *restoredItems, BOOL hasProducts, ABStoreKitError error);
