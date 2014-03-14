@@ -19,14 +19,38 @@
 {
     [super viewDidLoad];
 	
-    //Save
+    // Save
     [ABSaveSystem saveFloat:45.6f key:@"myKey"];
     
-    //Load
+    // Load
     ABLogFloat([ABSaveSystem floatForKey:@"myKey"]);
     
-    //Log all saved values to console
-    //[ABSaveSystem logSavedValues];
+    
+    // Save encrypted data
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@"Encrypted String"];
+    [ABSaveSystem saveData:data key:@"myKeyEnc" encrypted:YES];
+    
+    // Load encrypted data
+    NSString *encryptedString = [NSKeyedUnarchiver unarchiveObjectWithData:[ABSaveSystem dataForKey:@"myKeyEnc" encrypted:YES]];
+    ABLogNSString(encryptedString);
+    
+    
+    // Log all saved values to console
+    //[ABSaveSystem logSavedValues:YES];
+    
+    
+    // Truncate
+    ABButton *truncate = [ABButton buttonWithText:@"truncate" actionBlock:^{
+
+        [ABSaveSystem truncate];
+        
+    }];
+    truncate.frame = CGRectCenteredWithCGRect(truncate.frame, self.view.bounds);
+    [self.view addSubview:truncate];
 }
 
 @end
+
+
+
+
