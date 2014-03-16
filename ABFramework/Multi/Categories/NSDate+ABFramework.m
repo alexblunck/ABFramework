@@ -406,12 +406,6 @@ static ABDateWeekNumberingSystem	_weekNumberingSystem	= 1;
         [dateUnitName appendString:NSLocalizedStringFromTable(stringKey, @"ABFrameworkLocalizable", nil)];
     }
     
-    //Add 's' after dateUnitName if dateUnit is more than 1
-//    if (abs((int)dateUnits) > 1 || abs((int)dateUnits) == 0)
-//    {
-//        [dateUnitName appendString:@"s"];
-//    }
-    
     //Add 'ago' if date is before current date
     if (dateUnits < 0)
     {
