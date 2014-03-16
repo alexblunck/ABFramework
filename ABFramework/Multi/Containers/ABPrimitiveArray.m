@@ -8,18 +8,6 @@
 
 #import "ABPrimitiveArray.h"
 
-#pragma mark - Wrapper Objects
-#pragma mark - ABCGRect
-@interface ABCGRect : NSObject
-@property (nonatomic, assign) CGFloat x;
-@property (nonatomic, assign) CGFloat y;
-@property (nonatomic, assign) CGFloat width;
-@property (nonatomic, assign) CGFloat height;
-@end
-@implementation ABCGRect
--(NSString*) description { return NSStringFromCGRect(cgr(self.x, self.y, self.width, self.height)); }
-@end
-
 
 
 #pragma mark - ABPrimitiveArray
@@ -27,7 +15,11 @@
 @property (nonatomic, assign) ABPrimitiveArrayType type;
 @end
 
+
+
 @implementation ABPrimitiveArray
+
+
 
 #pragma mark - Common
 #pragma mark - Initializer
@@ -139,7 +131,7 @@
 #pragma mark - Enumerate
 -(void) enumerateRectsUsingBlock:(void (^) (CGRect rect, NSUInteger idx))block
 {
-    for (ABCGRect *object in self.objectArray)
+    for (id object in self.objectArray)
     {
         if (block)
         {
@@ -149,19 +141,23 @@
 }
 
 #pragma mark - Helper
--(ABCGRect*) objectFromRect:(CGRect)rect
+-(id) objectFromRect:(CGRect)rect
 {
-    ABCGRect *object = [ABCGRect new];
-    object.x = rect.origin.x;
-    object.y = rect.origin.y;
-    object.width = rect.size.width;
-    object.height = rect.size.height;
-    return object;
+    return @{
+             @"x": NSNumberFloat(rect.origin.x),
+             @"y": NSNumberFloat(rect.origin.y),
+             @"width": NSNumberFloat(rect.size.width),
+             @"height": NSNumberFloat(rect.size.height),
+             };
 }
 
--(CGRect) rectFromObject:(ABCGRect*)object
+-(CGRect) rectFromObject:(id)object
 {
-    return cgr(object.x, object.y, object.width, object.height);
+    CGFloat x = [[object safeObjectForKey:@"x"] floatValue];
+    CGFloat y = [[object safeObjectForKey:@"y"] floatValue];
+    CGFloat width = [[object safeObjectForKey:@"width"] floatValue];
+    CGFloat height = [[object safeObjectForKey:@"height"] floatValue];
+    return cgr(x, y, width, height);
 }
 
 
