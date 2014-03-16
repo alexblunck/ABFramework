@@ -14,9 +14,6 @@ NSNumber* NSNumberDouble(double aDouble);
 NSNumber* NSNumberFloat(CGFloat aFloat);
 NSNumber* NSNumberBOOL(BOOL aBoolean);
 
-//NSIndexPath Fast Creation
-NSIndexPath* NSIndexPathMake(NSInteger section, NSInteger row);
-
 //Localizable Strings
 NSString* nsls(NSString *key);
 //Captalized Localizable String

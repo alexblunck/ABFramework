@@ -29,14 +29,6 @@ NSNumber* NSNumberBOOL(BOOL aBoolean)
     return [NSNumber numberWithBool:aBoolean];
 }
 
-
-
-#pragma mark - NSIndexPath Fast Creation
-NSIndexPath* NSIndexPathMake(NSInteger section, NSInteger row)
-{
-    return [NSIndexPath indexPathForRow:row inSection:section];
-}
-
     
     
 #pragma mark - Localizable Strings
