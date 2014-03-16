@@ -108,6 +108,18 @@
          <Group
             location = "group:Containers"
             name = "Containers">
+            <FileRef
+               location = "group:ABPair.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABPair.m">
+            </FileRef>
+            <FileRef
+               location = "group:ABPrimitiveArray.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABPrimitiveArray.m">
+            </FileRef>
          </Group>
          <Group
             location = "group:Model"
@@ -588,22 +600,6 @@
             </Group>
          </Group>
          <Group
-            location = "group:Containers"
-            name = "Containers">
-            <FileRef
-               location = "group:ABPair.h">
-            </FileRef>
-            <FileRef
-               location = "group:ABPair.m">
-            </FileRef>
-            <FileRef
-               location = "group:ABPrimitiveArray.h">
-            </FileRef>
-            <FileRef
-               location = "group:ABPrimitiveArray.m">
-            </FileRef>
-         </Group>
-         <Group
             location = "group:Model"
             name = "Model">
          </Group>
@@ -617,6 +613,12 @@
          <Group
             location = "group:Utilities"
             name = "Utilities">
+            <FileRef
+               location = "group:ABCommonIOS.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABCommonIOS.m">
+            </FileRef>
             <FileRef
                location = "group:ABReachability.h">
             </FileRef>
