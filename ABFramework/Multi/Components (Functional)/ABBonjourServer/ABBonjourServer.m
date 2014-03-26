@@ -267,7 +267,7 @@ typedef enum {
         {
             dic = [NSKeyedUnarchiver unarchiveObjectWithData:data];
             
-            //Cehck for internal message
+            //Check for internal message
             if ([self processInternalMessage:dic])
             {
                 //

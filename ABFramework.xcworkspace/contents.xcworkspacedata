@@ -270,6 +270,18 @@
             <FileRef
                location = "group:UIViewController+ABFramework.m">
             </FileRef>
+            <FileRef
+               location = "group:NSAttributedString+ABFramework.h">
+            </FileRef>
+            <FileRef
+               location = "group:NSAttributedString+ABFramework.m">
+            </FileRef>
+            <FileRef
+               location = "group:NSMutableAttributedString+ABFramework.h">
+            </FileRef>
+            <FileRef
+               location = "group:NSMutableAttributedString+ABFramework.m">
+            </FileRef>
          </Group>
          <Group
             location = "group:Components (Functional)"
