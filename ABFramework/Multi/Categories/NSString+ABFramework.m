@@ -110,6 +110,11 @@
     return [[NSAttributedString alloc] initWithString:self];
 }
 
+-(NSAttributedString*) attributedStringWithFont:(UIFont*)font
+{
+    return [self attributedStringWithAttributes:@{NSFontAttributeName: font}];
+}
+
 -(NSAttributedString*) attributedStringWithAttributes:(NSDictionary*)attributes
 {
     return [[NSAttributedString alloc] initWithString:self attributes:attributes];

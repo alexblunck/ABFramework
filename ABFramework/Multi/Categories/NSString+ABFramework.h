@@ -33,6 +33,7 @@
 -(NSURL*) url;
 -(NSURLRequest*) urlRequest;
 -(NSAttributedString*) attributedString;
+-(NSAttributedString*) attributedStringWithFont:(UIFont*)font;
 -(NSAttributedString*) attributedStringWithAttributes:(NSDictionary*)attributes;
 
 @end
