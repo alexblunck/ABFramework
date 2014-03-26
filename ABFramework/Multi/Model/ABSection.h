@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) NSMutableArray *items;
 @property (nonatomic, copy) NSString *headerTitle;
+@property (nonatomic, copy) NSString *footerTitle;
 @property (nonatomic, assign) NSInteger priority;
 
 @end
