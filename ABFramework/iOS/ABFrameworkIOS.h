@@ -47,6 +47,8 @@
 #import "UIScreen+ABFramework.h"
 #import "UIButton+ABFramework.h"
 #import "UIApplication+ABFramework.h"
+#import "NSAttributedString+ABFramework.h"
+#import "NSMutableAttributedString+ABFramework.h"
 
 
 /**
