@@ -57,7 +57,7 @@
 #pragma mark - ABInfiniteViewDelegate
 -(void) abInfiniteView:(ABInfiniteView *)infiniteView didSelectViewAtIndex:(NSUInteger)index
 {
-    ABLogInteger(index);
+    ABLogInteger((int)index);
 }
 
 @end

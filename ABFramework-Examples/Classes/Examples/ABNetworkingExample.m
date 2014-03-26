@@ -26,7 +26,7 @@
         
         if (error == ABNetworkingErrorNone)
         {
-            ABLogInteger(statusCode);
+            ABLogInteger((int)statusCode);
             ABLogNSString(header);
             ABLogNSString(response);
         }
