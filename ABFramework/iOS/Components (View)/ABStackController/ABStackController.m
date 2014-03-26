@@ -198,6 +198,9 @@
         UIView *paddingBackgroundView = [[UIView alloc] initWithFrame:cgr(0, _nextOriginY, self.width, padding)];
         paddingBackgroundView.backgroundColor = backgroundColor;
         
+        //Add to viewArray
+        [_viewArray addObject:paddingBackgroundView];
+        
         if (_isFixedHeight)
         {
             [_scrollView addSubview:paddingBackgroundView];
@@ -223,6 +226,15 @@
     }
 }
 
+
+#pragma mark - TO DO
+#pragma mark - Remove View
+-(void) removeViewAtIndex:(NSUInteger)idx
+{
+    UIView *view = [self.stackViews safeObjectAtIndex:idx];
+    [view removeFromSuperview];
+}
+#pragma mark - TO DO
 
 
 #pragma mark - Seperators
