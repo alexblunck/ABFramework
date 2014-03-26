@@ -51,6 +51,27 @@
 
 
 
+#pragma mark - Collections
+-(BOOL) isFirstObject:(NSArray*)collection
+{
+    if ([collection isKindOfClass:[NSArray class]])
+    {
+        return ([collection indexOfObject:self] == 0);
+    }
+    return NO;
+}
+
+-(BOOL) isLastObject:(NSArray*)collection
+{
+    if ([collection isKindOfClass:[NSArray class]])
+    {
+        return ([collection indexOfObject:self] == collection.count - 1);
+    }
+    return NO;
+}
+
+
+
 #pragma mark - Accessors
 -(NSDictionary*) abUserData
 {
