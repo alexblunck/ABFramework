@@ -34,23 +34,44 @@ typedef enum {
 
 @implementation ABView
 
+
+
+#pragma mark - Defaults
+-(void) setDefaults
+{
+    _state = ABViewStateInit;
+    _touchState = ABTouchStateNone;
+    
+    //Config
+    self.selectRecursively = NO;
+    self.userInteractionEnabled = YES;
+    self.permitTouchWhileSelected = YES;
+    self.animateBackground = NO;
+    self.animationDuration = 0.2f;
+    self.dimBackgroundImageOnSelect = NO;
+    self.touchMoveToleration = 30.0f;
+}
+
+
+
 #pragma mark - Initializer
+// Support for loading subclass from .xib
+-(id) initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self)
+    {
+        [self setDefaults];
+    }
+    return self;
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self)
     {
-        _state = ABViewStateInit;
-        _touchState = ABTouchStateNone;
-        
-        //Config
-        self.selectRecursively = NO;
-        self.userInteractionEnabled = YES;
-        self.permitTouchWhileSelected = YES;
-        self.animateBackground = NO;
-        self.animationDuration = 0.2f;
-        self.dimBackgroundImageOnSelect = NO;
-        self.touchMoveToleration = 30.0f;
+        [self setDefaults];
     }
     return self;
 }
