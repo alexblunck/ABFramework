@@ -14,8 +14,8 @@
 -(NSString*) jsonString;
 
 //Safe Access
--(id) safeObjectAtIndex:(NSUInteger)index;
--(id) safeObjectAtIndex:(NSUInteger)index verbose:(BOOL)verbose; //Be careful with this one
+-(id) safeObjectAtIndex:(NSInteger)index;
+-(id) safeObjectAtIndex:(NSInteger)index verbose:(BOOL)verbose; //Be careful with this one
 
 //Add
 -(NSArray*) arrayByAddingObject:(id)object;

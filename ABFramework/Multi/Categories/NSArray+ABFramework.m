@@ -20,14 +20,14 @@
 
 
 #pragma mark - Safe Access
--(id) safeObjectAtIndex:(NSUInteger)index
+-(id) safeObjectAtIndex:(NSInteger)index
 {
     return [self safeObjectAtIndex:index verbose:YES];
 }
 
--(id) safeObjectAtIndex:(NSUInteger)index verbose:(BOOL)verbose
+-(id) safeObjectAtIndex:(NSInteger)index verbose:(BOOL)verbose
 {
-    if (self.count >= index+1)
+    if (index >= 0 && self.count >= index + 1)
     {
         return [self objectAtIndex:index];
     }
