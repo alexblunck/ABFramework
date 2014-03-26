@@ -64,6 +64,30 @@
 
 -(void) adjustHeightToFitAttributedTextWithMaxHeight:(CGFloat)maxHeight
 {
+    // All attributes need to define a NSFontAttributeName key, or else calculating bounds won't work
+    NSMutableArray *array = [NSMutableArray new];
+    
+    // Find attributes that are missing the NSFontAttributeName key
+    [self.attributedText enumerateAttributesInRange:NSMakeRange(0, self.attributedText.length) options:kNilOptions usingBlock:^(NSDictionary *attrs, NSRange range, BOOL *stop) {
+        
+        if ([attrs safeObjectForKey:NSFontAttributeName] == nil)
+        {
+            [array addObject:[NSValue valueWithRange:range]];
+        }
+
+    }];
+    
+    NSMutableAttributedString *mutableString = [[NSMutableAttributedString alloc] initWithAttributedString:self.attributedText];
+    
+    // Append NSFontAttributeName to ranges missing it
+    for (NSValue *value in array)
+    {
+        [mutableString addAttribute:NSFontAttributeName value:self.font range:[value rangeValue]];
+    }
+    
+    self.attributedText = [[NSAttributedString alloc] initWithAttributedString:mutableString];
+    
+    // Calculate height
     CGSize maxSize = cgs(self.width, maxHeight);
     CGRect rect = [self.attributedText boundingRectWithSize:maxSize
                                                     options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
@@ -73,3 +97,14 @@
 }
 
 @end
+
+
+
+
+
+
+
+
+
+
+
