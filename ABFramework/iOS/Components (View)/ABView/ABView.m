@@ -156,9 +156,12 @@ typedef enum {
 
 -(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    BOOL inside = NO;
+    
     //Only visually end touch / inform delegate if valid touch began the selection
     if (_touchState == ABTouchStateTouchesBegan)
     {
+        inside = YES;
         self.selected = NO;
         _touchState = ABTouchStateTouchesEnded;
         
@@ -203,6 +206,11 @@ typedef enum {
     {
         [self.delegate abViewDidEndTouch:self];
     }
+    
+    if ([self.delegate respondsToSelector:@selector(abViewDidEndTouch:inside:cancelled:)])
+    {
+        [self.delegate abViewDidEndTouch:self inside:inside cancelled:NO];
+    }
 }
 
 -(void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
@@ -216,6 +224,11 @@ typedef enum {
     if ([self.delegate respondsToSelector:@selector(abViewDidEndTouch:)])
     {
         [self.delegate abViewDidEndTouch:self];
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(abViewDidEndTouch:inside:cancelled:)])
+    {
+        [self.delegate abViewDidEndTouch:self inside:NO cancelled:YES];
     }
 }
 

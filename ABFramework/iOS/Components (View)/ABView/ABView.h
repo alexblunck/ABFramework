@@ -20,6 +20,7 @@ typedef void (^ABViewDoubleTouchHandler) (ABView *);
 -(void) abViewDidDoubleTouchUpInside:(ABView*)view;
 -(void) abViewDidStartTouch:(ABView*)view;
 -(void) abViewDidEndTouch:(ABView*)view;
+-(void) abViewDidEndTouch:(ABView*)view inside:(BOOL)inside cancelled:(BOOL)cancelled;
 @end
 
 //ABView
