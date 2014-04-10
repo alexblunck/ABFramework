@@ -38,7 +38,6 @@
 		D21695011704FBD7009000FC /* NewsstandKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21695001704FBD7009000FC /* NewsstandKit.framework */; };
 		D226740C18D7450300AA521C /* NSMutableAttributedString+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D226740B18D7450300AA521C /* NSMutableAttributedString+ABFramework.m */; };
 		D22F88EA17A159590072CF72 /* ABSection.m in Sources */ = {isa = PBXBuildFile; fileRef = D22F88E917A159590072CF72 /* ABSection.m */; };
-		D233D723177A53C200CE4E0E /* UINavigationController+ComingUp.m in Sources */ = {isa = PBXBuildFile; fileRef = D233D722177A53C200CE4E0E /* UINavigationController+ComingUp.m */; };
 		D233D727177A56E500CE4E0E /* ABView.m in Sources */ = {isa = PBXBuildFile; fileRef = D233D726177A56E500CE4E0E /* ABView.m */; };
 		D23F75A1177C718400365A24 /* UISearchBar+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D23F75A0177C718400365A24 /* UISearchBar+ABFramework.m */; };
 		D24A0D6716EE2E660093AE2A /* ABHudExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D24A0D6616EE2E660093AE2A /* ABHudExample.m */; };
@@ -68,7 +67,9 @@
 		D2A102CF173E4B2F00E95692 /* NSMutableDictionary+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A102C7173E4B2F00E95692 /* NSMutableDictionary+ABFramework.m */; };
 		D2A102D0173E4B2F00E95692 /* NSObject+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A102C9173E4B2F00E95692 /* NSObject+ABFramework.m */; };
 		D2A102D1173E4B2F00E95692 /* NSString+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A102CB173E4B2F00E95692 /* NSString+ABFramework.m */; };
-		D2A22B3E17CB4D65004720A2 /* UIFont+ABFramework_FontNames.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A22B3D17CB4D65004720A2 /* UIFont+ABFramework_FontNames.m */; };
+		D2AB472A18E333D60014626C /* UIView+Frame_ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AB472918E333D60014626C /* UIView+Frame_ABFramework.m */; };
+		D2AB472F18E335770014626C /* UIFont+Names_ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AB472C18E335770014626C /* UIFont+Names_ABFramework.m */; };
+		D2AB473018E335770014626C /* UINavigationController+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AB472E18E335770014626C /* UINavigationController+ABFramework.m */; };
 		D2ADFF15171ED856002D723B /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2ADFF14171ED856002D723B /* Social.framework */; };
 		D2ADFF17171ED85A002D723B /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2ADFF16171ED85A002D723B /* Twitter.framework */; };
 		D2B27E00177D8BDA007485A4 /* UIBarButtonItem+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B27DFF177D8BDA007485A4 /* UIBarButtonItem+ABFramework.m */; };
@@ -169,8 +170,6 @@
 		D226740B18D7450300AA521C /* NSMutableAttributedString+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+ABFramework.m"; sourceTree = "<group>"; };
 		D22F88E817A159590072CF72 /* ABSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSection.h; sourceTree = "<group>"; };
 		D22F88E917A159590072CF72 /* ABSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSection.m; sourceTree = "<group>"; };
-		D233D721177A53C200CE4E0E /* UINavigationController+ComingUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+ComingUp.h"; sourceTree = "<group>"; };
-		D233D722177A53C200CE4E0E /* UINavigationController+ComingUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+ComingUp.m"; sourceTree = "<group>"; };
 		D233D725177A56E500CE4E0E /* ABView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABView.h; sourceTree = "<group>"; };
 		D233D726177A56E500CE4E0E /* ABView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABView.m; sourceTree = "<group>"; };
 		D23F759F177C718400365A24 /* UISearchBar+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISearchBar+ABFramework.h"; sourceTree = "<group>"; };
@@ -229,8 +228,12 @@
 		D2A102C9173E4B2F00E95692 /* NSObject+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ABFramework.m"; sourceTree = "<group>"; };
 		D2A102CA173E4B2F00E95692 /* NSString+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ABFramework.h"; sourceTree = "<group>"; };
 		D2A102CB173E4B2F00E95692 /* NSString+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ABFramework.m"; sourceTree = "<group>"; };
-		D2A22B3C17CB4D65004720A2 /* UIFont+ABFramework_FontNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+ABFramework_FontNames.h"; sourceTree = "<group>"; };
-		D2A22B3D17CB4D65004720A2 /* UIFont+ABFramework_FontNames.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+ABFramework_FontNames.m"; sourceTree = "<group>"; };
+		D2AB472818E333D60014626C /* UIView+Frame_ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame_ABFramework.h"; sourceTree = "<group>"; };
+		D2AB472918E333D60014626C /* UIView+Frame_ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame_ABFramework.m"; sourceTree = "<group>"; };
+		D2AB472B18E335770014626C /* UIFont+Names_ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Names_ABFramework.h"; sourceTree = "<group>"; };
+		D2AB472C18E335770014626C /* UIFont+Names_ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Names_ABFramework.m"; sourceTree = "<group>"; };
+		D2AB472D18E335770014626C /* UINavigationController+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+ABFramework.h"; sourceTree = "<group>"; };
+		D2AB472E18E335770014626C /* UINavigationController+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+ABFramework.m"; sourceTree = "<group>"; };
 		D2ADFF14171ED856002D723B /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		D2ADFF16171ED85A002D723B /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		D2B27DFE177D8BDA007485A4 /* UIBarButtonItem+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ABFramework.h"; sourceTree = "<group>"; };
@@ -617,6 +620,12 @@
 		D2C6DDC0173D739800C157E3 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				D2AB472B18E335770014626C /* UIFont+Names_ABFramework.h */,
+				D2AB472C18E335770014626C /* UIFont+Names_ABFramework.m */,
+				D2AB472D18E335770014626C /* UINavigationController+ABFramework.h */,
+				D2AB472E18E335770014626C /* UINavigationController+ABFramework.m */,
+				D2AB472818E333D60014626C /* UIView+Frame_ABFramework.h */,
+				D2AB472918E333D60014626C /* UIView+Frame_ABFramework.m */,
 				D226740A18D7450300AA521C /* NSMutableAttributedString+ABFramework.h */,
 				D226740B18D7450300AA521C /* NSMutableAttributedString+ABFramework.m */,
 				D268E25E18D74277008C4241 /* NSAttributedString+ABFramework.h */,
@@ -637,8 +646,6 @@
 				D2C6DDDA173D739800C157E3 /* UIViewController+ABFramework.m */,
 				D29B385A174CC54000ABE69A /* UIFont+ABFramework.h */,
 				D29B385B174CC54000ABE69A /* UIFont+ABFramework.m */,
-				D233D721177A53C200CE4E0E /* UINavigationController+ComingUp.h */,
-				D233D722177A53C200CE4E0E /* UINavigationController+ComingUp.m */,
 				D23F759F177C718400365A24 /* UISearchBar+ABFramework.h */,
 				D23F75A0177C718400365A24 /* UISearchBar+ABFramework.m */,
 				D2B27DFE177D8BDA007485A4 /* UIBarButtonItem+ABFramework.h */,
@@ -647,8 +654,6 @@
 				D2C2901C179E9F6E009EF2E2 /* UIScreen+ABFramework.m */,
 				D25BA74E17B68DCC00384BC8 /* UIButton+ABFramework.h */,
 				D25BA74F17B68DCC00384BC8 /* UIButton+ABFramework.m */,
-				D2A22B3C17CB4D65004720A2 /* UIFont+ABFramework_FontNames.h */,
-				D2A22B3D17CB4D65004720A2 /* UIFont+ABFramework_FontNames.m */,
 				D2F388C217DCA1F00046849F /* UIApplication+ABFramework.h */,
 				D2F388C317DCA1F00046849F /* UIApplication+ABFramework.m */,
 			);
@@ -1187,9 +1192,11 @@
 				D29DE19A17E0F3AD00B8F8C3 /* NSLocale+ABFramework.m in Sources */,
 				D226740C18D7450300AA521C /* NSMutableAttributedString+ABFramework.m in Sources */,
 				D2C6DE7F173D739800C157E3 /* ABStoreKitHelper.m in Sources */,
+				D2AB472A18E333D60014626C /* UIView+Frame_ABFramework.m in Sources */,
 				D2C6DE80173D739800C157E3 /* ABActivityView.m in Sources */,
 				D2ED7476176F18F3008C3BD9 /* NSMutableArray+ABFramework.m in Sources */,
 				D25BA75717B68FE800384BC8 /* ABExampleViewController.m in Sources */,
+				D2AB473018E335770014626C /* UINavigationController+ABFramework.m in Sources */,
 				D2C6DE81173D739800C157E3 /* ABAlertView.m in Sources */,
 				D2C6DE82173D739800C157E3 /* ABButton.m in Sources */,
 				D25BA75317B68F2000384BC8 /* ABWebControllerExample.m in Sources */,
@@ -1209,6 +1216,7 @@
 				D2C6DE90173D739800C157E3 /* ABSeperator.m in Sources */,
 				D2C6DE91173D739800C157E3 /* ABStackController.m in Sources */,
 				D20AF44718D5FC440099A3AF /* ABCommonIOS.m in Sources */,
+				D2AB472F18E335770014626C /* UIFont+Names_ABFramework.m in Sources */,
 				D20F8D5A18D5F5E7008DA40F /* ABPrimitiveArray.m in Sources */,
 				D2C6DE92173D739800C157E3 /* ABSwitch.m in Sources */,
 				D2C6DE93173D739800C157E3 /* ABTabBar.m in Sources */,
@@ -1221,7 +1229,6 @@
 				D2C6DE98173D739800C157E3 /* ABTextField.m in Sources */,
 				D2C6DEA2173D739800C157E3 /* ABReachability.m in Sources */,
 				D2C6DEA3173D739800C157E3 /* NSArray+ABFramework.m in Sources */,
-				D2A22B3E17CB4D65004720A2 /* UIFont+ABFramework_FontNames.m in Sources */,
 				D2C6DEA4173D739800C157E3 /* NSData+ABFramework.m in Sources */,
 				D2C6DEA5173D739800C157E3 /* ABBonjourServer.m in Sources */,
 				D2C6DEA6173D739800C157E3 /* ABSaveSystem.m in Sources */,
@@ -1229,7 +1236,6 @@
 				D2F388C417DCA1F00046849F /* UIApplication+ABFramework.m in Sources */,
 				D2A102CD173E4B2F00E95692 /* NSDateComponents+ABFramework.m in Sources */,
 				D2A102CE173E4B2F00E95692 /* NSDictionary+ABFramework.m in Sources */,
-				D233D723177A53C200CE4E0E /* UINavigationController+ComingUp.m in Sources */,
 				D2A102CF173E4B2F00E95692 /* NSMutableDictionary+ABFramework.m in Sources */,
 				D2A102D0173E4B2F00E95692 /* NSObject+ABFramework.m in Sources */,
 				D2A102D1173E4B2F00E95692 /* NSString+ABFramework.m in Sources */,
