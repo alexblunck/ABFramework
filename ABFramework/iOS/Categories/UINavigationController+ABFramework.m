@@ -1,14 +1,14 @@
 //
-//  UINavigationController+ComingUp.m
+//  UINavigationController+ABFramework.m
 //  ABFramework
 //
 //  Created by Alexander Blunck on 6/26/13.
 //  Copyright (c) 2013 Ablfx. All rights reserved.
 //
 
-#import "UINavigationController+ComingUp.h"
+#import "UINavigationController+ABFramework.h"
 
-@implementation UINavigationController (ComingUp)
+@implementation UINavigationController (ABFramework)
 
 //
 //Delegate orientation to top view controller (visible view controller)

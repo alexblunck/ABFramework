@@ -1,5 +1,5 @@
 //
-//  UINavigationController+ComingUp.h
+//  UINavigationController+ABFramework.h
 //  ABFramework
 //
 //  Created by Alexander Blunck on 6/26/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UINavigationController (ComingUp)
+@interface UINavigationController (ABFramework)
 
 @end
