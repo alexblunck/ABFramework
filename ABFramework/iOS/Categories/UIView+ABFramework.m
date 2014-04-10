@@ -11,39 +11,6 @@
 
 @implementation UIView (ABFramework)
 
-#pragma mark - Frame
--(CGFloat) right
-{
-    return self.frame.origin.x + self.frame.size.width;
-}
-
--(CGFloat) left
-{
-    return self.frame.origin.x;
-}
-
--(CGFloat) top
-{
-    return self.frame.origin.y;
-}
-
--(CGFloat) bottom
-{
-    return self.frame.origin.y + self.frame.size.height;
-}
-
--(CGFloat) width
-{
-    return self.frame.size.width;
-}
-
--(CGFloat) height
-{
-    return self.frame.size.height;
-}
-
-
-
 #pragma mark - Visibility
 -(void) toggleVisibility
 {
@@ -93,7 +60,6 @@
 +(UIView*) topView
 {
     return [[UIViewController topViewController] view];
-    //return [[[UIApplication sharedApplication] windows] lastObject];
 }
 
 -(UIImage*) renderCGRect:(CGRect)frame
