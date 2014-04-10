@@ -1,14 +1,14 @@
 //
-//  UIFont+ABFramework_FontNames.m
+//  UIFont+Names_ABFramework.m
 //  ABFramework
 //
 //  Created by Alexander Blunck on 8/26/13.
 //  Copyright (c) 2013 Ablfx. All rights reserved.
 //
 
-#import "UIFont+ABFramework_FontNames.h"
+#import "UIFont+Names_ABFramework.h"
 
-@implementation UIFont (ABFramework_FontNames)
+@implementation UIFont (Names_ABFramework)
 
 #pragma mark - Thonburi
 +(UIFont*) ThonburiBold:(CGFloat)size { return [self fontWithName:@"Thonburi-Bold" size:size]; }

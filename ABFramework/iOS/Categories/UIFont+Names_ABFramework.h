@@ -1,5 +1,5 @@
 //
-//  UIFont+ABFramework_FontNames.h
+//  UIFont+Names_ABFramework.h
 //  ABFramework
 //
 //  Created by Alexander Blunck on 8/26/13.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIFont (ABFramework_FontNames)
+@interface UIFont (Names_ABFramework)
 
 //Thonburi
 +(UIFont*) ThonburiBold:(CGFloat)size;
