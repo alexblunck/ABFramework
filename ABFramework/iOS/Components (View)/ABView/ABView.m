@@ -269,7 +269,7 @@ typedef enum {
             self.backgroundColor = self.selectedBackgroundColor;
         }
     }
-    else
+    else if (self.selectedBackgroundColor)
     {
         if (self.animateBackground)
         {
