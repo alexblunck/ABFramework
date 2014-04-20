@@ -76,6 +76,12 @@
             <FileRef
                location = "group:NSArray+ABFramework.m">
             </FileRef>
+            <FileRef
+               location = "group:NSNetService+ABFramework.h">
+            </FileRef>
+            <FileRef
+               location = "group:NSNetService+ABFramework.m">
+            </FileRef>
          </Group>
          <Group
             location = "group:Components (Functional)"
@@ -626,6 +632,9 @@
             name = "Protocols">
             <FileRef
                location = "group:ABViewSelectionProtocol.h">
+            </FileRef>
+            <FileRef
+               location = "group:ABOrientationProtocol.h">
             </FileRef>
          </Group>
          <Group

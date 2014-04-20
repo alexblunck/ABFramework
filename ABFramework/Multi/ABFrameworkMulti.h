@@ -48,6 +48,7 @@
 #import "NSObject+ABFramework.h"
 #import "NSMutableArray+ABFramework.h"
 #import "NSLocale+ABFramework.h"
+#import "NSNetService+ABFramework.h"
 
 
 /**

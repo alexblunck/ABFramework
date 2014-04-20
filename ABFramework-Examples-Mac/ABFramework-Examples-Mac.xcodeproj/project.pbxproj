@@ -18,6 +18,7 @@
 		D22F88EE17A159710072CF72 /* ABSection.m in Sources */ = {isa = PBXBuildFile; fileRef = D22F88ED17A159710072CF72 /* ABSection.m */; };
 		D2762B471743965D002444EA /* ABCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D2762B421743965D002444EA /* ABCommon.m */; };
 		D2762B481743965D002444EA /* ABMath.m in Sources */ = {isa = PBXBuildFile; fileRef = D2762B451743965D002444EA /* ABMath.m */; };
+		D27E15471902DDDB0018A83F /* NSNetService+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D27E15461902DDDB0018A83F /* NSNetService+ABFramework.m */; };
 		D28A23BF1748387700EE1B7B /* NSApplication+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A23BE1748387700EE1B7B /* NSApplication+ABFramework.m */; };
 		D28D1FF217E1085100137CA7 /* ABFramework.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D28D1FEE17E1085100137CA7 /* ABFramework.bundle */; };
 		D28D1FF317E1085100137CA7 /* ABFrameworkLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D28D1FEF17E1085100137CA7 /* ABFrameworkLocalizable.strings */; };
@@ -63,6 +64,8 @@
 		D2762B441743965D002444EA /* ABMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABMath.h; sourceTree = "<group>"; };
 		D2762B451743965D002444EA /* ABMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABMath.m; sourceTree = "<group>"; };
 		D2762B461743965D002444EA /* ABTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTypes.h; sourceTree = "<group>"; };
+		D27E15451902DDDB0018A83F /* NSNetService+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNetService+ABFramework.h"; sourceTree = "<group>"; };
+		D27E15461902DDDB0018A83F /* NSNetService+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNetService+ABFramework.m"; sourceTree = "<group>"; };
 		D28A23BD1748387700EE1B7B /* NSApplication+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSApplication+ABFramework.h"; sourceTree = "<group>"; };
 		D28A23BE1748387700EE1B7B /* NSApplication+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSApplication+ABFramework.m"; sourceTree = "<group>"; };
 		D28D1FEE17E1085100137CA7 /* ABFramework.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ABFramework.bundle; sourceTree = "<group>"; };
@@ -231,6 +234,8 @@
 		D2C6DF3D173D73B700C157E3 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				D27E15451902DDDB0018A83F /* NSNetService+ABFramework.h */,
+				D27E15461902DDDB0018A83F /* NSNetService+ABFramework.m */,
 				D29DE19B17E0F3C400B8F8C3 /* NSLocale+ABFramework.h */,
 				D29DE19C17E0F3C400B8F8C3 /* NSLocale+ABFramework.m */,
 				D2ED7477176F1903008C3BD9 /* NSMutableArray+ABFramework.h */,
@@ -490,6 +495,7 @@
 				D2762B471743965D002444EA /* ABCommon.m in Sources */,
 				D2762B481743965D002444EA /* ABMath.m in Sources */,
 				D28A23BF1748387700EE1B7B /* NSApplication+ABFramework.m in Sources */,
+				D27E15471902DDDB0018A83F /* NSNetService+ABFramework.m in Sources */,
 				D2F5C0BE174B8701002D4D0F /* ABFrame.m in Sources */,
 				D20F8D5F18D5F5F7008DA40F /* ABPair.m in Sources */,
 				D2ED7479176F1903008C3BD9 /* NSMutableArray+ABFramework.m in Sources */,
