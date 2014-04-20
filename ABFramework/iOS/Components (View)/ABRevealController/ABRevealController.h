@@ -8,12 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol ABOrientationDelegate <NSObject>
 @optional
--(BOOL) abShouldAutorotate;
--(NSUInteger) abSupportedInterfaceOrientations;
--(void) abWillRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration;
--(BOOL) abShouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation;
 @end
 
 @interface ABRevealController : UIViewController
@@ -109,7 +104,7 @@
 
 
 //Delegates
-@property (nonatomic, weak) id <ABOrientationDelegate> orientationDelegate;
+@property (nonatomic, weak) id <ABOrientationProtocol> orientationDelegate;
 
 @end
 
