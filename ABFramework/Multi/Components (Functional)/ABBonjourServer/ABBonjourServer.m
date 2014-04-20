@@ -6,10 +6,11 @@
 //  Copyright (c) 2013 Ablfx. All rights reserved.
 //
 
-#import "ABBonjourServer.h"
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+
+#import "ABBonjourServer.h"
 
 #define NETSERVICE_DOMAIN @"local."
 
@@ -177,7 +178,7 @@ typedef enum {
         //Execute block
         if (block)
         {
-            block(YES);
+            block(_connectedNetService, YES);
         }
         
         //Inform server of this client
@@ -189,7 +190,7 @@ typedef enum {
     {
         if (block)
         {
-            block(NO);
+            block(nil, NO);
         }
         
         NSLog(@"ABBonjourClient ERROR -> Failed to aquire valid streams!");

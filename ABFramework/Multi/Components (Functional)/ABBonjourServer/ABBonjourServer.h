@@ -13,7 +13,7 @@
 #endif
 
 typedef void (^ABBonjourServerSearchBlock) (NSArray *foundServices);
-typedef void (^ABBonjourServerConnectBlock) (BOOL success);
+typedef void (^ABBonjourServerConnectBlock) (NSNetService *service, BOOL success);
 
 /**
  * ABBonjourServerDelegate
