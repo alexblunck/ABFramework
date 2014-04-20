@@ -339,7 +339,6 @@ typedef enum {
     }
 }
 
-#pragma mark - Orientation - iOS 6 +
 -(BOOL) shouldAutorotate
 {
     if (self.orientationDelegate && [self.orientationDelegate respondsToSelector:@selector(abShouldAutorotate)])
@@ -356,16 +355,6 @@ typedef enum {
         return [self.orientationDelegate abSupportedInterfaceOrientations];
     }
     return (UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown);
-}
-
-#pragma mark - Orientation - iOS 5
--(BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-{
-    if (self.orientationDelegate && [self.orientationDelegate respondsToSelector:@selector(abShouldAutorotateToInterfaceOrientation:)])
-    {
-        return [self.orientationDelegate abShouldAutorotateToInterfaceOrientation:toInterfaceOrientation];
-    }
-    return UIInterfaceOrientationIsPortrait(toInterfaceOrientation);
 }
 
 
