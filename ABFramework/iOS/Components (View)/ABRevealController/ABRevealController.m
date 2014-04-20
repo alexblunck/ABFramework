@@ -62,10 +62,34 @@ typedef enum {
         [_frontViewController setRevealController:self];
         [_backgroundViewController setRevealController:self];
         
+        [_frontViewController.view addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
     }
     return self;
 }
 
+#pragma mark - KVO
+-(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if (object == _frontViewController.view)
+    {
+        //.frame
+        if ([keyPath isEqualToString:@"frame"])
+        {
+            // Inform delegate of progress
+            if ([self.delegate respondsToSelector:@selector(abRevealController:didMoveToPercent:jumpDistance:)])
+            {
+                CGRect oldFrame = [change[NSKeyValueChangeOldKey] CGRectValue];
+                CGRect newFrame = [change[NSKeyValueChangeNewKey] CGRectValue];
+                CGFloat jump = MAX(newFrame.origin.x, oldFrame.origin.x) - MIN(newFrame.origin.x, oldFrame.origin.x);
+                
+                NSInteger percent = ABMathPercent(_frontViewController.view.frame.origin.x, self.revealWidth);
+                percent = (percent > 100) ? 100 : percent;
+                [self.delegate abRevealController:self didMoveToPercent:percent jumpDistance:jump];
+            }
+
+        }
+    }
+}
 
 
 #pragma mark - LifeCycle

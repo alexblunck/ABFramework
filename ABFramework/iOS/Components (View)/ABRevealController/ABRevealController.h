@@ -8,8 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class ABRevealController;
+
+@protocol ABRevealControllerDelegate <NSObject>
 @optional
+-(void) abRevealController:(ABRevealController*)controller didMoveToPercent:(NSInteger)percent jumpDistance:(CGFloat)distance;
 @end
+
+
 
 @interface ABRevealController : UIViewController
 
@@ -104,6 +110,7 @@
 
 
 //Delegates
+@property (nonatomic, weak) id <ABRevealControllerDelegate> delegate;
 @property (nonatomic, weak) id <ABOrientationProtocol> orientationDelegate;
 
 @end
