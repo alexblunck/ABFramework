@@ -25,7 +25,7 @@
     
     [mutableString appendAttributedStrings:strings lineBreaks:lineBreaks];
     
-    return [[NSAttributedString alloc] initWithAttributedString:mutableString];
+    return [[self alloc] initWithAttributedString:mutableString];
 }
 
 
