@@ -382,7 +382,12 @@ typedef enum {
 -(ABRevealController*) revealController
 {
     id a = objc_getAssociatedObject(self, @"ABRevealController");
-    if (!a && self.parentViewController)  a = objc_getAssociatedObject(self.parentViewController, @"ABRevealController");
+    
+    if (!a && self.parentViewController.revealController)
+    {
+        a = self.parentViewController.revealController;
+    }
+    
     return a;
 }
 -(void) setRevealController:(ABRevealController *)revealController
