@@ -33,7 +33,9 @@
 -(NSURL*) url;
 -(NSURLRequest*) urlRequest;
 -(NSAttributedString*) attributedString;
+#ifdef ABFRAMEWORK_IOS
 -(NSAttributedString*) attributedStringWithFont:(UIFont*)font;
+#endif
 -(NSAttributedString*) attributedStringWithAttributes:(NSDictionary*)attributes;
 
 @end

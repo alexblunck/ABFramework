@@ -110,10 +110,12 @@
     return [[NSAttributedString alloc] initWithString:self];
 }
 
+#ifdef ABFRAMEWORK_IOS
 -(NSAttributedString*) attributedStringWithFont:(UIFont*)font
 {
     return [self attributedStringWithAttributes:@{NSFontAttributeName: font}];
 }
+#endif
 
 -(NSAttributedString*) attributedStringWithAttributes:(NSDictionary*)attributes
 {
