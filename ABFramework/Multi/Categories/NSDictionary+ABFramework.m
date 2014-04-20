@@ -23,6 +23,7 @@
 {
     //Construct requestBody String from Dic
     NSMutableString *requestBody = [NSMutableString new];
+    __block NSInteger ctr = 0;
     [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
      {
          //NSString -> url encode
@@ -31,7 +32,14 @@
              obj = [obj asciiEncodedString];
          }
          
-         [requestBody appendFormat:@"&%@=%@", key, obj];
+         [requestBody appendFormat:@"%@=%@", key, obj];
+         
+         if (ctr < self.count - 1)
+         {
+             [requestBody appendString:@"&"];
+         }
+         
+         ctr++;
      }];
     
     return requestBody;
