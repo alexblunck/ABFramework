@@ -92,3 +92,4 @@
     #import "ABWebViewController.h"
     #import "ABWebController.h"
     #import "ABFullWidthTextField.h"
+    #import "ABMarqueeView.h"

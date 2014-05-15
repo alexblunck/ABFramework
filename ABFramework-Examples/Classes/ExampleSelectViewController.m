@@ -24,6 +24,7 @@
 #import "ABRevealControllerExample.h"
 #import "ABEntypoExample.h"
 #import "ABWebControllerExample.h"
+#import "ABMarqueeViewExample.h"
 
 @interface ExampleSelectViewController () <UITableViewDataSource, UITableViewDelegate>
 {
@@ -60,24 +61,25 @@
 {
     //Components (Views)
     NSArray *componentsViewObjects = @[
-                                  [ExampleObject objectWithName:@"ABSwitch" viewControllerClass:[ABSwitchExample class]],
-                                  [ExampleObject objectWithName:@"ABLabel" viewControllerClass:[ABLabelExample class]],
-                                  [ExampleObject objectWithName:@"ABHud" viewControllerClass:[ABHudExample class]],
-                                  [ExampleObject objectWithName:@"ABInfiniteView" viewControllerClass:[ABInfiniteViewExample class]],
-                                  [ExampleObject objectWithName:@"ABQuadMenu" viewControllerClass:[ABQuadMenuExample class]],
-                                  [ExampleObject objectWithName:@"ABRevealController" viewControllerClass:[ABRevealControllerExample class]],
-                                  [ExampleObject objectWithName:@"ABEntypoView /-Button" viewControllerClass:[ABEntypoExample class]],
-                                  [ExampleObject objectWithName:@"ABWebController" viewControllerClass:[ABWebControllerExample class]]
-                                  ];
+                                       [ExampleObject objectWithName:@"ABMarqueeView" viewControllerClass:[ABMarqueeViewExample class]],
+                                       [ExampleObject objectWithName:@"ABSwitch" viewControllerClass:[ABSwitchExample class]],
+                                       [ExampleObject objectWithName:@"ABLabel" viewControllerClass:[ABLabelExample class]],
+                                       [ExampleObject objectWithName:@"ABHud" viewControllerClass:[ABHudExample class]],
+                                       [ExampleObject objectWithName:@"ABInfiniteView" viewControllerClass:[ABInfiniteViewExample class]],
+                                       [ExampleObject objectWithName:@"ABQuadMenu" viewControllerClass:[ABQuadMenuExample class]],
+                                       [ExampleObject objectWithName:@"ABRevealController" viewControllerClass:[ABRevealControllerExample class]],
+                                       [ExampleObject objectWithName:@"ABEntypoView /-Button" viewControllerClass:[ABEntypoExample class]],
+                                       [ExampleObject objectWithName:@"ABWebController" viewControllerClass:[ABWebControllerExample class]]
+                                       ];
     ExampleSection *componentsViewSection = [ExampleSection sectionWithName:@"Components (Views)" exampleObjectArray:componentsViewObjects];
     [_sectionArray addObject:componentsViewSection];
     
     
     //Components (Functional)
     NSArray *componentsFunctionalObjects = @[
-                                       [ExampleObject objectWithName:@"ABSaveSystem" viewControllerClass:[ABSaveSystemExample class]],
-                                       [ExampleObject objectWithName:@"ABNetworking" viewControllerClass:[ABNetworkingExample class]]
-                                       ];
+                                             [ExampleObject objectWithName:@"ABSaveSystem" viewControllerClass:[ABSaveSystemExample class]],
+                                             [ExampleObject objectWithName:@"ABNetworking" viewControllerClass:[ABNetworkingExample class]]
+                                             ];
     ExampleSection *componentsFunctionalSection = [ExampleSection sectionWithName:@"Components (Funtional)" exampleObjectArray:componentsFunctionalObjects];
     [_sectionArray addObject:componentsFunctionalSection];
     

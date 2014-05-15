@@ -38,16 +38,12 @@
 		D21695011704FBD7009000FC /* NewsstandKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21695001704FBD7009000FC /* NewsstandKit.framework */; };
 		D226740C18D7450300AA521C /* NSMutableAttributedString+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D226740B18D7450300AA521C /* NSMutableAttributedString+ABFramework.m */; };
 		D22F88EA17A159590072CF72 /* ABSection.m in Sources */ = {isa = PBXBuildFile; fileRef = D22F88E917A159590072CF72 /* ABSection.m */; };
-		D233D727177A56E500CE4E0E /* ABView.m in Sources */ = {isa = PBXBuildFile; fileRef = D233D726177A56E500CE4E0E /* ABView.m */; };
 		D23F75A1177C718400365A24 /* UISearchBar+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D23F75A0177C718400365A24 /* UISearchBar+ABFramework.m */; };
 		D24A0D6716EE2E660093AE2A /* ABHudExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D24A0D6616EE2E660093AE2A /* ABHudExample.m */; };
-		D24A32621742593D00EFFF53 /* ABQuadMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = D24A32611742593D00EFFF53 /* ABQuadMenu.m */; };
 		D24A32651742597C00EFFF53 /* ABQuadMenuExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D24A32641742597C00EFFF53 /* ABQuadMenuExample.m */; };
 		D255AD9E1723D61B00E71590 /* ABViewExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D255AD9D1723D61B00E71590 /* ABViewExample.m */; };
 		D255ADA7172430A000E71590 /* ABInfiniteViewExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D255ADA6172430A000E71590 /* ABInfiniteViewExample.m */; };
 		D259C2EF176FA9F0009315E6 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D259C2EE176FA9F0009315E6 /* Accelerate.framework */; };
-		D25BA74617B6853500384BC8 /* ABEntypoButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D25BA74317B6853500384BC8 /* ABEntypoButton.m */; };
-		D25BA74717B6853500384BC8 /* ABEntypoView.m in Sources */ = {isa = PBXBuildFile; fileRef = D25BA74517B6853500384BC8 /* ABEntypoView.m */; };
 		D25BA74A17B6860E00384BC8 /* ABEntypoExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D25BA74917B6860E00384BC8 /* ABEntypoExample.m */; };
 		D25BA75017B68DCC00384BC8 /* UIButton+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D25BA74F17B68DCC00384BC8 /* UIButton+ABFramework.m */; };
 		D25BA75317B68F2000384BC8 /* ABWebControllerExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D25BA75217B68F2000384BC8 /* ABWebControllerExample.m */; };
@@ -56,9 +52,39 @@
 		D2762B3F17439650002444EA /* ABCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D2762B3A17439650002444EA /* ABCommon.m */; };
 		D2762B4017439650002444EA /* ABMath.m in Sources */ = {isa = PBXBuildFile; fileRef = D2762B3D17439650002444EA /* ABMath.m */; };
 		D27E154A1902DDF20018A83F /* NSNetService+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D27E15491902DDF20018A83F /* NSNetService+ABFramework.m */; };
-		D2835DC71808016000BD007F /* ABFullWidthTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D2835DC61808016000BD007F /* ABFullWidthTextField.m */; };
 		D28D1FEB17E1083E00137CA7 /* ABFramework.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D28D1FE717E1083E00137CA7 /* ABFramework.bundle */; };
 		D28D1FEC17E1083E00137CA7 /* ABFrameworkLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D28D1FE817E1083E00137CA7 /* ABFrameworkLocalizable.strings */; };
+		D293D2CE19057F900002E346 /* ABActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D27B19057F900002E346 /* ABActivityView.m */; };
+		D293D2CF19057F900002E346 /* ABAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D27E19057F900002E346 /* ABAlertView.m */; };
+		D293D2D019057F900002E346 /* ABButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D28119057F900002E346 /* ABButton.m */; };
+		D293D2D119057F900002E346 /* ABEntypoButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D28419057F900002E346 /* ABEntypoButton.m */; };
+		D293D2D219057F900002E346 /* ABEntypoView.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D28619057F900002E346 /* ABEntypoView.m */; };
+		D293D2D319057F900002E346 /* ABFlexibleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D28919057F900002E346 /* ABFlexibleView.m */; };
+		D293D2D419057F900002E346 /* ABFullWidthTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D28C19057F900002E346 /* ABFullWidthTextField.m */; };
+		D293D2D519057F900002E346 /* ABSwipeGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D28F19057F900002E346 /* ABSwipeGestureRecognizer.m */; };
+		D293D2D619057F900002E346 /* ABTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D29119057F900002E346 /* ABTapGestureRecognizer.m */; };
+		D293D2D719057F900002E346 /* ABHud.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D29419057F900002E346 /* ABHud.m */; };
+		D293D2D819057F900002E346 /* ABImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D29719057F900002E346 /* ABImagePickerViewController.m */; };
+		D293D2D919057F900002E346 /* ABImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D29A19057F900002E346 /* ABImageView.m */; };
+		D293D2DA19057F900002E346 /* ABInfiniteView.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D29D19057F900002E346 /* ABInfiniteView.m */; };
+		D293D2DB19057F900002E346 /* ABLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D2A019057F900002E346 /* ABLabel.m */; };
+		D293D2DC19057F900002E346 /* ABMarqueeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D2A319057F900002E346 /* ABMarqueeView.m */; };
+		D293D2DD19057F900002E346 /* ABQuadMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D2A619057F900002E346 /* ABQuadMenu.m */; };
+		D293D2DE19057F900002E346 /* ABRevealController.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D2A919057F900002E346 /* ABRevealController.m */; };
+		D293D2DF19057F900002E346 /* ABSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D2AC19057F900002E346 /* ABSelectView.m */; };
+		D293D2E019057F900002E346 /* ABSeperator.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D2AF19057F900002E346 /* ABSeperator.m */; };
+		D293D2E119057F900002E346 /* ABStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D2B219057F900002E346 /* ABStackController.m */; };
+		D293D2E219057F900002E346 /* ABSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D2B519057F900002E346 /* ABSwitch.m */; };
+		D293D2E319057F900002E346 /* ABTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D2B819057F900002E346 /* ABTabBar.m */; };
+		D293D2E419057F900002E346 /* ABTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D2BA19057F900002E346 /* ABTabBarController.m */; };
+		D293D2E519057F900002E346 /* ABTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D2BC19057F900002E346 /* ABTabBarItem.m */; };
+		D293D2E619057F900002E346 /* ABTableStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D2BF19057F900002E346 /* ABTableStackController.m */; };
+		D293D2E719057F900002E346 /* ABTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D2C219057F900002E346 /* ABTableViewCell.m */; };
+		D293D2E819057F900002E346 /* ABTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D2C519057F900002E346 /* ABTextField.m */; };
+		D293D2E919057F900002E346 /* ABView.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D2C819057F900002E346 /* ABView.m */; };
+		D293D2EA19057F900002E346 /* ABWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D2CB19057F900002E346 /* ABWebController.m */; };
+		D293D2EB19057F900002E346 /* ABWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D2CD19057F900002E346 /* ABWebViewController.m */; };
+		D293D2EE19057FB80002E346 /* ABMarqueeViewExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D293D2ED19057FB80002E346 /* ABMarqueeViewExample.m */; };
 		D29B385C174CC54000ABE69A /* UIFont+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D29B385B174CC54000ABE69A /* UIFont+ABFramework.m */; };
 		D29B385E174CC7A600ABE69A /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29B385D174CC7A600ABE69A /* CoreText.framework */; };
 		D29DE19A17E0F3AD00B8F8C3 /* NSLocale+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D29DE19917E0F3AD00B8F8C3 /* NSLocale+ABFramework.m */; };
@@ -74,8 +100,6 @@
 		D2ADFF15171ED856002D723B /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2ADFF14171ED856002D723B /* Social.framework */; };
 		D2ADFF17171ED85A002D723B /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2ADFF16171ED85A002D723B /* Twitter.framework */; };
 		D2B27E00177D8BDA007485A4 /* UIBarButtonItem+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B27DFF177D8BDA007485A4 /* UIBarButtonItem+ABFramework.m */; };
-		D2B31B6B179EF32600896762 /* ABWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B31B6A179EF32600896762 /* ABWebController.m */; };
-		D2B31B6E179EF35600896762 /* ABWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B31B6D179EF35600896762 /* ABWebViewController.m */; };
 		D2B331B916EC9E5A00DED125 /* ABLabelExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B331B816EC9E5A00DED125 /* ABLabelExample.m */; };
 		D2C2901D179E9F6E009EF2E2 /* UIScreen+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C2901C179E9F6E009EF2E2 /* UIScreen+ABFramework.m */; };
 		D2C6DE74173D739800C157E3 /* UIColor+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DDCE173D739800C157E3 /* UIColor+ABFramework.m */; };
@@ -90,36 +114,14 @@
 		D2C6DE7D173D739800C157E3 /* ABNewsstandHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DDE4173D739800C157E3 /* ABNewsstandHelper.m */; };
 		D2C6DE7E173D739800C157E3 /* ABNotificationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DDE7173D739800C157E3 /* ABNotificationHelper.m */; };
 		D2C6DE7F173D739800C157E3 /* ABStoreKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DDEA173D739800C157E3 /* ABStoreKitHelper.m */; };
-		D2C6DE80173D739800C157E3 /* ABActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DDEE173D739800C157E3 /* ABActivityView.m */; };
-		D2C6DE81173D739800C157E3 /* ABAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DDF1173D739800C157E3 /* ABAlertView.m */; };
-		D2C6DE82173D739800C157E3 /* ABButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DDF4173D739800C157E3 /* ABButton.m */; };
-		D2C6DE85173D739800C157E3 /* ABFlexibleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DDFD173D739800C157E3 /* ABFlexibleView.m */; };
-		D2C6DE86173D739800C157E3 /* ABSwipeGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE00173D739800C157E3 /* ABSwipeGestureRecognizer.m */; };
-		D2C6DE87173D739800C157E3 /* ABTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE02173D739800C157E3 /* ABTapGestureRecognizer.m */; };
-		D2C6DE88173D739800C157E3 /* ABHud.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE05173D739800C157E3 /* ABHud.m */; };
-		D2C6DE89173D739800C157E3 /* ABImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE08173D739800C157E3 /* ABImagePickerViewController.m */; };
-		D2C6DE8A173D739800C157E3 /* ABImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE0B173D739800C157E3 /* ABImageView.m */; };
-		D2C6DE8B173D739800C157E3 /* ABInfiniteView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE0E173D739800C157E3 /* ABInfiniteView.m */; };
-		D2C6DE8C173D739800C157E3 /* ABLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE11173D739800C157E3 /* ABLabel.m */; };
-		D2C6DE8D173D739800C157E3 /* ABSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE14173D739800C157E3 /* ABSelectView.m */; };
-		D2C6DE90173D739800C157E3 /* ABSeperator.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE1B173D739800C157E3 /* ABSeperator.m */; };
-		D2C6DE91173D739800C157E3 /* ABStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE1E173D739800C157E3 /* ABStackController.m */; };
-		D2C6DE92173D739800C157E3 /* ABSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE21173D739800C157E3 /* ABSwitch.m */; };
-		D2C6DE93173D739800C157E3 /* ABTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE24173D739800C157E3 /* ABTabBar.m */; };
-		D2C6DE94173D739800C157E3 /* ABTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE26173D739800C157E3 /* ABTabBarController.m */; };
-		D2C6DE95173D739800C157E3 /* ABTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE28173D739800C157E3 /* ABTabBarItem.m */; };
-		D2C6DE97173D739800C157E3 /* ABTableStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE2D173D739800C157E3 /* ABTableStackController.m */; };
-		D2C6DE98173D739800C157E3 /* ABTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE30173D739800C157E3 /* ABTextField.m */; };
 		D2C6DEA2173D739800C157E3 /* ABReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE4B173D739800C157E3 /* ABReachability.m */; };
 		D2C6DEA3173D739800C157E3 /* NSArray+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE52173D739800C157E3 /* NSArray+ABFramework.m */; };
 		D2C6DEA4173D739800C157E3 /* NSData+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE54173D739800C157E3 /* NSData+ABFramework.m */; };
 		D2C6DEA5173D739800C157E3 /* ABBonjourServer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE58173D739800C157E3 /* ABBonjourServer.m */; };
 		D2C6DEA6173D739800C157E3 /* ABSaveSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DE5B173D739800C157E3 /* ABSaveSystem.m */; };
 		D2C6DEA7173D739800C157E3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D2C6DE6C173D739800C157E3 /* README.md */; };
-		D2E4E36E1768B8C9007C1F47 /* ABRevealController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E4E36D1768B8C9007C1F47 /* ABRevealController.m */; };
 		D2ED7476176F18F3008C3BD9 /* NSMutableArray+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2ED7475176F18F3008C3BD9 /* NSMutableArray+ABFramework.m */; };
 		D2ED747C176F37E4008C3BD9 /* ABRevealControllerExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D2ED747B176F37E4008C3BD9 /* ABRevealControllerExample.m */; };
-		D2F18493179409B400808750 /* ABTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F18492179409B400808750 /* ABTableViewCell.m */; };
 		D2F388C417DCA1F00046849F /* UIApplication+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F388C317DCA1F00046849F /* UIApplication+ABFramework.m */; };
 		D2F5C0C1174B8717002D4D0F /* ABFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5C0C0174B8717002D4D0F /* ABFrame.m */; };
 /* End PBXBuildFile section */
@@ -171,14 +173,10 @@
 		D226740B18D7450300AA521C /* NSMutableAttributedString+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+ABFramework.m"; sourceTree = "<group>"; };
 		D22F88E817A159590072CF72 /* ABSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSection.h; sourceTree = "<group>"; };
 		D22F88E917A159590072CF72 /* ABSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSection.m; sourceTree = "<group>"; };
-		D233D725177A56E500CE4E0E /* ABView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABView.h; sourceTree = "<group>"; };
-		D233D726177A56E500CE4E0E /* ABView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABView.m; sourceTree = "<group>"; };
 		D23F759F177C718400365A24 /* UISearchBar+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISearchBar+ABFramework.h"; sourceTree = "<group>"; };
 		D23F75A0177C718400365A24 /* UISearchBar+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISearchBar+ABFramework.m"; sourceTree = "<group>"; };
 		D24A0D6516EE2E660093AE2A /* ABHudExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABHudExample.h; sourceTree = "<group>"; };
 		D24A0D6616EE2E660093AE2A /* ABHudExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABHudExample.m; sourceTree = "<group>"; };
-		D24A32601742593D00EFFF53 /* ABQuadMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABQuadMenu.h; sourceTree = "<group>"; };
-		D24A32611742593D00EFFF53 /* ABQuadMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABQuadMenu.m; sourceTree = "<group>"; };
 		D24A32631742597C00EFFF53 /* ABQuadMenuExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABQuadMenuExample.h; sourceTree = "<group>"; };
 		D24A32641742597C00EFFF53 /* ABQuadMenuExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABQuadMenuExample.m; sourceTree = "<group>"; };
 		D255AD9C1723D61B00E71590 /* ABViewExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABViewExample.h; sourceTree = "<group>"; };
@@ -186,10 +184,6 @@
 		D255ADA5172430A000E71590 /* ABInfiniteViewExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABInfiniteViewExample.h; sourceTree = "<group>"; };
 		D255ADA6172430A000E71590 /* ABInfiniteViewExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABInfiniteViewExample.m; sourceTree = "<group>"; };
 		D259C2EE176FA9F0009315E6 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		D25BA74217B6853500384BC8 /* ABEntypoButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABEntypoButton.h; sourceTree = "<group>"; };
-		D25BA74317B6853500384BC8 /* ABEntypoButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABEntypoButton.m; sourceTree = "<group>"; };
-		D25BA74417B6853500384BC8 /* ABEntypoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABEntypoView.h; sourceTree = "<group>"; };
-		D25BA74517B6853500384BC8 /* ABEntypoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABEntypoView.m; sourceTree = "<group>"; };
 		D25BA74817B6860E00384BC8 /* ABEntypoExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABEntypoExample.h; sourceTree = "<group>"; };
 		D25BA74917B6860E00384BC8 /* ABEntypoExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABEntypoExample.m; sourceTree = "<group>"; };
 		D25BA74E17B68DCC00384BC8 /* UIButton+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ABFramework.h"; sourceTree = "<group>"; };
@@ -208,12 +202,72 @@
 		D2762B3E17439650002444EA /* ABTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTypes.h; sourceTree = "<group>"; };
 		D27E15481902DDF20018A83F /* NSNetService+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNetService+ABFramework.h"; sourceTree = "<group>"; };
 		D27E15491902DDF20018A83F /* NSNetService+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNetService+ABFramework.m"; sourceTree = "<group>"; };
-		D2835DC51808016000BD007F /* ABFullWidthTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFullWidthTextField.h; sourceTree = "<group>"; };
-		D2835DC61808016000BD007F /* ABFullWidthTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABFullWidthTextField.m; sourceTree = "<group>"; };
 		D28D1FD917E1038200137CA7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D28D1FE717E1083E00137CA7 /* ABFramework.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ABFramework.bundle; sourceTree = "<group>"; };
 		D28D1FE917E1083E00137CA7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/ABFrameworkLocalizable.strings; sourceTree = "<group>"; };
 		D28D1FEA17E1083E00137CA7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ABFrameworkLocalizable.strings; sourceTree = "<group>"; };
+		D293D27A19057F900002E346 /* ABActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABActivityView.h; sourceTree = "<group>"; };
+		D293D27B19057F900002E346 /* ABActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABActivityView.m; sourceTree = "<group>"; };
+		D293D27D19057F900002E346 /* ABAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABAlertView.h; sourceTree = "<group>"; };
+		D293D27E19057F900002E346 /* ABAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABAlertView.m; sourceTree = "<group>"; };
+		D293D28019057F900002E346 /* ABButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABButton.h; sourceTree = "<group>"; };
+		D293D28119057F900002E346 /* ABButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABButton.m; sourceTree = "<group>"; };
+		D293D28319057F900002E346 /* ABEntypoButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABEntypoButton.h; sourceTree = "<group>"; };
+		D293D28419057F900002E346 /* ABEntypoButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABEntypoButton.m; sourceTree = "<group>"; };
+		D293D28519057F900002E346 /* ABEntypoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABEntypoView.h; sourceTree = "<group>"; };
+		D293D28619057F900002E346 /* ABEntypoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABEntypoView.m; sourceTree = "<group>"; };
+		D293D28819057F900002E346 /* ABFlexibleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFlexibleView.h; sourceTree = "<group>"; };
+		D293D28919057F900002E346 /* ABFlexibleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABFlexibleView.m; sourceTree = "<group>"; };
+		D293D28B19057F900002E346 /* ABFullWidthTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFullWidthTextField.h; sourceTree = "<group>"; };
+		D293D28C19057F900002E346 /* ABFullWidthTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABFullWidthTextField.m; sourceTree = "<group>"; };
+		D293D28E19057F900002E346 /* ABSwipeGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSwipeGestureRecognizer.h; sourceTree = "<group>"; };
+		D293D28F19057F900002E346 /* ABSwipeGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSwipeGestureRecognizer.m; sourceTree = "<group>"; };
+		D293D29019057F900002E346 /* ABTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTapGestureRecognizer.h; sourceTree = "<group>"; };
+		D293D29119057F900002E346 /* ABTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTapGestureRecognizer.m; sourceTree = "<group>"; };
+		D293D29319057F900002E346 /* ABHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABHud.h; sourceTree = "<group>"; };
+		D293D29419057F900002E346 /* ABHud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABHud.m; sourceTree = "<group>"; };
+		D293D29619057F900002E346 /* ABImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABImagePickerViewController.h; sourceTree = "<group>"; };
+		D293D29719057F900002E346 /* ABImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABImagePickerViewController.m; sourceTree = "<group>"; };
+		D293D29919057F900002E346 /* ABImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABImageView.h; sourceTree = "<group>"; };
+		D293D29A19057F900002E346 /* ABImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABImageView.m; sourceTree = "<group>"; };
+		D293D29C19057F900002E346 /* ABInfiniteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABInfiniteView.h; sourceTree = "<group>"; };
+		D293D29D19057F900002E346 /* ABInfiniteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABInfiniteView.m; sourceTree = "<group>"; };
+		D293D29F19057F900002E346 /* ABLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABLabel.h; sourceTree = "<group>"; };
+		D293D2A019057F900002E346 /* ABLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABLabel.m; sourceTree = "<group>"; };
+		D293D2A219057F900002E346 /* ABMarqueeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABMarqueeView.h; sourceTree = "<group>"; };
+		D293D2A319057F900002E346 /* ABMarqueeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABMarqueeView.m; sourceTree = "<group>"; };
+		D293D2A519057F900002E346 /* ABQuadMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABQuadMenu.h; sourceTree = "<group>"; };
+		D293D2A619057F900002E346 /* ABQuadMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABQuadMenu.m; sourceTree = "<group>"; };
+		D293D2A819057F900002E346 /* ABRevealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABRevealController.h; sourceTree = "<group>"; };
+		D293D2A919057F900002E346 /* ABRevealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABRevealController.m; sourceTree = "<group>"; };
+		D293D2AB19057F900002E346 /* ABSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSelectView.h; sourceTree = "<group>"; };
+		D293D2AC19057F900002E346 /* ABSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSelectView.m; sourceTree = "<group>"; };
+		D293D2AE19057F900002E346 /* ABSeperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSeperator.h; sourceTree = "<group>"; };
+		D293D2AF19057F900002E346 /* ABSeperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSeperator.m; sourceTree = "<group>"; };
+		D293D2B119057F900002E346 /* ABStackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABStackController.h; sourceTree = "<group>"; };
+		D293D2B219057F900002E346 /* ABStackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABStackController.m; sourceTree = "<group>"; };
+		D293D2B419057F900002E346 /* ABSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSwitch.h; sourceTree = "<group>"; };
+		D293D2B519057F900002E346 /* ABSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSwitch.m; sourceTree = "<group>"; };
+		D293D2B719057F900002E346 /* ABTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTabBar.h; sourceTree = "<group>"; };
+		D293D2B819057F900002E346 /* ABTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTabBar.m; sourceTree = "<group>"; };
+		D293D2B919057F900002E346 /* ABTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTabBarController.h; sourceTree = "<group>"; };
+		D293D2BA19057F900002E346 /* ABTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTabBarController.m; sourceTree = "<group>"; };
+		D293D2BB19057F900002E346 /* ABTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTabBarItem.h; sourceTree = "<group>"; };
+		D293D2BC19057F900002E346 /* ABTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTabBarItem.m; sourceTree = "<group>"; };
+		D293D2BE19057F900002E346 /* ABTableStackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTableStackController.h; sourceTree = "<group>"; };
+		D293D2BF19057F900002E346 /* ABTableStackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTableStackController.m; sourceTree = "<group>"; };
+		D293D2C119057F900002E346 /* ABTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTableViewCell.h; sourceTree = "<group>"; };
+		D293D2C219057F900002E346 /* ABTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTableViewCell.m; sourceTree = "<group>"; };
+		D293D2C419057F900002E346 /* ABTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTextField.h; sourceTree = "<group>"; };
+		D293D2C519057F900002E346 /* ABTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTextField.m; sourceTree = "<group>"; };
+		D293D2C719057F900002E346 /* ABView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABView.h; sourceTree = "<group>"; };
+		D293D2C819057F900002E346 /* ABView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABView.m; sourceTree = "<group>"; };
+		D293D2CA19057F900002E346 /* ABWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABWebController.h; sourceTree = "<group>"; };
+		D293D2CB19057F900002E346 /* ABWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABWebController.m; sourceTree = "<group>"; };
+		D293D2CC19057F900002E346 /* ABWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABWebViewController.h; sourceTree = "<group>"; };
+		D293D2CD19057F900002E346 /* ABWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABWebViewController.m; sourceTree = "<group>"; };
+		D293D2EC19057FB80002E346 /* ABMarqueeViewExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABMarqueeViewExample.h; sourceTree = "<group>"; };
+		D293D2ED19057FB80002E346 /* ABMarqueeViewExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABMarqueeViewExample.m; sourceTree = "<group>"; };
 		D29B385A174CC54000ABE69A /* UIFont+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+ABFramework.h"; sourceTree = "<group>"; };
 		D29B385B174CC54000ABE69A /* UIFont+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+ABFramework.m"; sourceTree = "<group>"; };
 		D29B385D174CC7A600ABE69A /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -241,10 +295,6 @@
 		D2ADFF16171ED85A002D723B /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		D2B27DFE177D8BDA007485A4 /* UIBarButtonItem+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ABFramework.h"; sourceTree = "<group>"; };
 		D2B27DFF177D8BDA007485A4 /* UIBarButtonItem+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+ABFramework.m"; sourceTree = "<group>"; };
-		D2B31B69179EF32600896762 /* ABWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABWebController.h; sourceTree = "<group>"; };
-		D2B31B6A179EF32600896762 /* ABWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABWebController.m; sourceTree = "<group>"; };
-		D2B31B6C179EF35600896762 /* ABWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABWebViewController.h; sourceTree = "<group>"; };
-		D2B31B6D179EF35600896762 /* ABWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABWebViewController.m; sourceTree = "<group>"; };
 		D2B331B716EC9E5A00DED125 /* ABLabelExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABLabelExample.h; sourceTree = "<group>"; };
 		D2B331B816EC9E5A00DED125 /* ABLabelExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABLabelExample.m; sourceTree = "<group>"; };
 		D2B6CD2C1743971B00CAB44A /* ABUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABUtilities.h; sourceTree = "<group>"; };
@@ -276,46 +326,6 @@
 		D2C6DDE7173D739800C157E3 /* ABNotificationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABNotificationHelper.m; sourceTree = "<group>"; };
 		D2C6DDE9173D739800C157E3 /* ABStoreKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABStoreKitHelper.h; sourceTree = "<group>"; };
 		D2C6DDEA173D739800C157E3 /* ABStoreKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABStoreKitHelper.m; sourceTree = "<group>"; };
-		D2C6DDED173D739800C157E3 /* ABActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABActivityView.h; sourceTree = "<group>"; };
-		D2C6DDEE173D739800C157E3 /* ABActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABActivityView.m; sourceTree = "<group>"; };
-		D2C6DDF0173D739800C157E3 /* ABAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABAlertView.h; sourceTree = "<group>"; };
-		D2C6DDF1173D739800C157E3 /* ABAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABAlertView.m; sourceTree = "<group>"; };
-		D2C6DDF3173D739800C157E3 /* ABButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABButton.h; sourceTree = "<group>"; };
-		D2C6DDF4173D739800C157E3 /* ABButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABButton.m; sourceTree = "<group>"; };
-		D2C6DDFC173D739800C157E3 /* ABFlexibleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFlexibleView.h; sourceTree = "<group>"; };
-		D2C6DDFD173D739800C157E3 /* ABFlexibleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABFlexibleView.m; sourceTree = "<group>"; };
-		D2C6DDFF173D739800C157E3 /* ABSwipeGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSwipeGestureRecognizer.h; sourceTree = "<group>"; };
-		D2C6DE00173D739800C157E3 /* ABSwipeGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSwipeGestureRecognizer.m; sourceTree = "<group>"; };
-		D2C6DE01173D739800C157E3 /* ABTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTapGestureRecognizer.h; sourceTree = "<group>"; };
-		D2C6DE02173D739800C157E3 /* ABTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTapGestureRecognizer.m; sourceTree = "<group>"; };
-		D2C6DE04173D739800C157E3 /* ABHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABHud.h; sourceTree = "<group>"; };
-		D2C6DE05173D739800C157E3 /* ABHud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABHud.m; sourceTree = "<group>"; };
-		D2C6DE07173D739800C157E3 /* ABImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABImagePickerViewController.h; sourceTree = "<group>"; };
-		D2C6DE08173D739800C157E3 /* ABImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABImagePickerViewController.m; sourceTree = "<group>"; };
-		D2C6DE0A173D739800C157E3 /* ABImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABImageView.h; sourceTree = "<group>"; };
-		D2C6DE0B173D739800C157E3 /* ABImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABImageView.m; sourceTree = "<group>"; };
-		D2C6DE0D173D739800C157E3 /* ABInfiniteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABInfiniteView.h; sourceTree = "<group>"; };
-		D2C6DE0E173D739800C157E3 /* ABInfiniteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABInfiniteView.m; sourceTree = "<group>"; };
-		D2C6DE10173D739800C157E3 /* ABLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABLabel.h; sourceTree = "<group>"; };
-		D2C6DE11173D739800C157E3 /* ABLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABLabel.m; sourceTree = "<group>"; };
-		D2C6DE13173D739800C157E3 /* ABSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSelectView.h; sourceTree = "<group>"; };
-		D2C6DE14173D739800C157E3 /* ABSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSelectView.m; sourceTree = "<group>"; };
-		D2C6DE1A173D739800C157E3 /* ABSeperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSeperator.h; sourceTree = "<group>"; };
-		D2C6DE1B173D739800C157E3 /* ABSeperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSeperator.m; sourceTree = "<group>"; };
-		D2C6DE1D173D739800C157E3 /* ABStackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABStackController.h; sourceTree = "<group>"; };
-		D2C6DE1E173D739800C157E3 /* ABStackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABStackController.m; sourceTree = "<group>"; };
-		D2C6DE20173D739800C157E3 /* ABSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSwitch.h; sourceTree = "<group>"; };
-		D2C6DE21173D739800C157E3 /* ABSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSwitch.m; sourceTree = "<group>"; };
-		D2C6DE23173D739800C157E3 /* ABTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTabBar.h; sourceTree = "<group>"; };
-		D2C6DE24173D739800C157E3 /* ABTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTabBar.m; sourceTree = "<group>"; };
-		D2C6DE25173D739800C157E3 /* ABTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTabBarController.h; sourceTree = "<group>"; };
-		D2C6DE26173D739800C157E3 /* ABTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTabBarController.m; sourceTree = "<group>"; };
-		D2C6DE27173D739800C157E3 /* ABTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTabBarItem.h; sourceTree = "<group>"; };
-		D2C6DE28173D739800C157E3 /* ABTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTabBarItem.m; sourceTree = "<group>"; };
-		D2C6DE2C173D739800C157E3 /* ABTableStackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTableStackController.h; sourceTree = "<group>"; };
-		D2C6DE2D173D739800C157E3 /* ABTableStackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTableStackController.m; sourceTree = "<group>"; };
-		D2C6DE2F173D739800C157E3 /* ABTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTextField.h; sourceTree = "<group>"; };
-		D2C6DE30173D739800C157E3 /* ABTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTextField.m; sourceTree = "<group>"; };
 		D2C6DE3A173D739800C157E3 /* ABViewSelectionProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABViewSelectionProtocol.h; sourceTree = "<group>"; };
 		D2C6DE4A173D739800C157E3 /* ABReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABReachability.h; sourceTree = "<group>"; };
 		D2C6DE4B173D739800C157E3 /* ABReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABReachability.m; sourceTree = "<group>"; };
@@ -330,14 +340,10 @@
 		D2C6DE5B173D739800C157E3 /* ABSaveSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSaveSystem.m; sourceTree = "<group>"; };
 		D2C6DE6C173D739800C157E3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		D2DC1B2818FDB9DF0074F48F /* ABOrientationProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABOrientationProtocol.h; sourceTree = "<group>"; };
-		D2E4E36C1768B8C9007C1F47 /* ABRevealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABRevealController.h; sourceTree = "<group>"; };
-		D2E4E36D1768B8C9007C1F47 /* ABRevealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABRevealController.m; sourceTree = "<group>"; };
 		D2ED7474176F18F3008C3BD9 /* NSMutableArray+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+ABFramework.h"; sourceTree = "<group>"; };
 		D2ED7475176F18F3008C3BD9 /* NSMutableArray+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+ABFramework.m"; sourceTree = "<group>"; };
 		D2ED747A176F37E4008C3BD9 /* ABRevealControllerExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABRevealControllerExample.h; sourceTree = "<group>"; };
 		D2ED747B176F37E4008C3BD9 /* ABRevealControllerExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABRevealControllerExample.m; sourceTree = "<group>"; };
-		D2F18491179409B400808750 /* ABTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTableViewCell.h; sourceTree = "<group>"; };
-		D2F18492179409B400808750 /* ABTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTableViewCell.m; sourceTree = "<group>"; };
 		D2F388C217DCA1F00046849F /* UIApplication+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+ABFramework.h"; sourceTree = "<group>"; };
 		D2F388C317DCA1F00046849F /* UIApplication+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+ABFramework.m"; sourceTree = "<group>"; };
 		D2F5C0BF174B8717002D4D0F /* ABFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFrame.h; sourceTree = "<group>"; };
@@ -380,6 +386,8 @@
 		3C5D960416BA88A700B37045 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				D293D2EC19057FB80002E346 /* ABMarqueeViewExample.h */,
+				D293D2ED19057FB80002E346 /* ABMarqueeViewExample.m */,
 				3C5D960516BA89C500B37045 /* ABSwitchExample.h */,
 				3C5D960616BA89C500B37045 /* ABSwitchExample.m */,
 				D2B331B716EC9E5A00DED125 /* ABLabelExample.h */,
@@ -526,35 +534,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		D233D724177A56E500CE4E0E /* ABView */ = {
-			isa = PBXGroup;
-			children = (
-				D233D725177A56E500CE4E0E /* ABView.h */,
-				D233D726177A56E500CE4E0E /* ABView.m */,
-			);
-			path = ABView;
-			sourceTree = "<group>";
-		};
-		D24A325F1742592D00EFFF53 /* ABQuadMenu */ = {
-			isa = PBXGroup;
-			children = (
-				D24A32601742593D00EFFF53 /* ABQuadMenu.h */,
-				D24A32611742593D00EFFF53 /* ABQuadMenu.m */,
-			);
-			path = ABQuadMenu;
-			sourceTree = "<group>";
-		};
-		D25BA74117B6853500384BC8 /* ABEntypo */ = {
-			isa = PBXGroup;
-			children = (
-				D25BA74217B6853500384BC8 /* ABEntypoButton.h */,
-				D25BA74317B6853500384BC8 /* ABEntypoButton.m */,
-				D25BA74417B6853500384BC8 /* ABEntypoView.h */,
-				D25BA74517B6853500384BC8 /* ABEntypoView.m */,
-			);
-			path = ABEntypo;
-			sourceTree = "<group>";
-		};
 		D25BA75417B68FD600384BC8 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -562,15 +541,6 @@
 				D25BA75617B68FE800384BC8 /* ABExampleViewController.m */,
 			);
 			name = Base;
-			sourceTree = "<group>";
-		};
-		D2835DC41808014900BD007F /* ABFullWidthTextField */ = {
-			isa = PBXGroup;
-			children = (
-				D2835DC51808016000BD007F /* ABFullWidthTextField.h */,
-				D2835DC61808016000BD007F /* ABFullWidthTextField.m */,
-			);
-			path = ABFullWidthTextField;
 			sourceTree = "<group>";
 		};
 		D28D1FE617E1083E00137CA7 /* Resources */ = {
@@ -582,13 +552,269 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		D2B31B68179EF32600896762 /* ABWebController */ = {
+		D293D27819057F900002E346 /* Components (View) */ = {
 			isa = PBXGroup;
 			children = (
-				D2B31B69179EF32600896762 /* ABWebController.h */,
-				D2B31B6A179EF32600896762 /* ABWebController.m */,
-				D2B31B6C179EF35600896762 /* ABWebViewController.h */,
-				D2B31B6D179EF35600896762 /* ABWebViewController.m */,
+				D293D27919057F900002E346 /* ABActivityView */,
+				D293D27C19057F900002E346 /* ABAlertView */,
+				D293D27F19057F900002E346 /* ABButton */,
+				D293D28219057F900002E346 /* ABEntypo */,
+				D293D28719057F900002E346 /* ABFlexibleView */,
+				D293D28A19057F900002E346 /* ABFullWidthTextField */,
+				D293D28D19057F900002E346 /* ABGestureRecognizer */,
+				D293D29219057F900002E346 /* ABHud */,
+				D293D29519057F900002E346 /* ABImagePickerController */,
+				D293D29819057F900002E346 /* ABImageView */,
+				D293D29B19057F900002E346 /* ABInfiniteView */,
+				D293D29E19057F900002E346 /* ABLabel */,
+				D293D2A119057F900002E346 /* ABMarqueeView */,
+				D293D2A419057F900002E346 /* ABQuadMenu */,
+				D293D2A719057F900002E346 /* ABRevealController */,
+				D293D2AA19057F900002E346 /* ABSelectView */,
+				D293D2AD19057F900002E346 /* ABSeperator */,
+				D293D2B019057F900002E346 /* ABStackController */,
+				D293D2B319057F900002E346 /* ABSwitch */,
+				D293D2B619057F900002E346 /* ABTabBarController */,
+				D293D2BD19057F900002E346 /* ABTableStackController */,
+				D293D2C019057F900002E346 /* ABTableViewCell */,
+				D293D2C319057F900002E346 /* ABTextField */,
+				D293D2C619057F900002E346 /* ABView */,
+				D293D2C919057F900002E346 /* ABWebController */,
+			);
+			path = "Components (View)";
+			sourceTree = "<group>";
+		};
+		D293D27919057F900002E346 /* ABActivityView */ = {
+			isa = PBXGroup;
+			children = (
+				D293D27A19057F900002E346 /* ABActivityView.h */,
+				D293D27B19057F900002E346 /* ABActivityView.m */,
+			);
+			path = ABActivityView;
+			sourceTree = "<group>";
+		};
+		D293D27C19057F900002E346 /* ABAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				D293D27D19057F900002E346 /* ABAlertView.h */,
+				D293D27E19057F900002E346 /* ABAlertView.m */,
+			);
+			path = ABAlertView;
+			sourceTree = "<group>";
+		};
+		D293D27F19057F900002E346 /* ABButton */ = {
+			isa = PBXGroup;
+			children = (
+				D293D28019057F900002E346 /* ABButton.h */,
+				D293D28119057F900002E346 /* ABButton.m */,
+			);
+			path = ABButton;
+			sourceTree = "<group>";
+		};
+		D293D28219057F900002E346 /* ABEntypo */ = {
+			isa = PBXGroup;
+			children = (
+				D293D28319057F900002E346 /* ABEntypoButton.h */,
+				D293D28419057F900002E346 /* ABEntypoButton.m */,
+				D293D28519057F900002E346 /* ABEntypoView.h */,
+				D293D28619057F900002E346 /* ABEntypoView.m */,
+			);
+			path = ABEntypo;
+			sourceTree = "<group>";
+		};
+		D293D28719057F900002E346 /* ABFlexibleView */ = {
+			isa = PBXGroup;
+			children = (
+				D293D28819057F900002E346 /* ABFlexibleView.h */,
+				D293D28919057F900002E346 /* ABFlexibleView.m */,
+			);
+			path = ABFlexibleView;
+			sourceTree = "<group>";
+		};
+		D293D28A19057F900002E346 /* ABFullWidthTextField */ = {
+			isa = PBXGroup;
+			children = (
+				D293D28B19057F900002E346 /* ABFullWidthTextField.h */,
+				D293D28C19057F900002E346 /* ABFullWidthTextField.m */,
+			);
+			path = ABFullWidthTextField;
+			sourceTree = "<group>";
+		};
+		D293D28D19057F900002E346 /* ABGestureRecognizer */ = {
+			isa = PBXGroup;
+			children = (
+				D293D28E19057F900002E346 /* ABSwipeGestureRecognizer.h */,
+				D293D28F19057F900002E346 /* ABSwipeGestureRecognizer.m */,
+				D293D29019057F900002E346 /* ABTapGestureRecognizer.h */,
+				D293D29119057F900002E346 /* ABTapGestureRecognizer.m */,
+			);
+			path = ABGestureRecognizer;
+			sourceTree = "<group>";
+		};
+		D293D29219057F900002E346 /* ABHud */ = {
+			isa = PBXGroup;
+			children = (
+				D293D29319057F900002E346 /* ABHud.h */,
+				D293D29419057F900002E346 /* ABHud.m */,
+			);
+			path = ABHud;
+			sourceTree = "<group>";
+		};
+		D293D29519057F900002E346 /* ABImagePickerController */ = {
+			isa = PBXGroup;
+			children = (
+				D293D29619057F900002E346 /* ABImagePickerViewController.h */,
+				D293D29719057F900002E346 /* ABImagePickerViewController.m */,
+			);
+			path = ABImagePickerController;
+			sourceTree = "<group>";
+		};
+		D293D29819057F900002E346 /* ABImageView */ = {
+			isa = PBXGroup;
+			children = (
+				D293D29919057F900002E346 /* ABImageView.h */,
+				D293D29A19057F900002E346 /* ABImageView.m */,
+			);
+			path = ABImageView;
+			sourceTree = "<group>";
+		};
+		D293D29B19057F900002E346 /* ABInfiniteView */ = {
+			isa = PBXGroup;
+			children = (
+				D293D29C19057F900002E346 /* ABInfiniteView.h */,
+				D293D29D19057F900002E346 /* ABInfiniteView.m */,
+			);
+			path = ABInfiniteView;
+			sourceTree = "<group>";
+		};
+		D293D29E19057F900002E346 /* ABLabel */ = {
+			isa = PBXGroup;
+			children = (
+				D293D29F19057F900002E346 /* ABLabel.h */,
+				D293D2A019057F900002E346 /* ABLabel.m */,
+			);
+			path = ABLabel;
+			sourceTree = "<group>";
+		};
+		D293D2A119057F900002E346 /* ABMarqueeView */ = {
+			isa = PBXGroup;
+			children = (
+				D293D2A219057F900002E346 /* ABMarqueeView.h */,
+				D293D2A319057F900002E346 /* ABMarqueeView.m */,
+			);
+			path = ABMarqueeView;
+			sourceTree = "<group>";
+		};
+		D293D2A419057F900002E346 /* ABQuadMenu */ = {
+			isa = PBXGroup;
+			children = (
+				D293D2A519057F900002E346 /* ABQuadMenu.h */,
+				D293D2A619057F900002E346 /* ABQuadMenu.m */,
+			);
+			path = ABQuadMenu;
+			sourceTree = "<group>";
+		};
+		D293D2A719057F900002E346 /* ABRevealController */ = {
+			isa = PBXGroup;
+			children = (
+				D293D2A819057F900002E346 /* ABRevealController.h */,
+				D293D2A919057F900002E346 /* ABRevealController.m */,
+			);
+			path = ABRevealController;
+			sourceTree = "<group>";
+		};
+		D293D2AA19057F900002E346 /* ABSelectView */ = {
+			isa = PBXGroup;
+			children = (
+				D293D2AB19057F900002E346 /* ABSelectView.h */,
+				D293D2AC19057F900002E346 /* ABSelectView.m */,
+			);
+			path = ABSelectView;
+			sourceTree = "<group>";
+		};
+		D293D2AD19057F900002E346 /* ABSeperator */ = {
+			isa = PBXGroup;
+			children = (
+				D293D2AE19057F900002E346 /* ABSeperator.h */,
+				D293D2AF19057F900002E346 /* ABSeperator.m */,
+			);
+			path = ABSeperator;
+			sourceTree = "<group>";
+		};
+		D293D2B019057F900002E346 /* ABStackController */ = {
+			isa = PBXGroup;
+			children = (
+				D293D2B119057F900002E346 /* ABStackController.h */,
+				D293D2B219057F900002E346 /* ABStackController.m */,
+			);
+			path = ABStackController;
+			sourceTree = "<group>";
+		};
+		D293D2B319057F900002E346 /* ABSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				D293D2B419057F900002E346 /* ABSwitch.h */,
+				D293D2B519057F900002E346 /* ABSwitch.m */,
+			);
+			path = ABSwitch;
+			sourceTree = "<group>";
+		};
+		D293D2B619057F900002E346 /* ABTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				D293D2B719057F900002E346 /* ABTabBar.h */,
+				D293D2B819057F900002E346 /* ABTabBar.m */,
+				D293D2B919057F900002E346 /* ABTabBarController.h */,
+				D293D2BA19057F900002E346 /* ABTabBarController.m */,
+				D293D2BB19057F900002E346 /* ABTabBarItem.h */,
+				D293D2BC19057F900002E346 /* ABTabBarItem.m */,
+			);
+			path = ABTabBarController;
+			sourceTree = "<group>";
+		};
+		D293D2BD19057F900002E346 /* ABTableStackController */ = {
+			isa = PBXGroup;
+			children = (
+				D293D2BE19057F900002E346 /* ABTableStackController.h */,
+				D293D2BF19057F900002E346 /* ABTableStackController.m */,
+			);
+			path = ABTableStackController;
+			sourceTree = "<group>";
+		};
+		D293D2C019057F900002E346 /* ABTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				D293D2C119057F900002E346 /* ABTableViewCell.h */,
+				D293D2C219057F900002E346 /* ABTableViewCell.m */,
+			);
+			path = ABTableViewCell;
+			sourceTree = "<group>";
+		};
+		D293D2C319057F900002E346 /* ABTextField */ = {
+			isa = PBXGroup;
+			children = (
+				D293D2C419057F900002E346 /* ABTextField.h */,
+				D293D2C519057F900002E346 /* ABTextField.m */,
+			);
+			path = ABTextField;
+			sourceTree = "<group>";
+		};
+		D293D2C619057F900002E346 /* ABView */ = {
+			isa = PBXGroup;
+			children = (
+				D293D2C719057F900002E346 /* ABView.h */,
+				D293D2C819057F900002E346 /* ABView.m */,
+			);
+			path = ABView;
+			sourceTree = "<group>";
+		};
+		D293D2C919057F900002E346 /* ABWebController */ = {
+			isa = PBXGroup;
+			children = (
+				D293D2CA19057F900002E346 /* ABWebController.h */,
+				D293D2CB19057F900002E346 /* ABWebController.m */,
+				D293D2CC19057F900002E346 /* ABWebViewController.h */,
+				D293D2CD19057F900002E346 /* ABWebViewController.m */,
 			);
 			path = ABWebController;
 			sourceTree = "<group>";
@@ -612,6 +838,7 @@
 				D2C6DDBF173D739800C157E3 /* ABFrameworkIOS.h */,
 				D2C6DDC0173D739800C157E3 /* Categories */,
 				D2C6DDDB173D739800C157E3 /* Components (Functional) */,
+				D293D27819057F900002E346 /* Components (View) */,
 				D2C6DE31173D739800C157E3 /* Containers */,
 				D2C6DE36173D739800C157E3 /* Model */,
 				D2C6DE39173D739800C157E3 /* Protocols */,
@@ -720,197 +947,6 @@
 			path = ABStoreKitHelper;
 			sourceTree = "<group>";
 		};
-		D2C6DDEB173D739800C157E3 /* Components (View) */ = {
-			isa = PBXGroup;
-			children = (
-				D2835DC41808014900BD007F /* ABFullWidthTextField */,
-				D25BA74117B6853500384BC8 /* ABEntypo */,
-				D2B31B68179EF32600896762 /* ABWebController */,
-				D2F18490179409A200808750 /* ABTableViewCell */,
-				D233D724177A56E500CE4E0E /* ABView */,
-				D2E4E36B1768B8C9007C1F47 /* ABRevealController */,
-				D24A325F1742592D00EFFF53 /* ABQuadMenu */,
-				D2C6DDEC173D739800C157E3 /* ABActivityView */,
-				D2C6DDEF173D739800C157E3 /* ABAlertView */,
-				D2C6DDF2173D739800C157E3 /* ABButton */,
-				D2C6DDFB173D739800C157E3 /* ABFlexibleView */,
-				D2C6DDFE173D739800C157E3 /* ABGestureRecognizer */,
-				D2C6DE03173D739800C157E3 /* ABHud */,
-				D2C6DE06173D739800C157E3 /* ABImagePickerController */,
-				D2C6DE09173D739800C157E3 /* ABImageView */,
-				D2C6DE0C173D739800C157E3 /* ABInfiniteView */,
-				D2C6DE0F173D739800C157E3 /* ABLabel */,
-				D2C6DE12173D739800C157E3 /* ABSelectView */,
-				D2C6DE19173D739800C157E3 /* ABSeperator */,
-				D2C6DE1C173D739800C157E3 /* ABStackController */,
-				D2C6DE1F173D739800C157E3 /* ABSwitch */,
-				D2C6DE22173D739800C157E3 /* ABTabBarController */,
-				D2C6DE2B173D739800C157E3 /* ABTableStackController */,
-				D2C6DE2E173D739800C157E3 /* ABTextField */,
-			);
-			name = "Components (View)";
-			path = "../Components (View)";
-			sourceTree = "<group>";
-		};
-		D2C6DDEC173D739800C157E3 /* ABActivityView */ = {
-			isa = PBXGroup;
-			children = (
-				D2C6DDED173D739800C157E3 /* ABActivityView.h */,
-				D2C6DDEE173D739800C157E3 /* ABActivityView.m */,
-			);
-			path = ABActivityView;
-			sourceTree = "<group>";
-		};
-		D2C6DDEF173D739800C157E3 /* ABAlertView */ = {
-			isa = PBXGroup;
-			children = (
-				D2C6DDF0173D739800C157E3 /* ABAlertView.h */,
-				D2C6DDF1173D739800C157E3 /* ABAlertView.m */,
-			);
-			path = ABAlertView;
-			sourceTree = "<group>";
-		};
-		D2C6DDF2173D739800C157E3 /* ABButton */ = {
-			isa = PBXGroup;
-			children = (
-				D2C6DDF3173D739800C157E3 /* ABButton.h */,
-				D2C6DDF4173D739800C157E3 /* ABButton.m */,
-			);
-			path = ABButton;
-			sourceTree = "<group>";
-		};
-		D2C6DDFB173D739800C157E3 /* ABFlexibleView */ = {
-			isa = PBXGroup;
-			children = (
-				D2C6DDFC173D739800C157E3 /* ABFlexibleView.h */,
-				D2C6DDFD173D739800C157E3 /* ABFlexibleView.m */,
-			);
-			path = ABFlexibleView;
-			sourceTree = "<group>";
-		};
-		D2C6DDFE173D739800C157E3 /* ABGestureRecognizer */ = {
-			isa = PBXGroup;
-			children = (
-				D2C6DDFF173D739800C157E3 /* ABSwipeGestureRecognizer.h */,
-				D2C6DE00173D739800C157E3 /* ABSwipeGestureRecognizer.m */,
-				D2C6DE01173D739800C157E3 /* ABTapGestureRecognizer.h */,
-				D2C6DE02173D739800C157E3 /* ABTapGestureRecognizer.m */,
-			);
-			path = ABGestureRecognizer;
-			sourceTree = "<group>";
-		};
-		D2C6DE03173D739800C157E3 /* ABHud */ = {
-			isa = PBXGroup;
-			children = (
-				D2C6DE04173D739800C157E3 /* ABHud.h */,
-				D2C6DE05173D739800C157E3 /* ABHud.m */,
-			);
-			path = ABHud;
-			sourceTree = "<group>";
-		};
-		D2C6DE06173D739800C157E3 /* ABImagePickerController */ = {
-			isa = PBXGroup;
-			children = (
-				D2C6DE07173D739800C157E3 /* ABImagePickerViewController.h */,
-				D2C6DE08173D739800C157E3 /* ABImagePickerViewController.m */,
-			);
-			path = ABImagePickerController;
-			sourceTree = "<group>";
-		};
-		D2C6DE09173D739800C157E3 /* ABImageView */ = {
-			isa = PBXGroup;
-			children = (
-				D2C6DE0A173D739800C157E3 /* ABImageView.h */,
-				D2C6DE0B173D739800C157E3 /* ABImageView.m */,
-			);
-			path = ABImageView;
-			sourceTree = "<group>";
-		};
-		D2C6DE0C173D739800C157E3 /* ABInfiniteView */ = {
-			isa = PBXGroup;
-			children = (
-				D2C6DE0D173D739800C157E3 /* ABInfiniteView.h */,
-				D2C6DE0E173D739800C157E3 /* ABInfiniteView.m */,
-			);
-			path = ABInfiniteView;
-			sourceTree = "<group>";
-		};
-		D2C6DE0F173D739800C157E3 /* ABLabel */ = {
-			isa = PBXGroup;
-			children = (
-				D2C6DE10173D739800C157E3 /* ABLabel.h */,
-				D2C6DE11173D739800C157E3 /* ABLabel.m */,
-			);
-			path = ABLabel;
-			sourceTree = "<group>";
-		};
-		D2C6DE12173D739800C157E3 /* ABSelectView */ = {
-			isa = PBXGroup;
-			children = (
-				D2C6DE13173D739800C157E3 /* ABSelectView.h */,
-				D2C6DE14173D739800C157E3 /* ABSelectView.m */,
-			);
-			path = ABSelectView;
-			sourceTree = "<group>";
-		};
-		D2C6DE19173D739800C157E3 /* ABSeperator */ = {
-			isa = PBXGroup;
-			children = (
-				D2C6DE1A173D739800C157E3 /* ABSeperator.h */,
-				D2C6DE1B173D739800C157E3 /* ABSeperator.m */,
-			);
-			path = ABSeperator;
-			sourceTree = "<group>";
-		};
-		D2C6DE1C173D739800C157E3 /* ABStackController */ = {
-			isa = PBXGroup;
-			children = (
-				D2C6DE1D173D739800C157E3 /* ABStackController.h */,
-				D2C6DE1E173D739800C157E3 /* ABStackController.m */,
-			);
-			path = ABStackController;
-			sourceTree = "<group>";
-		};
-		D2C6DE1F173D739800C157E3 /* ABSwitch */ = {
-			isa = PBXGroup;
-			children = (
-				D2C6DE20173D739800C157E3 /* ABSwitch.h */,
-				D2C6DE21173D739800C157E3 /* ABSwitch.m */,
-			);
-			path = ABSwitch;
-			sourceTree = "<group>";
-		};
-		D2C6DE22173D739800C157E3 /* ABTabBarController */ = {
-			isa = PBXGroup;
-			children = (
-				D2C6DE23173D739800C157E3 /* ABTabBar.h */,
-				D2C6DE24173D739800C157E3 /* ABTabBar.m */,
-				D2C6DE25173D739800C157E3 /* ABTabBarController.h */,
-				D2C6DE26173D739800C157E3 /* ABTabBarController.m */,
-				D2C6DE27173D739800C157E3 /* ABTabBarItem.h */,
-				D2C6DE28173D739800C157E3 /* ABTabBarItem.m */,
-			);
-			path = ABTabBarController;
-			sourceTree = "<group>";
-		};
-		D2C6DE2B173D739800C157E3 /* ABTableStackController */ = {
-			isa = PBXGroup;
-			children = (
-				D2C6DE2C173D739800C157E3 /* ABTableStackController.h */,
-				D2C6DE2D173D739800C157E3 /* ABTableStackController.m */,
-			);
-			path = ABTableStackController;
-			sourceTree = "<group>";
-		};
-		D2C6DE2E173D739800C157E3 /* ABTextField */ = {
-			isa = PBXGroup;
-			children = (
-				D2C6DE2F173D739800C157E3 /* ABTextField.h */,
-				D2C6DE30173D739800C157E3 /* ABTextField.m */,
-			);
-			path = ABTextField;
-			sourceTree = "<group>";
-		};
 		D2C6DE31173D739800C157E3 /* Containers */ = {
 			isa = PBXGroup;
 			children = (
@@ -937,7 +973,6 @@
 		D2C6DE42173D739800C157E3 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				D2C6DDEB173D739800C157E3 /* Components (View) */,
 				D20AF44518D5FC440099A3AF /* ABCommonIOS.h */,
 				D20AF44618D5FC440099A3AF /* ABCommonIOS.m */,
 				D2C6DE4A173D739800C157E3 /* ABReachability.h */,
@@ -1066,24 +1101,6 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		D2E4E36B1768B8C9007C1F47 /* ABRevealController */ = {
-			isa = PBXGroup;
-			children = (
-				D2E4E36C1768B8C9007C1F47 /* ABRevealController.h */,
-				D2E4E36D1768B8C9007C1F47 /* ABRevealController.m */,
-			);
-			path = ABRevealController;
-			sourceTree = "<group>";
-		};
-		D2F18490179409A200808750 /* ABTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				D2F18491179409B400808750 /* ABTableViewCell.h */,
-				D2F18492179409B400808750 /* ABTableViewCell.m */,
-			);
-			path = ABTableViewCell;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1166,24 +1183,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D293D2EB19057F900002E346 /* ABWebViewController.m in Sources */,
 				3CE5668D16B6966D00915391 /* main.m in Sources */,
+				D293D2D119057F900002E346 /* ABEntypoButton.m in Sources */,
+				D293D2D419057F900002E346 /* ABFullWidthTextField.m in Sources */,
 				3CE5669116B6966D00915391 /* AppDelegate.m in Sources */,
 				D2C2901D179E9F6E009EF2E2 /* UIScreen+ABFramework.m in Sources */,
+				D293D2EA19057F900002E346 /* ABWebController.m in Sources */,
 				3C5D960316BA889800B37045 /* ExampleSelectViewController.m in Sources */,
 				3C5D960716BA89C500B37045 /* ABSwitchExample.m in Sources */,
-				D2F18493179409B400808750 /* ABTableViewCell.m in Sources */,
+				D293D2CE19057F900002E346 /* ABActivityView.m in Sources */,
 				3C5D961316BA957000B37045 /* ExampleObject.m in Sources */,
 				3C5D961416BA957000B37045 /* ExampleSection.m in Sources */,
-				D233D727177A56E500CE4E0E /* ABView.m in Sources */,
-				D25BA74617B6853500384BC8 /* ABEntypoButton.m in Sources */,
+				D293D2DA19057F900002E346 /* ABInfiniteView.m in Sources */,
+				D293D2D219057F900002E346 /* ABEntypoView.m in Sources */,
+				D293D2E919057F900002E346 /* ABView.m in Sources */,
+				D293D2EE19057FB80002E346 /* ABMarqueeViewExample.m in Sources */,
 				3CD78ADF16C3DD78006C4B21 /* ABSaveSystemExample.m in Sources */,
 				D2B331B916EC9E5A00DED125 /* ABLabelExample.m in Sources */,
+				D293D2E819057F900002E346 /* ABTextField.m in Sources */,
 				D24A0D6716EE2E660093AE2A /* ABHudExample.m in Sources */,
 				D211D72B1709AEB500326B25 /* ABNetworkingExample.m in Sources */,
 				D255AD9E1723D61B00E71590 /* ABViewExample.m in Sources */,
 				D255ADA7172430A000E71590 /* ABInfiniteViewExample.m in Sources */,
 				D2B27E00177D8BDA007485A4 /* UIBarButtonItem+ABFramework.m in Sources */,
 				D2C6DE74173D739800C157E3 /* UIColor+ABFramework.m in Sources */,
+				D293D2E519057F900002E346 /* ABTabBarItem.m in Sources */,
 				D2C6DE75173D739800C157E3 /* UIImage+ABFramework.m in Sources */,
 				D2C6DE76173D739800C157E3 /* UIImageView+ABFramework.m in Sources */,
 				D25BA74A17B6860E00384BC8 /* ABEntypoExample.m in Sources */,
@@ -1191,50 +1216,38 @@
 				D2C6DE78173D739800C157E3 /* UITableView+ABFramework.m in Sources */,
 				D2C6DE79173D739800C157E3 /* UIView+ABFramework.m in Sources */,
 				D2C6DE7A173D739800C157E3 /* UIViewController+ABFramework.m in Sources */,
-				D25BA74717B6853500384BC8 /* ABEntypoView.m in Sources */,
 				D2C6DE7B173D739800C157E3 /* ABFileHelper.m in Sources */,
 				D268E26018D74277008C4241 /* NSAttributedString+ABFramework.m in Sources */,
 				D2C6DE7C173D739800C157E3 /* ABNetworking.m in Sources */,
 				D2C6DE7D173D739800C157E3 /* ABNewsstandHelper.m in Sources */,
 				D2C6DE7E173D739800C157E3 /* ABNotificationHelper.m in Sources */,
+				D293D2E319057F900002E346 /* ABTabBar.m in Sources */,
 				D29DE19A17E0F3AD00B8F8C3 /* NSLocale+ABFramework.m in Sources */,
 				D226740C18D7450300AA521C /* NSMutableAttributedString+ABFramework.m in Sources */,
 				D2C6DE7F173D739800C157E3 /* ABStoreKitHelper.m in Sources */,
 				D2AB472A18E333D60014626C /* UIView+Frame_ABFramework.m in Sources */,
-				D2C6DE80173D739800C157E3 /* ABActivityView.m in Sources */,
+				D293D2D619057F900002E346 /* ABTapGestureRecognizer.m in Sources */,
 				D2ED7476176F18F3008C3BD9 /* NSMutableArray+ABFramework.m in Sources */,
 				D25BA75717B68FE800384BC8 /* ABExampleViewController.m in Sources */,
 				D2AB473018E335770014626C /* UINavigationController+ABFramework.m in Sources */,
-				D2C6DE81173D739800C157E3 /* ABAlertView.m in Sources */,
-				D2C6DE82173D739800C157E3 /* ABButton.m in Sources */,
 				D25BA75317B68F2000384BC8 /* ABWebControllerExample.m in Sources */,
+				D293D2E719057F900002E346 /* ABTableViewCell.m in Sources */,
 				D23F75A1177C718400365A24 /* UISearchBar+ABFramework.m in Sources */,
-				D2C6DE85173D739800C157E3 /* ABFlexibleView.m in Sources */,
-				D2C6DE86173D739800C157E3 /* ABSwipeGestureRecognizer.m in Sources */,
-				D2C6DE87173D739800C157E3 /* ABTapGestureRecognizer.m in Sources */,
-				D2C6DE88173D739800C157E3 /* ABHud.m in Sources */,
-				D2C6DE89173D739800C157E3 /* ABImagePickerViewController.m in Sources */,
-				D2C6DE8A173D739800C157E3 /* ABImageView.m in Sources */,
-				D2C6DE8B173D739800C157E3 /* ABInfiniteView.m in Sources */,
+				D293D2D319057F900002E346 /* ABFlexibleView.m in Sources */,
 				D22F88EA17A159590072CF72 /* ABSection.m in Sources */,
-				D2C6DE8C173D739800C157E3 /* ABLabel.m in Sources */,
-				D2E4E36E1768B8C9007C1F47 /* ABRevealController.m in Sources */,
-				D2C6DE8D173D739800C157E3 /* ABSelectView.m in Sources */,
+				D293D2E619057F900002E346 /* ABTableStackController.m in Sources */,
+				D293D2D019057F900002E346 /* ABButton.m in Sources */,
+				D293D2D919057F900002E346 /* ABImageView.m in Sources */,
+				D293D2DF19057F900002E346 /* ABSelectView.m in Sources */,
 				D20F8D5918D5F5E7008DA40F /* ABPair.m in Sources */,
-				D2C6DE90173D739800C157E3 /* ABSeperator.m in Sources */,
-				D2C6DE91173D739800C157E3 /* ABStackController.m in Sources */,
+				D293D2E219057F900002E346 /* ABSwitch.m in Sources */,
 				D20AF44718D5FC440099A3AF /* ABCommonIOS.m in Sources */,
 				D2AB472F18E335770014626C /* UIFont+Names_ABFramework.m in Sources */,
 				D20F8D5A18D5F5E7008DA40F /* ABPrimitiveArray.m in Sources */,
-				D2C6DE92173D739800C157E3 /* ABSwitch.m in Sources */,
-				D2C6DE93173D739800C157E3 /* ABTabBar.m in Sources */,
-				D2C6DE94173D739800C157E3 /* ABTabBarController.m in Sources */,
-				D2B31B6E179EF35600896762 /* ABWebViewController.m in Sources */,
-				D2C6DE95173D739800C157E3 /* ABTabBarItem.m in Sources */,
+				D293D2DD19057F900002E346 /* ABQuadMenu.m in Sources */,
+				D293D2D819057F900002E346 /* ABImagePickerViewController.m in Sources */,
 				D2ED747C176F37E4008C3BD9 /* ABRevealControllerExample.m in Sources */,
-				D2C6DE97173D739800C157E3 /* ABTableStackController.m in Sources */,
-				D2B31B6B179EF32600896762 /* ABWebController.m in Sources */,
-				D2C6DE98173D739800C157E3 /* ABTextField.m in Sources */,
+				D293D2E019057F900002E346 /* ABSeperator.m in Sources */,
 				D2C6DEA2173D739800C157E3 /* ABReachability.m in Sources */,
 				D2C6DEA3173D739800C157E3 /* NSArray+ABFramework.m in Sources */,
 				D2C6DEA4173D739800C157E3 /* NSData+ABFramework.m in Sources */,
@@ -1246,13 +1259,19 @@
 				D2A102CE173E4B2F00E95692 /* NSDictionary+ABFramework.m in Sources */,
 				D2A102CF173E4B2F00E95692 /* NSMutableDictionary+ABFramework.m in Sources */,
 				D2A102D0173E4B2F00E95692 /* NSObject+ABFramework.m in Sources */,
+				D293D2E119057F900002E346 /* ABStackController.m in Sources */,
+				D293D2DE19057F900002E346 /* ABRevealController.m in Sources */,
 				D2A102D1173E4B2F00E95692 /* NSString+ABFramework.m in Sources */,
-				D24A32621742593D00EFFF53 /* ABQuadMenu.m in Sources */,
+				D293D2D519057F900002E346 /* ABSwipeGestureRecognizer.m in Sources */,
+				D293D2DC19057F900002E346 /* ABMarqueeView.m in Sources */,
+				D293D2CF19057F900002E346 /* ABAlertView.m in Sources */,
 				D24A32651742597C00EFFF53 /* ABQuadMenuExample.m in Sources */,
+				D293D2E419057F900002E346 /* ABTabBarController.m in Sources */,
+				D293D2DB19057F900002E346 /* ABLabel.m in Sources */,
 				D2762B3F17439650002444EA /* ABCommon.m in Sources */,
 				D2762B4017439650002444EA /* ABMath.m in Sources */,
+				D293D2D719057F900002E346 /* ABHud.m in Sources */,
 				D2F5C0C1174B8717002D4D0F /* ABFrame.m in Sources */,
-				D2835DC71808016000BD007F /* ABFullWidthTextField.m in Sources */,
 				D29B385C174CC54000ABE69A /* UIFont+ABFramework.m in Sources */,
 				D27E154A1902DDF20018A83F /* NSNetService+ABFramework.m in Sources */,
 				D25BA75017B68DCC00384BC8 /* UIButton+ABFramework.m in Sources */,

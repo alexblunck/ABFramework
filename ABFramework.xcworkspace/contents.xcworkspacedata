@@ -353,6 +353,16 @@
             location = "group:Components (View)"
             name = "Components (View)">
             <Group
+               location = "group:ABMarqueeView"
+               name = "ABMarqueeView">
+               <FileRef
+                  location = "group:ABMarqueeView.h">
+               </FileRef>
+               <FileRef
+                  location = "group:ABMarqueeView.m">
+               </FileRef>
+            </Group>
+            <Group
                location = "group:ABFullWidthTextField"
                name = "ABFullWidthTextField">
                <FileRef
