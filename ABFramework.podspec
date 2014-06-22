@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
 
   #Mac
   s.subspec "OSX" do |sp|
-    sp.platform = :osx, "10.8"
+    sp.platform = :osx, "10.7"
 
     sp.requires_arc = true
     sp.resources = ['ABFramework/**/*.{lproj}', 'ABFramework/**/*.bundle']

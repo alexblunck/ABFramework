@@ -101,6 +101,7 @@
 		D2ADFF17171ED85A002D723B /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2ADFF16171ED85A002D723B /* Twitter.framework */; };
 		D2B27E00177D8BDA007485A4 /* UIBarButtonItem+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B27DFF177D8BDA007485A4 /* UIBarButtonItem+ABFramework.m */; };
 		D2B331B916EC9E5A00DED125 /* ABLabelExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B331B816EC9E5A00DED125 /* ABLabelExample.m */; };
+		D2BA2D4619412DE400FA2CC4 /* ABSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BA2D4519412DE400FA2CC4 /* ABSection.swift */; };
 		D2C2901D179E9F6E009EF2E2 /* UIScreen+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C2901C179E9F6E009EF2E2 /* UIScreen+ABFramework.m */; };
 		D2C6DE74173D739800C157E3 /* UIColor+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DDCE173D739800C157E3 /* UIColor+ABFramework.m */; };
 		D2C6DE75173D739800C157E3 /* UIImage+ABFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6DDD0173D739800C157E3 /* UIImage+ABFramework.m */; };
@@ -298,6 +299,7 @@
 		D2B331B716EC9E5A00DED125 /* ABLabelExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABLabelExample.h; sourceTree = "<group>"; };
 		D2B331B816EC9E5A00DED125 /* ABLabelExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABLabelExample.m; sourceTree = "<group>"; };
 		D2B6CD2C1743971B00CAB44A /* ABUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABUtilities.h; sourceTree = "<group>"; };
+		D2BA2D4519412DE400FA2CC4 /* ABSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABSection.swift; sourceTree = "<group>"; };
 		D2C2901B179E9F6E009EF2E2 /* UIScreen+ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+ABFramework.h"; sourceTree = "<group>"; };
 		D2C2901C179E9F6E009EF2E2 /* UIScreen+ABFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+ABFramework.m"; sourceTree = "<group>"; };
 		D2C6DDBD173D739800C157E3 /* ABFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFramework.h; sourceTree = "<group>"; };
@@ -528,6 +530,7 @@
 		D22F88E717A1594B0072CF72 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D2BA2D4519412DE400FA2CC4 /* ABSection.swift */,
 				D22F88E817A159590072CF72 /* ABSection.h */,
 				D22F88E917A159590072CF72 /* ABSection.m */,
 			);
@@ -1226,6 +1229,7 @@
 				D226740C18D7450300AA521C /* NSMutableAttributedString+ABFramework.m in Sources */,
 				D2C6DE7F173D739800C157E3 /* ABStoreKitHelper.m in Sources */,
 				D2AB472A18E333D60014626C /* UIView+Frame_ABFramework.m in Sources */,
+				D2BA2D4619412DE400FA2CC4 /* ABSection.swift in Sources */,
 				D293D2D619057F900002E346 /* ABTapGestureRecognizer.m in Sources */,
 				D2ED7476176F18F3008C3BD9 /* NSMutableArray+ABFramework.m in Sources */,
 				D25BA75717B68FE800384BC8 /* ABExampleViewController.m in Sources */,
@@ -1361,7 +1365,7 @@
 				GCC_PREFIX_HEADER = "ABFramework-Examples/ABFramework-Examples-Prefix.pch";
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "ABFramework-Examples/ABFramework-Examples-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1378,7 +1382,7 @@
 				GCC_PREFIX_HEADER = "ABFramework-Examples/ABFramework-Examples-Prefix.pch";
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "ABFramework-Examples/ABFramework-Examples-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
