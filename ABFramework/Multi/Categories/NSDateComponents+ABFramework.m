@@ -75,7 +75,7 @@
 	BOOL hour	= self.hour					== components.hour;
 	BOOL min	= self.minute				== components.minute;
 	BOOL sec	= self.second				== components.second;
-	BOOL week	= self.week					== components.week;
+	BOOL week	= self.weekOfYear					== components.weekOfYear;
 	BOOL wkday	= self.weekday				== components.weekday;
 	BOOL wkOrd	= self.weekdayOrdinal		== components.weekdayOrdinal;
 	BOOL quart	= self.quarter				== components.quarter;
