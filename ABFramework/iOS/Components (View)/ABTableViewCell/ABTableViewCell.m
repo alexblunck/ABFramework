@@ -24,6 +24,7 @@
     
     self.contentView.frame = self.bounds;
     
+#warning _baselayout never set to YES
     if (!_baseLayout) [self baseLayout];
 }
 

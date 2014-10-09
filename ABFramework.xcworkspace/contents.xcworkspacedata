@@ -643,9 +643,6 @@
             <FileRef
                location = "group:ABViewSelectionProtocol.h">
             </FileRef>
-            <FileRef
-               location = "group:ABOrientationProtocol.h">
-            </FileRef>
          </Group>
          <Group
             location = "group:Utilities"

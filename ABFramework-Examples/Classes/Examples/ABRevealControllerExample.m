@@ -35,8 +35,8 @@
     frontViewController.title = @"Front View";
     
     //Buttons
-    frontViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(menuButtonSelected)];
-    frontViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStyleBordered target:self action:@selector(popView)];
+    frontViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:0 target:self action:@selector(menuButtonSelected)];
+    frontViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:0 target:self action:@selector(popView)];
 
     
     
