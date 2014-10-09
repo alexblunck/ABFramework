@@ -111,7 +111,7 @@
 
 //Delegates
 @property (nonatomic, weak) id <ABRevealControllerDelegate> delegate;
-@property (nonatomic, weak) id <ABOrientationProtocol> orientationDelegate;
+@property (nonatomic, weak) id orientationDelegate;
 
 @end
 

@@ -333,26 +333,26 @@ typedef enum {
 #pragma mark - Orientation
 -(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    if (self.orientationDelegate && [self.orientationDelegate respondsToSelector:@selector(abWillRotateToInterfaceOrientation:duration:)])
+    if (self.orientationDelegate && [self.orientationDelegate respondsToSelector:@selector(willRotateToInterfaceOrientation:duration:)])
     {
-        [self.orientationDelegate abWillRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+        [(UIViewController*)self.orientationDelegate willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
     }
 }
 
 -(BOOL) shouldAutorotate
 {
-    if (self.orientationDelegate && [self.orientationDelegate respondsToSelector:@selector(abShouldAutorotate)])
+    if (self.orientationDelegate && [self.orientationDelegate respondsToSelector:@selector(shouldAutorotate)])
     {
-        return [self.orientationDelegate abShouldAutorotate];
+        return [(UIViewController*)self.orientationDelegate shouldAutorotate];
     }
     return YES;
 }
 
 -(NSUInteger) supportedInterfaceOrientations
 {
-    if (self.orientationDelegate && [self.orientationDelegate respondsToSelector:@selector(abSupportedInterfaceOrientations)])
+    if (self.orientationDelegate && [self.orientationDelegate respondsToSelector:@selector(supportedInterfaceOrientations)])
     {
-        return [self.orientationDelegate abSupportedInterfaceOrientations];
+        return [(UIViewController*)self.orientationDelegate supportedInterfaceOrientations];
     }
     return (UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown);
 }
