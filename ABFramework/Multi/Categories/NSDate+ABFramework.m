@@ -73,17 +73,17 @@ static ABDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 		[_components setObject:component forKey:keyName];
 	}
     
-	[component setEra:NSUndefinedDateComponent];
-    [component setYear:NSUndefinedDateComponent];
-    [component setMonth:NSUndefinedDateComponent];
-    [component setDay:NSUndefinedDateComponent];
-    [component setHour:NSUndefinedDateComponent];
-    [component setMinute:NSUndefinedDateComponent];
-    [component setSecond:NSUndefinedDateComponent];
-    [component setWeekOfYear:NSUndefinedDateComponent];
-    [component setWeekday:NSUndefinedDateComponent];
-	[component setWeekdayOrdinal:NSUndefinedDateComponent];
-	[component setQuarter:NSUndefinedDateComponent];
+	[component setEra:NSDateComponentUndefined];
+    [component setYear:NSDateComponentUndefined];
+    [component setMonth:NSDateComponentUndefined];
+    [component setDay:NSDateComponentUndefined];
+    [component setHour:NSDateComponentUndefined];
+    [component setMinute:NSDateComponentUndefined];
+    [component setSecond:NSDateComponentUndefined];
+    [component setWeekOfYear:NSDateComponentUndefined];
+    [component setWeekday:NSDateComponentUndefined];
+	[component setWeekdayOrdinal:NSDateComponentUndefined];
+	[component setQuarter:NSDateComponentUndefined];
     
     return component;
 }
@@ -310,48 +310,48 @@ static ABDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 #pragma mark - Components
 -(NSUInteger) year
 {
-    NSDateComponents *components = [[NSDate calendar] components:NSYearCalendarUnit fromDate:self];
+    NSDateComponents *components = [[NSDate calendar] components:NSCalendarUnitYear fromDate:self];
     return [components year];
 }
 
 -(NSUInteger) weekOfYear
 {
-    NSDateComponents *comps = [[NSDate calendar] components:NSWeekOfYearCalendarUnit | NSYearCalendarUnit fromDate:self];
+    NSDateComponents *comps = [[NSDate calendar] components:NSCalendarUnitWeekOfYear | NSCalendarUnitYear fromDate:self];
     return [comps weekOfYear];
 }
 
 -(NSUInteger) weekDayOfWeek
 {
-    return [[NSDate calendar] ordinalityOfUnit:NSWeekdayCalendarUnit inUnit:NSWeekCalendarUnit forDate:self];
+    return [[NSDate calendar] ordinalityOfUnit:NSCalendarUnitWeekday inUnit:NSCalendarUnitWeekOfYear forDate:self];
 }
 
 -(NSUInteger) monthOfYear
 {
-    NSDateComponents *components = [[NSDate calendar] components:NSMonthCalendarUnit fromDate:self];
+    NSDateComponents *components = [[NSDate calendar] components:NSCalendarUnitMonth fromDate:self];
     return [components month];
 }
 
 -(NSUInteger) dayOfMonth
 {
-    NSDateComponents *components = [[NSDate calendar] components:NSDayCalendarUnit fromDate:self];
+    NSDateComponents *components = [[NSDate calendar] components:NSCalendarUnitDay fromDate:self];
     return [components day];
 }
 
 -(NSUInteger) hourOfDay
 {
-    NSDateComponents *components = [[NSDate calendar] components:NSHourCalendarUnit fromDate:self];
+    NSDateComponents *components = [[NSDate calendar] components:NSCalendarUnitHour fromDate:self];
 	return [components hour];
 }
 
 -(NSUInteger) minuteOfHour
 {
-    NSDateComponents *components = [[NSDate calendar] components:NSMinuteCalendarUnit fromDate:self];
+    NSDateComponents *components = [[NSDate calendar] components:NSCalendarUnitMinute fromDate:self];
     return [components minute];
 }
 
 -(NSUInteger) secondOfMinute
 {
-    NSDateComponents *components = [[NSDate calendar] components:NSSecondCalendarUnit fromDate:self];
+    NSDateComponents *components = [[NSDate calendar] components:NSCalendarUnitSecond fromDate:self];
     return [components second];
 }
 
@@ -362,7 +362,7 @@ static ABDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 
 - (NSDateComponents *)components
 {
-	NSCalendarUnit units = NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekOfYearCalendarUnit | NSWeekdayCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSSecondCalendarUnit;
+	NSCalendarUnit units = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitWeekOfYear | NSCalendarUnitWeekday | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitSecond;
 	return [[NSDate calendar] components:units fromDate:self];
 }
 
@@ -476,7 +476,7 @@ static ABDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 
 -(NSInteger) yearsSinceDate:(NSDate*)date
 {
-    NSDateComponents *comps = [[NSDate calendar] components:NSYearCalendarUnit fromDate:date toDate:self options:0];
+    NSDateComponents *comps = [[NSDate calendar] components:NSCalendarUnitYear fromDate:date toDate:self options:0];
     NSInteger years = [comps year];
     return years;
 }
@@ -484,7 +484,7 @@ static ABDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 
 -(NSInteger) yearsUntilDate:(NSDate*)date
 {
-    NSDateComponents *comps = [[NSDate calendar] components:NSYearCalendarUnit fromDate:self toDate:date options:0];
+    NSDateComponents *comps = [[NSDate calendar] components:NSCalendarUnitYear fromDate:self toDate:date options:0];
     NSInteger years = [comps year];
     return years;
 }
@@ -548,7 +548,7 @@ static ABDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 
 -(NSInteger) monthsSinceDate:(NSDate*)date
 {
-    NSDateComponents *components = [[NSDate calendar] components:NSMonthCalendarUnit fromDate:date toDate:self options:0];
+    NSDateComponents *components = [[NSDate calendar] components:NSCalendarUnitMonth fromDate:date toDate:self options:0];
     NSInteger months = [components month];
     return months;
 }
@@ -556,7 +556,7 @@ static ABDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 
 -(NSInteger) monthsUntilDate:(NSDate*)date
 {
-    NSDateComponents *components = [[NSDate calendar] components:NSMonthCalendarUnit fromDate:self toDate:date options:0];
+    NSDateComponents *components = [[NSDate calendar] components:NSCalendarUnitMonth fromDate:self toDate:date options:0];
     NSInteger months = [components month];
     return months;
 }
@@ -622,14 +622,14 @@ static ABDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 
 -(NSInteger) weeksSinceDate:(NSDate*)date
 {
-    NSDateComponents *components = [[NSDate calendar] components:NSWeekCalendarUnit fromDate:date toDate:self options:0];
+    NSDateComponents *components = [[NSDate calendar] components:NSCalendarUnitWeekOfYear fromDate:date toDate:self options:0];
     NSInteger weeks = [components weekOfYear];
     return weeks;
 }
 
 -(NSInteger) weeksUntilDate:(NSDate*)date
 {
-    NSDateComponents *components = [[NSDate calendar] components:NSWeekCalendarUnit fromDate:self toDate:date options:0];
+    NSDateComponents *components = [[NSDate calendar] components:NSCalendarUnitWeekOfYear fromDate:self toDate:date options:0];
     NSInteger weeks = [components weekOfYear];
     return weeks;
 }
@@ -692,7 +692,7 @@ static ABDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 
 -(NSInteger) daysSinceDate:(NSDate*)date
 {
-    NSDateComponents *comps = [[NSDate calendar] components:NSDayCalendarUnit fromDate:date toDate:self options:0];
+    NSDateComponents *comps = [[NSDate calendar] components:NSCalendarUnitDay fromDate:date toDate:self options:0];
     NSInteger days = [comps day];
     return days;
 }
@@ -700,7 +700,7 @@ static ABDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 
 -(NSInteger) daysUntilDate:(NSDate*)date
 {
-    NSDateComponents *comps = [[NSDate calendar] components:NSDayCalendarUnit fromDate:self toDate:date options:0];
+    NSDateComponents *comps = [[NSDate calendar] components:NSCalendarUnitDay fromDate:self toDate:date options:0];
     NSInteger days = [comps day];
     return days;
 }
@@ -763,7 +763,7 @@ static ABDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 
 -(NSInteger) hoursSinceDate:(NSDate*)date
 {
-    NSDateComponents *comps = [[NSDate calendar] components:NSHourCalendarUnit fromDate:date toDate:self options:0];
+    NSDateComponents *comps = [[NSDate calendar] components:NSCalendarUnitHour fromDate:date toDate:self options:0];
     NSInteger hours = [comps hour];
     return hours;
 }
@@ -771,7 +771,7 @@ static ABDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 
 -(NSInteger) hoursUntilDate:(NSDate*)date
 {
-    NSDateComponents *comps = [[NSDate calendar] components:NSHourCalendarUnit fromDate:self toDate:date options:0];
+    NSDateComponents *comps = [[NSDate calendar] components:NSCalendarUnitHour fromDate:self toDate:date options:0];
     NSInteger hours = [comps hour];
     return hours;
 }
@@ -781,7 +781,7 @@ static ABDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 #pragma mark - Minutes
 -(NSInteger) minutesUntilDate:(NSDate*)date
 {
-    NSDateComponents *comps = [[NSDate calendar] components:NSMinuteCalendarUnit fromDate:self toDate:date options:0];
+    NSDateComponents *comps = [[NSDate calendar] components:NSCalendarUnitMinute fromDate:self toDate:date options:0];
     NSInteger minutes = [comps minute];
     return minutes;
 }
@@ -795,7 +795,7 @@ static ABDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 
 -(NSInteger) secondsUntilDate:(NSDate*)date
 {
-    NSDateComponents *comps = [[NSDate calendar] components:NSSecondCalendarUnit fromDate:self toDate:date options:0];
+    NSDateComponents *comps = [[NSDate calendar] components:NSCalendarUnitSecond fromDate:self toDate:date options:0];
     NSInteger seconds = [comps second];
     return seconds;
 }
