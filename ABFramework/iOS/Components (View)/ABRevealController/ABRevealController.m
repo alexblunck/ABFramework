@@ -331,11 +331,12 @@ typedef enum {
 
 
 #pragma mark - Orientation
--(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+- (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
-    if (self.orientationDelegate && [self.orientationDelegate respondsToSelector:@selector(willRotateToInterfaceOrientation:duration:)])
+    if (self.orientationDelegate && [self.orientationDelegate respondsToSelector:@selector(viewWillTransitionToSize:withTransitionCoordinator:)])
     {
-        [(UIViewController*)self.orientationDelegate willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+        
+        [(UIViewController*)self.orientationDelegate viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
     }
 }
 
